@@ -47,15 +47,15 @@
   - [go-design-pattern](./go-design-pattern/)
 - Go 面试：GMP, ...
 
-## C
+## C, C++
 
-- C 命令 gcc, clang, gdb, ...
+- C, C++ 命令 gcc, clang, gdb, ...
 - Makefile, CMake
-- C 基础
-- C 网络编程、IO
+- C, C++ 基础 《C++ Primer》、《Effective C++》
+- C 网络编程 《TCP/IP 网络编程》
   - [c-socket](./c-socket/)
-- C 并发编程
-  - [c-concurrent](./c-concurrent/)
+- Cpp 并发编程
+  - [cpp-concurrent](./cpp-concurrent/)
 
 ## TypeScript
 
