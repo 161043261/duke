@@ -94,6 +94,8 @@ add_executable(ch18_pthread_client "ch18/pthread_client.c")
 
 add_executable(ch24_http_server "ch24/http_server.c")
 
+add_executable(send_file "send_file.c")
+
 # 查找 pthread 库
 find_package(Threads REQUIRED)
 
@@ -131,6 +133,7 @@ if (CLANG_FORMAT)
             ${CMAKE_SOURCE_DIR}/ch17/*.c
             ${CMAKE_SOURCE_DIR}/ch18/*.c
             ${CMAKE_SOURCE_DIR}/ch24/*.c
+            ${CMAKE_SOURCE_DIR}/*.c
     )
 else ()
     message(WARNING "clang-format not found")

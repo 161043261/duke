@@ -214,4 +214,97 @@ Thread.interrupted();
 3. 同步 IO 多路复用：基于 Selector，一个线程可以处理多个连接
 4. 异步非阻塞 IO：有其他线程通知 IO 结果
 
+### 零拷贝
 
+```java
+var file = new File("./data.txt");
+var fileStream = new RandomAccessFile(file, "r");
+var buf = new byte[(int) file.length()];
+
+// 调用 read 方法
+// 用户态 -> 内核态
+// 操作系统使用 DMA，将数据从磁盘拷贝到内核缓冲区，不占用 cpu
+// 内核态 -> 用户态
+// 用户线程将数据从内核缓冲区拷贝到用户缓冲区（即 byte[] buf），占用 cpu
+fileStream.read(buf);
+
+Socket socket = new Socket("127.0.0.1", 8080);
+
+// 调用 write 方法
+// 用户线程将数据从用户缓冲区（即 byte[] buf）拷贝到操作系统 socket 缓冲区，占用 cpu
+// 用户态 -> 内核态
+// 操作系统使用DMA，将数据从 socket 缓冲区拷贝到网卡，不占用 cpu
+socket.getOutputStream().write(buf);
+```
+
+- 数据拷贝：4 次
+- 用户态与内核态的切换：3 次
+
+![copy4_switch3](./assets/copy4_switch3.png)
+
+> 优化：使用 DirectByteBuffer
+
+```java
+HeapByteBuffer ByteBuffer.allocate(int capacity); // 使用 jvm 堆内存
+DirectByteBuffer ByteBuffer.allocate(int capacity); // 使用操作系统内存
+```
+
+- 数据拷贝：3 次
+- 用户态与内核态的切换：3 次
+
+![copy3_switch3](assets/copy3_switch3.png)
+
+> 优化：使用 transferTo 和 transferFrom
+
+transferTo, transferFrom 基于 <sys/sendfile.h> 中的 sendfile 函数
+
+```c
+#include <assert.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <sys/sendfile.h>
+#include <unistd.h>
+
+int main() {
+  // 只读
+  int inputFd = open("../README.md", O_RDONLY);
+  assert(inputFd != -1);
+  // 只写、必要时创建、重写
+  int outputFd = open("../README.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+  assert(outputFd != -1);
+  off_t offset = 0;  // offset 将被拷贝到 socket 缓冲区
+  ssize_t nSentBytes = sendfile(outputFd, inputFd, &offset, 1024);
+  assert(nSentBytes != -1);
+  close(inputFd);
+  close(outputFd);
+  return 0;
+}
+```
+
+```java
+var fileStream = new FileOutputStream("data.txt");
+var fileChannel = fileStream.getChannel();
+SocketChannel socket = SocketChannel.open();
+socket.connect(new InetSocketAddress("127.0.0.1", 8080));
+long position = 0;
+long left = fileChannel.size();
+
+// 调用 transferTo 方法
+// 用户态 -> 核心态
+// 操作系统使用 DMA，将数据从磁盘拷贝到内核缓冲区，不占用 cpu
+// 操作系统将 offset, length 等元数据拷贝到 socket 缓冲区，cpu 占用可忽略
+// 操作系统使用 DMA，将数据从内核缓冲区拷贝到网卡，不占用 cpu
+long nBytes = fileChannel.transferTo(position, left, fileChannel);
+```
+
+- 数据拷贝：2 次
+- 用户态与内核态的切换：1 次
+
+![copy2_switch1](assets/copy2_switch1.png)
+
+零拷贝：从操作系统内存到 jvm 内存（用户缓冲区）的拷贝次数为 0
+
+- 更少的数据拷贝
+- 更少的用户态与内核态的切换
+- 更少的 cpu 占用
+- 适用于频繁的小文件传输
