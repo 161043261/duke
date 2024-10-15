@@ -8,70 +8,64 @@
 - Kafka
 - 网络协议 TCP, UDP, HTTP, ...
 - 网络安全 SSH, TLS, ...
-- 分布式 map-reduce, Raft
+- 分布式 Raft
 - [Docker](./docker/)
 - gRPC
-- protobuf
+- Protocol Buffers
 - Git
 
-## java
+## Java
 
-- java 基础（略）
-- java 集合（略）
-- java 并发编程
+- Java 命令 java, javac, mvn, ...
+- Maven
+- Java 基础、集合
+- Java 并发编程
   - [java-concurrent](./java-concurrent/)
-- java 网络编程
-- java IO
-- java 函数式编程
-  - [java-func](./java-func/)
-- java 命令 java, javac, mvn, ...
-- springboot
-  - [java-proj](./java-proj/)
-- kafka
-  - [java-kafka](./java-kafka/)
-- netty
+- Java 网络编程、IO
   - [java-netty](./java-netty/)
+- Java 函数式编程
+  - [java-func](./java-func/)
+- MyBatis, SpringBoot
+  - [java-proj](./java-proj/)
+- Kafka
+  - [java-kafka](./java-kafka/)
+- Java 面试：JVM, ...
 
-## go
+## Go
 
-- go 基础（略）
-- slice, map, chan（略）
-- go 并发编程
-  - [go-concurrent](./go-concurrent/)
-- go 网络编程
-  - [go-server](./go-server/)
-- go IO
 - go 命令 go mod, go build, go run, go test, ...
-- gmp
-- gc
-- 设计模式
-  - [go-design-pattern](./go-design-pattern/)
-- gorm
-- gin
+- Go 基础、slice, map, chan
+- Go 并发编程
+  - [go-concurrent](./go-concurrent/)
+- Go 网络编程、IO
+  - [go-server](./go-server/)
+- GORM, Gin
   - [go-proj](./go-proj/)
+- Redis
+  - [go-redis](./go-redis/)
+- Go 设计模式
+  - [go-design-pattern](./go-design-pattern/)
+- Go 面试：GMP, ...
 
-## cpp
+## C
 
-- cpp 基础
-- cpp STL
-- cpp 并发编程
-  - [cpp-concurrent](./cpp-concurrent/)
-- cpp 网络编程
-  - [cpp-socket](./cpp-socket/)
-- cpp IO
-- cpp 命令 gcc, clang, gdb, ...
-- cmake（略）
+- C 命令 gcc, clang, gdb, ...
+- Makefile, CMake
+- C 基础
+- C 网络编程、IO
+  - [c-socket](./c-socket/)
+- C 并发编程
+  - [c-concurrent](./c-concurrent/)
 
-## typescript
+## TypeScript
 
-- html5（略）
-- typescript
-- vue3
+- HTML5（略）
+- TypeScript
+- Vue3
   - [ts-vue](./ts-vue/)
   - [ts-vue3](./ts-vue3/)
   - [ts-proj](./ts-proj/)
 
-## python
+## Python
 
-- python 基础
-- pytest
+- Pytest
