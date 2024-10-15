@@ -15,7 +15,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 // 按行分隔符 \n 拆分 TCP 数据包
-public class PacketSplitTest {
+public class TcpPacket {
   private static void split(ByteBuffer buf) {
     // 读 buf 前调用 flip 方法
     buf.flip();

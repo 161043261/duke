@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
-import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.nio.charset.Charset;
@@ -16,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 // selector 基于 epoll 水平触发
 // mvn dependency:build-classpath
-public class SelectorTest {
+public class Selector {
   public static void main(String[] args) {
     var waitGroup = new CountDownLatch(2);
 
@@ -25,7 +24,7 @@ public class SelectorTest {
             () -> {
               try (ServerSocketChannel listener = ServerSocketChannel.open();
                   // 创建 selector 多路复用器，调度多个 channel
-                  Selector selector = Selector.open()) {
+                  java.nio.channels.Selector selector = java.nio.channels.Selector.open()) {
 
                 listener.bind(new InetSocketAddress(/* "0.0.0.0" wildcard address */ 3261));
                 listener.configureBlocking(false);
@@ -150,7 +149,7 @@ public class SelectorTest {
               try (
               /* Socket connectDirectly = new Socket("localhost", 3261); */
               SocketChannel socket = SocketChannel.open();
-                  Selector selector = Selector.open()) {
+                  java.nio.channels.Selector selector = java.nio.channels.Selector.open()) {
                 // connectDirectly.getOutputStream().write("Greeting from client".getBytes());
                 // connectDirectly.close();
                 socket.configureBlocking(false);

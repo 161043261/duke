@@ -308,3 +308,5 @@ long nBytes = fileChannel.transferTo(position, left, fileChannel);
 - 更少的用户态与内核态的切换
 - 更少的 cpu 占用
 - 适用于频繁的小文件传输
+
+## AIO

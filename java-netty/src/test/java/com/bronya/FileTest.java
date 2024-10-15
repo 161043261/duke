@@ -1,14 +1,10 @@
 package com.bronya;
 
-import org.junit.jupiter.api.Test;
-
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.InetSocketAddress;
 import java.nio.channels.FileChannel;
-import java.nio.channels.SocketChannel;
+import org.junit.jupiter.api.Test;
 
 public class FileTest {
 
@@ -18,10 +14,12 @@ public class FileTest {
     String toFile = "to.txt";
     long start = System.nanoTime();
     try (
-      // 通过 FileInputStream 获取的 channel 只读
-      var fromStream = new FileInputStream(fromFile); FileChannel fromChan = fromStream.getChannel();
-      // 通过 FileOutputStream 获取的 channel 只写
-      var toStream = new FileOutputStream(toFile); FileChannel toChan = toStream.getChannel()) {
+    // 通过 FileInputStream 获取的 channel 只读
+    var fromStream = new FileInputStream(fromFile);
+        FileChannel fromChan = fromStream.getChannel();
+        // 通过 FileOutputStream 获取的 channel 只写
+        var toStream = new FileOutputStream(toFile);
+        FileChannel toChan = toStream.getChannel()) {
       long size = fromChan.size();
       for (long left = size; left > 0; ) {
         var position = size - left;
@@ -35,15 +33,6 @@ public class FileTest {
     System.out.println("Transfer to: " + (end - start) / 1000_000. + "ms");
   }
 
-
   @Test
-  public void testCopy() throws IOException {
-
-
-
-
-
-
-
-  }
+  public void testCopy() throws IOException {}
 }

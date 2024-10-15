@@ -1,22 +1,25 @@
-= Starter
+# Starter
 
-== Building
+## Building
 
 To launch your tests:
+
 ```
 ./mvnw clean test
 ```
 
 To package your application:
+
 ```
 ./mvnw clean package
 ```
 
 To run your application:
+
 ```
 ./mvnw clean compile exec:java
 ```
 
-== Help
+## Help
 
-* https://161043261.github.io[github.io]
+[161043261.github.io](https://161043261.github.io)

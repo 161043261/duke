@@ -8,7 +8,7 @@ import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
-public class BlockedTest {
+public class BlockedIO {
   public static void main(String[] args) {
     var server =
         new Thread(

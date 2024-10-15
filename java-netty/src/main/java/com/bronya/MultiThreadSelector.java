@@ -14,7 +14,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class MultiThreadTest {
+public class MultiThreadSelector {
 
   public static void main(String[] args) {
     new BossEventLoop().start();
