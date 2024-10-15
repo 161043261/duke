@@ -14,10 +14,10 @@ func main() {
 		os.Exit(1)
 	}
 	serverAddrStr /* remoteAddr */ := os.Args[1]
-	//* 客户端调用 net.ListenPacket 函数，监听远端（服务器）的 UDP 连接请求
+	//* 客户端调用 net.ListenPacket 函数, 监听远端 (服务器) 的 UDP 连接请求
 	// listener, err := net.ListenPacket("udp", port)
 	serverAddr /* remoteAddr */, _ := net.ResolveUDPAddr("udp", serverAddrStr)
-	//! 建立 UDP 会话，推荐
+	//! 建立 UDP 会话, 推荐
 	conn, err := net.DialUDP("udp", nil /* 自动分配端口 */, serverAddr)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "[ERROR] %s\n", err.Error())

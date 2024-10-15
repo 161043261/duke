@@ -34,7 +34,7 @@ int main() {
   }
 
   any retPtr;
-  //! 子进程运行 5s，主进程等待子进程终止
+  //! 子进程运行 5s, 主进程等待子进程终止
   if (pthread_join(threadId, &retPtr) != 0) {
     perror("[ERROR] Fatal error");
     exit(1);

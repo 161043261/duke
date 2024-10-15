@@ -7,9 +7,9 @@ public class SynchronizedTest {
   @Test // mvn test -Dtest=SynchronizedTest#testClass -q
   public void testClass() {
     var obj = new SynchronizedTest();
-    // ? 通配符 wildcard，表示未知类型
-    // ? extends T 上限通配符，表示未知类型是 T 或 T 的子类
-    // ? super T 下限通配符，表示未知类型是 T 或 T 的父类
+    // ? 通配符 wildcard, 表示未知类型
+    // ? extends T 上限通配符, 表示未知类型是 T 或 T 的子类
+    // ? super T 下限通配符, 表示未知类型是 T 或 T 的父类
     Class<?> clazz = obj.getClass();
     System.out.println(clazz); // class com.bronya.concurrent.SynchronizedTest
   }
@@ -75,7 +75,7 @@ public class SynchronizedTest {
   private class SyncMethodTest implements Runnable {
     static int sharedInt = 0;
 
-    // ! 同步方法，使用当前对象 this 作为互斥锁
+    // ! 同步方法, 使用当前对象 this 作为互斥锁
     public synchronized void syncMethod() {
       sharedInt++;
     }
@@ -91,7 +91,7 @@ public class SynchronizedTest {
   private class SyncStaticMethodTest implements Runnable {
     static int sharedInt = 0;
 
-    // ! 同步静态方法，使用类的 Class 对象作为互斥锁
+    // ! 同步静态方法, 使用类的 Class 对象作为互斥锁
     public static synchronized void syncStaticMethod() {
       sharedInt++;
     }
@@ -111,7 +111,7 @@ public class SynchronizedTest {
     @Override
     public void run() {
       for (int i = 0; i < 1_000_000; i++) {
-        // ! 同步代码块，可以使用任意对象作为互斥锁
+        // ! 同步代码块, 可以使用任意对象作为互斥锁
         synchronized (obj) {
           sharedInt++;
         }
@@ -125,7 +125,7 @@ public class SynchronizedTest {
     @Override
     public void run() {
       for (int i = 0; i < 1_000_000; i++) {
-        // 同步代码块，使用当前对象 this 作为互斥锁
+        // 同步代码块, 使用当前对象 this 作为互斥锁
         synchronized (this) {
           sharedInt++;
           incSharedInt();
@@ -133,7 +133,7 @@ public class SynchronizedTest {
       }
     }
 
-    // 同步方法，使用当前对象 this 作为互斥锁（重入）
+    // 同步方法, 使用当前对象 this 作为互斥锁 (重入)
     private synchronized void incSharedInt() {
       sharedInt--;
     }

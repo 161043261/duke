@@ -42,7 +42,7 @@ public class ForkJoinTest {
   static long ceil = 1000_000_000;
   static int parallel = Runtime.getRuntime().availableProcessors();
 
-  // 计算 0 ~ 1000_000_000 的和，单线程
+  // 计算 0 ~ 1000_000_000 的和, 单线程
   @Test
   void testSum() {
     var begin = System.nanoTime();
@@ -54,7 +54,7 @@ public class ForkJoinTest {
     System.out.println("Test sum by 1 thread, benchmark:\t" + (end - begin) / 1000_000 + "ms");
   }
 
-  // 计算 0 ~ 1000_000_000 的和，多线程
+  // 计算 0 ~ 1000_000_000 的和, 多线程
   @Test
   void testSumByThreadPool() {
     record SumTask(long from, long to) implements Callable<Long> {
@@ -73,30 +73,29 @@ public class ForkJoinTest {
       long sumUpDo();
     }
 
-    SumUp sumUp =
-        () -> {
-          ExecutorService fixedThreadPool = Executors.newFixedThreadPool(parallel);
-          var range = ceil / parallel;
+    SumUp sumUp = () -> {
+      ExecutorService fixedThreadPool = Executors.newFixedThreadPool(parallel);
+      var range = ceil / parallel;
 
-          var futArr = new ArrayList<Future<Long>>();
-          for (var i = 0; i < parallel; i++) {
-            var from = i * range;
-            var to = from + range;
-            if (i == parallel - 1) {
-              to = ceil + 1;
-            }
-            var fut = fixedThreadPool.submit(new SumTask(from, to));
-            futArr.add(fut);
-          }
-          var ret = 0L;
-          for (var fut : futArr) {
-            try {
-              ret += fut.get();
-            } catch (InterruptedException | ExecutionException ignored) {
-            }
-          }
-          return ret;
-        };
+      var futArr = new ArrayList<Future<Long>>();
+      for (var i = 0; i < parallel; i++) {
+        var from = i * range;
+        var to = from + range;
+        if (i == parallel - 1) {
+          to = ceil + 1;
+        }
+        var fut = fixedThreadPool.submit(new SumTask(from, to));
+        futArr.add(fut);
+      }
+      var ret = 0L;
+      for (var fut : futArr) {
+        try {
+          ret += fut.get();
+        } catch (InterruptedException | ExecutionException ignored) {
+        }
+      }
+      return ret;
+    };
     var begin = System.nanoTime();
     var unused = sumUp.sumUpDo();
     var end = System.nanoTime();

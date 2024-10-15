@@ -26,7 +26,7 @@ int main() {
     read(fd1[0], buf, BUF_SIZE);  // 父进程使用 fd1[0] 接收数据 <--------|--*
     printf("Parent proc read: %s\n", buf);  //                           |
     char str2[] = "I'm fine thank you.";    //                           |
-    write(fd2[1], str2, sizeof(str2));  // 父进程使用 fd2[1] 发送数据 ---*
+    write(fd2[1], str2, sizeof(str2));      // 父进程使用 fd2[1] 发送数据 ---*
   }
   return 0;
 }

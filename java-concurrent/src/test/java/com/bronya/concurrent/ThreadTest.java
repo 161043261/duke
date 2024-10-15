@@ -4,7 +4,7 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 import org.junit.jupiter.api.Test;
 
-// ! 创建一个类，继承 Thread 类，重写 run 方法
+// ! 创建一个类, 继承 Thread 类, 重写 run 方法
 class ThreadExt extends Thread {
 
   @Override
@@ -15,7 +15,7 @@ class ThreadExt extends Thread {
   }
 }
 
-// ! 创建一个类，实现 Runnable 接口，重写 run 方法
+// ! 创建一个类, 实现 Runnable 接口, 重写 run 方法
 class RunnableImpl implements Runnable {
 
   @Override
@@ -30,7 +30,7 @@ class RunnableImpl implements Runnable {
   }
 }
 
-// ! 创建一个类，实现 Callable 接口，重写 call 方法
+// ! 创建一个类, 实现 Callable 接口, 重写 call 方法
 class CallableImpl implements Callable<String> {
 
   @Override
@@ -76,7 +76,7 @@ public class ThreadTest {
     // 启动线程
     new Thread(futureTask).start();
     try {
-      // 等待异步任务结束，获取异步任务 futureTask 的返回值
+      // 等待异步任务结束, 获取异步任务 futureTask 的返回值
       String retVal = futureTask.get();
       System.out.println(retVal);
     } catch (Exception ignored) {
@@ -85,59 +85,57 @@ public class ThreadTest {
 
   @Test // ! mvn -Dtest=ThreadTest#testJoin test -q
   public void testJoin() {
-    Thread t1 =
-        new Thread(
-            () -> {
-              try {
-                Thread.sleep(3000);
-              } catch (InterruptedException ignored) {
-              }
-              System.out.println("I'm thread1!");
-            },
-            "thread1");
+    Thread t1 = new Thread(
+        () -> {
+          try {
+            Thread.sleep(3000);
+          } catch (InterruptedException ignored) {
+          }
+          System.out.println("I'm thread1!");
+        },
+        "thread1");
     t1.start();
     try {
       t1.join(); // 主线程等待 t1 线程运行结束
     } catch (InterruptedException ignored) {
     }
     new Thread(
-            () -> {
-              System.out.println("I'm thread2!");
-            },
-            "thread2")
+        () -> {
+          System.out.println("I'm thread2!");
+        },
+        "thread2")
         .start();
     new Thread(
-            () -> {
-              System.out.println("I'm thread3!");
-            },
-            "thread3")
+        () -> {
+          System.out.println("I'm thread3!");
+        },
+        "thread3")
         .start();
   }
 
   @Test // ! mvn -Dtest=ThreadTest#testDaemon test -q
   public void testDaemon() {
-    Thread t1 =
-        new Thread(
-            () -> {
-              try {
-                Thread.sleep(3000);
-                System.out.println("I'm " + Thread.currentThread().getName());
-              } catch (InterruptedException ignored) {
-              }
-            },
-            "Daemon concurrent");
+    Thread t1 = new Thread(
+        () -> {
+          try {
+            Thread.sleep(3000);
+            System.out.println("I'm " + Thread.currentThread().getName());
+          } catch (InterruptedException ignored) {
+          }
+        },
+        "Daemon concurrent");
     t1.setDaemon(true);
     t1.start();
 
     new Thread(
-            () -> {
-              try {
-                Thread.sleep(1000);
-                System.out.println("I'm " + Thread.currentThread().getName());
-              } catch (InterruptedException ignored) {
-              }
-            },
-            "Normal concurrent")
+        () -> {
+          try {
+            Thread.sleep(1000);
+            System.out.println("I'm " + Thread.currentThread().getName());
+          } catch (InterruptedException ignored) {
+          }
+        },
+        "Normal concurrent")
         .start();
     System.out.println("I'm Main concurrent");
   }

@@ -1,12 +1,13 @@
 package gtest
 
 import (
-	"bronya.com/go-server/gnet"
 	"io"
 	"log"
 	"net"
 	"testing"
 	"time"
+
+	"bronya.com/go-server/gnet"
 )
 
 // go test -run TestClient
@@ -39,7 +40,7 @@ func TestClient(t *testing.T) {
 			log.Println("Read full error", err.Error())
 			return
 		}
-		// Unpack 拆包，数据包反序列化为消息（将 packet 字节数组反序列化为 Msg 结构体变量）
+		// Unpack 拆包, 数据包反序列化为消息 (将 packet 字节数组反序列化为 Msg 结构体变量)
 		recvMsg, err := msgSerialize.Unpack(recvPacketHead)
 		if err != nil {
 			log.Println("Unpack error", err.Error())

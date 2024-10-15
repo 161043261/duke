@@ -5,7 +5,7 @@ import java.util.concurrent.locks.ReentrantLock;
 import org.junit.jupiter.api.Test;
 
 public class ConditionTest {
-  // 可重入锁 Reentrant Lock: 一个线程获取锁后，该线程再次获取该锁时不会被阻塞，可以重复加锁
+  // 可重入锁 Reentrant Lock: 一个线程获取锁后, 该线程再次获取该锁时不会被阻塞, 可以重复加锁
   // 类似 c++ std::recursive_mutex
   private static ReentrantLock reentrantLock = new ReentrantLock();
   private static Condition condition = reentrantLock.newCondition();

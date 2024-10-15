@@ -14,8 +14,8 @@ func TestGosched(t *testing.T) {
 	}("World")
 
 	for i := 0; i < 2; i++ {
-		//! 当前协程放弃处理机（类似 yield）允许其他协程运行
-		//! Goshed 函数不会z当前协程，当前协程会自动恢复运行
+		//! 当前协程放弃处理机 (类似 yield) 允许其他协程运行
+		//! Goshed 函数不会z当前协程, 当前协程会自动恢复运行
 		runtime.Gosched()
 		fmt.Println("Hello")
 	}

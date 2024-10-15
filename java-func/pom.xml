@@ -65,7 +65,7 @@
     </dependency>
   </dependencies>
 
-  <!-- 跳过测试、使用 8 个线程打包 -->
+  <!-- 跳过测试; 使用 8 个线程打包 -->
   <!-- mvn package -DskipTests -T 8  -->
 
   <!-- mvn com.spotify.fmt:fmt-maven-plugin:format -->

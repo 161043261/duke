@@ -13,10 +13,10 @@ func maxArea(height_ []int) int {
 			ans = area
 		}
 		if height[i] > height[j] {
-			// 向内移动 j 板（较低板）
+			// 向内移动 j 板 (较低板)
 			j--
 		} else {
-			// 向内移动 i 板（较低板）
+			// 向内移动 i 板 (较低板)
 			i++
 		}
 	}

@@ -1,6 +1,7 @@
 package com.bronya;
 
 import java.util.stream.Stream;
+
 import org.junit.jupiter.api.Test;
 
 public class MethodRefTest {
@@ -18,10 +19,10 @@ public class MethodRefTest {
   @Test
   void testClassToStaticMethod() {
     Stream.of(
-            new Stu("miHoYo", 1),
-            new Stu("HoYoverse", 2),
-            new Stu("HoYoMix", 3),
-            new Stu("HoYoLab", 4))
+        new Stu("miHoYo", 1),
+        new Stu("HoYoverse", 2),
+        new Stu("HoYoMix", 3),
+        new Stu("HoYoLab", 4))
         .filter(MethodRefTest::isOdd) // 类名::静态方法名
         .forEach(stu -> System.out.println(stu));
   }
@@ -51,9 +52,9 @@ public class MethodRefTest {
   // ! mvn test -Dtest=MethodRefTest#testClassToInstanceMethod2
   @Test
   void testClassToInstanceMethod2() {
-    // ! 定义 Staff 记录类（不可修改的数据类）
-    // ! 属性：name, version
-    // ! 方法：staff.startWithHoYo();
+    // ! 定义 Staff 记录类 (不可修改的数据类)
+    // ! 属性: name, version
+    // ! 方法: staff.startWithHoYo();
     // ! 自动生成的构造方法
     // ! 自动生成的 getter: staff.name(); staff.version();
     // ! 自动生成的 staff.equals(); staff.hashCode(); staff.toString();
@@ -64,10 +65,10 @@ public class MethodRefTest {
     }
 
     Stream.of(
-            new Staff("miHoYo", 1),
-            new Staff("HoYoverse", 2),
-            new Staff("HoYoMix", 3),
-            new Staff("HoYoLab", 4))
+        new Staff("miHoYo", 1),
+        new Staff("HoYoverse", 2),
+        new Staff("HoYoMix", 3),
+        new Staff("HoYoLab", 4))
         .map(Staff::startWithHoYo) // 类名::实例方法名
         .forEach(staff -> System.out.println(staff));
   }
@@ -81,10 +82,11 @@ public class MethodRefTest {
   @Test
   void testObjectToInstanceMethod() {
     // ! 声明一个 Staff 记录类型
-    // ! 属性：name, version
-    // ! 方法：staff.startWithHoYo();
+    // ! 属性: name, version
+    // ! 方法: staff.startWithHoYo();
     // ! 自动生成的 getter: staff.name(); staff.version();
-    record Staff(String name, int version) {}
+    record Staff(String name, int version) {
+    }
 
     class Util {
       boolean isOdd(Staff staff) {
@@ -99,10 +101,10 @@ public class MethodRefTest {
     var util = new Util();
 
     Stream.of(
-            new Staff("miHoYo", 1),
-            new Staff("HoYoverse", 2),
-            new Staff("HoYoMix", 3),
-            new Staff("HoYoLab", 4))
+        new Staff("miHoYo", 1),
+        new Staff("HoYoverse", 2),
+        new Staff("HoYoMix", 3),
+        new Staff("HoYoLab", 4))
         .filter(util::isOdd) // 对象::实例方法名
         .map(util::getName) // 对象::实例方法名
         // .forEach(staff -> System.out.println(staff));
@@ -112,7 +114,7 @@ public class MethodRefTest {
   /**
    *
    *
-   * <h1>类名::New（构造方法）</h1>
+   * <h1>类名::New (构造方法)</h1>
    */
   // ! mvn test -Dtest=MethodRefTest#testClassToNew
 
@@ -143,9 +145,9 @@ public class MethodRefTest {
   // ! mvn test -Dtest=MethodRefTest#testClassToNew
   @Test
   void testClassToNew() {
-    createStu((Lambda1) Stu::new); // 类名::New（构造方法）
-    createStu((Lambda2) Stu::new); // 类名::New（构造方法）
-    createStu((Lambda3) Stu::new); // 类名::New（构造方法）
+    createStu((Lambda1) Stu::new); // 类名::New (构造方法)
+    createStu((Lambda2) Stu::new); // 类名::New (构造方法)
+    createStu((Lambda3) Stu::new); // 类名::New (构造方法)
   }
 
   /**
@@ -157,7 +159,8 @@ public class MethodRefTest {
   @Test
   void testThisToInstanceMethod() {
     // 记录类
-    record Staff(String name, int version) {}
+    record Staff(String name, int version) {
+    }
 
     // 内部类
     class Util {
@@ -187,7 +190,8 @@ public class MethodRefTest {
   @Test
   void testSuperToInstanceMethod() {
     // 记录类
-    record Staff(String name, int version) {}
+    record Staff(String name, int version) {
+    }
 
     // 内部类
     class Util {

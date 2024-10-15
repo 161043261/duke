@@ -17,14 +17,14 @@ func TestVar(t *testing.T) {
 
 // go var_test -run TestNew
 func TestNew(t *testing.T) {
-	//! new 分配内存，返回指向类型零值的指针
+	//! new 分配内存, 返回指向类型零值的指针
 	ptr := new(int)
 	fmt.Println(*ptr) // 0
 }
 
 // go var_test -run TestMake
 func TestMake(t *testing.T) {
-	//! make 用于创建切片, map 和 通道类型的变量（集合）
+	//! make 用于创建切片, map 和 通道类型的变量 (集合)
 	s := make([]int, 3)          // 打印 [0 0 0]
 	m := make(map[string]int, 3) // 打印 map[]
 	c := make(chan int, 3)       // 打印内存地址

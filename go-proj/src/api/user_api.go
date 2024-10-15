@@ -28,8 +28,8 @@ func NewUserApi() *UserApi {
 
 // Login api 的 swagger 注释
 // @Tag         用户 api
-// @Summary     用户登录，简略
-// @Description 用户登录，详细
+// @Summary     用户登录, 简略
+// @Description 用户登录, 详细
 // @Accept      json
 // @Produce     json
 // @Param       username   formData   string   true   "用户名"
@@ -44,9 +44,9 @@ func (userApi UserApi) Login(ctx *gin.Context) { //! 不使用指针接收
 
 	var loginDto dto.LoginDto
 	//* ctx.ShouldBind 检查请求方式 GET, POST, ... 和 Content-Type 以自动解析并绑定
-	//* 例如 "application/json" -> json 绑定，"application/xml" -> xml 绑定
-	//* ctx.ShouldBind 与 ctx.Bind 相似，不同的是
-	//* 绑定失败时，ctx.ShouldBind 不会将响应状态码设置为 404 或终止
+	//* 例如 "application/json" -> json 绑定, "application/xml" -> xml 绑定
+	//* ctx.ShouldBind 与 ctx.Bind 相似, 不同的是
+	//* 绑定失败时, ctx.ShouldBind 不会将响应状态码设置为 404 或终止
 	validationErrs := ctx.ShouldBind(&loginDto) //! 自动解析并绑定
 	if validationErrs != nil {
 		global.Logger.Errorln(validationErrs.Error())

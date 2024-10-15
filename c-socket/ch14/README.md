@@ -6,16 +6,16 @@
 
 <img src="../assets/multicast.png" alt="multicast" style="zoom:50%;" />
 
-- D 类 IP 地址（多播地址）224.0.0.0 ~ 239.255.255.255
-- 加入多播组：期望接收目的地址 224.0.0.1 的多播数据包
-- 服务器多播数据包时，支持多播的路由器复制该数据包并转发给多个主机
-- TTL, Time to Live 数据包发送距离：经过一个路由器 TTL--，TTL=0 时丢弃该数据包
+- D 类 IP 地址 (多播地址) 224.0.0.0 ~ 239.255.255.255
+- 加入多播组: 期望接收目的地址 224.0.0.1 的多播数据包
+- 服务器多播数据包时, 支持多播的路由器复制该数据包并转发给多个主机
+- TTL, Time to Live 数据包发送距离: 经过一个路由器 TTL--, TTL=0 时丢弃该数据包
 
 服务器设置 TTL
 
-```c++
+```c
 #define TTL 64
-int udpSocketFd = socket(PF_INET, SOCK_DGRAM， IPPROTO_UDP);
+int udpSocketFd = socket(PF_INET, SOCK_DGRAM,  IPPROTO_UDP);
 
 int timeToLive = TTL;
 setsockopt(udpSocketFd, IPPROTO_IP, IP_MULTICAST_TTL, &timeToLive, sizeof(timeToLive));
@@ -23,7 +23,7 @@ setsockopt(udpSocketFd, IPPROTO_IP, IP_MULTICAST_TTL, &timeToLive, sizeof(timeTo
 
 服务器发送多播数据包
 
-```c++
+```c
 sockaddr_in multicastAddr{};
 multicastAddr.sin_family = AF_INET;                 // IPv4 协议族
 multicastAddr.sin_addr.s_addr = inet_addr(multicastGroupIp); // multicastGroupIp
@@ -36,7 +36,7 @@ sendto(udpSocketFd, buf, strlen(buf), 0, (sockaddr *)&multicastAddr, sizeof(mult
 
 加入多播组
 
-```c++
+```c
 #define TTL 64
 int udpSocketFd = socket(PF_INET, SOCK_DGRAM, IPPROTO_UDP);
 // 多播组 IP 地址
@@ -48,7 +48,7 @@ setsockopt(udpSocketFd, IPPROTO_IP, IP_ADD_MEMBERSHIP, clientAddr, sizeof(timeTo
 
 ip_mreq 结构体
 
-```c++
+```c
 struct ip_mreq {
     struct in_addr imr_multiaddr; // 多播组 IP 地址
     struct in_addr imr_interface; // 加入多播组的主机 IP 地址
@@ -57,19 +57,19 @@ struct ip_mreq {
 
 ## cc 广播 Broadcast
 
-- 多播 Multicast：服务器可以发送数据包给不同网络号的多个主机
-- 广播 Broadcast：服务器只能发送数据包给相同网络号的所有主机
+- 多播 Multicast: 服务器可以发送数据包给不同网络号的多个主机
+- 广播 Broadcast: 服务器只能发送数据包给相同网络号的所有主机
 
-  - 直接广播：主机号全 1 (192.168.0.255) 发送数据包给某个网络的所有主机
-  - 本地广播：网络号全 1，主机号全 1 (255.255.255.255) 发送数据包给本地网络的所有主机
+  - 直接广播: 主机号全 1 (192.168.0.255) 发送数据包给某个网络的所有主机
+  - 本地广播: 网络号全 1, 主机号全 1 (255.255.255.255) 发送数据包给本地网络的所有主机
 
-- 多播组 IP 地址：D 类 IP 地址
+- 多播组 IP 地址: D 类 IP 地址
 - 多播端口
-  - 服务器多播 UDP 数据包到多播组中所有主机（客户端）的 3333 号端口
+  - 服务器多播 UDP 数据包到多播组中所有主机 (客户端) 的 3333 号端口
   - 客户端监听 3333 号端口
-- 广播 IP 地址：主机号全 1
+- 广播 IP 地址: 主机号全 1
 - 广播端口
-  - 服务器广播 UDP 数据包到网络中所有主机（客户端）的 3333 号端口
+  - 服务器广播 UDP 数据包到网络中所有主机 (客户端) 的 3333 号端口
   - 客户端监听 3333 号端口
 
 ## test

@@ -8,11 +8,11 @@ import (
 
 const BUF_SIZE = 30
 
-func main() {	
+func main() {
 	if len(os.Args) != 2 {
 
 		//! broadcastPort 广播端口
-		//! 服务器广播 UDP 数据包到网络中所有主机（客户端）的 3333 号端口
+		//! 服务器广播 UDP 数据包到网络中所有主机 (客户端) 的 3333 号端口
 		//! 客户端监听 3333 号端口
 		fmt.Fprintf(os.Stderr, "Usage: %s :<broadcastPort>\n", os.Args[0])
 		os.Exit(1)

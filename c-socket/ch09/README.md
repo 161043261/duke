@@ -28,7 +28,7 @@
 
 ### getsockopt 和 setsockopt
 
-```c++
+```c
 #include <sys/socket.h>
 /**
  * @param socketFd 套接字文件描述符
@@ -72,9 +72,9 @@ Nagle 算法: 收到上一个数据包的 ACK 时, 才发送下一个数据包
 
 <img src="../assets/nagle.png" alt="nagle" style="zoom:50%;" />
 
-c++ 禁用 Nagle 算法
+c 禁用 Nagle 算法
 
-```c++
+```c
 int optVal = 1; // 禁用 Nagle 算法
 socklen_t optLen = sizeof(optVal);
 setsockopt(socketFd, IPPROTO_TCP, TCP_NODELAY, &optVal/* 0 启用, 1 禁用 */, optLen);
@@ -88,7 +88,7 @@ conn.SetNoDelay(true); // 禁用 Nagle 算法
 
 查询是否禁用 Nagle 算法
 
-```c++
+```c
 int optVal;
 socklen_t optLen = sizeof(optVal);
 getsockopt(socketFd, IPPROTO_TCP, TCP_NODELAY, &optVal/* 0 启用, 1 禁用 */, &optLen);

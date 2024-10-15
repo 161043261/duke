@@ -6,12 +6,12 @@ import (
 )
 
 // 工厂方法模式是一种创建型设计模式
-// 工厂方法模式可以在不指定具体的类的情况下，创建产品对象
+// 工厂方法模式可以在不指定具体的类的情况下, 创建产品对象
 
-// 使用工厂方法代替直接调用构造函数创建对象（new 关键字）
-// 子类可以重写该工厂方法，以修改被创建的对象所属的类
+// 使用工厂方法代替直接调用构造函数创建对象 (new 关键字)
+// 子类可以重写该工厂方法, 以修改被创建的对象所属的类
 
-// IGun 产品接口，创建 IGun 枪支接口，声明枪支需要的方法
+// IGun 产品接口, 创建 IGun 枪支接口, 声明枪支需要的方法
 type IGun interface {
 	setName(name string)
 	setPower(power int)
@@ -19,7 +19,7 @@ type IGun interface {
 	getPower() int
 }
 
-// Gun 具体产品，实现了 IGun 枪支接口的 Gun 枪支结构体
+// Gun 具体产品, 实现了 IGun 枪支接口的 Gun 枪支结构体
 type Gun struct {
 	name  string
 	power int
@@ -42,7 +42,7 @@ func (gun *Gun) getPower() int {
 	return gun.power
 }
 
-// ak47 具体产品，组合了 Gun 枪支结构体
+// ak47 具体产品, 组合了 Gun 枪支结构体
 type ak47 struct {
 	Gun
 }
@@ -56,7 +56,7 @@ func newAk47() IGun {
 	}
 }
 
-// Musket 具体产品，组合了 Gun 结构体
+// Musket 具体产品, 组合了 Gun 结构体
 type Musket struct {
 	Gun
 }

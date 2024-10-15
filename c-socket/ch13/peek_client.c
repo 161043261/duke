@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
   serverAddr.sin_addr.s_addr = inet_addr(argv[1]);
   serverAddr.sin_port = htons(atoi(argv[2]));
 
-  //* 客户端调用 connect 函数，向服务器发送连接请求
+  //* 客户端调用 connect 函数, 向服务器发送连接请求
   if (connect(clientSocketFd, (struct sockaddr *)&serverAddr,
               sizeof(serverAddr)) == -1) {
     printf("Error connected to server\n");

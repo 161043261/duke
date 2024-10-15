@@ -4,7 +4,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class ReentrantReadWriteLockTest {
-  // 应用：使用 ReentrantReadWriteLock 实现并发安全的计数器
+  // 应用: 使用 ReentrantReadWriteLock 实现并发安全的计数器
   class ThreadSafeCounter {
     private final ReentrantReadWriteLock rwLock = new ReentrantReadWriteLock(/* true */ );
     private final Lock readLock = rwLock.readLock(); // 共享读锁

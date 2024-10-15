@@ -33,14 +33,14 @@ func GenToken(id uint, username string) (tokStr string, err error) {
 		RegisteredClaims: registeredClaims,
 	}
 
-	//! 创建未签名的 unsignedToken，指定签名算法为 HS256，载荷为 payload
+	//! 创建未签名的 unsignedToken, 指定签名算法为 HS256, 载荷为 payload
 	unsignedToken := jwt.NewWithClaims(jwt.SigningMethodHS256, payload)
-	//! 使用签名算法 HS256，[]byte 类型的签名密钥对 unsignedToken 签名
+	//! 使用签名算法 HS256, []byte 类型的签名密钥对 unsignedToken 签名
 	//! 返回已签名的 tokStr 字符串和可能的错误 err
 	return unsignedToken.SignedString( /* 强制类型转换 */ signingKey)
 }
 
-// ParseToken 遍历 tokStr 字符串，返回解析出的载荷 payload 和可能的错误 err
+// ParseToken 遍历 tokStr 字符串, 返回解析出的载荷 payload 和可能的错误 err
 func ParseToken(tokStr string) (payload Payload, err error) {
 	payload = Payload{}                                          // 解析出的载荷
 	keyProvider := func(token *jwt.Token) (interface{}, error) { // 提供签名密钥的函数

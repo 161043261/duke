@@ -17,7 +17,7 @@ func UseTagValidator() {
 	if tagValidator, ok /* 类型断言是否成功 */ := binding.Validator.Engine().(*validator.Validate); ok {
 		tagValidator.RegisterValidation("not_admin" /* 结构体标签名 */, func(fieldLevel validator.FieldLevel) bool {
 			if fieldName, ok /* 类型断言是否成功 */ := fieldLevel.Field().Interface().(string); ok {
-				// fieldName 不为空，且不以 admin 开头
+				// fieldName 不为空, 且不以 admin 开头
 				if fieldName != "" && strings.Index(fieldName, "admin") != 0 {
 					return true
 				}

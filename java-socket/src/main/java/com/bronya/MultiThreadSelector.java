@@ -36,14 +36,14 @@ public class MultiThreadSelector {
 
   static class BossEventLoop implements Runnable {
     private Selector boss;
-    // volatile 可以保证有序性、可见性，不能保证原子性
+    // volatile 可以保证有序性; 可见性, 不能保证原子性
     private volatile boolean isStarted = false;
     private WorkerEventLoop[] workers;
     private final AtomicInteger wId = new AtomicInteger();
 
     public void start() {
       if (!isStarted) {
-        try { // 不能使用 try-with-resources，listener 会随 if 块退出被 gc
+        try { // 不能使用 try-with-resources, listener 会随 if 块退出被 gc
           ServerSocketChannel listener = ServerSocketChannel.open();
           listener.bind(new InetSocketAddress("0.0.0.0", 3261));
           System.out.println("Server listening on port 3261");

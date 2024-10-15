@@ -6,7 +6,7 @@ DNS 是用于 IP 地址和 域名 (domain) 转换的系统
 
 调用 gethostbyname 函数, 通过域名 domain 字符串获取主机信息 (IP 地址)
 
-```c++
+```c
 #include <netdb.h>
 // 成功时返回 hostent 结构体, 失败时返回 NULL 指针
 struct hostent/* host entity */ *gethostbyname(const char *domain);
@@ -14,7 +14,7 @@ struct hostent/* host entity */ *gethostbyname(const char *domain);
 
 hostent 结构体
 
-```c++
+```c
 struct hostent {
     char *h_name;     // 官方域名
     char **h_aliases; // 别名列表, 一个 IP 地址可以绑定多个域名
@@ -26,7 +26,7 @@ struct hostent {
 
 调用 gethostbyaddr 函数, 通过 IP 字符串获取主机信息 (域名字符串)
 
-```c++
+```c
 #include <netdb.h>
 /**
  * @param addr IP 地址

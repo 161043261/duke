@@ -7,7 +7,7 @@
 
 ### 表示 IPv4 地址的结构体
 
-```c++
+```c
 struct in_addr {
     int_addr_t s_addr; // 32 位 IPv4 地址
 }
@@ -32,8 +32,8 @@ struct sockaddr_in {
 | uint32_t    | unsigned 32-bit int (unsigned int / unsigned long) | sys/types.h  |
 | sa_family_t | 地址族 address family                              | sys/socket.h |
 | socketlen_t | 结构体 sockaddr_in 长度                            | sys/socket.h |
-| in_addr_t   | IP 地址，等价于 uint32_t                           | netinet/in.h |
-| in_port_t   | 端口，等价于 uint16_t                              | netinet/in.h |
+| in_addr_t   | IP 地址, 等价于 uint32_t                           | netinet/in.h |
+| in_port_t   | 端口, 等价于 uint16_t                              | netinet/in.h |
 
 #### 结构体 sockaddr_in 成员说明
 
@@ -48,12 +48,12 @@ struct sockaddr_in {
 
 ### 字节序 Endian
 
-#### cpu 字节序（主机字节序）
+#### cpu 字节序 (主机字节序)
 
 - 大端序 Big Endian - 高位字节存放到低位地址
 - 小端序 Little Endian - 高位字节存放到高位地址
 
-例：整数 0x12345678 的大端序、小端序表示
+例: 整数 0x12345678 的大端序; 小端序表示
 
 ```text
 大端序 Big Endian
@@ -73,13 +73,13 @@ struct sockaddr_in {
 
 #### 网络字节序
 
-网络字节序：大端序
+网络字节序: 大端序
 
 #### 字节序转换
 
 字节序转换的 api
 
-```c++
+```c
 unsigned short htons(unsigned short); // 主机字节序 host endian ==> 网络字节序 net  endian
 unsigned short ntohs(unsigned short); // 主机字节序 net  endian ==> 网络字节序 host endian
 unsigned long htonl(unsigned long);   // 主机字节序 host endian ==> 网络字节序 net  endian
@@ -88,12 +88,12 @@ unsigned long ntohl(unsigned long);   // 主机字节序 net  endian ==> 网络�
 
 代码
 
-```c++
+```c
 sockaddr_in serverAddr{};
 serverAddr.sin_family = AF_INET; // IPv4 协议族
-// htonl 函数将一个 32 位（4 字节）的 int 整数从主机字节序转换为网络字节序
+// htonl 函数将一个 32 位 (4 字节) 的 int 整数从主机字节序转换为网络字节序
 serverAddr.sin_addr.s_addr = htonl(INADDR_ANY); // 0.0.0.0 接受所有 IP 地址的 TCP/UDP 连接
-// htons 函数将一个 16 位（2 字节）的 short 整数从主机字节序转换为网络字节序
+// htons 函数将一个 16 位 (2 字节) 的 short 整数从主机字节序转换为网络字节序
 serverAddr.sin_port = htons(atoi(argv[1])); // 端口 = 第 1 个命令行参数
 ```
 
@@ -114,35 +114,35 @@ func IsLittleEndian() bool {
 
 ### 网络地址的初始化与分配
 
-inet_addr 函数：IP 字符串 `8.8.8.8` ==> 网络字节序的 32 位 unsigned long 整数 `0x8080808`
+inet_addr 函数: IP 字符串 `8.8.8.8` ==> 网络字节序的 32 位 unsigned long 整数 `0x8080808`
 
-```c++
+```c
 #include <arpa/inet.h>
-// 转换成功时，返回 32 位大端序整数值
-// 转换失败时，返回 INADDR_NONE
+// 转换成功时, 返回 32 位大端序整数值
+// 转换失败时, 返回 INADDR_NONE
 in_addr_t inet_addr(const char *ipString); // in_addr_t 等价于 uint32_t
 ```
 
-inet_aton 函数：功能与 inet_addr 函数相同
+inet_aton 函数: 功能与 inet_addr 函数相同
 
-```c++
+```c
 #include <arpa/inet.h>
-// 转换成功时，返回 1
-// 转换失败时，返回 0
+// 转换成功时, 返回 1
+// 转换失败时, 返回 0
 // struct in_addr { int_addr_t s_addr;/* 32 位 IPv4 地址 */}
 int inet_aton(const char* ipString, struct in_addr* inAddr);
 ```
 
 #### 最佳实践
 
-```c++
+```c
 sockaddr_in addr{};
 std::string ipStr = "127.0.0.1";
 int portNum = 3333;
 addr.sin_family = AF_INET; // IPv4 地址族
-// 调用 htonl 函数，IP 字符串 ==> 网络字节序（小端序）的整数
+// 调用 htonl 函数, IP 字符串 ==> 网络字节序 (小端序) 的整数
 addr.sin_addr.s_addr/* 32 bits */ = inet_addr(ipStr); // 设置 32 位 IP 地址
-// 调用 htons 函数，主机字节序（大端序） ==> 网络字节序（小端序）
+// 调用 htons 函数, 主机字节序 (大端序)  ==> 网络字节序 (小端序)
 addr.sin_port/* 16 bits */ = htons(portNum); // 设置 16 位 端口
 ```
 

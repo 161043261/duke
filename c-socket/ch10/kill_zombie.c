@@ -10,7 +10,7 @@
 void childExitCallback(int sig) {
   int status;
   pid_t pid = waitpid(-1 /* -1 等待任一子进程终止 */, &status,
-                      WNOHANG /* 没有子进程终止时，父进程不会阻塞 */);
+                      WNOHANG /* 没有子进程终止时, 父进程不会阻塞 */);
   if (WIFEXITED(status)) {
     printf("Remove child proc { pid: %d, return: %d }\n", pid,
            WEXITSTATUS(status));

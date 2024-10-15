@@ -19,15 +19,15 @@ public class BlockedIO {
                 var sockets = new ArrayList<SocketChannel>();
                 while (true) {
                   System.out.println("Blocked -- Listening for new connection...");
-                  // 没有新的连接时，线程阻塞，放弃 cpu
+                  // 没有新的连接时, 线程阻塞, 放弃 cpu
                   SocketChannel socket = listener.accept();
                   sockets.add(socket);
                   for (var socket_ : sockets) {
-                    // 写 buf 前调用 clear 方法：清空脏数据
+                    // 写 buf 前调用 clear 方法: 清空脏数据
                     buf.clear();
                     System.out.println("Blocked -- Wanna read new packet...");
-                    // 没有新的数据时，线程阻塞，放弃 cpu
-                    socket_.read(buf); // 从 socketChan 中读，向 buf 中写
+                    // 没有新的数据时, 线程阻塞, 放弃 cpu
+                    socket_.read(buf); // 从 socketChan 中读, 向 buf 中写
                     // 读 buf 前调用 flip 方法
                     buf.flip();
                     System.out.println(StandardCharsets.UTF_8.decode(buf).toString());
@@ -46,7 +46,7 @@ public class BlockedIO {
                 Thread.sleep(3000);
                 socket.connect(new InetSocketAddress("localhost", 3261));
               } catch (IOException | InterruptedException ignored) {
-                // 3s 后 client 线程执行结束，不会被 interrupt
+                // 3s 后 client 线程执行结束, 不会被 interrupt
               } finally {
                 System.out.println("[client] Is alive: " + Thread.currentThread().isAlive());
               }
@@ -54,7 +54,7 @@ public class BlockedIO {
 
     server.start();
     client.start();
-    // 更优雅的实现：CountDownLatch
+    // 更优雅的实现: CountDownLatch
 
     // 或将 server, client 标记为守护线程
     // server.setDaemon(true);

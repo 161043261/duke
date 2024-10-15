@@ -18,9 +18,9 @@ public class ByteBufferTest {
     Assertions.assertTrue(true);
   }
 
-  // 读 buf 前调用 flip 方法：写模式 -> 读模式
-  // 写 buf 前调用 clear 方法：清空脏数据
-  // 写 buf 前调用 compact：紧凑数据，不清空数据
+  // 读 buf 前调用 flip 方法: 写模式 -> 读模式
+  // 写 buf 前调用 clear 方法: 清空脏数据
+  // 写 buf 前调用 compact: 紧凑数据, 不清空数据
   @Test
   public void testByteBuffer() {
     try (var fileInputStream = new FileInputStream("data.txt");
@@ -29,20 +29,20 @@ public class ByteBufferTest {
       // 为 buffer 分配 10 个字节
       var buffer = ByteBuffer.allocate(10);
       while (true) {
-        // ! <<< 写开始，写 buf 前调用 clear 方法：清空脏数据
+        // ! <<< 写开始, 写 buf 前调用 clear 方法: 清空脏数据
 
         // []byte{1, 6, 1, 0, 4, 3, 2, 0, 6, 1}
         // clear -> []byte{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
         // compact -> []byte{1, 6, 1, 4, 3, 2, 6, 1, 0, 0}
 
         buffer.clear();
-        int nBytes = channel.read(buffer); // 从 channel 中读，向 buffer 中写
+        int nBytes = channel.read(buffer); // 从 channel 中读, 向 buffer 中写
         if (nBytes == -1) {
           break;
         }
         // >>> 写结束
 
-        // ! <<< 读开始，读 buf 前调用 flip 方法: 写模式 -> 读模式
+        // ! <<< 读开始, 读 buf 前调用 flip 方法: 写模式 -> 读模式
         buffer.flip();
         while (buffer.hasRemaining()) {
           byte b = buffer.get(); // 从 buffer 中读一个字符
@@ -122,7 +122,7 @@ public class ByteBufferTest {
   // I'm Duke.\n
   // How are you?\n
 
-  // 粘包、半包后
+  // 粘包; 半包后
   // Hello world!\nI'm Duke.\nHo -- 粘包
   // w are you?\n -- 半包
   @Test

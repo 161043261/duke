@@ -10,9 +10,9 @@ type LoginDto struct {
 	//* json:"username"
 	//! username  - json 中的字段名为 username
 	//* form:"username"
-	//! username  - HTML 表单中，input 标签的 id 为 username
+	//! username  - HTML 表单中, input 标签的 id 为 username
 	//* binding:"required,not_admin"
-	//! required  - 必填字段，绑定时如果 name 为空则报错
+	//! required  - 必填字段, 绑定时如果 name 为空则报错
 	//! not_admin - tag 验证器 ../../data/tag_validate.go
 	Username string `json:"username" form:"username" binding:"required,not_admin"`
 	Password string `json:"password" form:"password" binding:"required"`

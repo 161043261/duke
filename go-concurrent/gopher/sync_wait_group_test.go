@@ -23,9 +23,9 @@ func TestWaitGroup1(t *testing.T) {
 	var wg sync.WaitGroup
 	go task(&wg)
 	fmt.Println("I'm main goroutine")
-	//! 解决 1 - 主协程睡眠 1 s，等待子协程执行结束
+	//! 解决 1 - 主协程睡眠 1 s, 等待子协程执行结束
 	// time.Sleep(time.Second)
-	//! 解决 2 - 使用 WaitGroup（类似 join）
+	//! 解决 2 - 使用 WaitGroup (类似 join)
 	wg.Wait() // 等待加入 wg 等待组的子协程执行结束
 }
 

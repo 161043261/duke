@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
     exit(1);
   }
 
-  //* 调用 socket 函数，创建 UDP socket 套接字
+  //* 调用 socket 函数, 创建 UDP socket 套接字
   int clientSocketFd = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
   if (clientSocketFd == -1) {
     printf("Error created socket\n");
@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
     fputs("Input: ", stdout);
     fgets(send, BUF_SIZE, stdin);
     // send[strlen(send) - 1] = '\0'; // 将 \n 替换为 \0
-    // 客户端向服务器发送 UDP 数据报，客户端自动分配本机 IP 地址和端口
+    // 客户端向服务器发送 UDP 数据报, 客户端自动分配本机 IP 地址和端口
     sendto(clientSocketFd, send, strlen(send), 0,
            (struct sockaddr *)&serverAddr, sizeof(serverAddr));
     // memset(recv, '\0', BUF_SIZE); //! 将 recv 中所有元素置为 '\0'

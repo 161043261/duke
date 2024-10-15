@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-// 工作：计算 id^2
+// 工作: 计算 id^2
 type Work struct {
 	id int // 工作的 id
 }

@@ -31,7 +31,7 @@ func TestSelect1(t *testing.T) {
 	}
 }
 
-// 如果多个通道同时就绪，则随机选择一个
+// 如果多个通道同时就绪, 则随机选择一个
 func TestSelect2(t *testing.T) {
 	ch1 := make(chan int, 1)
 	ch2 := make(chan string, 1)
@@ -56,9 +56,9 @@ func TestSelect3(t *testing.T) {
 			case ch <- i:
 				fmt.Printf("Write %v to channel\n", i)
 				i++
-			default: // 通道满时，执行 default
+			default: // 通道满时, 执行 default
 				fmt.Println("Channel is full, close channel")
-				close(ch) // 关闭通道，预防死锁
+				close(ch) // 关闭通道, 预防死锁
 				return
 			}
 		}

@@ -9,7 +9,7 @@ import (
 func Start() {
 	conf.ReadConf()                  //! 读取配置文件
 	global.Logger = conf.NewLogger() //! 启动日志
-	session, err := conf.ConnMysql() //! 连接 mysql，创建表
+	session, err := conf.ConnMysql() //! 连接 mysql, 创建表
 
 	if err != nil {
 		global.Logger.Errorf("Connect mysql error %s", err.Error())
@@ -24,7 +24,7 @@ func Start() {
 	}
 	global.RedisCli = redisCli
 
-	router.StartRouter() //! 创建路由组，启动路由器
+	router.StartRouter() //! 创建路由组, 启动路由器
 }
 
 func Done() {

@@ -7,12 +7,14 @@ import (
 	"syscall"
 	"time"
 )
+
 const BUF_SIZE int = 3
+
 func sysIo() {
 	start := time.Now()
 	readFd, _ := syscall.Open("../../README.md", os.O_RDONLY, 0755)
-    //! O_CREAT 文件不存在则创建文件
-	//! O_RDONLY 只读、O_WRONLY 只写、O_TRUNC 重写
+	//! O_CREAT 文件不存在则创建文件
+	//! O_RDONLY 只读; O_WRONLY 只写; O_TRUNC 重写
 	writeFd, _ := syscall.Open("../../README.txt", os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0755)
 	buf := make([]byte, BUF_SIZE)
 	for {

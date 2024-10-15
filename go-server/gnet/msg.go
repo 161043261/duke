@@ -7,7 +7,7 @@ type Msg struct {
 	Data []byte // 消息数据
 }
 
-// NewMsg 创建 Msg 结构体变量，多例
+// NewMsg 创建 Msg 结构体变量, 多例
 func NewMsg(id uint32, data []byte) *Msg {
 	return &Msg{
 		Len:  uint32(len(data)), // 消息长度

@@ -110,7 +110,7 @@ int main(int argc, char *argv[]) {
     pthread_t threadId;
     pthread_create(&threadId, NULL, clientHandler,
                    &clientSocketFd);  // 创建子进程
-    pthread_detach(threadId);  // 从主进程上分离子进程，主进程不会阻塞，可以继续
+    pthread_detach(threadId);  // 从主进程上分离子进程, 主进程不会阻塞, 可以继续
                                // accept 接受客户端的连接请求
     printf("Connect client IP: %s\n", inet_ntoa(clientAddr.sin_addr));
   }

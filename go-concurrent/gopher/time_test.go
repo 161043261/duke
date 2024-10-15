@@ -8,18 +8,18 @@ import (
 )
 
 func TestNewTimer1(t *testing.T) {
-	// 创建一个定时器，3s 后触发
+	// 创建一个定时器, 3s 后触发
 	timer := time.NewTimer(3 * time.Second)
 	// bt 开始时间戳
 	bt := time.Now()
 	// 通过 timer.C /* make(chan Time, 1) */ 接收定时器 timer 触发时的时间戳
-	// 定时器时间到时，向通道 timer.C 中发送当前时间戳
+	// 定时器时间到时, 向通道 timer.C 中发送当前时间戳
 	et := <-timer.C         // et 结束时间戳
 	fmt.Println(et.Sub(bt)) // 3s
 }
 
 func TestNewTimer2(t *testing.T) {
-	// 主协程从没有新数据的空通道 timer.C 中读数据，会导致阻塞/死锁
+	// 主协程从没有新数据的空通道 timer.C 中读数据, 会导致阻塞/死锁
 	timer := time.NewTimer(3 * time.Second)
 	for {
 		<-timer.C

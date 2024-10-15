@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
     exit(1);
   }
 
-  //* 调用 socket 函数，创建 socket 套接字
+  //* 调用 socket 函数, 创建 socket 套接字
   int clientSocketFd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
   if (clientSocketFd == -1) {
     printf("Error created socket\n");
@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
   serverAddr.sin_addr.s_addr = inet_addr(argv[1]);
   serverAddr.sin_port = htons(atoi(argv[2]));
 
-  //* 客户端调用 connect 函数，向服务器发送连接请求
+  //* 客户端调用 connect 函数, 向服务器发送连接请求
   if (connect(clientSocketFd, (struct sockaddr *)&serverAddr,
               sizeof(serverAddr)) == -1) {
     printf("Error connected to server\n");
@@ -41,7 +41,7 @@ int main(int argc, char *argv[]) {
       fgets(buf, BUF_SIZE, stdin);
       if (strcasecmp(buf, "q\n") == 0) {
         shutdown(clientSocketFd,
-                 SHUT_WR);  //* 断开输出流，向服务器发送 EOF
+                 SHUT_WR);  //* 断开输出流, 向服务器发送 EOF
         break;
       }
       // buf[strlen(buf) - 1] = '\0'; // 将 \n 替换为 \0

@@ -26,7 +26,7 @@ public class NonBlockedIO {
                 while (true) {
                   Thread.sleep(1000);
                   System.out.println("Non-blocked -- Listening for new connection...");
-                  // 没有新的连接时，accept 方法返回 null
+                  // 没有新的连接时, accept 方法返回 null
                   SocketChannel socket = listener.accept();
                   if (socket != null) {
                     // 非阻塞 socket
@@ -34,10 +34,10 @@ public class NonBlockedIO {
                     sockets.add(socket);
                   }
                   for (var socket_ : sockets) {
-                    // 写 buf 前调用 clear 方法：清空脏数据
+                    // 写 buf 前调用 clear 方法: 清空脏数据
                     buf.clear();
                     System.out.println("Non-blocked -- Wanna read new packet...");
-                    // 没有新的数据时，read 方法返回 0
+                    // 没有新的数据时, read 方法返回 0
                     int nBytes = socket_.read(buf);
                     if (nBytes > 0) {
                       // 读 buf 前调用 flip 方法

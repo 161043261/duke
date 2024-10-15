@@ -1,17 +1,18 @@
 package test
 
 import (
-	"bronya.com/go-proj/src/conf"
-	"bronya.com/go-proj/src/util"
 	"context"
 	"fmt"
-	"github.com/spf13/viper"
 	"log"
 	"testing"
 	"time"
+
+	"bronya.com/go-proj/src/conf"
+	"bronya.com/go-proj/src/util"
+	"github.com/spf13/viper"
 )
 
-// ! 从一个已关闭的空通道中读，返回通道元素类型的零值和 false（表示读失败）
+// ! 从一个已关闭的空通道中读, 返回通道元素类型的零值和 false (表示读失败)
 // ! go test -run TestNotify
 func TestNotify(t *testing.T) {
 	ch := make(chan int) // make(chan struct{})

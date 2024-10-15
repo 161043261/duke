@@ -20,7 +20,7 @@ class ThreadSafeQueue {
   // 入队
   void enqueue(T value);
 
-  // 出队，队列为空则等待
+  // 出队, 队列为空则等待
   std::shared_ptr<T> dequeue();
 
   bool empty() const;  // 该方法不会修改类的非静态成员

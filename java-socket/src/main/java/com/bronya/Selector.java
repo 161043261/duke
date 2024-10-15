@@ -23,18 +23,18 @@ public class Selector {
         new Thread(
             () -> {
               try (ServerSocketChannel listener = ServerSocketChannel.open();
-                  // 创建 selector 多路选择器，调度多个 channel
+                  // 创建 selector 多路选择器, 调度多个 channel
                   java.nio.channels.Selector selector = java.nio.channels.Selector.open()) {
 
                 listener.bind(new InetSocketAddress(/* "0.0.0.0" wildcard address */ 3261));
                 listener.configureBlocking(false);
 
-                // * SelectionKey.OP_ACCEPT  有新连接可接受时触发
+                // * SelectionKey.OP_ACCEPT 有新连接可接受时触发
                 // * SelectionKey.OP_CONNECT 有新连接可建立时触发
-                // * SelectionKey.OP_READ    有新数据可读时触发
-                // * SelectionKey.OP_WRITE   有新数据可写时触发
+                // * SelectionKey.OP_READ 有新数据可读时触发
+                // * SelectionKey.OP_WRITE 有新数据可写时触发
 
-                // ! register 方法：向 selector 中注册 channel
+                // ! register 方法: 向 selector 中注册 channel
                 // selector 关注 listener 的 OP_ACCEPT 事件
                 SelectionKey listenerKey = listener.register(selector, 0, null);
                 ///////////////////////// OP_ACCEPT /////////////////////////
@@ -42,10 +42,10 @@ public class Selector {
                 // 等价于 listener.register(selector, SelectionKey.OP_ACCEPT);
 
                 while (!Thread.currentThread().isInterrupted()) {
-                  // select()             阻塞直到有事件触发
-                  // select(long timeout) 阻塞直到有事件触发，或超时
-                  // selectNow()          非阻塞
-                  // 选择一组可接收连接、可建立连接、可读、可写的（已注册）通道对应的键
+                  // select() 阻塞直到有事件触发
+                  // select(long timeout) 阻塞直到有事件触发, 或超时
+                  // selectNow() 非阻塞
+                  // 选择一组可接收连接; 可建立连接; 可读; 可写的 (已注册) 通道对应的键
                   // 返回被选择的键的数量
                   int nKeys = selector.select();
                   assert nKeys > 0;
@@ -64,7 +64,7 @@ public class Selector {
                     ///////////////////////// Acceptable /////////////////////////
                     if (key.isAcceptable()) {
                       System.out.println("[server] Select an acceptable channel");
-                      // 获取键对应的事件（通道）
+                      // 获取键对应的事件 (通道)
                       var listener_ = (ServerSocketChannel) key.channel();
                       if (listener != listener_) {
                         throw new RuntimeException("[server] Unexpected acceptable channel");

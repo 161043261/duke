@@ -14,7 +14,7 @@ int main() {
   struct timeval timeout;  // 超时
   char buf[BUF_SIZE];
 
-  FD_ZERO(&fdSet);  // fdSet 置 0，不监听所有的文件描述符
+  FD_ZERO(&fdSet);  // fdSet 置 0, 不监听所有的文件描述符
   //!  fd0   fd1   fd2
   // *-----*-----*-----*----
   // |  0  |  0  |  0  | ...
@@ -33,9 +33,9 @@ int main() {
     timeout.tv_usec = 0;  // 毫秒
     int numReady =        //! numReady - IO 就绪的 fd 数量
         select(1,         //! numFd - fd_set 的最大 fd 值 +1
-               &backup,  //! readFdSet - &fd_set 监听是否可读，NULL 表示不监听
-               NULL,  //! writeFdSet - &fd_set 监听是否可写，NULL 表示不监听
-               NULL,  //! exceptFdSet - &fd_set 监听有无异常，NULL 表示不监听
+               &backup,   //! readFdSet - &fd_set 监听是否可读, NULL 表示不监听
+               NULL,      //! writeFdSet - &fd_set 监听是否可写, NULL 表示不监听
+               NULL,  //! exceptFdSet - &fd_set 监听有无异常, NULL 表示不监听
                &timeout);  //! timeout 超时
     if (numReady == -1) {  //! 有异常返回 -1
       perror("[ERROR] Select error");
@@ -45,7 +45,7 @@ int main() {
       puts("Timeout!");
       continue;
     }
-    //! 有 fd 可读/写时，返回 IO 就绪的 fd
+    //! 有 fd 可读/写时, 返回 IO 就绪的 fd
     if (FD_ISSET(0, &backup)) {  // stdin 是否可读
       // memset(buf, '\0', BUF_SIZE);
       int readBytes = read(0 /* fd */, buf, BUF_SIZE);

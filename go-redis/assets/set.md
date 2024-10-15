@@ -6,14 +6,14 @@
 
 | 命令      | 说明                                                     |
 | --------- | -------------------------------------------------------- |
-| sadd      | 向 set 集合中添加一个或多个元素，如果 set 中已存在则忽略 |
+| sadd      | 向 set 集合中添加一个或多个元素, 如果 set 中已存在则忽略 |
 | srem      | 从 set 集合中移除一个或多个元素                          |
 | sismember | 判断 set 集合中是否存在该元素                            |
 | smembers  | 获取 set 集合的所有元素                                  |
 | sinter    | 计算两个或多个 set 的交集                                |
 | sunion    | 计算两个或多个 set 的并集                                |
 | sdiff     | 计算两个或多个 set 的差集                                |
-| scard     | 返回 set 集合的大小（基数）                              |
+| scard     | 返回 set 集合的大小 (基数)                               |
 | srem      | 从 set 集合中移除一个或多个元素                          |
 | spop      | 从 set 集合中移除随机一个元素                            |
 
@@ -46,7 +46,7 @@ scard bikes:racing:france # 3
 ```shell
 sadd bikes:racing:france bike:1 bike:2 bike:3
 sadd bikes:racing:usa bike:1 bike:4
-# 只参加法国比赛，未参加美国比赛的自行车
+# 只参加法国比赛, 未参加美国比赛的自行车
 # 参加法国比赛的自行车集合 - 交集
 sdiff bikes:racing:france bikes:racing:usa
 ```
@@ -55,20 +55,20 @@ sdiff bikes:racing:france bikes:racing:usa
 sadd bikes:racing:france bike:1 bike:2 bike:3
 sadd bikes:racing:usa bike:1 bike:4
 sadd bikes:racing:italy bike:1 bike:2 bike:3 bike:4
-# 法国、美国、意大利的交集
+# 法国; 美国; 意大利的交集
 sinter bikes:racing:france bikes:racing:usa bikes:racing:italy # "bike:1"
-# 法国、美国、意大利的并集
+# 法国; 美国; 意大利的并集
 sunion bikes:racing:france bikes:racing:usa bikes:racing:italy
 ```
 
 ### 差集
 
 ```shell
-# 只参加法国比赛，未参加美国、意大利比赛的自行车
+# 只参加法国比赛, 未参加美国; 意大利比赛的自行车
 sdiff bikes:racing:france bikes:racing:usa bikes:racing:italy
-# 只参加法国比赛，未参加美国比赛的自行车
+# 只参加法国比赛, 未参加美国比赛的自行车
 sdiff bikes:racing:france bikes:racing:usa
-# 只参加美国比赛，未参加法国比赛的自行车
+# 只参加美国比赛, 未参加法国比赛的自行车
 sdiff bikes:racing:usa bikes:racing:france
 ```
 

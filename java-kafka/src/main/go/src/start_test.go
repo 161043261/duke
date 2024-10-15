@@ -25,16 +25,16 @@ func produce(topic string, loop int) {
 
 	for i := 0; i < loop; i++ {
 		str := "value-" + strconv.Itoa(i)
-		// 创建消息（也称为记录、事件）
+		// 创建消息 (也称为记录; 事件)
 		msg := &sarama.ProducerMessage{
 			Topic: topic,
-			// 指定键的序列化（对象 -> 字节流）方法
+			// 指定键的序列化 (对象 -> 字节流) 方法
 			Key: sarama.StringEncoder("key-" + strconv.Itoa(i)), // 类型转换
-			// 指定值的序列化（对象 -> 字节流）方法
+			// 指定值的序列化 (对象 -> 字节流) 方法
 			Value: sarama.StringEncoder(str), // 类型转换
 		}
 		// 生产者发送记录到 Kafka 服务器
-		// offset 偏移量（消费进度）
+		// offset 偏移量 (消费进度)
 		partition, offset, err := producer.SendMessage(msg)
 		if err != nil {
 			panic(err)
@@ -57,7 +57,7 @@ func consume(topic string) {
 	partitionConsumer, err := consumer.ConsumePartition(
 		topic,               // topic 主题
 		0,                   // partition 分区
-		sarama.OffsetNewest, // offset 偏移量（消费进度）
+		sarama.OffsetNewest, // offset 偏移量 (消费进度)
 	)
 	if err != nil {
 		panic(err)

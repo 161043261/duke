@@ -6,7 +6,7 @@ import (
 	"log"
 )
 
-// ReqHandler 处理请求，请求封装连接和消息
+// ReqHandler 处理请求, 请求封装连接和消息
 // 处理请求的协程池 WorkerPool 中的协程 c 负责处理 ReqChanArr[c] 中的请求
 // @Func     NewReqHandler   创建 ReqHandler 结构体变量
 // @Field    BindMap           消息绑定路由的 map
@@ -24,7 +24,7 @@ type ReqHandler struct {
 
 var reqHandler *ReqHandler
 
-// NewReqHandler 创建 ReqHandler 结构体变量，单例
+// NewReqHandler 创建 ReqHandler 结构体变量, 单例
 func NewReqHandler() *ReqHandler {
 	if reqHandler == nil {
 		reqHandler = &ReqHandler{
@@ -62,14 +62,14 @@ func (reqHandler *ReqHandler) StartWorkerPool() {
 	for i := 0; i < int(reqHandler.WorkerPoolSize); i++ {
 		// ReqChanLen请求队列 reqChan 的长度
 		reqHandler.ReqChanArr[i] = make(chan ignet.IReq, global.Conf.ReqChanLen)
-		// 启动处理请求的协程 Worker，协程 c 负责处理 ReqChanArr[c] 中的请求
+		// 启动处理请求的协程 Worker, 协程 c 负责处理 ReqChanArr[c] 中的请求
 		go reqHandler.StartWorker(reqHandler.ReqChanArr[i])
 	}
 }
 
-// StartWorker 启动处理请求的协程 Worker，协程 c 负责处理 ReqChanArr[c] 中的请求
+// StartWorker 启动处理请求的协程 Worker, 协程 c 负责处理 ReqChanArr[c] 中的请求
 func (reqHandler *ReqHandler) StartWorker(reqChan chan ignet.IReq) {
-	// 协程阻塞，直到 reqChan 中有请求
+	// 协程阻塞, 直到 reqChan 中有请求
 	for {
 		select {
 		case req := <-reqChan: // ! Pop From Request Channel

@@ -21,7 +21,7 @@ func main() {
 	} else {
 		serverAddr = os.Args[1]
 	}
-	//* 客户端调用 net.Dial 函数，向服务器发送连接请求
+	//* 客户端调用 net.Dial 函数, 向服务器发送连接请求
 	conn, err := net.Dial("tcp", serverAddr)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "[ERROR] %s\n", err.Error())
@@ -29,11 +29,11 @@ func main() {
 	}
 	//! 主协程创建 WaitGroup 实例 wg
 	var wg sync.WaitGroup
-	//! 主协程调用 wg.Add(n) 方法，n 是协程组中，等待的协程数量
+	//! 主协程调用 wg.Add(n) 方法, n 是协程组中, 等待的协程数量
 	wg.Add(2)
 	go sendMsg(&conn, &wg)
 	go recvMsg(&conn, &wg)
-	//! 主协程调用 wg.Wait() 方法，等待协程组中的每个协程运行结束
+	//! 主协程调用 wg.Wait() 方法, 等待协程组中的每个协程运行结束
 	wg.Wait()
 }
 
@@ -45,7 +45,7 @@ func sendMsg(conn *net.Conn, wg *sync.WaitGroup) {
 		fmt.Scanf("%s\n", &buf)
 		if strings.ToLower(string(buf)) == "q" {
 			(*conn).Close()
-			break;
+			break
 		}
 		(*conn).Write(buf)
 	}
@@ -62,6 +62,6 @@ func recvMsg(conn *net.Conn, wg *sync.WaitGroup) {
 			fmt.Fprintf(os.Stderr, "[ERROR] %v\n", err.Error())
 			return
 		}
-		fmt.Printf("[INFO] Echo from server %s\n", buf[:readLen]);
+		fmt.Printf("[INFO] Echo from server %s\n", buf[:readLen])
 	}
 }

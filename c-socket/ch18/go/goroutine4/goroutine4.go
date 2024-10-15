@@ -1,16 +1,17 @@
 package main
 
 import (
-    "fmt"
-    "sync"
+	"fmt"
+	"sync"
 )
 
 const NUM_THREAD = 200
+
 var sum = 0
 var mutex sync.Mutex
 
 func main() {
-    //! 主协程创建 WaitGroup 实例 wg
+	//! 主协程创建 WaitGroup 实例 wg
 	var wg sync.WaitGroup
 	wg.Add(NUM_THREAD)
 	for i := 0; i < NUM_THREAD; i++ {
@@ -20,7 +21,7 @@ func main() {
 			go sub(&wg)
 		}
 	}
-	//! 主协程调用 wg.Wait() 方法，等待协程组中的每个协程运行结束
+	//! 主协程调用 wg.Wait() 方法, 等待协程组中的每个协程运行结束
 	wg.Wait()
 	fmt.Printf("sum = %d\n", sum)
 }

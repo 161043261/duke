@@ -25,7 +25,7 @@ func main() {
 	} else {
 		port = os.Args[1]
 	}
-	//* 服务器调用 net.Listen 函数，监听客户端的连接请求
+	//* 服务器调用 net.Listen 函数, 监听客户端的连接请求
 	listener, err := net.Listen("tcp", port)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "[ERROR] %s\n", err.Error())
@@ -62,7 +62,7 @@ func clientHandler(conn *net.Conn) {
 			for i := 0; i < connArrLen; i++ {
 				if conn != connArr[i] {
 					continue
-				}								
+				}
 				// conn == connArr[i]
 				for i < connArrLen-1 {
 					connArr[i] = connArr[i+1]

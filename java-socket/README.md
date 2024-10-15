@@ -21,8 +21,8 @@
 
 - java.nio.ByteBuffer
   - java.nio.MappedByteBuffer
-  - java.nio.DirectByteBuffer（堆外内存）
-  - java.nio.HeapByteBuffer（jvm 堆内存）
+  - java.nio.DirectByteBuffer (堆外内存)
+  - java.nio.HeapByteBuffer (jvm 堆内存)
 - java.nio.ShortBuffer
 - java.nio.IntBuffer
 - java.nio.LongBuffer
@@ -30,9 +30,9 @@
 - java.nio.DoubleBuffer
 - java.nio.CharBuffer
 
-Selector 服务器：一个线程处理一个 socket 连接
+Selector 服务器: 一个线程处理一个 socket 连接
 
-## 1.1 ByteBuffer
+## ByteBuffer
 
 ```java
 public abstract sealed class ByteBuffer // 密封类
@@ -44,35 +44,35 @@ public abstract sealed class ByteBuffer // 密封类
 
 ByteBuffer 属性
 
-- capacity 容量（ByteBuffer 不能动态扩容）
+- capacity 容量 (ByteBuffer 不能动态扩容)
 - position 读/写指针
 - limit 读/写限制 (position <= limit)
 
 ### 使用
 
-- 读 buf 前调用 flip 方法：写模式 -> 读模式
+- 读 buf 前调用 flip 方法: 写模式 -> 读模式
   - position 写指针 -> 读指针
   - limit 写限制 -> 读限制
-- 写 buf 前调用 clear 方法：清空脏数据
-- 写 buf 前调用 compact 方法：紧凑数据，不清空数据
+- 写 buf 前调用 clear 方法: 清空脏数据
+- 写 buf 前调用 compact 方法: 紧凑数据, 不清空数据
 
 ### ByteBuffer 常见方法
 
 ```java
-// 分配 jvm 堆内存，不能动态扩容
+// 分配 jvm 堆内存, 不能动态扩容
 public static ByteBuffer allocate(int capacity);
 
-// 分配堆外内存，不能动态扩容
+// 分配堆外内存, 不能动态扩容
 public static ByteBuffer allocateDirect(int capacity);
 ```
 
 向 buffer 写入数据
 
-- 调用 channel 的 read 方法：从 channel 中读，向 buffer 中写
+- 调用 channel 的 read 方法: 从 channel 中读, 向 buffer 中写
 - 调用 buffer 的 put 方法
 
 ```java
-// 调用 channel 的 read 方法，从 channel 中读，向 buffer 中写
+// 调用 channel 的 read 方法, 从 channel 中读, 向 buffer 中写
 int nBytes = channel.read(buf);
 // 调用 buffer 的 put 方法
 buf.put((byte) 1 << 7 - 1)
@@ -80,8 +80,8 @@ buf.put((byte) 1 << 7 - 1)
 
 从 buffer 读出数据
 
-- 调用 channel 的 write 方法：从 buffer 中读，向 channel 中写
-- 调用 buffer 的 get 方法：get 方法不会删除 buffer 中的数据
+- 调用 channel 的 write 方法: 从 buffer 中读, 向 channel 中写
+- 调用 buffer 的 get 方法: get 方法不会删除 buffer 中的数据
 
 其他方法
 
@@ -92,7 +92,7 @@ buf.put((byte) 1 << 7 - 1)
 
 > Buffer 是线程不安全的
 
-## 1.2 文件编程
+## 文件编程
 
 ### FileChannel
 
@@ -117,10 +117,10 @@ channel.position(new Random().nextLong(channel.size())/* newPos */);
 long size = channel.size();
 ```
 
-## 1.3 Path 和 Paths
+## Path 和 Paths
 
 - Path 文件路径
-- Paths 工具类，用于获取 Path 实例
+- Paths 工具类, 用于获取 Path 实例
 
 ```java
 // src/main/go
@@ -147,7 +147,7 @@ Files.createDirectory(newDir);
 Path src = Paths.get("/home/user/data.txt");
 Path dst = Paths.get("/home/user/to.txt");
 // 拷贝文件
-// 如果文件已存在，则抛出 FileAlreadyExistsException 异常
+// 如果文件已存在, 则抛出 FileAlreadyExistsException 异常
 Files.copy(src, dst);
 
 // 移动文件
@@ -156,63 +156,63 @@ Files.move(src, dst, StandardCopyOption.ATOMIC_MOVE);
 
 Path target = Paths.get("/home/user/to.txt");
 // 删除文件
-// 如果文件不存在，则抛出 NoSuchFileException 异常
+// 如果文件不存在, 则抛出 NoSuchFileException 异常
 Files.delete(target);
 
 Path target = Paths.get("src/main/go");
 // 删除目录
-// 如果目录非空，则抛出 DirectoryNotEmptyException 异常
+// 如果目录非空, 则抛出 DirectoryNotEmptyException 异常
 Files.delete(target);
 ```
 
-## 1.4 网络编程
+## 网络编程
 
 ```java
 // 将调用者线程的中断标志设置为 true
 Thread.currentThread().interrupt();
-// 获取当前线程的中断标志（是否为 true）
+// 获取当前线程的中断标志 (是否为 true)
 Thread.currentThread().isInterrupted();
-// 获取当前线程的中断标志，并重置为 false
+// 获取当前线程的中断标志, 并重置为 false
 Thread.interrupted();
 ```
 
 **阻塞 IO 与非阻塞 IO**
 
 - ServerSocketChannel::accept
-  没有新的连接时，线程阻塞，放弃 cpu
+  没有新的连接时, 线程阻塞, 放弃 cpu
 - SocketChannel::read
-  没有新的数据时，线程阻塞，放弃 cpu
-- 对于 64 位 jvm，1 个线程 1 MB，线程过多会导致 OOM
+  没有新的数据时, 线程阻塞, 放弃 cpu
+- 对于 64 位 jvm, 1 个线程 1 MB, 线程过多会导致 OOM
 
 **处理消息的边界**
 
-- TCP 可靠，面向字节流，TCP 消息没有边界
+- TCP 可靠, 面向字节流, TCP 消息没有边界
   - 按行分隔符 \n 拆分 TCP 数据包
-- UDP 不可靠，面向用户数据报，UDP 消息有边界
+- UDP 不可靠, 面向用户数据报, UDP 消息有边界
 
-事件触发后，要么处理，要么取消 cancel。否则该事件将持续触发：NIO 基于 epoll 的水平触发 Level Trigger
+事件触发后, 要么处理, 要么取消 cancel. 否则该事件将持续触发: NIO 基于 epoll 的水平触发 Level Trigger
 
-## NIO, BIO
+## NIO 和 BIO
 
-### stream, channel
+### stream 和 channel
 
-- stream 不使用操作系统缓冲区；channel 使用操作系统的发送缓冲区、接收缓冲区，更底层
-- stream 只支持阻塞 IO；channel 支持阻塞、非阻塞 IO，可配合 selector 实现 IO 多路复用
-- stream 和 channel 都是全双工，即可以同时读写
+- stream 不使用操作系统缓冲区；channel 使用操作系统的发送缓冲区; 接收缓冲区, 更底层
+- stream 只支持阻塞 IO；channel 支持阻塞; 非阻塞 IO, 可配合 selector 实现 IO 多路复用
+- stream 和 channel 都是全双工, 即可以同时读写
 
 ### IO 模型
 
-1. 内核态、等待数据：数据 -> 网卡
-2. 内核态、复制数据：网卡 -> 操作系统接收缓冲区
-3. 用户态、复制数据：操作系统接收缓冲区 -> 用户缓冲区
+1. 内核态; 等待数据: 数据 -> 网卡
+2. 内核态; 复制数据: 网卡 -> 操作系统接收缓冲区
+3. 用户态; 复制数据: 操作系统接收缓冲区 -> 用户缓冲区
 
-- 同步：线程自己获取 IO 结果（单线程）
-- 异步：线程自己不获取 IO 结果，有其他线程通知 IO 结果（多线程）
+- 同步: 线程自己获取 IO 结果 (单线程)
+- 异步: 线程自己不获取 IO 结果, 有其他线程通知 IO 结果 (多线程)
 
-1. 同步阻塞 IO：线程阻塞，放弃 cpu，一个线程处理一个连接
-2. 同步非阻塞 IO：线程轮询（忙等），一个线程只能处理一个连接
-3. 同步 IO 多路复用：基于 Selector，一个线程可以处理多个连接
-4. 异步非阻塞 IO：有其他线程通知 IO 结果
+1. 同步阻塞 IO: 线程阻塞, 放弃 cpu, 一个线程处理一个连接
+2. 同步非阻塞 IO: 线程轮询 (忙等) , 一个线程只能处理一个连接
+3. 同步 IO 多路复用: 基于 Selector, 一个线程可以处理多个连接
+4. 异步非阻塞 IO: 有其他线程通知 IO 结果
 
 ### 零拷贝
 
@@ -223,38 +223,38 @@ var buf = new byte[(int) file.length()];
 
 // 调用 read 方法
 // 用户态 -> 内核态
-// 操作系统使用 DMA，将数据从磁盘拷贝到内核缓冲区，不占用 cpu
+// 操作系统使用 DMA, 将数据从磁盘拷贝到内核缓冲区, 不占用 cpu
 // 内核态 -> 用户态
-// 用户线程将数据从内核缓冲区拷贝到用户缓冲区（即 byte[] buf），占用 cpu
+// 用户线程将数据从内核缓冲区拷贝到用户缓冲区 (即 byte[] buf) , 占用 cpu
 fileStream.read(buf);
 
 Socket socket = new Socket("127.0.0.1", 8080);
 
 // 调用 write 方法
-// 用户线程将数据从用户缓冲区（即 byte[] buf）拷贝到操作系统 socket 缓冲区，占用 cpu
+// 用户线程将数据从用户缓冲区 (即 byte[] buf) 拷贝到操作系统 socket 缓冲区, 占用 cpu
 // 用户态 -> 内核态
-// 操作系统使用DMA，将数据从 socket 缓冲区拷贝到网卡，不占用 cpu
+// 操作系统使用DMA, 将数据从 socket 缓冲区拷贝到网卡, 不占用 cpu
 socket.getOutputStream().write(buf);
 ```
 
-- 数据拷贝：4 次
-- 用户态与内核态的切换：3 次
+- 数据拷贝: 4 次
+- 用户态与内核态的切换: 3 次
 
 ![copy4_switch3](./assets/copy4_switch3.png)
 
-> 优化：使用 DirectByteBuffer
+> 优化: 使用 DirectByteBuffer
 
 ```java
 HeapByteBuffer ByteBuffer.allocate(int capacity); // 使用 jvm 堆内存
 DirectByteBuffer ByteBuffer.allocate(int capacity); // 使用操作系统内存
 ```
 
-- 数据拷贝：3 次
-- 用户态与内核态的切换：3 次
+- 数据拷贝: 3 次
+- 用户态与内核态的切换: 3 次
 
 ![copy3_switch3](assets/copy3_switch3.png)
 
-> 优化：使用 transferTo 和 transferFrom
+> 优化: 使用 transferTo 和 transferFrom
 
 transferTo, transferFrom 基于 <sys/sendfile.h> 中的 sendfile 函数
 
@@ -269,7 +269,7 @@ int main() {
   // 只读
   int inputFd = open("../README.md", O_RDONLY);
   assert(inputFd != -1);
-  // 只写、必要时创建、重写
+  // 只写; 必要时创建; 重写
   int outputFd = open("../README.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
   assert(outputFd != -1);
   off_t offset = 0;  // offset 将被拷贝到 socket 缓冲区
@@ -291,24 +291,35 @@ long left = fileChannel.size();
 
 // 调用 transferTo 方法
 // 用户态 -> 核心态
-// 操作系统使用 DMA，将数据从磁盘拷贝到内核缓冲区，不占用 cpu
-// 操作系统将 offset, length 等元数据拷贝到 socket 缓冲区，cpu 占用可忽略
-// 操作系统使用 DMA，将数据从内核缓冲区拷贝到网卡，不占用 cpu
+// 操作系统使用 DMA, 将数据从磁盘拷贝到内核缓冲区, 不占用 cpu
+// 操作系统将 offset, length 等元数据拷贝到 socket 缓冲区, cpu 占用可忽略
+// 操作系统使用 DMA, 将数据从内核缓冲区拷贝到网卡, 不占用 cpu
 long nBytes = fileChannel.transferTo(position, left, fileChannel);
 ```
 
-- 数据拷贝：2 次
-- 用户态与内核态的切换：1 次
+- 数据拷贝: 2 次
+- 用户态与内核态的切换: 1 次
 
 ![copy2_switch1](assets/copy2_switch1.png)
 
-零拷贝：从操作系统内存到 jvm 内存（用户缓冲区）的拷贝次数为 0
+零拷贝: 从操作系统内存到 jvm 内存 (用户缓冲区) 的拷贝次数为 0
 
 - 更少的数据拷贝
 - 更少的用户态与内核态的切换
 - 更少的 cpu 占用
 - 适用于频繁的小文件传输
 
-## AIO
+## Netty
 
-异步 IO
+Netty 是一个异步的; 事件驱动的网络应用程序框架, 用于快速开发可维护的; 高性能的网络协议服务器和客户端
+
+Netty is an asynchronous event-driven network application framework
+for rapid development of maintainable high performance protocol servers & clients.
+
+### 组件
+
+1. EventLoop
+2. Channel
+3. Future, Promise
+4. Handler, Pipeline
+5. ByteBuf

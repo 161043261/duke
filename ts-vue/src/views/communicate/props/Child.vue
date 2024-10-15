@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
 
 let toy = ref('OptimusPrime')
 defineProps(['car', 'passToy'])
@@ -8,8 +8,8 @@ defineProps(['car', 'passToy'])
 <template>
   <div class="child">
     <p>@/views/communicate/props/Child.vue</p>
-    <p>toy：{{ toy }}</p>
-    <p>car passed from parent：{{ car }}</p>
+    <p>toy: {{ toy }}</p>
+    <p>car passed from parent: {{ car }}</p>
     <button @click="passToy(toy)">pass toy to parent</button>
   </div>
 </template>

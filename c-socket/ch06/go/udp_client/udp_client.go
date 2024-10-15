@@ -20,12 +20,12 @@ func AllocateRandomPort() (int, error) {
 }
 
 func main() {
-	
+
 	if len(os.Args) != 2 {
 		fmt.Fprintf(os.Stderr, "Usage: %s <serverAddr>:<serverPort>\n", os.Args[0])
 		os.Exit(1)
 	}
-	//* 客户端调用 net.ListenPacket 函数，监听远端（服务器）的 UDP 连接请求
+	//* 客户端调用 net.ListenPacket 函数, 监听远端 (服务器) 的 UDP 连接请求
 	randPort, _ := AllocateRandomPort()
 	listener, err := net.ListenPacket("udp", ":"+strconv.Itoa(randPort))
 	if err != nil {

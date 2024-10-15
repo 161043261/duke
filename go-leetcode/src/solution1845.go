@@ -3,7 +3,7 @@ package src
 type SeatManager struct {
 	n  int   // n-1 个座位
 	ok []int // ok[i] 座位 i 是否可以预约
-	// 0 可预约，-1 不可预约
+	// 0 可预约, -1 不可预约
 	// ok[0] 当前可预约座位的最小编号
 }
 

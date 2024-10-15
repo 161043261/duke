@@ -3,10 +3,10 @@ package creational
 // 生成器模式是一种创建型设计模式
 // 生成器模式使得客户端可以分步骤创建复杂产品对象
 
-// 与其他创建型模式不同，生成器不要求产品有通用的接口
+// 与其他创建型模式不同, 生成器不要求产品有通用的接口
 
-// 当生产复杂产品有多个步骤时 (Window Type, Door Type, Num Floor)，可以使用生成器模式
-// 这种情况下，使用多个工厂方法比使用一个复杂、可怕的单个工厂方法更简单
+// 当生产复杂产品有多个步骤时 (Window Type, Door Type, Num Floor), 可以使用生成器模式
+// 这种情况下, 使用多个工厂方法比使用一个复杂; 可怕的单个工厂方法更简单
 
 import (
 	"fmt"
@@ -39,7 +39,7 @@ func getBuilder(builderType string) IBuilder {
 	}
 }
 
-// NormalBuilder 普通房屋生成器（具体生成器）
+// NormalBuilder 普通房屋生成器 (具体生成器)
 type NormalBuilder struct {
 	windowType string
 	doorType   string
@@ -70,7 +70,7 @@ func (builder *NormalBuilder) getHouse() House {
 	}
 }
 
-// IglooBuilder 冰屋生成器（具体生成器）
+// IglooBuilder 冰屋生成器 (具体生成器)
 type IglooBuilder struct {
 	windowType string
 	doorType   string

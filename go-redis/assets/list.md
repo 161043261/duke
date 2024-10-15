@@ -1,7 +1,7 @@
 # list 链表
 
 - 键 === 字符串链表
-- 链表是按插入顺序排序的字符串链表，命令以 l 开头
+- 链表是按插入顺序排序的字符串链表, 命令以 l 开头
 - 将 list 链表用作栈 stack 和队列 queue
   - 左表头 -- 右表尾
   - 左栈顶 -- 右栈底
@@ -15,12 +15,12 @@
 | lpop     | 移除表头元素                                                                   |
 | rpop     | 移除表尾元素                                                                   |
 | llen     | 获取表长                                                                       |
-| lmove    | 原子的、将元素从源链表移动到目的链表                                           |
+| lmove    | 原子的; 将元素从源链表移动到目的链表                                           |
 | lrange   | 获取链表中指定范围的元素                                                       |
 | ltrim    | 将链表裁剪为指定范围                                                           |
 | 阻塞命令 |                                                                                |
-| blpop    | 移除表头元素，如果链表为空，则命令将阻塞，直到有新元素或超时                   |
-| blmove   | 原子的、将元素从源链表移动到目的链表，如果链表为空，则命令将阻塞，直到有新元素 |
+| blpop    | 移除表头元素, 如果链表为空, 则命令将阻塞, 直到有新元素或超时                   |
+| blmove   | 原子的; 将元素从源链表移动到目的链表, 如果链表为空, 则命令将阻塞, 直到有新元素 |
 
 ### 例
 
@@ -48,7 +48,7 @@ lpop bikes:repairs         # 左删 []
 llen bikes:repairs
 ```
 
-**原子的、将元素从源链表移动到目的链表**
+**原子的; 将元素从源链表移动到目的链表**
 
 ```shell
 lpush bikes:repairs bike:1 bike:2 # [bike:2 bike:1]
@@ -94,20 +94,20 @@ lrange bikes:repairs 0 -1
 
 **消息队列**
 
-生产者调用 lpush，消费者调用 rpop
+生产者调用 lpush, 消费者调用 rpop
 
-链表为空时，rpop 返回 null，消费者可能等待一段时间，重新调用 rpop（轮询）
+链表为空时, rpop 返回 null, 消费者可能等待一段时间, 重新调用 rpop (轮询)
 
-使用阻塞的 brpop，避免无用的 rpop 调用
+使用阻塞的 brpop, 避免无用的 rpop 调用
 
 ```shell
 rpush bikes:repairs bike:1 bike:2 # 生产者
-brpop bikes:repairs 1 # 消费者，timeout = 1s
-brpop bikes:repairs 1 # 消费者，timeout = 1s
-brpop bikes:repairs 1 # 消费者，timeout = 1s
+brpop bikes:repairs 1 # 消费者, timeout = 1s
+brpop bikes:repairs 1 # 消费者, timeout = 1s
+brpop bikes:repairs 1 # 消费者, timeout = 1s
 ```
 
-向集合添加元素时，如果该集合（的键）不存在，则添加元素前自动创建一个空集合
+向集合添加元素时, 如果该集合 (的键) 不存在, 则添加元素前自动创建一个空集合
 
 ```shell
 del new_bikes
@@ -119,7 +119,7 @@ type new_bikes # string
 lpush new_bikes bike:2 bike:3
 ```
 
-从集合移除元素时，如果移除元素后得到空集合，则自动移除该集合（的键）
+从集合移除元素时, 如果移除元素后得到空集合, 则自动移除该集合 (的键)
 
 ```shell
 rpush bikes:repairs bike:1 bike:2 bike:3 # 3

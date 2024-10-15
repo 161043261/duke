@@ -7,10 +7,10 @@ type IConn interface {
 	// Start 启动连接
 	Start()
 
-	// StartReader 读 goroutine，从 conn.Socket 中读出数据包
+	// StartReader 读 goroutine, 从 conn.Socket 中读出数据包
 	StartReader()
 
-	// StartWriter 写 goroutine，向 conn.Socket 写入数据包
+	// StartWriter 写 goroutine, 向 conn.Socket 写入数据包
 	StartWriter()
 
 	// GetId 获取连接 id

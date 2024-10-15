@@ -16,7 +16,7 @@ type conf struct {
 	MaxPacketSize    uint32 // 最大数据包大小
 	WorkerPoolSize   uint32 // 处理请求的协程池 WorkerPool 中的 Worker 协程数
 	ReqChanLen       uint32 // 请求队列 reqChan 的长度
-	UseMsgSerializer bool   // 从 conn.Socket 中读出数据包后，反序列化为 Msg 结构体变量
+	UseMsgSerializer bool   // 从 conn.Socket 中读出数据包后, 反序列化为 Msg 结构体变量
 }
 
 var Conf *conf           // 配置

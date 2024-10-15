@@ -18,7 +18,7 @@ int main() {
   printf("Here's parent proc, child proc pid: %d\n", pid);
   int i = 1;
   while (waitpid(-1 /* -1 等待任一子进程终止 */, &status,
-                 WNOHANG /* 没有子进程终止时，父进程不会阻塞 */) != -1) {
+                 WNOHANG /* 没有子进程终止时, 父进程不会阻塞 */) != -1) {
     printf("[%d] Parent proc sleeps 3s\n", i++);
     sleep(3);  // 父进程睡眠 3s
   }

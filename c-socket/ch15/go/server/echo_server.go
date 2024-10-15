@@ -23,7 +23,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	//* 服务器调用 net.Listen 函数，监听客户端的连接请求
+	//* 服务器调用 net.Listen 函数, 监听客户端的连接请求
 	port := os.Args[1]
 	listener, err := net.Listen("tcp", port)
 	if err != nil {
@@ -31,7 +31,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	//* 服务器调用 listener.Accept 方法，接受客户端的连接请求（服务器与客户端建立会话 Dialog）
+	//* 服务器调用 listener.Accept 方法, 接受客户端的连接请求 (服务器与客户端建立会话 Dialog)
 	conn, err := listener.Accept()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "[ERROR] %s\n", err.Error())
@@ -54,7 +54,7 @@ func main() {
 
 		fmt.Println(conn.RemoteAddr().String(), string(buf[:readBytes]))
 		writer.Write(buf[:readBytes]) //! 服务器写缓冲 --> socket 缓冲
-		writer.Flush()              //! 清空服务器写缓冲
+		writer.Flush()                //! 清空服务器写缓冲
 	}
 	conn.Close()
 	listener.Close()

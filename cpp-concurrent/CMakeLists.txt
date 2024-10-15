@@ -58,7 +58,7 @@ add_executable(thread_test src/thread_test.cpp)
 add_executable(shared_data_test src/shared_data_test.cpp)
 add_executable(sync_test src/sync_test.cpp)
 
-# target_link_libraries 链接 gtest 库、pthread 库
+# target_link_libraries 链接 gtest 库; pthread 库
 target_link_libraries(cpp_test GTest::gtest_main)
 target_link_libraries(thread_test Threads::Threads GTest::gtest_main)
 target_link_libraries(shared_data_test Threads::Threads GTest::gtest_main)

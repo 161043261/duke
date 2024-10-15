@@ -1,14 +1,15 @@
 package gnet
 
 import (
-	"bronya.com/go-server/global"
-	"bronya.com/go-server/ignet"
 	"errors"
 	"fmt"
 	"io"
 	"log"
 	"net"
 	"sync"
+
+	"bronya.com/go-server/global"
+	"bronya.com/go-server/ignet"
 )
 
 // Conn 连接
@@ -19,11 +20,11 @@ type Conn struct {
 	PacketChan chan []byte      // SendMsg 方法通过 PacketChan 将数据包发送给写 goroutine
 	Socket     *net.TCPConn     // 套接字
 	isClosed   bool
-	propDict   map[string]any // 键：属性名
+	propDict   map[string]any // 键: 属性名
 	rwLock     sync.RWMutex   // 读写 propDict 时使用的 rwLock 读写锁
 }
 
-// NewConn 创建 Conn 结构体变量，多例
+// NewConn 创建 Conn 结构体变量, 多例
 func NewConn(socket *net.TCPConn, id uint32, reqHandler ignet.IReqHandle) *Conn {
 	conn := &Conn{
 		ClosedChan: make(chan struct{}, 1), // 读 goroutine 通过 ClosedChan 通知写 goroutine 连接已关闭
@@ -42,14 +43,14 @@ func NewConn(socket *net.TCPConn, id uint32, reqHandler ignet.IReqHandle) *Conn 
 // Start 启动连接
 func (conn *Conn) Start() {
 	log.Printf("Connection ID = %v, start connection\n", conn.Id)
-	// 读 goroutine，从 conn.Socket 中读出数据包
+	// 读 goroutine, 从 conn.Socket 中读出数据包
 	go conn.StartReader()
-	// 写 goroutine，向 conn.Socket 中写入数据包
+	// 写 goroutine, 向 conn.Socket 中写入数据包
 	go conn.StartWriter()
 	global.Server.DoAfterConnStart(conn)
 }
 
-// StartReader 读 goroutine，从 conn.Socket 中读出数据包
+// StartReader 读 goroutine, 从 conn.Socket 中读出数据包
 func (conn *Conn) StartReader() {
 	log.Printf("Connection ID = %v, start reader, remote address %v\n", conn.Id, conn.GetRemoteAddr())
 	defer log.Printf("Connection ID = %v, stop reader, remote address %v\n", conn.Id, conn.GetRemoteAddr())
@@ -65,7 +66,7 @@ func (conn *Conn) StartReader() {
 				log.Println("Read full error", err.Error())
 				break // ! 调用 conn.Stop 方法关闭 socket 连接
 			}
-			// Unpack 拆包，数据包反序列化为消息（将 packet 字节数组反序列化为 Msg 结构体变量）
+			// Unpack 拆包, 数据包反序列化为消息 (将 packet 字节数组反序列化为 Msg 结构体变量)
 			msg, err := msgSerialize.Unpack(packetHead)
 			if err != nil {
 				log.Println("Unpack error", err.Error())
@@ -120,11 +121,11 @@ func (conn *Conn) StartReader() {
 	}
 }
 
-// StartWriter 写 goroutine，向 conn.Socket 写入数据包
+// StartWriter 写 goroutine, 向 conn.Socket 写入数据包
 func (conn *Conn) StartWriter() {
 	log.Printf("Connection ID = %v, start writer, remote address %v\n", conn.Id, conn.GetRemoteAddr())
 	defer log.Printf("Connection ID = %v, stop writer, remote address %v\n", conn.Id, conn.GetRemoteAddr())
-	// 写 goroutine 阻塞，直到 PacketChan 中有数据包
+	// 写 goroutine 阻塞, 直到 PacketChan 中有数据包
 	for {
 		select {
 		case packet := <-conn.PacketChan:
@@ -162,7 +163,7 @@ func (conn *Conn) SendPacket(msgId uint32, msgData []byte) error {
 	if conn.isClosed {
 		return errors.New(fmt.Sprintf("connection Id=%d closed", msgId))
 	}
-	// Pack 封包，消息序列化为数据包（将 Msg 结构体变量序列化为 packet 字节数组）
+	// Pack 封包, 消息序列化为数据包 (将 Msg 结构体变量序列化为 packet 字节数组)
 	msg := NewMsg(msgId, msgData)
 	packet, err := NewMsgSerializer().Pack(msg)
 	if err != nil {

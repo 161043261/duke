@@ -9,9 +9,9 @@ import (
 
 func main() {
 	if len(os.Args) != 2 {
-		//! 广播 IP 地址：主机号全 1
+		//! 广播 IP 地址: 主机号全 1
 		//! 广播端口
-		//! 服务器广播 UDP 数据包到网络中所有主机（客户端）的 3333 号端口
+		//! 服务器广播 UDP 数据包到网络中所有主机 (客户端) 的 3333 号端口
 		//! 客户端监听 3333 号端口
 		fmt.Fprintf(os.Stderr, "Usage: %s <multicastGroupIp>:<multicastPort>\n", os.Args[0])
 		os.Exit(1)

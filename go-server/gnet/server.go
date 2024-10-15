@@ -21,7 +21,7 @@ type Server struct {
 	BeforeConnStop func(conn ignet.IConn) // ! 停止连接前执行的钩子函数
 }
 
-// NewServer 创建 Server 结构体变量，单例
+// NewServer 创建 Server 结构体变量, 单例
 func NewServer() ignet.IServer {
 	if global.Server == nil {
 		global.Server = &Server{
@@ -38,11 +38,11 @@ func NewServer() ignet.IServer {
 func (server *Server) Start() {
 	log.Println("Copyright (c) bronya.com")
 	log.Println("All rights reserved")
-	// ! 创建一个接收 os 信号的上下文 ctx，收到 os 信号时，ctx.Done() 空通道关闭，可执行 <-ctx.Done()
+	// ! 创建一个接收 os 信号的上下文 ctx, 收到 os 信号时, ctx.Done() 空通道关闭, 可执行 <-ctx.Done()
 	ctx, cancel := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
 	defer cancel()
 
-	// ! 在新协程中启动服务器，主协程不会阻塞，继续运行
+	// ! 在新协程中启动服务器, 主协程不会阻塞, 继续运行
 	go func() { // ! 监听 HostIp 的主机到本机 Port 端口的连接请求的 goroutine
 		// ! 解析地址
 		// 0.0.0.0:8080 监听所有 ip 的主机到本机 8080 端口的连接请求
@@ -63,7 +63,7 @@ func (server *Server) Start() {
 		server.ReqHandler.StartWorkerPool()
 
 		var connId uint32 = 0
-		// ! 协程阻塞，直到有客户端的连接请求
+		// ! 协程阻塞, 直到有客户端的连接请求
 		for {
 			socket, err := listener.AcceptTCP() // 收到客户端的连接请求
 			if err != nil {
@@ -77,14 +77,14 @@ func (server *Server) Start() {
 				socket.Close() // 关闭新连接
 				continue
 			}
-			// 当前连接数 < 最大连接数，建立新连接
+			// 当前连接数 < 最大连接数, 建立新连接
 			conn := NewConn(socket, connId, server.ReqHandler)
 			connId++
 			go conn.Start() // ! 处理连接的 goroutine
 		}
 	}()
 
-	// ! 收到 os 信号时，ctx.Done() 空通道关闭，可执行 <-ctx.Done()
+	// ! 收到 os 信号时, ctx.Done() 空通道关闭, 可执行 <-ctx.Done()
 	<-ctx.Done()
 	server.Stop()
 }

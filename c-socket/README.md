@@ -1,4 +1,4 @@
-# TCP/IP c/go implement
+# TCP/IP C/Go implement
 
 ### Linux directory structure
 

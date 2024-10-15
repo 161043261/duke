@@ -10,8 +10,8 @@ import (
 // 可以将业务拆分为不同的层次
 
 // 层次结构
-// 1. 层次结构的第一层：抽象层
-// 2. 层次结构的第二层：实现层
+// 1. 层次结构的第一层: 抽象层
+// 2. 层次结构的第二层: 实现层
 
 // Apple -----*                            *--- Epson
 //            |         "Bridge"           |
@@ -24,7 +24,7 @@ type Printer interface {
 	PrintFile()
 }
 
-// Epson 实现层，Epson 打印机
+// Epson 实现层, Epson 打印机
 type Epson struct {
 }
 
@@ -32,7 +32,7 @@ func (epson *Epson) PrintFile() {
 	fmt.Println("Printing by an Epson printer")
 }
 
-// Hp 实现层，Hp 打印机
+// Hp 实现层, Hp 打印机
 type Hp struct {
 }
 
@@ -46,7 +46,7 @@ type Phone interface {
 	SetPrinter(Printer)
 }
 
-// Samsung 实现层，Samsung 手机
+// Samsung 实现层, Samsung 手机
 type Samsung struct {
 	printer Printer
 }
@@ -60,7 +60,7 @@ func (samsung *Samsung) SetPrinter(printer_ Printer) {
 	samsung.printer = printer_
 }
 
-// Apple 实现层，Apple 手机
+// Apple 实现层, Apple 手机
 type Apple struct {
 	printer Printer
 }

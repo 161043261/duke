@@ -47,7 +47,7 @@ func getWriterSyncer() zapcore.WriteSyncer {
 	// logFile := fmt.Sprintf("./log/%s.log", time.Now().Format(time.DateOnly))
 	logFile := rootDir + sep + "log" + sep + time.Now().Format(time.DateOnly) + ".log"
 	log.Printf("logFile = %s\n", logFile)
-	//! O_CREATE 如果文件不存在，则创建文件
+	//! O_CREATE 如果文件不存在, 则创建文件
 	//! O_RDONLY 只读
 	//! O_WRONLY 只写
 	//! O_RDWR   读写

@@ -64,7 +64,7 @@ public class PathTest {
   }
 
   @Test
-  // 遍历目录、统计 jar 的数量
+  // 遍历目录; 统计 jar 的数量
   void testWalkTreePath() {
 
     // 遍历 $JAVA_HOME

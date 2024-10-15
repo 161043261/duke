@@ -39,11 +39,11 @@ func TestMutex(t *testing.T) {
 	fmt.Println(x) // 没有并发安全问题 sharedInt_ == 0
 }
 
-// ! 读写锁：用于读多写少的场景
+// ! 读写锁: 用于读多写少的场景
 // 1. 一个协程获取读锁 RLock 时
-// 其他协程可以获取读锁，不能获取写锁（共享读）
+// 其他协程可以获取读锁, 不能获取写锁 (共享读)
 // 2. 一个协程获取写锁 Lock 时
-// 其他协程不能获取写锁和读锁（独占写）
+// 其他协程不能获取写锁和读锁 (独占写)
 func write(wg *sync.WaitGroup, rwMut *sync.RWMutex, sharedInt *int) {
 	defer wg.Done()
 	rwMut.Lock() // 加写锁
@@ -66,11 +66,11 @@ func TestRWMutex(t *testing.T) {
 	sharedInt := 0
 	for i := 0; i < 3; i++ {
 		wg.Add(1)
-		go write(wg, rwMut, &sharedInt) // 启动 3 个写协程，写少
+		go write(wg, rwMut, &sharedInt) // 启动 3 个写协程, 写少
 	}
 	for i := 0; i < 100; i++ {
 		wg.Add(1)
-		go read(wg, rwMut, &sharedInt) // 启动 100 个读协程，读多
+		go read(wg, rwMut, &sharedInt) // 启动 100 个读协程, 读多
 	}
 	wg.Wait()
 	end := time.Now()

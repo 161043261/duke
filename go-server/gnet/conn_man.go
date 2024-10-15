@@ -1,21 +1,22 @@
 package gnet
 
 import (
-	"bronya.com/go-server/ignet"
 	"errors"
 	"fmt"
 	"log"
 	"sync"
+
+	"bronya.com/go-server/ignet"
 )
 
 type ConnMan struct {
-	connDict map[uint32]ignet.IConn // 键：连接 id，值：连接
+	connDict map[uint32]ignet.IConn // 键: 连接 id, 值: 连接
 	rwLock   sync.RWMutex           // 读写 connDict 时使用的 rwLock 读写锁
 }
 
 var connMan *ConnMan
 
-// NewConnMan 创建 ConnMan 结构体变量，单例
+// NewConnMan 创建 ConnMan 结构体变量, 单例
 func NewConnMan() *ConnMan {
 	if connMan == nil {
 		connMan = &ConnMan{
