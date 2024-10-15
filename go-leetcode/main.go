@@ -1,7 +1,9 @@
 package main
 
-import "bronya.com/go-leetcode/src"
+import (
+	"fmt"
+)
 
 func main() {
-	src.Call()
+	fmt.Println("Leetcode src")
 }

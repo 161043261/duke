@@ -16,13 +16,13 @@
 
 ## Java
 
-- Java 命令 java, javac, mvn, ...
+- 命令 java, javac, mvn, ...
 - Maven
 - Java 基础、集合
 - Java 并发编程
   - [java-concurrent](./java-concurrent/)
 - Java 网络编程、IO
-  - [java-netty](./java-netty/)
+  - [java-socket](./java-socket/)
 - Java 函数式编程
   - [java-func](./java-func/)
 - MyBatis, SpringBoot
@@ -33,12 +33,11 @@
 
 ## Go
 
-- go 命令 go mod, go build, go run, go test, ...
+- 命令 go mod, go build, go run, go test, ...
 - Go 基础、slice, map, chan
 - Go 并发编程
   - [go-concurrent](./go-concurrent/)
 - Go 网络编程、IO
-  - [go-server](./go-server/)
 - GORM, Gin
   - [go-proj](./go-proj/)
 - Redis
@@ -49,12 +48,12 @@
 
 ## C, C++
 
-- C, C++ 命令 gcc, clang, gdb, ...
+- 命令 gcc, clang, gdb, ...
 - Makefile, CMake
-- C, C++ 基础 《C++ Primer》、《Effective C++》
+- C++ 基础 《C++ Primer》
 - C 网络编程 《TCP/IP 网络编程》
   - [c-socket](./c-socket/)
-- Cpp 并发编程
+- C++ 并发编程
   - [cpp-concurrent](./cpp-concurrent/)
 
 ## TypeScript
@@ -65,7 +64,3 @@
   - [ts-vue](./ts-vue/)
   - [ts-vue3](./ts-vue3/)
   - [ts-proj](./ts-proj/)
-
-## Python
-
-- Pytest

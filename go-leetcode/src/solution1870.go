@@ -47,7 +47,3 @@ func minSpeedOnTime(dists []int, hour float64) int {
 		return r
 	}
 }
-
-func Call() {
-	minSpeedOnTime([]int{69}, 4.6)
-}

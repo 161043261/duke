@@ -1,4 +1,4 @@
-# NIO
+# java-socket
 
 ## Non-blocking IO 非阻塞 IO
 
@@ -310,3 +310,5 @@ long nBytes = fileChannel.transferTo(position, left, fileChannel);
 - 适用于频繁的小文件传输
 
 ## AIO
+
+异步 IO

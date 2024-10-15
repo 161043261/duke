@@ -23,7 +23,7 @@ public class Selector {
         new Thread(
             () -> {
               try (ServerSocketChannel listener = ServerSocketChannel.open();
-                  // 创建 selector 多路复用器，调度多个 channel
+                  // 创建 selector 多路选择器，调度多个 channel
                   java.nio.channels.Selector selector = java.nio.channels.Selector.open()) {
 
                 listener.bind(new InetSocketAddress(/* "0.0.0.0" wildcard address */ 3261));

@@ -2,11 +2,12 @@
 // Created by admin on 2024/10/15.
 //
 
-// Topic 智能指针
-
-// * std::shared_ptr
-// * std::unique_ptr
-// * std::weak_ptr
+///
+/// 智能指针
+/// * std::shared_ptr
+/// * std::unique_ptr
+/// * std::weak_ptr
+///
 
 #include <gtest/gtest.h>
 
@@ -17,30 +18,29 @@ using namespace std;
 
 void foo(const std::shared_ptr<int> &p) { (*p)++; }
 
-/////////////////////////////////////////////////
 ///
-/// std::shared_ptr 共享的指针指针
+/// std::shared_ptr 共享的智能指针，共享对象所有权
 ///
-/////////////////////////////////////////////////
 
 TEST(MakeSharedTest, TestMakeShared) {
   // int* p = new int{10}; // 非法
   // 使用 std::make_shared 创建 std::shared_ptr 智能指针
   auto sp = make_shared<int>(10);
   foo(sp);
-  cout << *sp << '\n';
+  cout << *sp << '\n';  // 11
 }
 
-// auto p = make_shared<int>{10};
-// p.get();
+// auto sp = make_shared<int>{10};
+// sp.get();
 // 获取裸指针
 
-// p.reset();
-// 如果 p 指向的对象引用计数 >1，则将 p 置空，该对象的引用计数 -1
-// 如果 p 指向的对象引用计数 =1，则回收该对象
+// sp.reset();
+// 如果 sp 指向的对象引用计数 >1，则将 sp 置空，该对象的引用计数 -1
+// 如果 sp 指向的对象引用计数 =1，则回收该对象
 
-// p.use_count()
-// 获取 p 指向的对象的引用计数
+// sp.use_count()
+// 获取 sp 指向的对象的引用计数
+
 TEST(Get_Set_UseCountTest, TestGet_Set_UseCount) {
   auto px = make_shared<int>(10);
   auto py = px;  // pointer 引用计数 +1
@@ -65,20 +65,19 @@ TEST(Get_Set_UseCountTest, TestGet_Set_UseCount) {
   cout << "pz use_count: " << pz.use_count() << '\n';  // 0
 }
 
-/////////////////////////////////////////////////
 ///
-/// std::unique_str 独占的智能指针
+/// std::unique_str 独占的智能指针，独占对象所有权
 ///
-/////////////////////////////////////////////////
+
 TEST(MakeUniqueTest, TestMakeUnique) {
   unique_ptr<int> up = make_unique<int>(10);
   // unique_ptr<int> up2 = up; // 非法
 }
 
 struct Foo {
-  Foo() { cout << "Constructing foo\n"; }
+  Foo() { cout << "New foo\n"; }
 
-  ~Foo() { cout << "Destructing foo\n"; }
+  ~Foo() { cout << "Delete foo\n"; }
 
   void out(const string &prefix) { cout << prefix << "Mamba out!\n"; }
 };
@@ -90,7 +89,7 @@ TEST(UniquePtrTest, TestUniquePtr) {
 
   if (p1 != nullptr) {
     unique_ptr<Foo> p2{std::move(p1)};
-    // construct
+    // New foo
     say(*p2);
 
     if (p1 != nullptr) {
@@ -109,21 +108,25 @@ TEST(UniquePtrTest, TestUniquePtr) {
       p2->out("Fourth -- ");
     }
   }
-  // destruct
+  // Delete foo
 }
+
+///
+/// std::weak_str 弱引用指针，不参与对象所有权管理
+///
 
 struct Gopher;
 
 struct Duke {
   shared_ptr<Gopher> gopher;
-  Duke() { cout << "Constructing duke\n"; }
-  ~Duke() { cout << "Destructing duke\n"; }
+  Duke() { cout << "New duke\n"; }
+  ~Duke() { cout << "Delete duke\n"; }
 };
 
 struct Gopher {
   shared_ptr<Duke> duke;
-  Gopher() { cout << "Constructing gopher\n"; }
-  ~Gopher() { cout << "Destructing gopher\n"; }
+  Gopher() { cout << "New gopher\n"; }
+  ~Gopher() { cout << "Delete gopher\n"; }
 };
 
 TEST(SharedPtrTest, TestSharedPtr) {
@@ -136,41 +139,41 @@ TEST(SharedPtrTest, TestSharedPtr) {
   cout << "Shared pointer test return\n";
 }
 
-// Constructing gopher
-// Constructing duke
+// New gopher
+// New duke
 // Shared pointer test return
 
 // 问题：aGopher, aDuke 未被析构 -> 内存泄露
 // 解决：使用弱引用指针 std::weak_ptr
-// 强引用 std::shared_ptr, std::unique_ptr 引用计数会 +1
-// 弱引用 std::weak_ptr 引用计数不会 +1
+// 强引用 std::shared_ptr, std::unique_ptr 引用计数会 +1，参与对象所有权管理
+// 弱引用 std::weak_ptr 引用计数不会 +1，不参与对象所有权管理
 
-struct TypeScript;
+struct Jar;
 
-struct Cplusplus {
-  weak_ptr<TypeScript> typescript;
-  Cplusplus() { cout << "Constructing cplusplus\n"; }
-  ~Cplusplus() { cout << "Destructing cplusplus\n"; }
+struct So {
+  weak_ptr<Jar> jar;
+  So() { cout << "New so\n"; }
+  ~So() { cout << "Delete so\n"; }
 };
 
-struct TypeScript {
-  weak_ptr<Cplusplus> cplusplus;
-  TypeScript() { cout << "Constructing typescript\n"; }
-  ~TypeScript() { cout << "Destructing typescript\n"; }
+struct Jar {
+  weak_ptr<So> so;
+  Jar() { cout << "New jar\n"; }
+  ~Jar() { cout << "Delete jar\n"; }
 };
 
 TEST(WeakPtrTest, TestWeakPtr) {
-  auto aCplusplus = make_shared<Cplusplus>();
-  auto aTypeScript = make_shared<TypeScript>();
-  aCplusplus->typescript = aTypeScript;
-  aTypeScript->cplusplus = aCplusplus;
-  assert(aCplusplus->typescript.use_count() == 1);  // 1
-  assert(aTypeScript->cplusplus.use_count() == 1);  // 1
+  auto aSo = make_shared<So>();
+  auto aJar = make_shared<Jar>();
+  aSo->jar = aJar;
+  aJar->so = aSo;
+  assert(aSo->jar.use_count() == 1);  // 1
+  assert(aJar->so.use_count() == 1);  // 1
   cout << "Weak pointer test return\n";
 }
 
-// Constructing cplusplus
-// Constructing typescript
+// New so
+// New jar
 // Weak pointer test return
-// Destructing typescript
-// Destructing cplusplus
+// Delete jar
+// Delete so
