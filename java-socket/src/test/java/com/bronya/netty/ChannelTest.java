@@ -50,7 +50,9 @@ public class ChannelTest {
           public void run() {
             log.info("{} sec", sec++);
           }
-        }, 0, 1000);
+        },
+        0,
+        1000);
   }
 
   @Test
@@ -71,7 +73,10 @@ public class ChannelTest {
     }
   }
 
-  @Test // 同步任务; 成功
+  //
+  // 同步任务; 成功
+  //
+  @Test
   void testSyncOK() {
     simpleTimer(); // 简单计时器
     try (var workers = new DefaultEventLoop()) {
@@ -85,26 +90,29 @@ public class ChannelTest {
             }
             promise.setSuccess(404);
           } /* Runnable */);
-      // [main] Netty sync get now: null
-      log.info("Netty sync get now: {}", promise.getNow());
-      // [main] Netty sync get: 404
-      log.info("Netty sync get: {}", promise.get());
+      // [main] Sync get now: null
+      log.info("Sync get now: {}", promise.getNow());
+      // [main] Sync get: 404
+      log.info("Sync get: {}", promise.get());
     } catch (InterruptedException | ExecutionException e) {
       log.error(e.getMessage());
     }
   }
 
-  @Test // 异步任务; 成功
+  //
+  // 异步任务; 成功
+  //
+  @Test
   void testAsyncOK() {
     simpleTimer(); // 简单计时器
     try (var workers = new DefaultEventLoop()) {
       var promise = new DefaultPromise<Integer>(workers);
       promise.addListener(
           future -> {
-            // [defaultEventLoop-1-1] Netty async get now: 404
-            log.info("Netty async get now: {}", future.getNow());
-            // [defaultEventLoop-1-1] Netty async get: 404
-            log.info("Netty async get: {}", future.get());
+            // [defaultEventLoop-1-1] Async get now: 404
+            log.info("Async get now: {}", future.getNow());
+            // [defaultEventLoop-1-1] Async get: 404
+            log.info("Async get: {}", future.get());
           });
 
       workers.execute(
@@ -119,24 +127,103 @@ public class ChannelTest {
     }
   }
 
+  //
+  // 同步任务; 失败
+  // 失败时 get 方法会抛出异常
+  // 失败时 getNow 方法不会抛出异常, 返回 null
+  //
   @Test
-  void testSyncErr() {
+  void testSyncErr1() {
     try (var workers = new DefaultEventLoop()) {
       var promise = new DefaultPromise<Integer>(workers);
-      workers.execute(()-> {
-        try {
-          Thread.sleep(5000);
-        } catch (InterruptedException e) {
-          log.error(e.getMessage());
-        }
-        var e = new RuntimeException("Sync error");
-        promise.setFailure(e);
-      });
+      workers.execute(
+          () -> {
+            try {
+              Thread.sleep(5000);
+            } catch (InterruptedException e) {
+              log.error(e.getMessage());
+            }
+            var e = new RuntimeException("sync err");
+            promise.setFailure(e);
+          } /* Runnable */);
+      // [main] Sync get now: null
+      log.info("Sync get now: {}", promise.getNow());
+      log.info("Sync get: {}", promise.get());
+    } catch (InterruptedException | ExecutionException e) {
+      // [main] java.lang.RuntimeException: sync err
+      log.error(e.getMessage());
     }
   }
 
+  //
+  // 同步任务; 失败
+  //
+  @Test
+  void testSyncErr2() {
+    try (var workers = new DefaultEventLoop()) {
+      var promise = new DefaultPromise<Integer>(workers);
+      workers.execute(
+          () -> {
+            try {
+              Thread.sleep(5000);
+            } catch (InterruptedException e) {
+              log.error(e.getMessage());
+            }
+            var e = new RuntimeException("sync err");
+            promise.setFailure(e);
+          } /* Runnable */);
+      // [main] Sync get now: null
+      log.info("Sync get now: {}", promise.getNow());
+      promise.await(); // 等待任务执行结束
+      // [main] Sync cause: java.lang.RuntimeException: sync err
+      log.info(
+          "Sync cause: {}",
+          promise.isSuccess() ? promise.getNow() /* null */ : promise.cause().toString());
+    } catch (InterruptedException e) {
+      log.error(e.getMessage());
+    }
+  }
+
+  //
+  // 异步任务; 失败
+  //
   @Test
   void testAsyncErr() {
+    simpleTimer();
+    try (var workers = new DefaultEventLoop()) {
+      var promise = new DefaultPromise<Integer>(workers);
 
+      promise.addListener(
+          future -> {
+            //// [defaultEventLoop-1-1] An exception was thrown ...
+            // log.info("Async get: {}", future.get());
+
+            // [defaultEventLoop-1-1] Async cause: java.lang.RuntimeException: async err
+            log.info(
+                "Async cause: {}",
+                promise.isSuccess() ? promise.getNow() /* null */ : promise.cause().toString());
+          });
+
+      workers.execute(
+          () -> {
+            try {
+              Thread.sleep(5000);
+            } catch (InterruptedException e) {
+              log.error(e.getMessage());
+            }
+            var e = new RuntimeException("async err");
+            promise.setFailure(e);
+          });
+    }
+  }
+
+  //
+  // 检查死锁
+  //
+  void testDeadlock() {
+    try (var workers = new DefaultEventLoop()) {
+      var promise = new DefaultPromise<Integer>(workers);
+      workers.submit(() -> {});
+    }
   }
 }
