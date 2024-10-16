@@ -71,10 +71,10 @@ public class AsyncClient {
             group.shutdownGracefully();
           }
         } /*
-            (ChannelFutureListener) future -> {
-              log.debug("Channel closed, shutting down group gracefully");
-              group.shutdownGracefully();
-            }
-            */);
+          (ChannelFutureListener) future -> {
+            log.debug("Channel closed, shutting down group gracefully");
+            group.shutdownGracefully();
+          }
+          */);
   }
 }
