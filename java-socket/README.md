@@ -316,10 +316,15 @@ Netty 是一个异步的; 事件驱动的网络应用程序框架, 用于快速�
 Netty is an asynchronous event-driven network application framework
 for rapid development of maintainable high performance protocol servers & clients.
 
-### 组件
-
 1. EventLoop
 2. Channel
 3. Future, Promise
 4. Handler, Pipeline
 5. ByteBuf
+
+### Future, Promise
+
+- jdk Future 只能同步等待任务执行结束, 获取返回值.
+- netty Future
+  - 可以同步等待任务执行结束, 获取返回值.
+  - 可以异步执行任务, 直接获取返回值. 任务执行未结束, 则返回值为空; 任务已结束, 则返回值为非空.

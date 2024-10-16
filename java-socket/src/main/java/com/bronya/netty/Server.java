@@ -8,11 +8,17 @@ import io.netty.channel.ChannelInitializer;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.logging.LogLevel;
+import io.netty.handler.logging.LoggingHandler;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class Server {
   public static void main(String[] args) {
     var bossGroup = new NioEventLoopGroup(1);
     var workerGroup = new NioEventLoopGroup(2);
+    // 2 个非 NIO 工人
+    // var normalWorkers = new DefaultEventLoopGroup(2);
 
     try {
       new ServerBootstrap()
@@ -35,21 +41,20 @@ public class Server {
               new ChannelInitializer<NioSocketChannel>() {
                 @Override
                 protected void initChannel(NioSocketChannel ch) {
-                  // 指定 socket 连接的解码器 ByteBuf -> String
+                  ch.pipeline().addLast(new LoggingHandler(LogLevel.DEBUG)); // NIO 工人执行
                   ch.pipeline()
                       .addLast(
+                          // normalWorkers,
+                          // "normalHandler",
                           // 指定 socket 连接的业务处理器
-                          new ChannelInboundHandlerAdapter() {
+                          new ChannelInboundHandlerAdapter() { // 非 NIO 工人执行
                             @Override
                             public void channelRead(ChannelHandlerContext ctx, Object msg) {
                               ByteBuf byteBuf = msg instanceof ByteBuf ? ((ByteBuf) msg) : null;
                               if (byteBuf != null) {
-                                byte[] buf = new byte[16];
+                                byte[] buf = new byte[32];
                                 ByteBuf nBytes = byteBuf.readBytes(buf, 0, byteBuf.readableBytes());
-                                System.out.println(
-                                    Thread.currentThread().getName()
-                                        + " -- [Server] Received: "
-                                        + new String(buf));
+                                log.debug("[server] Received: {}", new String(buf));
                               }
                             }
                           });
@@ -58,10 +63,12 @@ public class Server {
           .bind(3261)
           // 同步 sync 等待服务器启动
           .sync();
+      System.out.println("Server started");
     } catch (InterruptedException e) {
       System.err.println(e.getMessage());
       bossGroup.shutdownGracefully();
       workerGroup.shutdownGracefully();
+      // normalWorkers.shutdownGracefully();
     }
   }
 }
