@@ -22,8 +22,8 @@ public class ChannelTest {
       var sec = new AtomicInteger();
       timer.scheduleAtFixedRate(
           () -> log.info("{} sec", sec.getAndIncrement()), // Runnable
-          0L, // initialDelay
-          1L, // period (interval)
+          0L, // 初始延迟 0s
+          1L, // 每隔 1s 执行一次
           TimeUnit.SECONDS);
 
       Future<Integer> future =
@@ -32,19 +32,17 @@ public class ChannelTest {
                 Thread.sleep(5000);
                 return 404;
               } /* Callable<Integer> */);
-      log.info("Future get: {}", future.get()); // 1
-      // 同步等待 5s
+      // [main] Future task get: 404
+      log.info("Future get: {}", future.get());
     } catch (InterruptedException | ExecutionException e) {
       log.error(e.getMessage());
     }
-    log.info("Test Future Done!"); // 2
   }
 
   void simpleTimer() {
     var timer = new Timer();
+    // TimerTask 抽象类实现了 Runnable 接口
     timer.scheduleAtFixedRate(
-        // public abstract class TimerTask
-        // implements Runnable
         new TimerTask() {
           int sec = 0;
 
@@ -52,9 +50,7 @@ public class ChannelTest {
           public void run() {
             log.info("{} sec", sec++);
           }
-        }, // TimerTask: Runnable 接口的抽象实现类
-        0,
-        1000);
+        }, 0, 1000);
   }
 
   @Test
@@ -68,18 +64,17 @@ public class ChannelTest {
                 return 404;
               } /* Callable<Integer> */);
       new Thread(futureTask).start();
-      log.info("Future task get: {}", futureTask.get()); // 1
-      // 同步等待 5s
+      // [main] Future task get: 404
+      log.info("Future task get: {}", futureTask.get());
     } catch (InterruptedException | ExecutionException e) {
-      log.error(e.getMessage()); // 2
+      log.error(e.getMessage());
     }
-    log.info("Test FutureTask Done!");
   }
 
-  @Test
-  void testNettySync() {
+  @Test // 同步任务; 成功
+  void testSyncOK() {
+    simpleTimer(); // 简单计时器
     try (var workers = new DefaultEventLoop()) {
-      simpleTimer(); // 简单计时器
       var promise = new DefaultPromise<Integer>(workers);
       workers.execute(
           () -> {
@@ -90,11 +85,58 @@ public class ChannelTest {
             }
             promise.setSuccess(404);
           } /* Runnable */);
-      log.info("Netty sync get now: {}", promise.getNow()); // null
+      // [main] Netty sync get now: null
+      log.info("Netty sync get now: {}", promise.getNow());
+      // [main] Netty sync get: 404
       log.info("Netty sync get: {}", promise.get());
-      log.info("Test Netty Sync Done!");
     } catch (InterruptedException | ExecutionException e) {
       log.error(e.getMessage());
     }
+  }
+
+  @Test // 异步任务; 成功
+  void testAsyncOK() {
+    simpleTimer(); // 简单计时器
+    try (var workers = new DefaultEventLoop()) {
+      var promise = new DefaultPromise<Integer>(workers);
+      promise.addListener(
+          future -> {
+            // [defaultEventLoop-1-1] Netty async get now: 404
+            log.info("Netty async get now: {}", future.getNow());
+            // [defaultEventLoop-1-1] Netty async get: 404
+            log.info("Netty async get: {}", future.get());
+          });
+
+      workers.execute(
+          () -> {
+            try {
+              Thread.sleep(5000);
+            } catch (InterruptedException e) {
+              log.error(e.getMessage());
+            }
+          });
+      promise.setSuccess(404);
+    }
+  }
+
+  @Test
+  void testSyncErr() {
+    try (var workers = new DefaultEventLoop()) {
+      var promise = new DefaultPromise<Integer>(workers);
+      workers.execute(()-> {
+        try {
+          Thread.sleep(5000);
+        } catch (InterruptedException e) {
+          log.error(e.getMessage());
+        }
+        var e = new RuntimeException("Sync error");
+        promise.setFailure(e);
+      });
+    }
+  }
+
+  @Test
+  void testAsyncErr() {
+
   }
 }
