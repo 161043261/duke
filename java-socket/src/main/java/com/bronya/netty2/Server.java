@@ -130,9 +130,8 @@ public class Server {
   }
 }
 
-// 1. In ChannelHandler
-// 2. In ChannelHandler
-// 3. In ChannelHandler
-// 5. Out ChannelHandler
-// 4. Out ChannelHandler
-// [Timer-0] Timeout!
+// 1. In channel handler
+// 2. In channel handler
+// 3. In channel handler
+// 5. Out channel handler
+// 4. Out channel handler

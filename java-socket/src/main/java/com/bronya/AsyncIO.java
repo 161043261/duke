@@ -47,15 +47,9 @@ public class AsyncIO {
           completionHandler /* completionHandler */);
       System.out.println(Thread.currentThread().getName() + " -- Async read end");
 
-      Runtime.getRuntime()
-          .addShutdownHook(
-              new Thread(
-                  () -> {
-                    System.out.println("Graceful shutdown");
-                  }));
-
-      System.in.read();
-    } catch (IOException e) {
+      Thread.sleep(3000);
+      System.out.println("Timeout!");
+    } catch (IOException | InterruptedException e) {
       System.err.println(e.getMessage());
     }
   }

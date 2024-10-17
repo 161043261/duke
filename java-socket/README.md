@@ -339,4 +339,45 @@ for rapid development of maintainable high performance protocol servers & client
 
 ### ByteBuf
 
+```java
+// 池化的直接内存 -- 分配和回收的代价高, 读写性能高, 不能被 gc
+var buf1/* PooledUnsafeDirectByteBuf */ = ByteBufAllocator.DEFAULT.buffer(16);
+var buf2/* PooledUnsafeDirectByteBuf */ = ByteBufAllocator.DEFAULT.directBuffer(16);
+// 池化的 jvm 内存 -- 分配和回收的代价低, 读写性能低, 可以被 gc
+var buf3/* PooledUnsafeHeapByteBuf */ = ByteBufAllocator.DEFAULT.heapBuffer(16);
+```
 
+- 池化: 可重用 ByteBuf
+- 开启池化功能 (默认开启)
+- Netty 使用引用计数回收内存
+
+```shell
+-Dio.netty.allocator.type={unpooled|pooled}
+```
+
+![ByteBuf](assets/bytebuf.png)
+
+///////////////////////////////////
+///
+/// TODO TailContext 丢弃未处理消息
+///
+///////////////////////////////////
+
+```java
+// io.netty.channel.DefaultChannelPipeline#onUnhandledInboundMessage(java.lang.Object)
+protected void onUnhandledInboundMessage(Object msg) {
+  try {
+    logger.debug("Discarded inbound message {} that reached at the tail of the pipeline. Please check your pipeline configuration.", msg);
+  } finally {
+    ReferenceCountUtil.release(msg);
+  }
+}
+
+// io.netty.util.ReferenceCountUtil#release(java.lang.Object)
+public static boolean release(Object msg) {
+  if (msg instanceof ReferenceCounted) {
+    return ((ReferenceCounted) msg).release();
+  }
+  return false;
+}
+```
