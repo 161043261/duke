@@ -334,6 +334,9 @@ for rapid development of maintainable high performance protocol servers & client
 责任链设计模式
 
 - ChannelHandler 处理 Channel 上的入站; 出站事件
-  - 入站处理器通常是 ChannelInboundHandlerAdapter 的子类
-  - 出站处理器通常是 ChannelOutboundHandlerAdapter 的子类
-- ChannelPipeline 是 ChannelHandler 的有序集合
+- ChannelPipeline 是 ChannelHandlerContext (封装了 ChannelHandler) 的双向链表
+- head <-> in1 <-> in2 <-> in3 <-> out4 <-> out5 <-> tail
+
+### ByteBuf
+
+

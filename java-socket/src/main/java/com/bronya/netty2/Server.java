@@ -7,12 +7,25 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.string.StringEncoder;
+import java.util.Timer;
+import java.util.TimerTask;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class Server {
 
-  public static void main(String[] args) throws InterruptedException {
+  public static void main(String[] args) {
+    new Timer()
+        .schedule(
+            new TimerTask() {
+              @Override
+              public void run() {
+                log.info("Timeout!");
+                System.exit(0);
+              }
+            },
+            5000);
+
     new Thread(
             () -> {
               new ServerBootstrap()
@@ -21,67 +34,76 @@ public class Server {
                   .childHandler(
                       new ChannelInitializer<NioSocketChannel>() {
 
+                        // ChannelHandler 处理 Channel 上的入站; 出站事件
+                        // ChannelPipeline 是 ChannelHandlerContext (封装了 ChannelHandler) 的双向链表
+                        // head <-> in1 <-> in2 <-> in3 <-> out4 <-> out5 <-> tail
+
                         @Override
                         protected void initChannel(NioSocketChannel ch) {
-                          ch.pipeline() /* ChannelPipeline: ChannelHandler 的有序集合 */
-                              .addLast /* ChannelHandler 处理 Channel 上的入站; 出站事件 */(
-                                  new ChannelInboundHandlerAdapter() {
-                                    @Override
-                                    public void channelRead(ChannelHandlerContext ctx, Object msg) {
-                                      System.out.println("[a] ctx.fireChannelRead(msg);");
-                                      ctx.fireChannelRead(msg); // -------------------- 1
-                                    }
-                                  });
                           ch.pipeline()
                               .addLast(
+                                  "in1", // 入站处理器 in1
                                   new ChannelInboundHandlerAdapter() {
                                     @Override
                                     public void channelRead(ChannelHandlerContext ctx, Object msg) {
-                                      System.out.println("[b] ctx.fireChannelRead(msg);");
-                                      ctx.fireChannelRead(msg); // -------------------- 2
+                                      System.out.println("1. In channel handler");
+                                      ctx.fireChannelRead(msg); // 调用下一个入站处理器
                                     }
                                   });
 
                           ch.pipeline()
                               .addLast(
+                                  "in2", // 入站处理器 in2
                                   new ChannelInboundHandlerAdapter() {
                                     @Override
                                     public void channelRead(ChannelHandlerContext ctx, Object msg) {
-                                      System.out.println("[c] ctx.channel().write(msg);");
-                                      ctx.channel().write(msg); // -------------------- 3
+                                      System.out.println("2. In channel handler");
+                                      ctx.fireChannelRead(msg); // 调用下一个入站处理器
                                     }
                                   });
 
                           ch.pipeline()
                               .addLast(
+                                  "in3", // 入站处理器 in3
+                                  new ChannelInboundHandlerAdapter() {
+                                    @Override
+                                    public void channelRead(ChannelHandlerContext ctx, Object msg) {
+                                      System.out.println("3. In channel handler");
+                                      ctx.channel().write(msg); // 从尾节点开始, 调用出站处理器
+                                    }
+                                  });
+
+                          ch.pipeline()
+                              .addLast(
+                                  "out4", // 出站处理器 out4
                                   new ChannelOutboundHandlerAdapter() {
                                     @Override
                                     public void write(
                                         ChannelHandlerContext ctx,
                                         Object msg,
                                         ChannelPromise promise) {
-                                      System.out.println("[d] ctx.write(msg, promise);");
-                                      ctx.write(msg, promise); // -------------------- 5
+                                      System.out.println("4. Out channel handler");
+                                      ctx.write(msg, promise); // 从当前节点开始, 查找并调用上一个出站处理器
                                     }
                                   });
 
                           ch.pipeline()
                               .addLast(
+                                  "out5", // 出站处理器 out5
                                   new ChannelOutboundHandlerAdapter() {
                                     @Override
                                     public void write(
                                         ChannelHandlerContext ctx,
                                         Object msg,
                                         ChannelPromise promise) {
-                                      System.out.println("[e] ctx.write(msg, promise);");
-                                      ctx.write(msg, promise); // -------------------- 4
+                                      System.out.println("5. Out channel handler");
+                                      ctx.write(msg, promise); // 从当前节点开始, 查找并调用上一个出站处理器
                                     }
                                   });
                         }
                       })
                   .bind(3261);
-            },
-            "server")
+            })
         .start();
 
     new Thread(
@@ -103,14 +125,14 @@ public class Server {
                           future -> {
                             future.channel().writeAndFlush("Greeting from client");
                           });
-            },
-            "client")
+            })
         .start();
   }
 }
 
-// [a] ctx.fireChannelRead(msg);
-// [b] ctx.fireChannelRead(msg);
-// [c] ctx.channel().write(msg);
-// [e] ctx.write(msg, promise);
-// [d] ctx.write(msg, promise);
+// 1. In ChannelHandler
+// 2. In ChannelHandler
+// 3. In ChannelHandler
+// 5. Out ChannelHandler
+// 4. Out ChannelHandler
+// [Timer-0] Timeout!
