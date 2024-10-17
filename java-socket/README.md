@@ -328,3 +328,12 @@ for rapid development of maintainable high performance protocol servers & client
 - netty Future
   - 可以同步等待任务执行结束, 获取返回值.
   - 可以异步执行任务, 直接获取返回值. 任务执行未结束, 则返回值为空; 任务已结束, 则返回值为非空.
+
+### Handler, Pipeline
+
+责任链设计模式
+
+- ChannelHandler 处理 Channel 上的入站; 出站事件
+  - 入站处理器通常是 ChannelInboundHandlerAdapter 的子类
+  - 出站处理器通常是 ChannelOutboundHandlerAdapter 的子类
+- ChannelPipeline 是 ChannelHandler 的有序集合

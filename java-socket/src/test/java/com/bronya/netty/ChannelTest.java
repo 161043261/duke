@@ -218,12 +218,33 @@ public class ChannelTest {
   }
 
   //
-  // 检查死锁
+  // FIXME 检查死锁
   //
+  @Test
   void testDeadlock() {
     try (var workers = new DefaultEventLoop()) {
       var promise = new DefaultPromise<Integer>(workers);
-      workers.submit(() -> {});
+      workers.submit(
+          () -> {
+            System.out.println("Task1 begin");
+            try {
+              promise.await(); // throws InterruptedException
+            } catch (Exception e) { // 捕获所有类型的异常
+              System.err.println(e.getMessage());
+            }
+            System.out.println("Task1 end");
+          });
+
+      workers.submit(
+          () -> {
+            System.out.println("Task2 begin");
+            try {
+              promise.await(); // throws InterruptedException
+            } catch (Exception e) { // 捕获所有类型的异常
+              System.err.println(e.getMessage());
+            }
+            System.out.println("Task2 end");
+          });
     }
   }
 }

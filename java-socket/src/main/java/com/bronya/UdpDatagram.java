@@ -29,6 +29,7 @@ public class UdpDatagram {
     var udpClient =
         new Thread(
             () -> {
+              // ********** endpoint **********
               try (DatagramChannel endpoint = DatagramChannel.open()) {
                 InetSocketAddress srvAddr = new InetSocketAddress("127.0.0.1", 3261);
                 endpoint.send(ByteBuffer.wrap("Top of the World".getBytes()), srvAddr);

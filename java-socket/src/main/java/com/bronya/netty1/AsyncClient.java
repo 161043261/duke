@@ -1,4 +1,4 @@
-package com.bronya.netty;
+package com.bronya.netty1;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
