@@ -381,3 +381,10 @@ public static boolean release(Object msg) {
   return false;
 }
 ```
+
+### slice, duplicate
+
+![slice_duplicate](./assets/slice_duplicate.png)
+
+- slice 与原 buf 共享内存, 有独立的读写指针, 不可以扩容
+- duplicate 与原 buf 共享内存, 有独立的读写指针, 可以扩容
