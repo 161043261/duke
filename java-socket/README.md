@@ -386,5 +386,20 @@ public static boolean release(Object msg) {
 
 ![slice_duplicate](./assets/slice_duplicate.png)
 
-- slice 与原 buf 共享内存, 有独立的读写指针, 不可以扩容
-- duplicate 与原 buf 共享内存, 有独立的读写指针, 可以扩容
+- slice 与原 buf 共享内存, 有独立的读写指针, 不可以扩容 (浅拷贝)
+- duplicate 与原 buf 共享内存, 有独立的读写指针, 可以扩容 (浅拷贝)
+- copy 深拷贝
+
+### CompositeByteBuf
+
+逻辑上的组合
+
+### Unpooled
+
+未池化的 ByteBuf 的工具类: 创建, 拷贝, 组合等操作
+
+ByteBuf
+1. 池化
+2. 读写指针分离
+3. 自动扩容
+4. 零拷贝: slice, duplicate, CompositeByteBuf...
