@@ -1,5 +1,11 @@
 # java-socket
 
+Slf4j
+
+```java
+static final Logger log = LoggerFactory.getLogger(ClientServer.class);
+```
+
 ## Non-blocking IO 非阻塞 IO
 
 ### channel 数据读写的双向通道
@@ -399,7 +405,47 @@ public static boolean release(Object msg) {
 未池化的 ByteBuf 的工具类: 创建, 拷贝, 组合等操作
 
 ByteBuf
+
 1. 池化
 2. 读写指针分离
 3. 自动扩容
 4. 零拷贝: slice, duplicate, CompositeByteBuf...
+
+### 粘包, 半包
+
+**粘包**
+
+- 现象: 发送 abc, def; 接收 abcdef
+- 原因
+  - 应用层: 接收方 ByteBuf 大小 (Netty 默认 1024B) >> 发送的消息长度
+  - 网络层: 接收方的接收窗口 > 发送的包大小; 处理不及时
+  - Nagle 算法
+
+**半包**
+
+- 现象: 发送 abcdef; 接收 abc, def
+- 原因
+  - 应用层: 接收方 ByteBuf 大小 (Netty 默认 1024B) < 发送的消息长度
+  - 网络层: 接收方的接收窗口 < 发送的包大小
+  - 数据链路层
+    MTU: Maximum Transmission Unit 最大传输单元
+    o) 以太网 MTU 1500
+    o) 本机环回 MTU 65535, 本机环回不通过网卡
+    MSS: Maximum Segment Size 最大段长度
+    MTU = MSS + IP head (20B) + TCP head (20B)
+
+**粘包, 半包的解决方法**
+
+1. 短连接, 发送一个包建立一次连接. 缺点: 效率低
+2. 固定长度消息. 缺点: 浪费内存
+3. 使用分隔符 \n 或 \r\n. 如果超过指定长度, 仍未找到分隔符, 则抛出异常
+4. 消息分为 head 和 body, head 中包含 body 的长度
+
+```java
+// 使用分隔符 \n 或 \r\n. 如果超过指定长度, 仍未找到分隔符, 则抛出异常
+socketChannel.pipeline().addLast(new LineBasedFrameDecoder(1024));
+// 消息分为 head 和 body, head 中包含 body 的长度
+socketChannel.pipeline().addLast(new LengthFieldBasedFrameDecoder(1024, 0, 1, 0, 1));
+```
+
+![head_body](assets/head_body.png)

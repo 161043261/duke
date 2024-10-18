@@ -40,12 +40,12 @@ public class AsyncClient {
             () -> {
               var scanner = new Scanner(System.in);
               while (true) {
-                String line = scanner.nextLine();
-                if ("exit".equalsIgnoreCase(line) || "quit".equalsIgnoreCase(line)) {
+                String msg = scanner.nextLine();
+                if ("exit".equalsIgnoreCase(msg) || "quit".equalsIgnoreCase(msg)) {
                   channel.close(); // 通道异步关闭, 不是立刻关闭
                   break;
                 }
-                channel.writeAndFlush(line);
+                channel.writeAndFlush(msg);
               }
             },
             "asyncClient")

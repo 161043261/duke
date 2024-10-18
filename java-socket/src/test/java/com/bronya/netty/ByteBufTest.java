@@ -1,33 +1,13 @@
 package com.bronya.netty;
 
+import static com.bronya.netty2.Server.fmt;
+
 import io.netty.buffer.*;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 @Slf4j
 public class ByteBufTest {
-  interface Fmt {
-    void dump(ByteBuf buf);
-  }
-
-  Fmt fmt =
-      (ByteBuf buf) -> {
-        var tmpArr = buf.getClass().toString().split("\\.");
-        StringBuilder strBuilder =
-            new StringBuilder()
-                .append("class: ")
-                .append(tmpArr[tmpArr.length - 1])
-                .append(", readerIdx: ")
-                .append(buf.readerIndex())
-                .append(", writerIdx: ")
-                .append(buf.writerIndex())
-                .append(", capacity: ")
-                .append(buf.capacity())
-                .append("\n");
-        ByteBufUtil.appendPrettyHexDump(strBuilder, buf);
-        System.out.println(strBuilder.toString());
-      };
-
   // System.out.println(ByteBufUtil.prettyHexDump(buf));
 
   @Test
@@ -117,8 +97,9 @@ public class ByteBufTest {
     ByteBuf buf2 = ByteBufAllocator.DEFAULT.directBuffer(5);
     buf2.writeBytes(new byte[] {6, 7, 8, 9, 10});
     CompositeByteBuf buf = ByteBufAllocator.DEFAULT.compositeBuffer();
-    buf.addComponents(true, // 是否递增 writerIndex
-      buf1, buf2);
+    buf.addComponents(
+        true, // 是否递增 writerIndex
+        buf1, buf2);
     fmt.dump(buf);
 
     buf.setByte(2, 5);
@@ -138,7 +119,7 @@ public class ByteBufTest {
     fmt.dump(buf1); // 逻辑上的组合, 零拷贝
 
     // 可以包装字节数组, 零拷贝
-    ByteBuf buf4 = Unpooled.wrappedBuffer(new byte[]{1, 2, 3}, new byte[]{4, 5, 6});
+    ByteBuf buf4 = Unpooled.wrappedBuffer(new byte[] {1, 2, 3}, new byte[] {4, 5, 6});
     fmt.dump(buf4);
   }
 }
