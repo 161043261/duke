@@ -35,7 +35,10 @@ public class HeadBody {
                               protected void initChannel(SocketChannel ch) {
                                 // 消息分为 head 和 body, head 中包含 body 的长度
                                 ch.pipeline()
-                                    .addLast(new LengthFieldBasedFrameDecoder(1024, 0, 1, 0, 1));
+                                    .addLast(
+                                        new LengthFieldBasedFrameDecoder(
+                                            1024, 0, 1, // 长度字段的字节数
+                                            0, 1));
                                 ch.pipeline().addLast(new LoggingHandler(LogLevel.DEBUG));
                               }
                             })
@@ -76,7 +79,7 @@ public class HeadBody {
                                       var aByte = (byte) rand.nextInt('a', 'z' + 1);
                                       var msg = new byte[len];
                                       Arrays.fill(msg, aByte);
-                                      buf.writeByte((byte) len); // 写入长度
+                                      buf.writeByte((byte) len); // 写入长度字段
                                       buf.writeBytes(msg);
                                     }
                                     ctx.writeAndFlush(buf);
