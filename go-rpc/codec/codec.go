@@ -4,8 +4,8 @@ import "io"
 
 type Header struct {
 	ServiceMethod string // format "Service.Method"
-	Seq uint64  // sequence number chosen by client
-	Error string
+	Seq           uint64 // sequence number chosen by client
+	Error         string
 }
 
 type Codec interface {
@@ -14,4 +14,3 @@ type Codec interface {
 	ReadBody(any) error
 	Write(*Header, any) error
 }
-
