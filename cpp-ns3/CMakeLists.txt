@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.8)
 
-project(cpp-learn)
+project(cpp-ns3)
 
 # 指定 c 语言级别
 set(CMAKE_C_STANDARD 17)

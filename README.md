@@ -1,6 +1,6 @@
-# duke
+# A Gopher Named Duke
 
-## [基础](https://161043261.github.io/)
+## [计算机基础](https://161043261.github.io/)
 
 - Linux
 - MySQL
@@ -16,50 +16,52 @@
 
 ## Java
 
-- Java 基础, 集合
+- Java 基础
+- Java 命令 java, javac, ...
 - Maven
 - Java 并发编程
   - [java-concurrent](./java-concurrent/)
 - Java 网络编程, IO
   - [java-socket](./java-socket)
-- Java 函数式编程
+- Java 函数编程
   - [java-func](./java-func/)
-- Java 命令 java, javac, ...
 - MyBatis, SpringBoot
   - [java-proj](./java-proj/)
 - Kafka
   - [java-kafka](./java-kafka/)
 - Netty
   - [java-socket](./java-socket/)
+- 面试: JVM
 
 ## Go
 
-- Go 基础, slice, map, chan
+- Go 基础
+- Go 命令 go mod, go build, go run, go test, ...
 - Go 并发编程
   - [go-concurrent](./go-concurrent/)
 - Go 网络编程, IO
   - [go-server](./go-server/)
-- Go 命令 go mod, go build, go run, go test, ...
-- GMP, GC
 - Go 设计模式
   - [go-design-pattern](./go-design-pattern/)
 - GORM, Gin
   - [go-proj](./go-proj/)
+- 面试: GC, GMP
 
-## C++
+## C/C++
 
-- C, C++ 基础, STL
-- C, C++ 并发编程
-  - [cpp-concurrent](./cpp-concurrent/)
-- C, C++ 网络编程, IO
-  - [c-socket](./c-socket/)
-- C, C++ 命令 gcc, clang, gdb, ...
+- C/C++ 基础
+  - [cpp-learn](./cpp-learn/)
+- C/C++ 命令 gcc/g++, clang/clang++, ...
 - Makefile, CMake
+- C/C++ 并发编程
+  - [cpp-concurrent](./cpp-concurrent/)
+- C/C++ 网络编程, IO
+  - [c-socket](./c-socket/)
 
-## TypeScript
+## JavaScript/TypeScript
 
-- HTML5
-- TypeScript
+- HTML5 基础
+- JavaScript/TypeScript 基础
 - Vue3
   - [ts-vue](./ts-vue/)
   - [ts-vue3](./ts-vue3/)
@@ -69,3 +71,4 @@
 
 - Python 基础
 - Pytest
+- Numpy...

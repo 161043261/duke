@@ -1,5 +1,5 @@
 {
-  "Name": "WanProxy",
+  "Name": "go-server",
   "Ver": "1.0",
   "HostIp": "0.0.0.0",
   "Port": 3302,
