@@ -10,7 +10,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 
-public class Client {
+public class SyncClient {
   public static void main(String[] args) throws InterruptedException {
     Runnable task =
         () -> {

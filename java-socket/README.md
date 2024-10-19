@@ -449,3 +449,29 @@ socketChannel.pipeline().addLast(new LengthFieldBasedFrameDecoder(1024, 0, 1, 0,
 ```
 
 ![head_body](assets/head_body.png)
+
+## 源码 (未完成)
+
+| NIO                   | Clang           |
+| --------------------- | --------------- |
+| Selector              | epoll           |
+| Channel               | File Descriptor |
+| channel.register(...) | epoll_ctl(...)  |
+
+```java
+// netty 使用 NioEventLoopGroup (即 boss 线程) 封装 java.**.Thread 和 java.**.Selector
+Selector selector = Selector.open(); // jdk
+// netty 创建 NioServerSocketChannel 实例时
+// 创建 java.**.ServerSocketChannel 实例 (原生 listener), 初始化 handler
+var nettyListener = new NioServerSocketChannel(); // netty
+ServerSocketChannel listener = ServerSocketChannel.open(); // jdk
+listener.configureBlocking(false); // jdk
+// 启动 boss 线程
+// 将原生 listener 注册到 selector, nettyListener 作为附件
+SelectionKey listenerKey = listener.register(selector, 0, nettyListener);
+// pipeline: head -> ChannelInitializer -> ServerBootstrapAcceptor -> tail
+// 原生 listener 绑定端口
+listener.bind(new InetSocketAddress(3261)); // jdk
+// 关注 OP_ACCEPT 事件
+listenerKey.interestOps(SelectionKey.OP_ACCEPT);
+```
