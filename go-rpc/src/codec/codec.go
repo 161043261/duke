@@ -16,14 +16,14 @@ type Header struct {
 
 // Codec 消息编解码器接口 (抽象产品)
 // io.Closer 要求实现 Close 方法
-// DecodeHeader 解码 (反序列化) 消息头: bytes => Header 对象
-// DecodeBody 解码 (反序列化) 消息体: bytes => any 对象
-// Encode 编码 (序列化) 消息头 + 消息体: Header, any 对象 -> bytes
+// ReadeHeader 解码 (反序列化) 消息头: bytes => Header 对象
+// ReadBody 解码 (反序列化) 消息体: bytes => any 对象
+// Write 编码 (序列化) 消息头 + 消息体: Header, any 对象 -> bytes
 type Codec interface {
 	io.Closer
-	DecodeHeader(*Header) error
-	DecodeBody(any) error
-	Encode(*Header, any) error
+	ReadeHeader(*Header) error
+	ReadBody(any) error
+	Write(*Header, any) error
 }
 
 // NewCodec 消息的编解码器的工厂方法

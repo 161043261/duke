@@ -23,18 +23,18 @@ func (gobCodec *GobCodec) Close() error {
 	return gobCodec.conn.Close()
 }
 
-// DecodeHeader 解码 (反序列化) 消息头: bytes => Header 对象
-func (gobCodec *GobCodec) DecodeHeader(header *Header) error {
+// ReadeHeader 解码 (反序列化) 消息头: bytes => Header 对象
+func (gobCodec *GobCodec) ReadeHeader(header *Header) error {
 	return gobCodec.decoder.Decode(header)
 }
 
-// DecodeBody 解码 (反序列化) 消息体: bytes => any 对象
-func (gobCodec *GobCodec) DecodeBody(body any) error {
+// ReadBody 解码 (反序列化) 消息体: bytes => any 对象
+func (gobCodec *GobCodec) ReadBody(body any) error {
 	return gobCodec.decoder.Decode(body)
 }
 
-// Encode 编码 (序列化) 消息头 + 消息体: Header, any 对象 -> bytes
-func (gobCodec *GobCodec) Encode(header *Header, body any) (err error) {
+// Write 编码 (序列化) 消息头 + 消息体: Header, any 对象 -> bytes
+func (gobCodec *GobCodec) Write(header *Header, body any) (err error) {
 	defer func() {
 		_ = gobCodec.buf.Flush()
 		if err != nil {
