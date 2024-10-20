@@ -22,13 +22,13 @@ type Reply struct {
 	State int
 }
 
-func (s *Server) Method(args *Args, reply *Reply) error {
+func (server *Server) Method(args *Args, reply *Reply) error {
 	reply.State++
 	return nil
 }
 
-func (s *Server) serve() {
-	err := rpc.Register(s)
+func (server *Server) serve() {
+	err := rpc.Register(server)
 	if err != nil {
 		panic(err)
 	}
@@ -46,7 +46,9 @@ func (s *Server) serve() {
 		panic(err)
 	}
 
-	go http.Serve(listener, nil)
+	go func() {
+		_ = http.Serve(listener, nil)
+	}()
 }
 
 func call(rpcName string, args any, reply any) bool {
