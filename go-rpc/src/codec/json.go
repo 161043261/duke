@@ -23,8 +23,8 @@ func (jsonCodec *JsonCodec) Close() error {
 	return jsonCodec.conn.Close()
 }
 
-// ReadeHeader 解码 (反序列化) 消息头: bytes => Header 对象
-func (jsonCodec *JsonCodec) ReadeHeader(header *Header) error {
+// ReadHeader 解码 (反序列化) 消息头: bytes => Header 对象
+func (jsonCodec *JsonCodec) ReadHeader(header *Header) error {
 	return jsonCodec.decoder.Decode(header)
 }
 
@@ -33,7 +33,7 @@ func (jsonCodec *JsonCodec) ReadBody(body any) error {
 	return jsonCodec.encoder.Encode(body)
 }
 
-// Write 编码 (序列化) 消息头 + 消息体: Header, any 对象 -> bytes
+// Write 编码 (序列化) 消息头 + 消息体: Header, any 对象 => bytes
 func (jsonCodec *JsonCodec) Write(header *Header, body any) (err error) {
 	defer func() {
 		_ = jsonCodec.buf.Flush()

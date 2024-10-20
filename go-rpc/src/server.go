@@ -43,7 +43,7 @@ func (server *Server) Accept(listener net.Listener) {
 		if err != nil {
 			log.Println("RPC server: accept error", err.Error())
 		}
-		go server.DoServe(conn)
+		go server.run(conn)
 	}
 }
 
@@ -51,7 +51,7 @@ func Accept(listener net.Listener) {
 	DefaultServer.Accept(listener)
 }
 
-func (server *Server) DoServe(conn net.Conn) {
+func (server *Server) run(conn net.Conn) {
 	defer func() {
 		_ = conn.Close()
 	}()
@@ -75,53 +75,58 @@ func (server *Server) DoServe(conn net.Conn) {
 		return
 	}
 
-	server.doCodec(newCodec(conn))
+	server.useCodec(newCodec(conn))
 }
 
-func (server *Server) doCodec(cc codec.Codec) {
+func (server *Server) useCodec(aCodec codec.Codec) {
 	// TODO new(...) ???
 	mut := new(sync.Mutex)
 	wg := new(sync.WaitGroup)
 
 	for {
-		req, err := server.readReq(cc)
+		req, err := server.readReq(aCodec)
 		if err != nil {
 			if req == nil {
 				break
 			}
 			req.header.Error = err.Error()
-			server.writeResp(cc, req.header, struct{}{}, mut)
+			server.writeResp(aCodec, req.header, struct{}{}, mut)
 			continue
 		}
 		wg.Add(1)
-		go server.handleReq(cc, req, mut, wg)
+		go server.handleReq(aCodec, req, mut, wg)
 	}
 	wg.Wait()
 
-	_ = cc.Close()
+	_ = aCodec.Close()
 }
 
+// request 请求
+// header 请求头
+// argv, replyv 请求体
 type request struct {
 	header       *codec.Header
 	argv, replyv reflect.Value
 }
 
-func (server *Server) readReq(cc codec.Codec) (*request, error) {
-	header_, err := server.readReqHeader(cc)
+func (server *Server) readReq(aCodec codec.Codec) (*request, error) {
+	// 解码 (反序列化) 请求头
+	header_, err := server.readReqHeader(aCodec)
 	if err != nil {
 		return nil, err
 	}
 	req := &request{header: header_}
 	req.argv = reflect.New(reflect.TypeOf(""))
-	if err = cc.ReadBody(req.argv.Interface()); err != nil {
+	// 解码 (反序列化) 请求体
+	if err = aCodec.ReadBody(req.argv.Interface()); err != nil {
 		log.Println("RPC server: decode error", err.Error())
 	}
 	return req, nil
 }
 
-func (server *Server) readReqHeader(cc codec.Codec) (*codec.Header, error) {
+func (server *Server) readReqHeader(aCodec codec.Codec) (*codec.Header, error) {
 	var header codec.Header
-	if err := cc.ReadeHeader(&header); err != nil {
+	if err := aCodec.ReadHeader(&header); err != nil {
 		if err != io.EOF && !errors.Is(err, io.ErrUnexpectedEOF) {
 			log.Println("RPC server: decode header error", err.Error())
 		}
@@ -130,17 +135,17 @@ func (server *Server) readReqHeader(cc codec.Codec) (*codec.Header, error) {
 	return &header, nil
 }
 
-func (server *Server) handleReq(cc codec.Codec, req *request, mut *sync.Mutex, wg *sync.WaitGroup) {
+func (server *Server) handleReq(aCodec codec.Codec, req *request, mut *sync.Mutex, wg *sync.WaitGroup) {
 	defer wg.Done()
 	log.Println(req.header, req.argv.Elem())
 	req.replyv = reflect.ValueOf(fmt.Sprintf("RPC server: response %d", req.header.Seq))
-	server.writeResp(cc, req.header, req.replyv.Interface(), mut)
+	server.writeResp(aCodec, req.header, req.replyv.Interface(), mut)
 }
 
-func (server *Server) writeResp(cc codec.Codec, header *codec.Header, body any, mut *sync.Mutex) {
+func (server *Server) writeResp(aCodec codec.Codec, header *codec.Header, body any, mut *sync.Mutex) {
 	mut.Lock()
 	defer mut.Unlock()
-	if err := cc.Write(header, body); err != nil {
+	if err := aCodec.Write(header, body); err != nil {
 		log.Println("RPC server: write header error", err.Error())
 	}
 }

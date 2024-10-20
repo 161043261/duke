@@ -23,8 +23,8 @@ func (gobCodec *GobCodec) Close() error {
 	return gobCodec.conn.Close()
 }
 
-// ReadeHeader 解码 (反序列化) 消息头: bytes => Header 对象
-func (gobCodec *GobCodec) ReadeHeader(header *Header) error {
+// ReadHeader 解码 (反序列化) 消息头: bytes => Header 对象
+func (gobCodec *GobCodec) ReadHeader(header *Header) error {
 	return gobCodec.decoder.Decode(header)
 }
 
@@ -33,7 +33,7 @@ func (gobCodec *GobCodec) ReadBody(body any) error {
 	return gobCodec.decoder.Decode(body)
 }
 
-// Write 编码 (序列化) 消息头 + 消息体: Header, any 对象 -> bytes
+// Write 编码 (序列化) 消息头 + 消息体: Header, any 对象 => bytes
 func (gobCodec *GobCodec) Write(header *Header, body any) (err error) {
 	defer func() {
 		_ = gobCodec.buf.Flush()
