@@ -1,3 +1,5 @@
 package com.bronya;
 
-public class NewFeatures {}
+public class NewFeatures {
+
+}

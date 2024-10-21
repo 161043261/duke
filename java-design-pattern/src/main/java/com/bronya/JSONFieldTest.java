@@ -48,14 +48,9 @@ class JSONSerializer {
   }
 
   private static String toJSONString(Map<String, String> jsonEntries) {
-    return "{"
-        + jsonEntries.entrySet().stream()
-            .map(
-                entry -> {
-                  return "\"" + entry.getKey() + "\":\"" + entry.getValue() + "\"";
-                })
-            .collect(Collectors.joining(","))
-        + "}";
+    return "{" + jsonEntries.entrySet().stream().map(entry -> {
+      return "\"" + entry.getKey() + "\":\"" + entry.getValue() + "\"";
+    }).collect(Collectors.joining(",")) + "}";
   }
 }
 
@@ -67,7 +62,8 @@ public class JSONFieldTest {
   }
 
   static class JSONObj {
-    @JSONField private String username;
+    @JSONField
+    private String username;
 
     @JSONField("password")
     private String password;

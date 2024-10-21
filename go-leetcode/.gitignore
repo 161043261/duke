@@ -1,0 +1,7 @@
+**/.DS_Store
+**/dist/
+**/.mvn/
+**/.idea/
+**/.vscode/
+**/target/
+**/build/

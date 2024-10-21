@@ -1,0 +1,10 @@
+# docker-compose up -d # daemon
+services:
+  # docker-compose up -d redis_container
+  redis_container:
+    image: redis:latest
+    container_name: redis_container
+    hostname: redis_container
+    ports:
+      - '6379:6379'
+    # restart: always
