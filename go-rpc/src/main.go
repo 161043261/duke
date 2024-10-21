@@ -24,6 +24,7 @@ func startServer(addr chan string) {
 func main() {
 	addr := make(chan string)
 	go startServer(addr)
+
 	conn, err := net.Dial("tcp", <-addr)
 	if err != nil {
 		panic(err)
@@ -34,20 +35,24 @@ func main() {
 	}()
 
 	time.Sleep(time.Second)
+
 	// 发送 Option
 	err = json.NewEncoder(conn).Encode(codec.DefaultOption)
-
 	if err != nil {
 		log.Println(err.Error())
 	}
+
 	gobCodec := codec.NewGobCodec(conn)
 	for i := 0; i < 5; i++ {
 		header := &codec.Header{
-			ServiceMethod: "Service?.Method?",
+			ServiceMethod: "Service.Method",
 			Seq:           uint64(i),
 		}
 
-		err := gobCodec.Write(header, fmt.Sprintf("Message %d body", header.Seq))
+		body := fmt.Sprintf("Message %d body", header.Seq)
+
+		// 发送 RPC 请求
+		err := gobCodec.Write(header, body)
 		if err != nil {
 			log.Println(err.Error())
 		}

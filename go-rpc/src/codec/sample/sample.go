@@ -71,7 +71,7 @@ func main() {
 	reply := Reply{State: 0}
 
 	if ok := call("Server.Method", &args, &reply); ok {
-		log.Println("reply:", reply)
+		log.Println("Reply:", reply)
 	}
 
 	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt)

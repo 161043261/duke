@@ -1,4 +1,4 @@
-package gob_json_test
+package gob_test
 
 import (
 	"bytes"
@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"os/exec"
 	"testing"
 )
 
@@ -30,7 +29,7 @@ type DeserializeTo struct {
 	Name /* ok */, Different/* err */ string
 }
 
-func TestFromTo(t *testing.T) {
+func TestGob(t *testing.T) {
 	var netConn bytes.Buffer
 
 	encoder := gob.NewEncoder(&netConn)
@@ -60,13 +59,12 @@ type Product struct {
 	Address                   []*Address
 }
 
-// Write binaries to ./product.gob
-func TestWrite(t *testing.T) {
-	rmGob()
+// Write binaries to ./product_gob.dat
+func TestGob_Write(t *testing.T) {
 	tokyo := &Address{"Tokyo", "Tokyo"}
 	yokohama := &Address{"Yokohama", "Yokohama"}
 	product := &Product{"Genshin", "Impact", "HoYoverse", []*Address{tokyo, yokohama}}
-	fstream, err := os.OpenFile("./product.gob", os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0666)
+	fstream, err := os.OpenFile("./product_gob.dat", os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0666)
 	if err != nil {
 		log.Fatal("Open file error:", err)
 	}
@@ -82,9 +80,9 @@ func TestWrite(t *testing.T) {
 	}
 }
 
-// Read binaries from ./product.gob
-func TestRead(t *testing.T) {
-	fstream, err := os.OpenFile("./product.gob", os.O_RDONLY, 0666)
+// Read binaries from ./product_gob.dat
+func TestGob_Read(t *testing.T) {
+	fstream, err := os.OpenFile("./product_gob.dat", os.O_RDONLY, 0666)
 	if err != nil {
 		log.Fatal("Open file error:", err)
 	}
@@ -101,13 +99,5 @@ func TestRead(t *testing.T) {
 
 	for _, addrPtr := range product.Address {
 		fmt.Println("Addr:", *addrPtr)
-	}
-	rmGob()
-}
-
-func rmGob() {
-	cmd := exec.Command("rm", "-rf", "*.gob")
-	if err := cmd.Run(); err != nil {
-		log.Print("rm -rf *.gob error:", err)
 	}
 }
