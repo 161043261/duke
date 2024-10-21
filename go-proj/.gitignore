@@ -1,8 +1,0 @@
-.vscode/
-.idea/
-.DS_Store
-go.sum
-*.exe
-main
-log
-src/docs/

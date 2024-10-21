@@ -13,33 +13,33 @@ import java.util.stream.Collectors;
 @Retention(RetentionPolicy.RUNTIME)
 // 字段注解
 @Target(ElementType.FIELD)
-@interface JsonField {
+@interface JSONField {
   // value 默认参数
-  // @JsonField(value="cafe") 可省略为 @JsonField("cafe")
+  // @JSONField(value="cafe") 可省略为 @JSONField("cafe")
   // default 参数默认值
-  // @JsonField("cafe") 可省略为 @JsonField()
+  // @JSONField("cafe") 可省略为 @JSONField()
   String value() default "username";
 }
 
-class JsonSerializer {
+class JSONSerializer {
   public static String serialize(Object obj) throws IllegalAccessException {
     Class<?> objClass = obj.getClass();
     var jsonEntries = new HashMap<String, String>();
     Field[] fields = objClass.getDeclaredFields();
     for (Field field : fields) {
       field.setAccessible(true);
-      if (field.isAnnotationPresent(JsonField.class)) {
+      if (field.isAnnotationPresent(JSONField.class)) {
         // username:cafe
         // password:baby
         System.out.println(field.getName() + ":" + field.get(obj).toString());
         jsonEntries.put(field.getName(), field.get(obj).toString());
       }
     }
-    return toJsonString(jsonEntries);
+    return toJSONString(jsonEntries);
   }
 
   private static String getSerializedKey(Field field) {
-    String annotationValue = field.getAnnotation(JsonField.class).value();
+    String annotationValue = field.getAnnotation(JSONField.class).value();
     if (annotationValue.isEmpty()) {
       return field.getName();
     } else {
@@ -47,7 +47,7 @@ class JsonSerializer {
     }
   }
 
-  private static String toJsonString(Map<String, String> jsonEntries) {
+  private static String toJSONString(Map<String, String> jsonEntries) {
     return "{"
         + jsonEntries.entrySet().stream()
             .map(
@@ -59,44 +59,44 @@ class JsonSerializer {
   }
 }
 
-public class JsonFieldTest {
+public class JSONFieldTest {
   public static void main(String[] args) throws IllegalAccessException {
-    JsonObj obj = new JsonObj("cafe", "baby");
+    JSONObj obj = new JSONObj("cafe", "baby");
     // {"password":"baby","username":"cafe"}
-    System.out.println(JsonSerializer.serialize(obj));
+    System.out.println(JSONSerializer.serialize(obj));
   }
 
-  static class JsonObj {
-    @JsonField private String username;
+  static class JSONObj {
+    @JSONField private String username;
 
-    @JsonField("password")
+    @JSONField("password")
     private String password;
 
-    public JsonObj(String username, String password) {
+    public JSONObj(String username, String password) {
       this.username = username;
       this.password = password;
     }
 
     @Override
     public String toString() {
-      return "JsonObj{" + "username='" + username + '\'' + ", password='" + password + '\'' + '}';
+      return "JSONObj{" + "username='" + username + '\'' + ", password='" + password + '\'' + '}';
     }
 
     public static void main(String[] args) {
-      // com.bronya.JsonFieldTest$JsonObj
-      System.out.println(JsonObj.class.getName());
+      // com.bronya.JSONFieldTest$JSONObj
+      System.out.println(JSONObj.class.getName());
     }
   }
 }
 
-class JsonObj {
+class JSONObj {
   @Override
   public String toString() {
-    return "JsonObj{}";
+    return "JSONObj{}";
   }
 
   public static void main(String[] args) {
-    // com.bronya.JsonObj
-    System.out.println(JsonObj.class.getName());
+    // com.bronya.JSONObj
+    System.out.println(JSONObj.class.getName());
   }
 }
