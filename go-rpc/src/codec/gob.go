@@ -51,7 +51,7 @@ func (gobCodec *GobCodec) Write(header *Header, body any) (err error) {
 	return // nil
 }
 
-// 检验 GobCodec 结构体是否实现了 Codec 接口
+// 验证 GobCodec 结构体是否实现了 Codec 接口
 var _ Codec = (*GobCodec)(nil)
 
 // NewGobCodec 消息的 gob 编解码器的工厂方法
