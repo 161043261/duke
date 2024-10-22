@@ -1,1 +1,0 @@
-Data classes only have fields, getters and setters

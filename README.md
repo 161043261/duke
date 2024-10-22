@@ -13,7 +13,7 @@
 - gRPC
 - Protocol Buffer
 - Git
-- ZooKeeper (Optional)
+- RabbitMQ (Optional)
 - K8S (Optional)
 
 ## Java
@@ -29,8 +29,6 @@
   - [java-func](./java-func/)
 - MyBatis, SpringBoot
   - [java-proj](./java-proj/)
-- Kafka
-  - [java-kafka](./java-kafka/)
 - Netty
   - [java-socket](./java-socket/)
 - 面试: JVM
