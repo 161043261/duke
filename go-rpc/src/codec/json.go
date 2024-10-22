@@ -6,11 +6,11 @@ import (
 	"io"
 )
 
-// JSONCodec json 编解码器
+// JSONCodec JSON 编解码器
 // conn 使用 TCP 或 UNIX 等协议建立的 socket 连接, 实现了 Read, Write, Close 方法
 // buf 有缓冲区的 writer
-// decoder json 解码器, 解码 (反序列化): bytes => Go 对象
-// encoder json 编码器, 编码 (序列化): Go 对象 => bytes
+// decoder JSON 解码器, 解码 (反序列化): bytes => Go 对象
+// encoder JSON 编码器, 编码 (序列化): Go 对象 => bytes
 type JSONCodec struct {
 	conn    io.ReadWriteCloser
 	buf     *bufio.Writer
@@ -54,7 +54,7 @@ func (jsonCodec *JSONCodec) Write(header *Header, body any) (err error) {
 // 验证 JSONCodec 结构体是否实现了 Codec 接口
 var _ Codec = (*JSONCodec)(nil)
 
-// NewJSONCodec json 编解码器的构造方法
+// NewJSONCodec JSON 编解码器的构造方法
 // io.ReadWriteCloser 要求实现 Read, Write, Close 方法
 func NewJSONCodec(conn io.ReadWriteCloser) Codec {
 	buf := bufio.NewWriter(conn)

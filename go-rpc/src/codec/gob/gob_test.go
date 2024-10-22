@@ -11,7 +11,7 @@ import (
 
 // Gob 是 Golang 序列化 (Go 结构体 -> bytes) 和反序列化 (bytes -> Go 结构体) 时, 二进制数据格式
 // 类似 Java 的 Serialization
-// Gob 通常用于远程过程调用 (RPC, Remote Proccess Call) 时, 参数 Args 和响应 Reply 的传输
+// Gob 通常用于远程过程调用 (RPC, Remote Process Call) 时, 参数 Args 和响应 Reply 的传输
 
 // 要求
 // 1. 公开  (首字母大写) 字段

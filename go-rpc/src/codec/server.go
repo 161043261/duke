@@ -14,7 +14,7 @@ import (
 // MagicNum 魔数, 用于区分协议
 const MagicNum = 0xCAFE
 
-// Option 消息协商, 默认使用 json 编解码方式
+// Option 消息协商, 默认使用 JSON 编解码方式
 // MagicNum 魔数, 用于区分协议
 // CodecType 指定 Header 和 Body 的编解码方式 (Gob, JSON)
 type Option struct {
@@ -77,9 +77,9 @@ func (server *Server) serveConn(conn net.Conn) {
 }
 
 func (server *Server) startCodec(codecIns Codec) {
-	// 等价于 mut := &sync.Mutex{}
-	mut := new(sync.Mutex)
-	// 等价于 mut := &sync.WaitGroup{}
+	// 等价于 sendMut := &sync.Mutex{}
+	sendMut := new(sync.Mutex)
+	// 等价于 sendMut := &sync.WaitGroup{}
 	wg := new(sync.WaitGroup)
 
 	for {
@@ -89,11 +89,11 @@ func (server *Server) startCodec(codecIns Codec) {
 				break
 			}
 			req.header.Error = err.Error()
-			server.writeResp(codecIns, req.header, struct{}{}, mut)
+			server.writeResp(codecIns, req.header, struct{}{}, sendMut)
 			continue
 		}
 		wg.Add(1)
-		go server.handleReq(codecIns, req, mut, wg)
+		go server.handleReq(codecIns, req, sendMut, wg)
 	}
 	wg.Wait()
 
@@ -102,10 +102,10 @@ func (server *Server) startCodec(codecIns Codec) {
 
 // request 请求
 // header 请求头
-// argv, replyVal 请求体
+// argsVal, replyVal 请求体
 type request struct {
-	header         *Header
-	argv, replyVal reflect.Value
+	header            *Header
+	argsVal, replyVal reflect.Value
 }
 
 func (server *Server) readReqHeader(codecIns Codec) (*Header, error) {
@@ -127,28 +127,29 @@ func (server *Server) readReq(codecIns Codec) (*request, error) {
 	}
 	req := &request{header: header_}
 
-	// TODO
-	// <<< 解码 (反序列化) 请求体
-	req.argv = reflect.New(reflect.TypeOf(""))
-	if err = codecIns.ReadBody(req.argv.Interface()); err != nil {
+	// 解码 (反序列化) 请求体
+	// Header => request.header
+	// Body => request.argsVal
+	req.argsVal = reflect.New(reflect.TypeOf(struct{}{}))
+
+	if err = codecIns.ReadBody(req.argsVal.Interface()); err != nil {
 		log.Println("RPC server: read request error", err.Error())
 	}
-	// >>>
 
 	return req, nil
 }
 
-func (server *Server) handleReq(codecIns Codec, req *request, mut *sync.Mutex, wg *sync.WaitGroup) {
+func (server *Server) handleReq(codecIns Codec, req *request, sendMut *sync.Mutex, wg *sync.WaitGroup) {
 	defer wg.Done()
-	log.Printf("Header: %#v, Args: %v\n", req.header, req.argv.Elem())
+	log.Printf("Header: %#v, Args (Body): %v\n", req.header, req.argsVal.Elem())
 	req.replyVal = reflect.ValueOf(fmt.Sprintf("Message %d response", req.header.Seq))
-	server.writeResp(codecIns, req.header, req.replyVal.Interface() /* body */, mut)
+	server.writeResp(codecIns, req.header, req.replyVal.Interface() /* body */, sendMut)
 }
 
 // synchronized
-func (server *Server) writeResp(codecIns Codec, header *Header, body any, mut *sync.Mutex) {
-	mut.Lock()
-	defer mut.Unlock()
+func (server *Server) writeResp(codecIns Codec, header *Header, body any, sendMut *sync.Mutex) {
+	sendMut.Lock()
+	defer sendMut.Unlock()
 	if err := codecIns.Write(header, body); err != nil {
 		log.Println("RPC server: write response error", err.Error())
 	}

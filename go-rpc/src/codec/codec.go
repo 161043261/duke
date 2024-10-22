@@ -33,8 +33,8 @@ type NewCodec func(io.ReadWriteCloser) Codec
 // Type 编解码器的类型, 基础类型为 string
 type Type string
 
-// GobType gob 编解码方式
-// JSONType json 编解码方式
+// GobType: Gob 编解码方式
+// JSONType: JSON 编解码方式
 const (
 	GobType  Type = "application/gob"
 	JSONType Type = "application/json"

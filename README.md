@@ -50,7 +50,7 @@
 ## C/C++
 
 - C/C++ 基础
-  - [cpp-learn](./cpp-learn/)
+  - [cpp-ns3](./cpp-ns3/)
 - C/C++ 命令 gcc/g++, clang/clang++, ...
 - Makefile, CMake
 - C/C++ 并发编程

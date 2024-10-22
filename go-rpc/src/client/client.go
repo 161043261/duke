@@ -1,0 +1,155 @@
+package client
+
+import (
+	"encoding/json"
+	"errors"
+	"fmt"
+	"io"
+	"log"
+	"net"
+	"sync"
+
+	"bronya.com/go-rpc/src/codec"
+)
+
+type Call struct {
+	Seq           uint64
+	ServiceMethod string // format "Service.Method"
+	Args          any
+	Reply         any
+	Error         error
+	Done          chan *Call
+}
+
+func (call *Call) done() {
+	call.Done <- call
+}
+
+type Client struct {
+	codecIns codec.Codec
+	opt      codec.Option
+	header   codec.Header
+	seq      uint64
+	pending  map[uint64]*Call // 排队未处理的请求
+
+	sendMut sync.Mutex
+	mut     sync.Mutex
+
+	isClosed   bool // 客户端主动关闭
+	srvRefused bool // 服务器异常, 客户端被动关闭
+}
+
+var _ io.Closer = (*Client)(nil)
+
+var ErrUnAvail = errors.New("client unavailable")
+
+// Close synchronized
+func (client *Client) Close() error {
+	client.mut.Lock()
+	defer client.mut.Unlock()
+
+	if client.isClosed {
+		return ErrUnAvail
+	}
+
+	client.isClosed = true
+	return client.codecIns.Close()
+}
+
+func (client *Client) IsAvail() bool {
+	client.mut.Lock()
+	defer client.mut.Lock()
+	return !client.srvRefused && !client.isClosed
+}
+
+func (client *Client) registerCall(call *Call) (uint64, error) {
+	client.mut.Lock()
+	defer client.mut.Unlock()
+
+	if client.isClosed || client.srvRefused {
+		return 0, ErrUnAvail
+	}
+
+	call.Seq = client.seq
+	client.pending[call.Seq] = call
+	client.seq++
+	return call.Seq, nil
+}
+
+func (client *Client) removeCall(seq uint64) *Call {
+	client.mut.Lock()
+	defer client.mut.Unlock()
+
+	call := client.pending[seq]
+
+	// func delete(m map[Type]Type1, key Type)
+	delete(client.pending, seq)
+	return call
+}
+
+func (client *Client) terminateCall(err error) {
+	client.sendMut.Lock()
+	defer client.sendMut.Unlock()
+	client.mut.Lock()
+	defer client.sendMut.Unlock()
+	client.srvRefused = true
+	for _, call := range client.pending {
+		call.Error = err
+		call.done()
+	}
+}
+
+func (client *Client) recv() {
+	var err error
+
+	for err == nil {
+		var header codec.Header
+		if err = client.codecIns.ReadHeader(&header); err != nil {
+			break
+		}
+		call := client.removeCall(header.Seq)
+		switch {
+		case call == nil:
+			err = client.codecIns.ReadBody(nil)
+		case header.Error != "":
+			call.Error = fmt.Errorf(header.Error)
+			call.done()
+		default:
+			err = client.codecIns.ReadBody(call.Reply)
+			if err != nil {
+				call.Error = errors.New("reading body error: " + err.Error())
+			}
+			call.done()
+		}
+		client.terminateCall(err)
+	}
+}
+
+func NewClient(conn net.Conn, opt *codec.Option) (*Client, error) {
+	newCodec := codec.Type2NewCodec[opt.CodecType]
+
+	if newCodec == nil {
+		err := fmt.Errorf("invalid codec type")
+		log.Println("RPC client: invalid codec type:", err)
+		return nil, err
+	}
+
+	if err := json.NewEncoder(conn).Encode(opt); err != nil {
+		log.Println("RPC client: encode error:", err)
+		_ = conn.Close()
+		return nil, err
+	}
+
+	return startClient(newCodec(conn), opt), nil
+}
+
+func startClient(codecIns codec.Codec, opt *codec.Option) *Client {
+	client := &Client{
+		codecIns: codecIns,
+		opt:      *opt,
+		seq:      1,
+		pending:  make(map[uint64]*Call),
+	}
+	go client.recv()
+	return client
+}

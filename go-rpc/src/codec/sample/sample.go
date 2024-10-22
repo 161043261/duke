@@ -38,7 +38,7 @@ func (server *Server) serve() {
 
 	err = os.Remove(sockName)
 	if err != nil {
-		log.Println(err.Error())
+		log.Println("Remove file error:", err.Error())
 	}
 
 	listener, err := net.Listen("unix", sockName)
