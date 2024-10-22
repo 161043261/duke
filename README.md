@@ -13,6 +13,8 @@
 - gRPC
 - Protocol Buffer
 - Git
+- ZooKeeper (Optional)
+- K8S (Optional)
 
 ## Java
 

@@ -11,7 +11,7 @@ services:
     hostname: redis_container
     ports:
       - "6379:6379"
-    # restart: always
+    restart: always
 
   # docker-compose up -d mysql_container
   mysql_container:
@@ -42,6 +42,7 @@ services:
       - ALLOW_ANONYMOUS_LOGIN=yes
     volumes:
       - ./volume/zookeeper:/bitnami/zookeeper
+    restart: always
 
   # docker-compose up -d kafka_container
   kafka_container:
@@ -66,4 +67,5 @@ services:
       - ./volume/kafka:/bitnami/kafka
     depends_on:
       - zookeeper_container
+    restart: always
 # docker-compose down -v # volume
