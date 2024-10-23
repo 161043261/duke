@@ -29,11 +29,11 @@ void testSingleton();
 // std::shared_mutex (higher performance)
 
 class MapWrapper {
-  private:
+   private:
     std::map<std::string, std::string> data_;
     // shared_mutex (higher performance)
-    mutable std::shared_mutex mut_; // M&M principle: mutable & mutex
-  public:
+    mutable std::shared_mutex mut_;  // M&M principle: mutable & mutex
+   public:
     void set(const std::string &key, const std::string &value);
 
     // 第一个 const 表示: 该方法不会修改传递的参数
@@ -48,4 +48,4 @@ void writeMap(MapWrapper &map_, const std::string &k, const std::string &v,
 
 void recursiveFunc(int count);
 
-#endif // SHARED_DATA_TEST_H
+#endif  // SHARED_DATA_TEST_H

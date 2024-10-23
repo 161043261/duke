@@ -54,26 +54,26 @@ void task() { cout << "I am a sub thread\n"; }
 //! ctest -R ThreadTest
 TEST(ThreadTest, TestThread) {
     //! 传递一个函数
-    thread t1{task}; // 创建并启动线程 t1
-    t1.join();       // 主线程等待线程 t1 运行结束
+    thread t1{task};  // 创建并启动线程 t1
+    t1.join();        // 主线程等待线程 t1 运行结束
 
     //! 传递一个可调用对象, 例如重载了 operator() 的对象 Callable{}
-    thread t2{CallableClass{}}; // 创建并启动线程 t2
-    t2.join();                  // 主线程等待线程 t2 运行结束
+    thread t2{CallableClass{}};  // 创建并启动线程 t2
+    t2.join();                   // 主线程等待线程 t2 运行结束
 
     //! 传递一个 lambda 表达式
-    thread t3( // 创建并启动线程 t3
+    thread t3(  // 创建并启动线程 t3
         []() -> void { cout << "I am a sub thread\n"; });
-    t3.join(); // 主线程等待线程 t3 运行结束
+    t3.join();  // 主线程等待线程 t3 运行结束
 
     //! 传递一个可调用对象, 例如重载了 operator() 的对象 Func{v}
     int v = 0;
-    thread t4{CallableStruct{v}, 5}; // 创建并启动线程 t4
-    t4.detach(); // 子线程 t4 分离主线程 detach 后不能再 join
+    thread t4{CallableStruct{v}, 5};  // 创建并启动线程 t4
+    t4.detach();  // 子线程 t4 分离主线程 detach 后不能再 join
 
     // 硬件线程上下文的数量
     const unsigned int n = thread::hardware_concurrency();
-    cout << "Hardware concurrency: " << n << '\n'; // 24
+    cout << "Hardware concurrency: " << n << '\n';  // 24
 }
 
 // RAII, Resource Acquisition Is Initialization
@@ -104,12 +104,12 @@ TEST(RAIITest, TestRAII) {
 
     int x = 1;
     cout << "Main thread: &x = " << &x << '\n';
-    thread t2{callableFunc, x}; // x 传递值
+    thread t2{callableFunc, x};  // x 传递值
     t2.join();
 
     // ref: reference
     // cref: const reference
-    thread t3{callableFunc, ref(x)}; // x 传递引用
+    thread t3{callableFunc, ref(x)};  // x 传递引用
     t3.join();
 
     // 使用成员函数指针
@@ -160,21 +160,21 @@ TEST(ThisThreadTest, TestThisThread) {
     // 使用移动构造 std::move 转移线程的资源的所有权
     thread t2{[]() -> void { cout << "t2 " << this_thread::get_id() << '\n'; }};
     cout << "Before move construct, t2 can join: "
-         << (t2.joinable() ? "true\n" : "false\n"); // true
+         << (t2.joinable() ? "true\n" : "false\n");  // true
     // 使用移动构造 std::move 转移 t2 线程的资源的所有权给 t3 线程
     thread t3{std::move(t2)};
     cout << "After move construct, t2 can join: "
-         << (t2.joinable() ? "true\n" : "false\n"); // false
+         << (t2.joinable() ? "true\n" : "false\n");  // false
     t3.join();
 
     // 使用移动赋值 std::move 转移线程资源的所有权
     thread t4{[]() -> void { cout << "t4 " << this_thread::get_id() << '\n'; }};
     cout << "Before move assignment, t4 can join: "
-         << (t4.joinable() ? "true\n" : "false\n"); // true
+         << (t4.joinable() ? "true\n" : "false\n");  // true
     // 使用移动构造 std::move 转移 t4 线程的资源的所有权给 t5 线程
     thread t5 = std::move(t4);
     cout << "After move assignment, t4 can join: "
-         << (t4.joinable() ? "true\n" : "false\n"); // false
+         << (t4.joinable() ? "true\n" : "false\n");  // false
     t5.join();
 
     // 在函数体中转移线程资源的所有权

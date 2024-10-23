@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
     }
 
     //* 调用 socket 函数, 创建 socket 套接字
-    int serverSocketFd = //! IPPROTO_IP/* Dummy protocol for TCP.  */
+    int serverSocketFd =  //! IPPROTO_IP/* Dummy protocol for TCP.  */
         socket(PF_INET, SOCK_STREAM, IPPROTO_IP /* 0 */);
     // server socket file descriptor
 
@@ -24,10 +24,10 @@ int main(int argc, char *argv[]) {
     }
 
     struct sockaddr_in serverAddr = {0};
-    serverAddr.sin_family = AF_INET; // IPv4 协议族
+    serverAddr.sin_family = AF_INET;  // IPv4 协议族
     serverAddr.sin_addr.s_addr =
-        htonl(INADDR_ANY); // 0.0.0.0 接受所有 IP 地址的 TCP/UDP 连接
-    serverAddr.sin_port = htons(atoi(argv[1])); // 端口 = 第 1 个命令行参数
+        htonl(INADDR_ANY);  // 0.0.0.0 接受所有 IP 地址的 TCP/UDP 连接
+    serverAddr.sin_port = htons(atoi(argv[1]));  // 端口 = 第 1 个命令行参数
 
     //* 调用 bind 函数, 给 socket 套接字分配 IPv4 地址和端口
     if (bind(serverSocketFd, (struct sockaddr *)&serverAddr,

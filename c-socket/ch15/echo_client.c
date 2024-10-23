@@ -55,9 +55,9 @@ int main(int argc, char *argv[]) {
             break;
         }
         // send[strlen(send) - 1] = '\0'; // 将 \n 替换为 \0
-        fputs(send, writeFp);          //! socket 缓冲 <-- 客户端写缓冲
-        fflush(writeFp);               //! 清空客户端写缓冲
-        fgets(recv, BUF_SIZE, readFp); //! socket 缓冲 --> 客户端读缓冲
+        fputs(send, writeFp);           //! socket 缓冲 <-- 客户端写缓冲
+        fflush(writeFp);                //! 清空客户端写缓冲
+        fgets(recv, BUF_SIZE, readFp);  //! socket 缓冲 --> 客户端读缓冲
         printf("Echo from server %s\n", recv);
     }
     fclose(writeFp);

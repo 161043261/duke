@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
     struct sockaddr_in serverAddr = {0};
     serverAddr.sin_family = AF_INET;
     serverAddr.sin_addr.s_addr =
-        htonl(INADDR_ANY); // 0.0.0.0 接受所有 IP 地址的 TCP/UDP 连接
+        htonl(INADDR_ANY);  // 0.0.0.0 接受所有 IP 地址的 TCP/UDP 连接
     serverAddr.sin_port = htons(atoi(argv[1]));
 
     if (bind(serverSocketFd, (struct sockaddr *)&serverAddr,
@@ -42,27 +42,27 @@ int main(int argc, char *argv[]) {
     struct timeval timeout;
     char buf[BUF_SIZE];
 
-    FD_ZERO(&fdSet);                // fdSet 置 0, 不监听所有的文件描述符
-    FD_SET(serverSocketFd, &fdSet); //* 监听 serverSocketFd
+    FD_ZERO(&fdSet);  // fdSet 置 0, 不监听所有的文件描述符
+    FD_SET(serverSocketFd, &fdSet);  //* 监听 serverSocketFd
     int numFd = serverSocketFd + 1;
 
     while (1) {
-        backup = fdSet;         // 备份 fdSet
-        timeout.tv_sec = 5;     // 秒
-        timeout.tv_usec = 5000; // 毫秒
+        backup = fdSet;          // 备份 fdSet
+        timeout.tv_sec = 5;      // 秒
+        timeout.tv_usec = 5000;  // 毫秒
 
-        int numReady = //! numReady - IO 就绪 fd 数量
+        int numReady =  //! numReady - IO 就绪 fd 数量
             select(
-                numFd,   //! numFd       - fd_set 的最大 fd 值 +1 (fd 的数量)
-                &backup, //! readFdSet - &fd_set 监听是否可读, NULL 表示不监听
-                NULL, //! writeFdSet   - &fd_set 监听是否可写, NULL 表示不监听
-                NULL, //! exceptFdSet  - &fd_set 监听有无异常, NULL 表示不监听
-                &timeout);    //! timeout 超时
-        if (numReady == -1) { //! 有异常返回 -1
+                numFd,  //! numFd       - fd_set 的最大 fd 值 +1 (fd 的数量)
+                &backup,  //! readFdSet - &fd_set 监听是否可读, NULL 表示不监听
+                NULL,  //! writeFdSet   - &fd_set 监听是否可写, NULL 表示不监听
+                NULL,  //! exceptFdSet  - &fd_set 监听有无异常, NULL 表示不监听
+                &timeout);     //! timeout 超时
+        if (numReady == -1) {  //! 有异常返回 -1
             perror("[ERROR] Select error");
             break;
         }
-        if (numReady == 0) { //! 超时返回 0
+        if (numReady == 0) {  //! 超时返回 0
             puts("Timeout!");
             continue;
         }
@@ -80,7 +80,7 @@ int main(int argc, char *argv[]) {
                     accept(serverSocketFd, (struct sockaddr *)&clientAddr,
                            &clientAddrLen);
                 FD_SET(clientSocketFd,
-                       &backup); //* 监听 clientSocketFd
+                       &backup);  //* 监听 clientSocketFd
                 if (numFd < clientSocketFd + 1) {
                     numFd = clientSocketFd + 1;
                 }
@@ -93,8 +93,9 @@ int main(int argc, char *argv[]) {
             while (1) {
                 int readBytes = read(clientSocketFd, buf, BUF_SIZE);
                 if (readBytes <= 0) {
-                    FD_CLR(clientSocketFd, &backup); //* 不再监听 clientSocketFd
-                    close(clientSocketFd); //* 断开服务器与客户端的连接
+                    FD_CLR(clientSocketFd,
+                           &backup);        //* 不再监听 clientSocketFd
+                    close(clientSocketFd);  //* 断开服务器与客户端的连接
                     printf("Closed client fd[%d/%d]\n", clientSocketFd,
                            numFd - 1);
                     break;

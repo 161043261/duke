@@ -30,7 +30,7 @@ TEST(DataRaceTest, TestDataRace) {
 //! ctest -R UnorderedTest
 TEST(UnorderedTest, TestUnordered) {
     vector<thread> ts;
-    ts.reserve(5); // 预分配数组大小为 5
+    ts.reserve(5);  // 预分配数组大小为 5
     cout << "size = " << ts.size() << ", cap = " << ts.capacity() << '\n';
     for (size_t i = 0; i < 5; i++) {
         // [&, =, &x, y]
@@ -52,12 +52,12 @@ static std::mutex mut;
 //! ctest -R MutexTest
 TEST(MutexTest, TestMutex) {
     vector<thread> ts;
-    ts.reserve(5); // 预分配数组大小为 5
+    ts.reserve(5);  // 预分配数组大小为 5
     for (size_t i = 0; i < 5; i++) {
         ts.emplace_back([i /* 使用值捕获 */]() -> void {
-            mut.lock(); // 对互斥锁 mut 加锁
+            mut.lock();  // 对互斥锁 mut 加锁
             cout << "i = " << i << "; ";
-            mut.unlock(); // 对互斥锁 mut 解锁
+            mut.unlock();  // 对互斥锁 mut 解锁
         });
     }
     for (auto &t : ts) {
@@ -69,12 +69,12 @@ TEST(MutexTest, TestMutex) {
 //! ctest -R LockGuardTest
 TEST(LockGuardTest, TestLockGuard) {
     vector<thread> ts;
-    ts.reserve(5); // 预分配数组容量为 5
+    ts.reserve(5);  // 预分配数组容量为 5
     for (size_t i = 0; i < 5; i++) {
         ts.emplace_back([i /* 使用值捕获 */]() -> void {
-            lock_guard<mutex> lock{mut}; // 对互斥锁 mut 加 RAII 风格的锁
+            lock_guard<mutex> lock{mut};  // 对互斥锁 mut 加 RAII 风格的锁
             cout << "i = " << i << "; ";
-        }); // RAII 风格的锁销毁 (解锁)
+        });  // RAII 风格的锁销毁 (解锁)
     }
     for (auto &t : ts) {
         t.join();
@@ -86,7 +86,7 @@ TEST(LockGuardTest, TestLockGuard) {
 //   std::lock_guard<std::mutex> lock{mut}; // lock
 // } // unlock
 void appendlist(int n, list<int> &slice /* 引用 */) {
-    vector<int> nums(n + 1); // 分配数组容量为 n + 1
+    vector<int> nums(n + 1);  // 分配数组容量为 n + 1
     //! #include <numeric>
     iota(nums.begin(), nums.end(), 0);
 
@@ -97,9 +97,9 @@ void appendlist(int n, list<int> &slice /* 引用 */) {
     {
         int sum = std::accumulate(nums.cbegin(), nums.cend(), 0);
         //! c++17 泛型推断
-        lock_guard /* <mutex> */ lock{mut}; // 对互斥锁 mut 加 RAII 风格的锁
+        lock_guard /* <mutex> */ lock{mut};  // 对互斥锁 mut 加 RAII 风格的锁
         slice.push_back(sum);
-    } // RAII 风格的锁销毁 (解锁)
+    }  // RAII 风格的锁销毁 (解锁)
 }
 
 void fmtPrintList(const list<int> &slice) {
@@ -149,7 +149,7 @@ TEST(TryLockTest, TestTryLock) {
 }
 
 static std::mutex mut1, mut2;
-static int sharedInt{}; // sharedInt = 0;
+static int sharedInt{};  // sharedInt = 0;
 
 // 有多个互斥锁时, 可能有死锁问题
 
@@ -332,7 +332,7 @@ TEST(OnceExceptionTest, TestOnceException) {
 }
 
 Instance &getInstance() {
-    static Instance instance; // 静态局部变量的初始化是并发安全的
+    static Instance instance;  // 静态局部变量的初始化是并发安全的
     return instance;
 }
 
@@ -348,13 +348,13 @@ TEST(SingletonTest, TestSingleton) {
 
 void MapWrapper::set(const std::string &key, const std::string &value) {
     // 互斥锁 (独占写锁)
-    lock_guard<shared_mutex> lock(this->mut_); // 独占写
+    lock_guard<shared_mutex> lock(this->mut_);  // 独占写
     this->data_[key] = value;
 }
 
 string MapWrapper::get(const std::string &key) const {
     // 共享 (读) 锁
-    shared_lock<shared_mutex> lock(this->mut_); // 共享读
+    shared_lock<shared_mutex> lock(this->mut_);  // 共享读
     const auto it = this->data_.find(key);
     //! error: non-pointer operand type 'const std::basic_string<char>'
     //! incompatible with nullptr
@@ -403,13 +403,13 @@ recursive_mutex recursiveMut;
 
 // recurseFunc 递归函数, 每次调用时, 都对 recursiveMut 加锁
 void recursiveFunc(int count) {
-    recursiveMut.lock(); // 对 recursiveMut 加锁
+    recursiveMut.lock();  // 对 recursiveMut 加锁
     cout << "Locked by thread " << std::this_thread::get_id()
          << ", count: " << count << '\n';
     if (count > 0) {
-        recursiveFunc(count - 1); // 递归
+        recursiveFunc(count - 1);  // 递归
     }
-    recursiveMut.unlock(); // 对 recursive 解锁
+    recursiveMut.unlock();  // 对 recursive 解锁
 }
 
 //! ctest -R RecursiveTest1
@@ -429,7 +429,7 @@ TEST(RecursiveTest2, TestRecursive2) {
         cout << "Locked by thread " << std::this_thread::get_id()
              << ", count: " << count << '\n';
         if (count > 0) {
-            recursiveFunc(count - 1); // 递归
+            recursiveFunc(count - 1);  // 递归
         }
     };
     thread t1{recursiveFunc, 3};

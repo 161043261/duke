@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
     struct sockaddr_in clientAddr = {0};
     clientAddr.sin_family = AF_INET;
     clientAddr.sin_addr.s_addr =
-        htonl(INADDR_ANY); //! 0.0.0.0 接受所有 IP 地址的 TCP/UDP 连接
+        htonl(INADDR_ANY);  //! 0.0.0.0 接受所有 IP 地址的 TCP/UDP 连接
     clientAddr.sin_port = htons(atoi(broadcastPort));
     socklen_t clientAddrLen = sizeof(clientAddr);
 

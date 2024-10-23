@@ -26,10 +26,10 @@ int main(int argc, char *argv[]) {
     int serverSocketFd = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
 
     struct sockaddr_in serverAddr = {0};
-    serverAddr.sin_family = AF_INET; // IPv4 协议族
+    serverAddr.sin_family = AF_INET;  // IPv4 协议族
     // 0.0.0.0 接受所有 IP 地址的 TCP/UDP 连接
     serverAddr.sin_addr.s_addr = htonl(INADDR_ANY);
-    serverAddr.sin_port = htons(atoi(argv[1])); // 端口 = 第 1 个命令行参数
+    serverAddr.sin_port = htons(atoi(argv[1]));  // 端口 = 第 1 个命令行参数
 
     // 调用 bind 函数, 给 socket 套接字分配 IP 地址和端口
     if (bind(serverSocketFd, (struct sockaddr *)&serverAddr,
@@ -52,7 +52,7 @@ int main(int argc, char *argv[]) {
     //! 定义 epollEvent 事件: serverSocketFd 可读
     //! 触发方式: 边沿触发
     struct epoll_event epollEvent = {0};
-    epollEvent.events = EPOLLIN | EPOLLET; // 文件描述符 serverSocketFd 可读
+    epollEvent.events = EPOLLIN | EPOLLET;  // 文件描述符 serverSocketFd 可读
     epollEvent.data.fd = serverSocketFd;
 
     //! epoll_ctl 函数
@@ -99,7 +99,7 @@ int main(int argc, char *argv[]) {
                 //! 定义 cliEpollEvent 事件: clientSocketFd 可读
                 //! 触发方式: 水平触发
                 struct epoll_event cliEpollEvent = {0};
-                cliEpollEvent.events = EPOLLIN; // clientSocketFd 可读
+                cliEpollEvent.events = EPOLLIN;  // clientSocketFd 可读
 
                 //// 定义 cliEpollEvent 事件: clientSocketFd 可读
                 //// 触发方式: 水平触发

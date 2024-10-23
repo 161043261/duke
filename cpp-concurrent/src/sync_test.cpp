@@ -22,7 +22,7 @@ static condition_variable condVar;
 //! ctest -R ConditionVariableTest
 TEST(ConditionVariableTest, TestConditionVariable) {
     thread waiter{[]() -> void {
-        unique_lock<mutex> lock{mut}; // 独占锁
+        unique_lock<mutex> lock{mut};  // 独占锁
         // 条件等待, 直到 Lambda 函数返回 true
         cout << "Waiter is waiting\n";
 
@@ -49,10 +49,12 @@ TEST(ConditionVariableTest, TestConditionVariable) {
     signer.join();
 }
 
-template <typename T> ThreadSafeQueue<T>::ThreadSafeQueue() = default;
+template <typename T>
+ThreadSafeQueue<T>::ThreadSafeQueue() = default;
 
 // 入队
-template <typename T> void ThreadSafeQueue<T>::enqueue(T value) {
+template <typename T>
+void ThreadSafeQueue<T>::enqueue(T value) {
     {
         unique_lock<mutex> lock{mut};
         queue_.push(value);
@@ -61,7 +63,8 @@ template <typename T> void ThreadSafeQueue<T>::enqueue(T value) {
 }
 
 // 出队, 队列为空则等待
-template <typename T> shared_ptr<T> ThreadSafeQueue<T>::dequeue() {
+template <typename T>
+shared_ptr<T> ThreadSafeQueue<T>::dequeue() {
     unique_lock<mutex> lock{mut};
     // todo 引用捕获 this 指针
     condVar.wait(
@@ -187,12 +190,12 @@ TEST(AsyncTest4, TestAsync4) {
     std::async(std::launch::async, []() -> void {
         this_thread::sleep_for(chrono::seconds(3));
         cout << "Async task1 returns\n";
-    }); // 等待 3s 后 task1 执行结束
+    });  // 等待 3s 后 task1 执行结束
 
     std::async(std::launch::async, []() -> void {
         this_thread::sleep_for(chrono::seconds(3));
         cout << "Async task2 returns\n";
-    }); // 等待 3s 后 task2 执行结束
+    });  // 等待 3s 后 task2 执行结束
 }
 
 //! ctest -R AsyncTest5 -V
@@ -217,14 +220,14 @@ TEST(AsyncTest6, TestAsync6) {
     // 将 fut1 异步任务的所有权移动给 fut2
     std::future<void> fut2{std::move(fut1)};
     // fut1 不能再调用 wait, get 等成员函数
-    fut1.wait(); // std::future_error: No associated state
+    fut1.wait();  // std::future_error: No associated state
 }
 
 //! ctest -R PackageTaskTest1
 TEST(PackageTaskTest1, TestPackageTask1) {
     std::packaged_task<double(int, int)> pkgTask(
         [](int a, int b) -> double { return std::pow(a, b); });
-    pkgTask(10, 2); // 执行传递的 lambda 函数, 无法获取 pkgTask 的返回值
+    pkgTask(10, 2);  // 执行传递的 lambda 函数, 无法获取 pkgTask 的返回值
 }
 
 //! ctest -R PackageTaskTest2
@@ -234,9 +237,9 @@ TEST(PackageTaskTest2, TestPackageTask2) {
         return std::pow(a, b);
     });
     future<double> fut = pkgTask.get_future();
-    pkgTask(10, 2); // 执行传递的 lambda 函数
+    pkgTask(10, 2);  // 执行传递的 lambda 函数
     cout << "Packaged task returns: " << fut.get()
-         << '\n'; // 获取 pkgTask 的返回值
+         << '\n';  // 获取 pkgTask 的返回值
 }
 
 //! ctest -R PromiseTest

@@ -23,12 +23,12 @@ int main(int argc, char *argv[]) {
     }
 
     struct sockaddr_in serverAddr = {1};
-    serverAddr.sin_family = AF_INET; // IPv4 协议族
+    serverAddr.sin_family = AF_INET;  // IPv4 协议族
     // htonl 函数将一个 32 位 (4 字节) 的 int 整数从主机字节序转换为网络字节序
     serverAddr.sin_addr.s_addr =
-        htonl(INADDR_ANY); // 0.0.0.0 接受所有 IP 地址的 TCP/UDP 连接
+        htonl(INADDR_ANY);  // 0.0.0.0 接受所有 IP 地址的 TCP/UDP 连接
     // htons 函数将一个 16 位 (2 字节) 的 short 整数从主机字节序转换为网络字节序
-    serverAddr.sin_port = htons(atoi(argv[1])); // 端口 = 第 1 个命令行参数
+    serverAddr.sin_port = htons(atoi(argv[1]));  // 端口 = 第 1 个命令行参数
 
     //* 调用 bind 函数, 给 socket 套接字分配 IP 地址和端口
     if (bind(serverSocketFd, (struct sockaddr *)&serverAddr,
@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
         }
         write(clientSocketFd, buf, readBytes);
     }
-    close(clientSocketFd); // SocketConnection
-    close(serverSocketFd); // ServerSocketConnection
+    close(clientSocketFd);  // SocketConnection
+    close(serverSocketFd);  // ServerSocketConnection
     return 0;
 }

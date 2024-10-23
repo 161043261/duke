@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
     char buf[BUF_SIZE];
     while (!feof(fp)) {
         //! 文件未结束时返回 false, 结束时返回 true
-        fgets(buf, BUF_SIZE, fp); // 将文件读入 buf
+        fgets(buf, BUF_SIZE, fp);  // 将文件读入 buf
         //! 服务器广播 UDP 数据包
         sendto(udpSocketFd, buf, strlen(buf), 0,
                (struct sockaddr *)&broadcastAddr, sizeof(broadcastAddr));

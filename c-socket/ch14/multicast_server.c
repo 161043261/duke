@@ -33,9 +33,9 @@ int main(int argc, char *argv[]) {
     int udpSocketFd = socket(PF_INET, SOCK_DGRAM, IPPROTO_UDP);
 
     struct sockaddr_in multicastAddr = {0};
-    multicastAddr.sin_family = AF_INET; // IPv4 协议族
+    multicastAddr.sin_family = AF_INET;  // IPv4 协议族
     multicastAddr.sin_addr.s_addr =
-        inet_addr(multicastGroupIp); //! 多播组 IP 地址: D 类 IP 地址
+        inet_addr(multicastGroupIp);  //! 多播组 IP 地址: D 类 IP 地址
     //! 多播端口
     //! 服务器多播 UDP 数据包到多播组中所有主机 (客户端) 的 3333 号端口
     //! 客户端监听 3333 号端口
@@ -54,7 +54,7 @@ int main(int argc, char *argv[]) {
     char buf[BUF_SIZE];
     while (!feof(fp)) {
         //! 文件未结束时返回 false, 结束时返回 true
-        fgets(buf, BUF_SIZE, fp); // 将文件读入 buf
+        fgets(buf, BUF_SIZE, fp);  // 将文件读入 buf
         //! 服务器多播 UDP 数据包
         sendto(udpSocketFd, buf, strlen(buf), 0,
                (struct sockaddr *)&multicastAddr, sizeof(multicastAddr));

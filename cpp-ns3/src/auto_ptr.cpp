@@ -27,7 +27,7 @@ TEST(MakeSharedTest, TestMakeShared) {
     // 使用 std::make_shared 创建 std::shared_ptr 智能指针
     auto sp = make_shared<int>(10);
     foo(sp);
-    cout << *sp << '\n'; // 11
+    cout << *sp << '\n';  // 11
 }
 
 // auto sp = make_shared<int>{10};
@@ -43,26 +43,26 @@ TEST(MakeSharedTest, TestMakeShared) {
 
 TEST(Get_Set_UseCountTest, TestGet_Set_UseCount) {
     auto px = make_shared<int>(10);
-    auto py = px; // pointer 引用计数 +1
-    auto pz = px; // pointer 引用计数 +1
+    auto py = px;  // pointer 引用计数 +1
+    auto pz = px;  // pointer 引用计数 +1
 
-    cout << "px use_count: " << px.use_count() << '\n'; // 3
-    cout << "py use_count: " << py.use_count() << '\n'; // 3
-    cout << "pz use_count: " << pz.use_count() << '\n'; // 3
+    cout << "px use_count: " << px.use_count() << '\n';  // 3
+    cout << "py use_count: " << py.use_count() << '\n';  // 3
+    cout << "pz use_count: " << pz.use_count() << '\n';  // 3
 
     cout << "==================== py reset ====================" << '\n';
-    py.reset(); // 引用计数 -1
+    py.reset();  // 引用计数 -1
 
-    cout << "px use_count: " << px.use_count() << '\n'; // 2
-    cout << "py use_count: " << py.use_count() << '\n'; // 0
-    cout << "pz use_count: " << pz.use_count() << '\n'; // 2
+    cout << "px use_count: " << px.use_count() << '\n';  // 2
+    cout << "py use_count: " << py.use_count() << '\n';  // 0
+    cout << "pz use_count: " << pz.use_count() << '\n';  // 2
 
     cout << "==================== pz reset ====================" << '\n';
     pz.reset();
 
-    cout << "px use_count: " << px.use_count() << '\n'; // 1
-    cout << "py use_count: " << py.use_count() << '\n'; // 0
-    cout << "pz use_count: " << pz.use_count() << '\n'; // 0
+    cout << "px use_count: " << px.use_count() << '\n';  // 1
+    cout << "py use_count: " << py.use_count() << '\n';  // 0
+    cout << "pz use_count: " << pz.use_count() << '\n';  // 0
 }
 
 ///
@@ -97,13 +97,13 @@ TEST(UniquePtrTest, TestUniquePtr) {
         }
         if (p2 != nullptr) {
             p2->out("Second -- ");
-        } // Second -- Mamba out!
+        }  // Second -- Mamba out!
 
         p1 = std::move(p2);
 
         if (p1 != nullptr) {
             p1->out("Third -- ");
-        } // Third -- Mamba out!
+        }  // Third -- Mamba out!
         if (p2 != nullptr) {
             p2->out("Fourth -- ");
         }
@@ -134,8 +134,8 @@ TEST(SharedPtrTest, TestSharedPtr) {
     auto aDuke = make_shared<Duke>();
     aGopher->duke = aDuke;
     aDuke->gopher = aGopher;
-    assert(aGopher->duke.use_count() == 2); // 2
-    assert(aDuke->gopher.use_count() == 2); // 2
+    assert(aGopher->duke.use_count() == 2);  // 2
+    assert(aDuke->gopher.use_count() == 2);  // 2
     cout << "Shared pointer test return\n";
 }
 
@@ -148,32 +148,32 @@ TEST(SharedPtrTest, TestSharedPtr) {
 // 强引用 std::shared_ptr, std::unique_ptr 引用计数会 +1, 参与对象所有权管理
 // 弱引用 std::weak_ptr 引用计数不会 +1, 不参与对象所有权管理
 
-struct Jar;
+struct Dll;
 
 struct So {
-    weak_ptr<Jar> jar;
+    weak_ptr<Dll> dll;
     So() { cout << "New so\n"; }
     ~So() { cout << "Delete so\n"; }
 };
 
-struct Jar {
+struct Dll {
     weak_ptr<So> so;
-    Jar() { cout << "New jar\n"; }
-    ~Jar() { cout << "Delete jar\n"; }
+    Dll() { cout << "New dll\n"; }
+    ~Dll() { cout << "Delete dll\n"; }
 };
 
 TEST(WeakPtrTest, TestWeakPtr) {
     auto aSo = make_shared<So>();
-    auto aJar = make_shared<Jar>();
-    aSo->jar = aJar;
-    aJar->so = aSo;
-    assert(aSo->jar.use_count() == 1); // 1
-    assert(aJar->so.use_count() == 1); // 1
+    auto aDll = make_shared<Dll>();
+    aSo->dll = aDll;
+    aDll->so = aSo;
+    assert(aSo->dll.use_count() == 1);  // 1
+    assert(aDll->so.use_count() == 1);  // 1
     cout << "Weak pointer test return\n";
 }
 
 // New so
-// New jar
+// New dll
 // Weak pointer test return
-// Delete jar
+// Delete dll
 // Delete so

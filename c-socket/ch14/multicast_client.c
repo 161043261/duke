@@ -30,9 +30,9 @@ int main(int argc, char *argv[]) {
     }
 
     struct sockaddr_in clientAddr = {0};
-    clientAddr.sin_family = AF_INET; // IPv4 协议族
+    clientAddr.sin_family = AF_INET;  // IPv4 协议族
     clientAddr.sin_addr.s_addr =
-        htonl(INADDR_ANY); //! 0.0.0.0 接受所有 IP 地址的 TCP/UDP 连接
+        htonl(INADDR_ANY);  //! 0.0.0.0 接受所有 IP 地址的 TCP/UDP 连接
     clientAddr.sin_port = htons(/* short */ atoi(multicastPort));
     socklen_t clientAddrLen = sizeof(clientAddr);
 
@@ -45,9 +45,9 @@ int main(int argc, char *argv[]) {
 
     struct ip_mreq multicastAddr = {0};
     multicastAddr.imr_multiaddr.s_addr =
-        inet_addr(multicastGroupIp); // 多播组 IP 地址
+        inet_addr(multicastGroupIp);  // 多播组 IP 地址
     multicastAddr.imr_interface.s_addr =
-        htonl(INADDR_ANY); //! 0.0.0.0 接受所有 IP 地址的 TCP/UDP 连接
+        htonl(INADDR_ANY);  //! 0.0.0.0 接受所有 IP 地址的 TCP/UDP 连接
 
     //! 加入多播组, 期望接收目的地址 224.0.0.1 的多播数据包
     setsockopt(udpSocketFd, IPPROTO_IP, IP_ADD_MEMBERSHIP, &multicastAddr,

@@ -17,10 +17,10 @@ int main(int argc, char *argv[]) {
     }
     int serverSocketFd = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
     struct sockaddr_in serverAddr = {0};
-    serverAddr.sin_family = AF_INET; // IPv4 协议族
+    serverAddr.sin_family = AF_INET;  // IPv4 协议族
     // 0.0.0.0 接受所有 IP 地址的 TCP/UDP 连接
     serverAddr.sin_addr.s_addr = htonl(INADDR_ANY);
-    serverAddr.sin_port = htons(atoi(argv[1])); // 端口 = 第 1 个命令行参数
+    serverAddr.sin_port = htons(atoi(argv[1]));  // 端口 = 第 1 个命令行参数
     //* 调用 bind 函数, 给 socket 套接字分配 IP 地址和端口
     if (bind(serverSocketFd, (struct sockaddr *)&serverAddr,
              sizeof(serverAddr)) ==
@@ -55,7 +55,7 @@ int main(int argc, char *argv[]) {
     fflush(writeFp);
     //! 文件读; 写指针使用相同文件描述符创建
     //! 关闭任一文件指针时, 都会都会断开双向 IO 流
-    fclose(writeFp); //! 同时断开输入/输出流, 不能读写数据
+    fclose(writeFp);  //! 同时断开输入/输出流, 不能读写数据
 
     fgets(buf, BUF_SIZE, readFp);
     fputs(buf, stdout);

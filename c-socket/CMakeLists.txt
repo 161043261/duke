@@ -110,11 +110,12 @@ target_link_libraries(ch24_http_server Threads::Threads)
 
 find_program(CLANG_FORMAT clang-format)
 
+#! clang-format --style=google -dump-config > ./.clang-format
 if (CLANG_FORMAT)
     message(${CMAKE_SOURCE_DIR})
 
     add_custom_target(format ALL
-            COMMAND ${CLANG_FORMAT} -i -style=google
+            COMMAND ${CLANG_FORMAT} -i -style=file
             ${CMAKE_SOURCE_DIR}/ch01/*.c
             ${CMAKE_SOURCE_DIR}/ch02/*.c
             ${CMAKE_SOURCE_DIR}/ch03/*.c

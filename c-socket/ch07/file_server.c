@@ -20,12 +20,12 @@ int main(int argc, char *argv[]) {
     int serverSocketFd = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
 
     struct sockaddr_in serverAddr = {0};
-    serverAddr.sin_family = AF_INET; // IPv4 协议族
+    serverAddr.sin_family = AF_INET;  // IPv4 协议族
     // htonl 函数将一个 32 位 (4 字节) 的 int 整数从主机字节序转换为网络字节序
     serverAddr.sin_addr.s_addr =
-        htonl(INADDR_ANY); // 0.0.0.0 接受所有 IP 地址的 TCP/UDP 连接
+        htonl(INADDR_ANY);  // 0.0.0.0 接受所有 IP 地址的 TCP/UDP 连接
     // htons 函数将一个 16 位 (2 字节) 的 short 整数从主机字节序转换为网络字节序
-    serverAddr.sin_port = htons(atoi(argv[1])); // 端口 = 第 1 个命令行参数
+    serverAddr.sin_port = htons(atoi(argv[1]));  // 端口 = 第 1 个命令行参数
     //* 调用 bind 函数, 给 socket 套接字分配 IP 地址和端口
     bind(serverSocketFd, (struct sockaddr *)&serverAddr, sizeof(serverAddr));
     //* 调用 listen 函数, 监听客户端的连接请求
@@ -59,21 +59,21 @@ int main(int argc, char *argv[]) {
         if (byteCount < BUF_SIZE) {
             //! 从 send 缓冲区中读出 byteCount 个字节, 写入 clientSocketFd
             write(clientSocketFd, send, byteCount);
-            break; //* 读出的字节数小于缓冲区大小, byteCount < BUF_SIZE; break;
+            break;  //* 读出的字节数小于缓冲区大小, byteCount < BUF_SIZE; break;
         }
         // TCP 输出流
         write(clientSocketFd, send,
-              BUF_SIZE); //* 读出字节数等于缓冲区大小 byteCount == BUF_SIZE;
-                         // continue;
+              BUF_SIZE);  //* 读出字节数等于缓冲区大小 byteCount == BUF_SIZE;
+                          // continue;
     }
-    fclose(readmeMd);                  //* 关闭文件 IO 流
-    shutdown(clientSocketFd, SHUT_WR); //* 断开输出流, 向服务器发送 EOF
+    fclose(readmeMd);                   //* 关闭文件 IO 流
+    shutdown(clientSocketFd, SHUT_WR);  //* 断开输出流, 向服务器发送 EOF
 
     // TCP 输入流
     read(clientSocketFd, recv,
-         BUF_SIZE); //* 输出流断开, 输入流未断开
+         BUF_SIZE);  //* 输出流断开, 输入流未断开
     printf("Message from client: %s\n", recv);
-    close(clientSocketFd); //* 断开服务器与客户端的连接
-    close(serverSocketFd); //* 服务器关闭 listener
+    close(clientSocketFd);  //* 断开服务器与客户端的连接
+    close(serverSocketFd);  //* 服务器关闭 listener
     return 0;
 }

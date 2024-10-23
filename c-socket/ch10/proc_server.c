@@ -16,8 +16,7 @@
 // 定义信号处理函数 childExitCallback
 //! 僵尸进程: 子进程先于父进程终止, 父进程未释放子进程的资源, 子进程成为僵尸进程
 void childExitCallback(int sig) {
-    if (sig != SIGCHLD)
-        return;
+    if (sig != SIGCHLD) return;
     // 预防僵尸进程
     int status;
     pid_t pid = waitpid(-1 /* -1 等待任一子进程终止 */, &status,
@@ -35,14 +34,14 @@ int main(int argc, char *argv[]) {
     }
 
     struct sigaction sigAct = {0};
-    sigAct.sa_handler = childExitCallback; // 预防僵尸进程
-    sigemptyset(&sigAct.sa_mask);          // sa_mask 置 0
-    sigAct.sa_flags = 0;                   // sa_flags 置 0
+    sigAct.sa_handler = childExitCallback;  // 预防僵尸进程
+    sigemptyset(&sigAct.sa_mask);           // sa_mask 置 0
+    sigAct.sa_flags = 0;                    // sa_flags 置 0
 
     //* 调用 sigation 函数注册信号 SIGCHLD 和信号处理器 sigAct
     if (sigaction(SIGCHLD /* 子进程终止 */, &sigAct,
                   NULL /* oldSigAct 不需要则传递 NULL */) == -1) {
-        perror("Register signal handler failed"); // 注册信号处理器失败
+        perror("Register signal handler failed");  // 注册信号处理器失败
         exit(1);
     }
 
@@ -55,12 +54,12 @@ int main(int argc, char *argv[]) {
     //! 服务器已创建 listener, 套接字文件描述符 serverSocketFd
 
     struct sockaddr_in serverAddr = {0};
-    serverAddr.sin_family = AF_INET; // IPv4 协议族
+    serverAddr.sin_family = AF_INET;  // IPv4 协议族
     // htonl 函数将一个 32 位 (4 字节) 的 int 整数从主机字节序转换为网络字节序
     serverAddr.sin_addr.s_addr =
-        htonl(INADDR_ANY); // 0.0.0.0 接受所有 IP 地址的 TCP/UDP 连接
+        htonl(INADDR_ANY);  // 0.0.0.0 接受所有 IP 地址的 TCP/UDP 连接
     // htons 函数将一个 16 位 (2 字节) 的 short 整数从主机字节序转换为网络字节序
-    serverAddr.sin_port = htons(atoi(argv[1])); // 端口 = 第 1 个命令行参数
+    serverAddr.sin_port = htons(atoi(argv[1]));  // 端口 = 第 1 个命令行参数
 
     //* 调用 bind 函数, 给 socket 套接字分配 IP 地址和端口
     if (bind(serverSocketFd, (struct sockaddr *)&serverAddr,
@@ -75,8 +74,8 @@ int main(int argc, char *argv[]) {
     }
 
     while (1) {
-        struct sockaddr_in clientAddr = {0};          // 接收客户端 IP 地址
-        socklen_t clientAddrLen = sizeof(clientAddr); // 接收客户端 IP 地址长度
+        struct sockaddr_in clientAddr = {0};  // 接收客户端 IP 地址
+        socklen_t clientAddrLen = sizeof(clientAddr);  // 接收客户端 IP 地址长度
         int clientSocketFd = accept(
             serverSocketFd, (struct sockaddr *)&clientAddr, &clientAddrLen);
 
@@ -87,24 +86,23 @@ int main(int argc, char *argv[]) {
 
         //! 服务器与客户端建立连接, 套接字文件描述符 clientSocketFd
 
-        int pid = fork();          // 创建一个子进程
-        if (pid == -1) {           // 子进程创建失败
-            close(clientSocketFd); // 断开连接
+        int pid = fork();           // 创建一个子进程
+        if (pid == -1) {            // 子进程创建失败
+            close(clientSocketFd);  // 断开连接
             perror("Error created child proc");
             break;
         }
         // 子进程创建成功
         //* 父子进程都有 serverSocketFd, clientSocketFd 等变量
-        if (pid == 0) {            // 是子进程
-            close(serverSocketFd); // 子进程关闭 listener
-            char buf[BUF_SIZE];    // 子进程的缓冲区
+        if (pid == 0) {             // 是子进程
+            close(serverSocketFd);  // 子进程关闭 listener
+            char buf[BUF_SIZE];     // 子进程的缓冲区
             while (1) {
                 int readBytes = read(clientSocketFd, buf, BUF_SIZE);
-                if (readBytes <= 0)
-                    break;
+                if (readBytes <= 0) break;
                 buf[readBytes] = '\0';
                 printf("Server child proc reads: %s\n", buf);
-                write(clientSocketFd, buf, readBytes); // echo
+                write(clientSocketFd, buf, readBytes);  // echo
             }
 
             // 服务器的输出流已断开
@@ -112,13 +110,13 @@ int main(int argc, char *argv[]) {
             write(clientSocketFd, send,
                   strlen(send) + 1 /* strlen 不计算 '/0' */);
 
-            close(clientSocketFd); // 子进程断开与客户端的连接
+            close(clientSocketFd);  // 子进程断开与客户端的连接
             puts("Server child proc disconnects from client");
             return 0;
         }
         // 是父进程 (子进程与客户端已建立连接)
-        close(clientSocketFd); // 父进程断开与客户端的连接
+        close(clientSocketFd);  // 父进程断开与客户端的连接
     }
-    close(serverSocketFd); //! 父进程关闭 listener
+    close(serverSocketFd);  //! 父进程关闭 listener
     return 0;
 }
