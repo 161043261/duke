@@ -2,12 +2,12 @@
 // Created by admin on 2024/10/15.
 //
 
-///
-/// 智能指针
-/// * std::shared_ptr
-/// * std::unique_ptr
-/// * std::weak_ptr
-///
+//
+// 智能指针
+// * std::shared_ptr
+// * std::unique_ptr
+// * std::weak_ptr
+//
 
 #include <gtest/gtest.h>
 
@@ -18,9 +18,9 @@ using namespace std;
 
 void foo(const std::shared_ptr<int> &p) { (*p)++; }
 
-///
-/// std::shared_ptr 共享的智能指针, 共享对象所有权
-///
+//
+// std::shared_ptr 共享的智能指针, 共享对象所有权
+//
 
 TEST(MakeSharedTest, TestMakeShared) {
     // int* p = new int{10}; // 非法
@@ -65,9 +65,9 @@ TEST(Get_Set_UseCountTest, TestGet_Set_UseCount) {
     cout << "pz use_count: " << pz.use_count() << '\n';  // 0
 }
 
-///
-/// std::unique_str 独占的智能指针, 独占对象所有权
-///
+//
+// std::unique_str 独占的智能指针, 独占对象所有权
+//
 
 TEST(MakeUniqueTest, TestMakeUnique) {
     unique_ptr<int> up = make_unique<int>(10);
@@ -111,9 +111,9 @@ TEST(UniquePtrTest, TestUniquePtr) {
     // Delete foo
 }
 
-///
-/// std::weak_str 弱引用指针, 不参与对象所有权管理
-///
+//
+// std::weak_str 弱引用指针, 不参与对象所有权管理
+//
 
 struct Gopher;
 

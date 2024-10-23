@@ -1,7 +1,7 @@
 package main
 
 import (
-	"bronya.com/go-rpc/src/codec"
+	gocodec "bronya.com/go-rpc/src/codec"
 	"encoding/json"
 	"fmt"
 	"log"
@@ -18,7 +18,7 @@ func startServer(addr chan string) {
 
 	log.Println("RPC server listening on", listener.Addr().String())
 	addr <- listener.Addr().String()
-	codec.Accept(listener)
+	gocodec.Accept(listener)
 }
 
 func main() {
@@ -37,14 +37,14 @@ func main() {
 	time.Sleep(time.Second)
 
 	// 发送 Option
-	err = json.NewEncoder(conn).Encode(codec.DefaultOption)
+	err = json.NewEncoder(conn).Encode(gocodec.DefaultOption)
 	if err != nil {
 		log.Println(err.Error())
 	}
 
-	gobCodec := codec.NewGobCodec(conn)
+	gobCodec := gocodec.NewGobCodec(conn)
 	for i := 0; i < 5; i++ {
-		header := &codec.Header{
+		header := &gocodec.Header{
 			ServiceMethod: "Service.Method",
 			Seq:           uint64(i),
 		}

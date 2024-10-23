@@ -9,7 +9,7 @@ import (
 	"net"
 	"sync"
 
-	"bronya.com/go-rpc/src/codec"
+	gocodec "bronya.com/go-rpc/src/codec"
 )
 
 type Call struct {
@@ -26,9 +26,9 @@ func (call *Call) done() {
 }
 
 type Client struct {
-	codecIns codec.Codec
-	opt      codec.Option
-	header   codec.Header
+	codecIns gocodec.Codec
+	opt      gocodec.Option
+	header   gocodec.Header
 	seq      uint64
 	pending  map[uint64]*Call // 排队未处理的请求
 
@@ -103,7 +103,7 @@ func (client *Client) recv() {
 	var err error
 
 	for err == nil {
-		var header codec.Header
+		var header gocodec.Header
 		if err = client.codecIns.ReadHeader(&header); err != nil {
 			break
 		}
@@ -125,8 +125,8 @@ func (client *Client) recv() {
 	}
 }
 
-func NewClient(conn net.Conn, opt *codec.Option) (*Client, error) {
-	newCodec := codec.Type2NewCodec[opt.CodecType]
+func NewClient(conn net.Conn, opt *gocodec.Option) (*Client, error) {
+	newCodec := gocodec.Type2NewCodec[opt.CodecType]
 
 	if newCodec == nil {
 		err := fmt.Errorf("invalid codec type")
@@ -143,7 +143,7 @@ func NewClient(conn net.Conn, opt *codec.Option) (*Client, error) {
 	return startClient(newCodec(conn), opt), nil
 }
 
-func startClient(codecIns codec.Codec, opt *codec.Option) *Client {
+func startClient(codecIns gocodec.Codec, opt *gocodec.Option) *Client {
 	client := &Client{
 		codecIns: codecIns,
 		opt:      *opt,
@@ -154,9 +154,9 @@ func startClient(codecIns codec.Codec, opt *codec.Option) *Client {
 	return client
 }
 
-func parseOption(opts ...*codec.Option) (*codec.Option, error) {
+func parseOption(opts ...*gocodec.Option) (*gocodec.Option, error) {
 	if len(opts) == 0 || opts[0] == nil {
-		return codec.DefaultOption, nil
+		return gocodec.DefaultOption, nil
 	}
 
 	if len(opts) != 1 {
@@ -164,15 +164,15 @@ func parseOption(opts ...*codec.Option) (*codec.Option, error) {
 	}
 
 	opt := opts[0]
-	opt.MagicNum = codec.DefaultOption.MagicNum
+	opt.MagicNum = gocodec.DefaultOption.MagicNum
 	if opt.CodecType == "" {
-		opt.CodecType = codec.DefaultOption.CodecType
+		opt.CodecType = gocodec.DefaultOption.CodecType
 	}
 	return opt, nil
 }
 
 // Dial ...Type, Args...
-func Dial(network, addr string, opts ...*codec.Option) (client *Client, err error) {
+func Dial(network, addr string, opts ...*gocodec.Option) (client *Client, err error) {
 	opt, err := parseOption(opts...)
 	if err != nil {
 		return nil, err
