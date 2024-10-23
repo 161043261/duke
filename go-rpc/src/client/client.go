@@ -153,3 +153,88 @@ func startClient(codecIns codec.Codec, opt *codec.Option) *Client {
 	go client.recv()
 	return client
 }
+
+func parseOption(opts ...*codec.Option) (*codec.Option, error) {
+	if len(opts) == 0 || opts[0] == nil {
+		return codec.DefaultOption, nil
+	}
+
+	if len(opts) != 1 {
+		return nil, errors.New("option more than 1")
+	}
+
+	opt := opts[0]
+	opt.MagicNum = codec.DefaultOption.MagicNum
+	if opt.CodecType == "" {
+		opt.CodecType = codec.DefaultOption.CodecType
+	}
+	return opt, nil
+}
+
+// Dial ...Type, Args...
+func Dial(network, addr string, opts ...*codec.Option) (client *Client, err error) {
+	opt, err := parseOption(opts...)
+	if err != nil {
+		return nil, err
+	}
+
+	conn, err := net.Dial(network, addr)
+	if err != nil {
+		return nil, err
+	}
+
+	// close the connection if client is nil
+	defer func() {
+		if client == nil {
+			_ = conn.Close()
+		}
+	}()
+
+	return NewClient(conn, opt)
+}
+
+func (client *Client) send(call *Call) {
+	client.sendMut.Lock()
+	defer client.sendMut.Unlock()
+
+	seq, err := client.registerCall(call)
+	if err != nil {
+		call.Error = err
+		call.done()
+		return
+	}
+
+	client.header.ServiceMethod = call.ServiceMethod
+	client.header.Seq = seq
+	client.header.Error = ""
+
+	if err := client.codecIns.Write(&client.header, call.Args); err != nil {
+		call := client.removeCall(seq)
+		if call != nil {
+			call.Error = err
+			call.done()
+		}
+	}
+}
+
+func (client *Client) Go(serviceMethod string, args, reply any, done chan *Call) *Call {
+	if done == nil {
+		done = make(chan *Call, 10)
+	} else if cap(done) == 0 {
+		log.Panic("RPC client: done channel is unbuffered")
+	}
+
+	call := &Call{
+		ServiceMethod: serviceMethod,
+		Args:          args,
+		Reply:         reply,
+		Done:          done,
+	}
+	client.send(call)
+	return call
+}
+
+func (client *Client) Call(serviceMethod string, args, reply any) error {
+	call := <-client.Go(serviceMethod, args, reply, make(chan *Call, 1)).Done
+	return call.Error
+}
