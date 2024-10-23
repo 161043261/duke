@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+
+	"bronya.com/go-leetcode/src"
 )
 
 func main() {
-	fmt.Println("Leetcode src")
+	fmt.Println(src.Call())
 }
