@@ -115,7 +115,7 @@ if (CLANG_FORMAT)
     message(${CMAKE_SOURCE_DIR})
 
     add_custom_target(format ALL
-            COMMAND ${CLANG_FORMAT} -i -style=file
+            COMMAND ${CLANG_FORMAT} -i -style=google
             ${CMAKE_SOURCE_DIR}/ch01/*.c
             ${CMAKE_SOURCE_DIR}/ch02/*.c
             ${CMAKE_SOURCE_DIR}/ch03/*.c

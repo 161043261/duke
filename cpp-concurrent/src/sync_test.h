@@ -10,42 +10,42 @@
 
 template <typename T>
 class ThreadSafeQueue {
-    mutable std::mutex mut;
-    std::condition_variable condVar;
-    std::queue<T> queue_;
+  mutable std::mutex mut;
+  std::condition_variable condVar;
+  std::queue<T> queue_;
 
-   public:
-    ThreadSafeQueue();
+ public:
+  ThreadSafeQueue();
 
-    // 入队
-    void enqueue(T value);
+  // 入队
+  void enqueue(T value);
 
-    // 出队, 队列为空则等待
-    std::shared_ptr<T> dequeue();
+  // 出队, 队列为空则等待
+  std::shared_ptr<T> dequeue();
 
-    bool empty() const;  // 该方法不会修改类的非静态成员
+  bool empty() const;  // 该方法不会修改类的非静态成员
 };
 
 struct Square {
-    int operator()(int x) const;
+  int operator()(int x) const;
 };
 
 struct SquareWrapper {
-    int calculate(int x);
+  int calculate(int x);
 };
 
 struct MoveOnly {
-    //! 默认构造函数
-    MoveOnly() = default;
-    //! 移动构造函数
-    MoveOnly(MoveOnly &&) noexcept = default;
-    //! 删除拷贝构造函数
-    MoveOnly(const MoveOnly &) = delete;
+  //! 默认构造函数
+  MoveOnly() = default;
+  //! 移动构造函数
+  MoveOnly(MoveOnly &&) noexcept = default;
+  //! 删除拷贝构造函数
+  MoveOnly(const MoveOnly &) = delete;
 
-    friend std::ostream &operator<<(std::ostream &os, const MoveOnly &) {
-        os << "Overload operator<< output stream operator";
-        return os;
-    }
+  friend std::ostream &operator<<(std::ostream &os, const MoveOnly &) {
+    os << "Overload operator<< output stream operator";
+    return os;
+  }
 };
 
 #endif  // SYNC_TEST_H

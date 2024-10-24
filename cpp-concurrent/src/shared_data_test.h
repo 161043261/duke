@@ -29,16 +29,16 @@ void testSingleton();
 // std::shared_mutex (higher performance)
 
 class MapWrapper {
-   private:
-    std::map<std::string, std::string> data_;
-    // shared_mutex (higher performance)
-    mutable std::shared_mutex mut_;  // M&M principle: mutable & mutex
-   public:
-    void set(const std::string &key, const std::string &value);
+ private:
+  std::map<std::string, std::string> data_;
+  // shared_mutex (higher performance)
+  mutable std::shared_mutex mut_;  // M&M principle: mutable & mutex
+ public:
+  void set(const std::string &key, const std::string &value);
 
-    // 第一个 const 表示: 该方法不会修改传递的参数
-    // 第二个 const 表示: 该方法不会修改类的非静态成员
-    std::string get(const std::string &key) const;
+  // 第一个 const 表示: 该方法不会修改传递的参数
+  // 第二个 const 表示: 该方法不会修改类的非静态成员
+  std::string get(const std::string &key) const;
 };
 
 void readMap(MapWrapper &map_, const std::string &k, int threadId);

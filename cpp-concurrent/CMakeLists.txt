@@ -45,7 +45,7 @@ find_program(CLANG_FORMAT clang-format)
 if (CLANG_FORMAT)
     message(${CMAKE_SOURCE_DIR})
     add_custom_target(format ALL
-            COMMAND ${CLANG_FORMAT} -i -style=file
+            COMMAND ${CLANG_FORMAT} -i -style=google
             ${CMAKE_SOURCE_DIR}/src/*.h
             ${CMAKE_SOURCE_DIR}/src/*.cpp)
 else ()

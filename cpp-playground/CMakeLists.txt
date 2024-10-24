@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.8)
 
-project(cpp-ns3)
+project(cpp-playground)
 
 # 指定 c 语言级别
 set(CMAKE_C_STANDARD 17)
@@ -32,9 +32,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O1")
 # 查找 boost
 find_package(Boost REQUIRED)
 
-# 查找 ns3
-find_package(ns3 REQUIRED)
-
 # 查找 gtest (google test)
 find_package(GTest REQUIRED)
 
@@ -48,7 +45,7 @@ find_program(CLANG_FORMAT clang-format)
 if (CLANG_FORMAT)
     message(${CMAKE_SOURCE_DIR})
     add_custom_target(format ALL
-            COMMAND ${CLANG_FORMAT} -i -style=file
+            COMMAND ${CLANG_FORMAT} -i -style=google
             ${CMAKE_SOURCE_DIR}/src/*.cpp)
 else ()
     message(WARNING "clang-format not found")

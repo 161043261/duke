@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"bronya.com/go-leetcode/src"
+	"bronya.com/go-playground/src"
 )
 
 func main() {
