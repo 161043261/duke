@@ -1,15 +1,20 @@
-<script setup lang="ts">
-
+<!-- Optional -->
+<script lang="ts">
+export default {
+  name: 'HospitalTop',
+}
 </script>
 
+<script setup lang="ts"></script>
+
 <template>
+  <!-- 顶部 -->
   <div class="top">
-    <!-- 顶部 -->
     <div class="content">
       <!-- 左侧 -->
       <div class="left">
-        <img src="../../assets/logo.png" alt="logo">
-        <p>北京医院 预约挂号统一平台</p>
+        <img src="../../assets/logo.png" alt="logo" />
+        <p>Vue 医院 预约挂号统一平台</p>
       </div>
 
       <!-- 右侧 -->
@@ -25,9 +30,8 @@
 .top {
   // 固定定位
   position: fixed;
-  // 层级: 高
-  z-index: 999;
-
+  // 高层级
+  z-index: 777;
   width: 100%;
   height: 70px;
   background-color: #fff;
@@ -42,7 +46,6 @@
     background-color: #fff;
     // 弹性盒子
     display: flex;
-    // 一左一右
     justify-content: space-between;
 
     .left {
@@ -51,11 +54,13 @@
       justify-content: center;
       // 侧轴居中
       align-items: center;
+
       img {
         width: 50px;
         height: 50px;
         margin-right: 10px;
       }
+
       p {
         font-size: 20px;
         color: #4490f1;

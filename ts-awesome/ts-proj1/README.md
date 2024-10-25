@@ -16,35 +16,7 @@ npm install sass
 }
 ```
 
-src 目录别名
+## Element Plus
 
-[vite.config.ts](./vite.config.ts)
+carousel 走马灯​: 在有限空间内, 循环播放图片, 文字等内容
 
-```ts
-import { fileURLToPath, URL } from 'node:url'
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-// import path from 'node:path'
-export default defineConfig({
-  plugins: [vue()],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-      // '@': path.resolve(__dirname, 'src'),
-    },
-  },
-})
-```
-
-[tsconfig.app.json](./tsconfig.app.json)
-
-```json
-{
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  }
-}
-```

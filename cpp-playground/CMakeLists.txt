@@ -30,7 +30,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -O1")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O1")
 
 # 查找 boost
-find_package(Boost REQUIRED)
+# find_package(Boost REQUIRED)
 
 # 查找 gtest (google test)
 find_package(GTest REQUIRED)
@@ -53,6 +53,7 @@ endif ()
 
 # 添加可执行文件
 add_executable(auto_ptr ./src/auto_ptr.cpp)
+add_executable(01knapsack ./src/01knapsack.cpp)
 
 # 链接 ??? 库
 target_link_libraries(auto_ptr GTest::gtest_main)

@@ -5,20 +5,35 @@ import (
 	"sort"
 )
 
-// 按从小到大的顺序选
-// 对 rewardValues 从小到大排序
-// dp[i][j] 表示能否从 rewardValues 的前 i 个数中, 获得总奖励 j
-// 设 rewardValues 的第 i 个数为 v
-// dp[i][j] = dp[i-1][j] || dp[i-1][j-v]
-// 初始值: dp[0][0] = true
-// 答案为 dp[n][j] == true 时, j 的最大值
-func maxTotalReward(rewardValues []int) int {
-	sort.Ints(rewardValues)
-    dp := make([][]int, len(rewardValues))
-    // fmt.Println(dp[0]) // []
-    
-    return 0;
+// TODO
+func maxTotalReward(values []int) int {
+	sort.Ints(values)
+	maxValue := values[len(values)-1]
+	dp := make([]bool, 2*maxValue)
+	dp[0] = true
+	for _, value := range values {
+		for reward := 2*value - 1; reward >= value; reward-- {
+			if dp[reward-value] {
+				dp[reward] = true
+			}
+		}
+		fmt.Println(dp)
+	}
+	res := 0
+	for idx, boolValue := range dp {
+		if boolValue {
+			res = idx
+		}
+	}
+	return res
 }
 
 func Call() {
+	maxTotalReward([]int{1, 1, 3, 3})
 }
+
+// reward 0 1 2 3 4 5
+// [true true false false false false]
+// [true true false false false false]
+// [true true false true true false]
+// [true true false true true false]
