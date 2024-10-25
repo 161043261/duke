@@ -16,7 +16,3 @@ func findWinningPlayer(skills []int, k int) int {
 	}
 	return l
 }
-
-func Call() int {
-	return findWinningPlayer([]int{19, 3, 6, 16, 10, 9, 2}, 422917785)
-}
