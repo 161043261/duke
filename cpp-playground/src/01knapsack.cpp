@@ -1,8 +1,8 @@
 #include <algorithm>
 #include <iostream>
 
-int maxTotalValue(const int numGoods = 0, const int bagCapacity = 0,
-                  int* weight, int* value) {
+int maxTotalValue(int weight[], int value[], const int numGoods = 0,
+                  const int bagCapacity = 0) {
   int dp[numGoods][bagCapacity + 1];
   for (int j = 0; j <= bagCapacity; j++) {
     dp[0][j] = j >= weight[0] ? value[0] : 0;
@@ -24,6 +24,6 @@ int main() {
   int bagCapacity = 15;
   int weight[] = {2, 3, 5, 7, 1, 4, 1};
   int value[] = {10, 5, 15, 7, 6, 18, 3};
-  std::cout << maxTotalValue(numGoods, bagCapacity, weight, value) << std::endl;
+  std::cout << maxTotalValue(weight, value, numGoods, bagCapacity) << std::endl;
   return 0;
 }

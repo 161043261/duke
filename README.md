@@ -13,7 +13,7 @@
 - gRPC
 - Protocol Buffer
 - Git
-- RabbitMQ (Optional)
+- Kafka (Optional)
 - K8S (Optional)
 
 ## Java
@@ -36,11 +36,12 @@
 ## Go
 
 - Go 基础
+  - [go-playground](./go-playground/)
 - Go 命令 go mod, go build, go run, go test, ...
 - Go 并发编程
   - [go-concurrent](./go-concurrent/)
 - Go 网络编程, IO
-  - [go-server](./go-server/)
+  - [go-socket](./go-socket/)
 - Go 设计模式
   - [go-design-pattern](./go-design-pattern/)
 - GORM, Gin
@@ -50,7 +51,7 @@
 ## C/C++
 
 - C/C++ 基础
-  - [cpp-ns3](./cpp-ns3/)
+  - [cpp-playground](./cpp-playground/)
 - C/C++ 命令 gcc/g++, clang/clang++, ...
 - Makefile, CMake
 - C/C++ 并发编程
@@ -62,6 +63,8 @@
 
 - HTML5 基础
 - JavaScript/TypeScript 基础
+  - [ts-playground](./ts-playground/)
+- node, npm, pnpm 命令
 - Vue3
   - [ts-vue](./ts-vue/)
   - [ts-vue3](./ts-vue3/)
