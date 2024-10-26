@@ -11,6 +11,8 @@ declare module 'vue' {
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCarousel: typeof import('element-plus/es')['ElCarousel']
     ElCarouselItem: typeof import('element-plus/es')['ElCarouselItem']
+    ElCol: typeof import('element-plus/es')['ElCol']
+    ElRow: typeof import('element-plus/es')['ElRow']
     Hospital_bottom: typeof import('./src/components/hospital_bottom.vue')['default']
     Hospital_top: typeof import('./src/components/hospital_top.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

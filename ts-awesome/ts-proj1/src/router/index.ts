@@ -13,11 +13,11 @@ export default createRouter({
     {
       path: '/home',
       // 路由懒加载: 访问 /home 路由时，才加载 *.vue 组件
-      component: () => import('@/views/home/index.vue'),
+      component: () => import('@/views/home/home.vue'),
     },
     {
       path: '/hospital',
-      component: () => import('@/views/hospital/index.vue'),
+      component: () => import('@/views/hospital/hospital.vue'),
     },
     {
       path: '/',

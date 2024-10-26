@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "cpp-playground"
+		},
+		{
+			"path": "ts-playground"
 		}
 	],
 	"settings": {}

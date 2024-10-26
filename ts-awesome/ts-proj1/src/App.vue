@@ -7,6 +7,7 @@
 
     <div class="content">
       <!-- 路由组件 -->
+      <!-- <RouterView></RouterView> -->
       <router-view></router-view>
     </div>
 

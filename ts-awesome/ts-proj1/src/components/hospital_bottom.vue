@@ -12,7 +12,7 @@ export default {
   <div class="bottom">
     <div class="content">
       <!-- 左侧 -->
-      <div class="left">京ICP备11111111号-11 电话挂号111-111</div>
+      <div class="left">沪ICP备11111111号-11 电话挂号111-111</div>
 
       <!-- 右侧 -->
       <div class="right">
@@ -45,7 +45,7 @@ export default {
 
     .right {
       span {
-        // 上下间距 0px, 左右间距 5px
+        // 上下 0, 左右 5px
         margin: 0 5px;
       }
     }

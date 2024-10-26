@@ -20,6 +20,7 @@ import { Search } from '@element-plus/icons-vue'
   display: flex;
   justify-content: center;
   align-items: center;
+  // 上下 10px, 左右 0
   margin: 10px 0;
 
   // 深度选择器

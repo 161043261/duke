@@ -4,6 +4,9 @@ import { createApp } from 'vue'
 // 导入根组件 App
 import App from './App.vue'
 
+// reset default style
+import '@/style/reset.scss'
+
 //! 完整导入 element-plus 组件库
 // import ElementPlus from 'element-plus'
 

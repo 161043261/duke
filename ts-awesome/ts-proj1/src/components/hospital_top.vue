@@ -14,7 +14,7 @@ export default {
       <!-- 左侧 -->
       <div class="left">
         <img src="../assets/logo.png" alt="logo" />
-        <p>Vue 医院 预约挂号统一平台</p>
+        <p>不卜庐 预约挂号统一平台</p>
       </div>
 
       <!-- 右侧 -->
@@ -60,7 +60,7 @@ export default {
 
       p {
         font-size: 20px;
-        color: #4490f1;
+        color: #3178c6;
       }
     }
 
