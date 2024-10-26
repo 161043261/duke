@@ -1,4 +1,4 @@
-package hot
+package src
 
 func twoSum(nums []int, target int) []int {
 	numIdx := make(map[int]int, len(nums))

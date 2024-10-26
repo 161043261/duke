@@ -16,7 +16,7 @@
 
 背包容量: M=15
 
-背包问题: 下标[0, 6] 的物品, 放入容量为 15 的背包中的最大收益
+背包问题: 下标 [0, 6] 的物品, 放入容量为 15 的背包中的最大收益
 
 ### 暴力回溯: TODO
 
@@ -29,20 +29,16 @@
 
 当前的收益, 只取决于是否放入物品 i
 
-```ts
-// 物品 i
-// 重量 w[i]
-// 收益 v[i]
+```java
 dp[i][j] = // 下标 [0, i] 的物品, 放入容量为 j 的背包的最大收益
-    Math.max(
-        // 不放物品 i
-        // 则 dp[i][j] = 下标 [0, i-1] 的物品, 放入容量为 j 的背包的最大收益
-        dp[i - 1][j],
-        // 放物品 i
-        // 则 dp[i][j] = 下标 [0, i-1] 的物品, 放入容量为 j-w[i] 的背包的最大收益,
-        // 再加上 物品 i 的收益
-        dp[i - 1][j - w[i]] + v[i]
-    );
+        Math.max(
+                // 不放物品 i
+                // 则 dp[i][j] = 下标 [0, i-1] 的物品, 放入容量为 j 的背包的最大收益
+                dp[i - 1][j],
+                // 放物品 i
+                // 则 dp[i][j] = 下标 [0, i-1] 的物品, 放入容量为 j-w[i] 的背包的最大收益,
+                // 再加上 物品 i 的收益
+                dp[i - 1][j - weight[i]] + value[i]);
 ```
 
 **初始化 dp 数组**
@@ -61,17 +57,11 @@ i-1 行    dp[i-1][j-w[i]]   dp[i-1][j]
 i   行                      dp[i][j]
 ```
 
-```ts
-let rowCount = numGoods;
-let columnCount = bagCapacity;
-
-let dp: number[][] = new Array(rowCount)
-    .fill([])
-    .map(() => new Array(columnCount).fill(0));
-
-for (let j = 0; j < dp[0].length /* bagCapacity */; j++) {
-    dp[0][j] = j >= w[0] ? v[0] : 0;
+```java
+var dp = new int[numGoods][bagCapacity + 1];
+for (var j = 0; j <= bagCapacity; j++) {
+    dp[0][j] = j >= weight[0] ? value[0] : 0;
 }
 ```
 
-代码 [01knapsack.ts](./01knapsack.ts)
+代码 [01knapsack.java](./Knapsack01.java)

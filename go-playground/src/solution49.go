@@ -1,4 +1,4 @@
-package hot
+package src
 
 import "sort"
 
