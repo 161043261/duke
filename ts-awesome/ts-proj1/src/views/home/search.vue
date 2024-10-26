@@ -6,8 +6,8 @@ import { Search } from '@element-plus/icons-vue'
 
 <template>
   <div class="search">
-    <el-autocomplete clearable placeholder="请输入医院名" class="" />
-    <el-button type="primary" :icon="Search">搜索</el-button>
+    <el-autocomplete clearable placeholder="请输入医院名" />
+    <el-button type="primary" size="default" :icon="Search">搜索</el-button>
   </div>
 </template>
 
@@ -21,5 +21,18 @@ import { Search } from '@element-plus/icons-vue'
   justify-content: center;
   align-items: center;
   margin: 10px 0;
+
+  // 深度选择器
+  // css  >>>
+  // less /deep/
+  // sass :deep()
+
+  // deprecated
+  // ::v-deep .el-autocomplete {
+  //   width: 600px;
+  // }
+  :deep(.el-autocomplete) {
+    width: 600px;
+  }
 }
 </style>

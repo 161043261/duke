@@ -6,7 +6,7 @@ function maxTotalValue(numGoods, bagCapacity, weight, value) {
     let dp = new Array(numGoods)
         .fill([])
         .map(() => new Array(bagCapacity + 1).fill(0));
-    for (let j = 0; j < dp[0].length; // bagCapacity
+    for (let j = 0; j <= dp[0].length; // bagCapacity
      j++) {
         dp[0][j] = j >= weight[0] ? value[0] : 0;
     }

@@ -1,6 +1,4 @@
-package com.bronya.algorithm;
-
-class Knapsnak {
+class Knapsnak01 {
     public static int maxTotalValue(int numGoods,
             int bagCapacity,
             int[] weight,
