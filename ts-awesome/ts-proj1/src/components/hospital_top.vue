@@ -13,7 +13,7 @@ export default {
     <div class="content">
       <!-- 左侧 -->
       <div class="left">
-        <img src="../assets/logo.png" alt="logo" />
+        <img src="../assets/baizhu.webp" alt="baizhu" />
         <p>不卜庐 预约挂号统一平台</p>
       </div>
 

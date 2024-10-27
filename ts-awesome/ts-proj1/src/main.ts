@@ -10,6 +10,9 @@ import '@/style/reset.scss'
 //! 完整导入 element-plus 组件库
 // import ElementPlus from 'element-plus'
 
+// element-plus 国际化
+// import zhCn from 'element-plus/es/locale/lang/zh-cn'
+
 // 导入全局组件
 import HospitalBottom from '@/components/hospital_bottom.vue'
 import HospitalTop from '@/components/hospital_top.vue'
@@ -28,7 +31,7 @@ app.component('HospitalBottom', HospitalBottom)
 app.use(router)
 
 //! 完整使用 element-plus 组件库
-// app.use(ElementPlus)
+// app.use(ElementPlus, { locale: zhCn })
 
 // 将 app 挂载到 ../index.html
 // <div id="app">

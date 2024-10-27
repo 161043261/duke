@@ -10,7 +10,7 @@
         <li>黄浦区</li>
         <li>徐汇区</li>
         <li>长宁区</li>
-        <li v-for="v in 10" :key="v">静安区</li>
+        <li v-for="idx in 10" :key="idx">静安区</li>
         <li>普陀区</li>
         <li>虹口区</li>
         <li>杨浦区</li>
