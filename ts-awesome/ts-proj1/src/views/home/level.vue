@@ -2,7 +2,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="level">
+  <div class="type">
     <h1>医院</h1>
     <div class="content">
       <div class="left">等级:</div>
@@ -23,7 +23,7 @@
 </template>
 
 <style lang="scss" scoped>
-.level {
+.type {
   color: #7f7f7f;
 
   h1 {

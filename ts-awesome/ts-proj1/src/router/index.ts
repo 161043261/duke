@@ -29,8 +29,8 @@ export default createRouter({
   // 从旧页面路由到新页面时, 通过设置 scrollBehavior 滚动行为
   // 可以保证: 新页面不是停在旧页面的滚动位置, 而是从指定位置 savedPosition 开始, 加载新页面
   scrollBehavior: async (to, from, savedPosition) => {
-    console.log(to, from)
-    console.log(savedPosition)
+    // console.log(to, from)
+    // console.log(savedPosition)
     return {
       left: 0,
       top: 0,

@@ -1,13 +1,18 @@
 <!-- eslint-disable vue/multi-word-component-names -->
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type { IHospitalInfo } from '@/type'
+
+//! 子组件使用 defineProps 从父组件接收数据
+defineProps(['hospitalInfo'])
+</script>
 
 <template>
   <el-card shadow="hover">
     <div class="content">
       <div class="left">
-        <div class="name">不卜庐</div>
+        <div>{{ (hospitalInfo as IHospitalInfo).hosname }}</div>
         <div class="tip">
-          <div class="level">
+          <div class="type">
             <svg
               t="1729994574968"
               class="icon"
@@ -23,7 +28,9 @@
                 p-id="6223"
               ></path>
             </svg>
-            <span>三级甲等</span>
+            <span>{{
+              (hospitalInfo as IHospitalInfo).param.hostypeString
+            }}</span>
           </div>
           <div class="time">
             <svg
@@ -53,12 +60,19 @@
                 p-id="8828"
               ></path>
             </svg>
-            <span>2024</span>
+            <span
+              >每天
+              {{ (hospitalInfo as IHospitalInfo).bookingRule.releaseTime }}
+              放号</span
+            >
           </div>
         </div>
       </div>
       <div class="right">
-        <img src="@/assets/qiqi.webp" alt="qiqi" />
+        <img
+          :src="`data:image/jpeg;base64,${(hospitalInfo as IHospitalInfo).logoData}`"
+          alt="qiqi"
+        />
       </div>
     </div>
   </el-card>
@@ -78,7 +92,7 @@
       display: flex;
       justify-content: space-between;
 
-      .level,
+      .type,
       .time {
         display: flex;
         align-items: center;

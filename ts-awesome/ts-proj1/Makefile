@@ -1,13 +1,14 @@
 .PHONY: create install
 
 create:
-	npm create vue@latest
-	yarn create vue
+	npm create vue@latest # deprecated
+	yarn create vue # deprecated
 	pnpm create vue
 
 install:
-	npm install -g ts-node @types/node
-	npm install sass
-	npm install element-plus
-	npm install -D unplugin-vue-components unplugin-auto-import
-	npm install @element-plus/icons-vue
+	pnpm install -g ts-node @types/node
+	pnpm install sass
+	pnpm install element-plus
+	pnpm install -D unplugin-vue-components unplugin-auto-import
+	pnpm install @element-plus/icons-vue
+	pnpm install axios
