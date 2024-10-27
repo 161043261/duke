@@ -18,12 +18,12 @@ axiosIns.interceptors.request.use(
 // 响应拦截器
 axiosIns.interceptors.response.use(
   /* onFulfilled */ response => {
-    console.log(response)
+    // console.log(response)
     return response.data
   },
   /* onRejected */ error => {
     const status = error.response.status
-    console.log('status:', status)
+    // console.log('status:', status)
 
     switch (status % 100) {
       case 4:

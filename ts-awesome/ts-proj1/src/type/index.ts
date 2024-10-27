@@ -1,37 +1,69 @@
 export interface IHospitalInfo {
-  address: string
-  bookingRule: {
-    cycle: number
-    quitDay: number
-    quitTime: string
-    releaseTime: string
-    rule: Array<string>
-    stopTime: string
+  id: string
+  createTime: string
+  updateTime: string
+  isDeleted: number
+
+  param: {
+    hostypeString: string
+    fullAddress: string
   }
-  cityCode: string
-  districtCode: string
   hoscode: string
   hosname: string
-  id: string
-  intro?: unknown
-  isDeleted: number
-  logoData: string
-  param: {
-    fullAddress: string
-    hostypeString: string
-  }
+  hostype: string
   provinceCode: string
+  cityCode: string
+  districtCode: string
+  address: string
+  logoData: string
+  intro?: string
   route: string
   status: number
-  updateTime: string
+
+  bookingRule: {
+    cycle: number
+    releaseTime: string
+    stopTime: string
+    quitDay: number
+    quitTime: string
+    rule: string[] // 等价于 Array<string>
+  }
 }
 
 export interface IRespData {
   code: number
-  data: {
-    content: Array<IHospitalInfo>
-    totalElements: number
-  }
   message: string
   ok: boolean
+}
+
+export interface IHospitalRespData extends IRespData {
+  data: {
+    content: Array<IHospitalInfo> // 等价于 IHospitalInfo[]
+    pagetable: {
+      sort: {
+        sorted: boolean
+        unsorted: boolean
+        empty: boolean
+      }
+      pageNumber: number
+      pageSize: number
+      offset: number
+      paged: boolean
+      unpaged: boolean
+    }
+    totalPages: number
+    totalElements: number
+    last: boolean
+    first: boolean
+    //??? redundant
+    sort: {
+      sorted: boolean
+      unsorted: boolean
+      empty: boolean
+    }
+    numberOfElements: number
+    size: number
+    number: number
+    empty: boolean
+  }
 }

@@ -17,7 +17,7 @@ import { ElConfigProvider } from 'element-plus'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 
 import { reqHospitalInfo } from '@/api/home'
-import type { IHospitalInfo, IRespData } from '@/type'
+import type { IHospitalInfo, IHospitalRespData } from '@/type'
 import { onMounted, ref } from 'vue'
 
 const currentPage = ref<number>(1)
@@ -32,7 +32,7 @@ onMounted(() => {
 })
 
 async function getHospitalInfo() {
-  const respData: IRespData = await reqHospitalInfo(
+  const respData: IHospitalRespData = await reqHospitalInfo(
     currentPage.value,
     pageSize.value,
   )
@@ -40,6 +40,7 @@ async function getHospitalInfo() {
     content.value = respData.data.content
     totalElements.value = respData.data.totalElements
   }
+  console.log(respData)
 }
 </script>
 
@@ -76,29 +77,33 @@ async function getHospitalInfo() {
         <!-- element-plus 国际化 -->
         <el-config-provider :locale="zhCn">
           <!-- 分页器 -->
-          <!-- layout
-           current-page 当前页号
-            page-sizes
-            prev            上一页
-            pager           分页栏
-            next            下一页
-            jumper          前往 ? 页
-            sizes           ? 条/页
-            total           共 ? 条
-            @current-change 页号改变时的回调函数
-            @size-change    页大小改变时的回调函数
+          <!-- current-page 当前页号 -->
+          <!-- page-size 页大小 -->
+          <!-- page-sizes 可选的页大小  -->
+          <!-- total 总页数 -->
+          <!-- @current-change 页号改变时的回调函数 -->
+          <!-- @size-change 页大小改变时的回调函数 -->
+          <!-- layout 布局
+            prev   上一页
+            pager  可选的页大小
+            next   下一页
+            jumper 前往 ? 页
+            sizes  ? 条/页
+            total  共 ? 条
             -->
           <el-pagination
             v-model:current-page="currentPage"
             v-model:page-size="pageSize"
-            :page-sizes="[2, 4, 6, 8, 10]"
+            :page-sizes="[2, 4, 6, 8]"
             :background="true"
             layout="prev, pager, next, jumper, ->, sizes, total"
             :total="totalElements"
             @current-change="getHospitalInfo()"
             @size-change="
-              currentPage = 1
-              getHospitalInfo()
+              () => {
+                currentPage = 1
+                getHospitalInfo()
+              }
             "
           />
         </el-config-provider>
