@@ -1,4 +1,4 @@
-import type { IRespData } from '@/type'
+import type { IHospitalRespData } from '@/type'
 import axiosIns from '@/utils/axios_ins'
 
 // const HOSPITAL_INFO = '/hosp/hospital/{page}/{limit}'
@@ -18,7 +18,7 @@ enum API_ENUM {
 export async function reqHospitalInfo(
   page: number,
   limit: number,
-): Promise<IRespData> {
+): Promise<IHospitalRespData> {
   // axiosIns.get(HOSPITAL_INFO          + `${page}/${limit}`)
   // axiosIns.get(API_ENUM.HOSPITAL_INFO + `${page}/${limit}`)
   // axiosIns.get(API_OBJ.HOSPITAL_INFO  + `${page}/${limit}`)

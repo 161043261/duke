@@ -4,11 +4,13 @@
   "description": "```js function okCallback(result) {     console.log(\"ok: \" + result); }",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write algorithm/ src/"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "prettier": "^3.3.3",
     "ts-playground": "file:"
   }
 }

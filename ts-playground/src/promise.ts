@@ -1,18 +1,23 @@
 // let timerId: number = setTimeout(() => { console.log("Sleeped 10s"), 10_000; });
 // console.log("Timer ID:", timerId);
 
-const wait = (ms: number) => new Promise<any>(
-  (resolve, reject/* optional */) => {
+const wait = (ms: number) =>
+  new Promise<any>((resolve, reject /* optional */) => {
     // Fatal error: runtime exception
     // throw new Error("runtime exception")
-    setTimeout(resolve, ms)
-  }
-);
+    setTimeout(resolve, ms);
+  });
 
-const promise: Promise<any> = wait(5000/* ms */);
-const failOnErr = (e: Error) => { console.log("Fatal error:", e.message) };
+const promise: Promise<any> = wait(5000 /* ms */);
+const failOnErr = (e: Error) => {
+  console.log("Fatal error:", e.message);
+};
 
-promise.then(() => { console.log("Sleep 5s") }).catch(failOnErr)
+promise
+  .then(() => {
+    console.log("Sleep 5s");
+  })
+  .catch(failOnErr);
 
 /////////////////////////////////////////////////
 

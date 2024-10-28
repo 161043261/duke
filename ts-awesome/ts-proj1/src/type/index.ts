@@ -33,12 +33,14 @@ export interface IHospitalInfo {
 export interface IRespData {
   code: number
   message: string
+  // data: unknown
   ok: boolean
 }
 
 export interface IHospitalRespData extends IRespData {
   data: {
     content: Array<IHospitalInfo> // 等价于 IHospitalInfo[]
+
     pagetable: {
       sort: {
         sorted: boolean
@@ -55,7 +57,8 @@ export interface IHospitalRespData extends IRespData {
     totalElements: number
     last: boolean
     first: boolean
-    //??? redundant
+
+    //? redundant
     sort: {
       sorted: boolean
       unsorted: boolean

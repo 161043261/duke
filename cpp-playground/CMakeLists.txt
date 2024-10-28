@@ -53,7 +53,7 @@ endif ()
 
 # 添加可执行文件
 add_executable(auto_ptr ./src/auto_ptr.cpp)
-add_executable(01knapsack ./src/01knapsack.cpp)
+add_executable(solution ./src/solution.cpp)
 
 # 链接 ??? 库
 target_link_libraries(auto_ptr GTest::gtest_main)
