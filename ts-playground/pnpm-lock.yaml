@@ -29,4 +29,6 @@ snapshots:
 
   prettier@3.3.3: {}
 
-  'ts-playground@file:': {}
+  'ts-playground@file:':
+    dependencies:
+      prettier: 3.3.3

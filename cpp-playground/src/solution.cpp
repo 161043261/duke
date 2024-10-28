@@ -27,6 +27,8 @@ class Solution {
     }
 
     auto p = edges.begin();
+    // decltype(edges.cbegin()) p;
+    
     for (auto iter = edges.begin(); iter != edges.end(); iter++) {
       auto edge = *iter;
       if (find(edge[0]) == find(edge[1])) {

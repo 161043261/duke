@@ -7,10 +7,10 @@ import (
 // timeout
 func numberOfPairs2(nums1 []int, nums2 []int, k int) int64 {
 	sort.Ints(nums2)
-	n1_num := make(map[int]int64)
+	n1toNum := make(map[int]int64)
 	ans := int64(0)
 	for _, n1 := range nums1 {
-		if num, ok := n1_num[n1]; ok {
+		if num, ok := n1toNum[n1]; ok {
 			ans += num
 			continue
 		}
@@ -25,7 +25,7 @@ func numberOfPairs2(nums1 []int, nums2 []int, k int) int64 {
 				num++
 			}
 		}
-		n1_num[n1] = num
+		n1toNum[n1] = num
 		ans += num
 	}
 	return ans
