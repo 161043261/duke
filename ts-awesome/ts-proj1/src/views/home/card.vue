@@ -1,16 +1,21 @@
-<!-- eslint-disable vue/multi-word-component-names -->
+<script lang="ts">
+export default {
+  name: 'HospitalCard',
+}
+</script>
+
 <script setup lang="ts">
-import type { IHospitalInfo } from '@/type'
+import type { IHosContent } from '@/type'
 
 //! 子组件使用 defineProps 从父组件接收数据
-defineProps(['hospitalInfo'])
+defineProps(['hospitalContent'])
 </script>
 
 <template>
   <el-card shadow="hover">
     <div class="content">
       <div class="left">
-        <div>{{ (hospitalInfo as IHospitalInfo).hosname }}</div>
+        <div>{{ (hospitalContent as IHosContent).hosname }}</div>
         <div class="tip">
           <div class="type">
             <svg
@@ -29,7 +34,7 @@ defineProps(['hospitalInfo'])
               ></path>
             </svg>
             <span>{{
-              (hospitalInfo as IHospitalInfo).param.hostypeString
+              (hospitalContent as IHosContent).param.hostypeString
             }}</span>
           </div>
           <div class="time">
@@ -62,7 +67,7 @@ defineProps(['hospitalInfo'])
             </svg>
             <span
               >每天
-              {{ (hospitalInfo as IHospitalInfo).bookingRule.releaseTime }}
+              {{ (hospitalContent as IHosContent).bookingRule.releaseTime }}
               放号</span
             >
           </div>
@@ -70,7 +75,7 @@ defineProps(['hospitalInfo'])
       </div>
       <div class="right">
         <img
-          :src="`data:image/jpeg;base64,${(hospitalInfo as IHospitalInfo).logoData}`"
+          :src="`data:image/jpeg;base64,${(hospitalContent as IHosContent).logoData}`"
           alt="qiqi"
         />
       </div>

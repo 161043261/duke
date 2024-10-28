@@ -1,4 +1,4 @@
-export interface IHospitalInfo {
+export interface IHosContent {
   id: string
   createTime: string
   updateTime: string
@@ -37,9 +37,9 @@ export interface IRespData {
   ok: boolean
 }
 
-export interface IHospitalRespData extends IRespData {
+export interface IHosContentRespData extends IRespData {
   data: {
-    content: Array<IHospitalInfo> // 等价于 IHospitalInfo[]
+    content: Array<IHosContent> // 等价于 IHospitalInfo[]
 
     pagetable: {
       sort: {
@@ -69,4 +69,20 @@ export interface IHospitalRespData extends IRespData {
     number: number
     empty: boolean
   }
+}
+
+export interface IHosTypeAndAddr {
+  id: number
+  createTime: string
+  updateTime: string
+  isDeleted: number
+  param: object
+  name: string
+  value: string
+  dictCode: string
+  hasChildren: boolean
+}
+
+export interface IHosTypeAndAddrRespData extends IRespData {
+  data: IHosTypeAndAddr[]
 }

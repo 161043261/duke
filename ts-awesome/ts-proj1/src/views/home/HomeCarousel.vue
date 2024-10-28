@@ -1,4 +1,9 @@
-<!-- eslint-disable vue/multi-word-component-names -->
+<!-- <script lang="ts">
+export default {
+  name: 'HomeCarousel'
+}
+</script> -->
+
 <script setup lang="ts"></script>
 
 <template>

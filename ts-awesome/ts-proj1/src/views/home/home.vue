@@ -1,4 +1,3 @@
-<!-- Optional -->
 <script lang="ts">
 export default {
   name: 'HomeIndex',
@@ -8,31 +7,31 @@ export default {
 <script setup lang="ts">
 // 导入组件
 import Card from './card.vue'
-import Carousel from './carousel.vue'
-import Level from './level.vue'
-import Region from './region.vue'
-import Search from './search.vue'
+import HomeCarousel from './HomeCarousel.vue'
+import HospitalType from './hospital_type.vue'
+import HospitalAddress from './address.vue'
+import SearchForm from './search.vue'
 
 import { ElConfigProvider } from 'element-plus'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 
-import { reqHospitalInfo } from '@/api/home'
-import type { IHospitalInfo, IHospitalRespData } from '@/type'
+import { reqHosContent } from '@/api/home'
+import type { IHosContent, IHosContentRespData } from '@/type'
 import { onMounted, ref } from 'vue'
 
 const currentPage = ref<number>(1)
 const pageSize = ref<number>(4)
 
-const content = ref<Array<IHospitalInfo>>([])
+const content = ref<Array<IHosContent>>([])
 const totalElements = ref<number>(0)
 
 // 组件挂载后, 发送 AJAX 请求
 onMounted(() => {
-  getHospitalInfo()
+  getHospitalContent()
 })
 
-async function getHospitalInfo() {
-  const respData: IHospitalRespData = await reqHospitalInfo(
+async function getHospitalContent() {
+  const respData: IHosContentRespData = await reqHosContent(
     currentPage.value,
     pageSize.value,
   )
@@ -40,16 +39,16 @@ async function getHospitalInfo() {
     content.value = respData.data.content
     totalElements.value = respData.data.totalElements
   }
-  console.log(respData)
+  // console.log(respData)
 }
 </script>
 
 <template>
   <div>
     <!-- 走马灯组件 -->
-    <Carousel />
+    <HomeCarousel />
     <!-- 搜索表单组件 -->
-    <Search />
+    <SearchForm />
 
     <!-- 1 行 -->
     <!-- :gutter="20" 设置 padding-left = padding-right = 10px -->
@@ -59,9 +58,9 @@ async function getHospitalInfo() {
       <!-- 该列 20 分栏-->
       <el-col :span="20">
         <!-- 等级组件 -->
-        <Level />
+        <HospitalType />
         <!-- 地区组件-->
-        <Region />
+        <HospitalAddress />
 
         <!-- 卡片组件 -->
         <!--! 父组件使用 v-bind: 向子组件发送数据 -->
@@ -70,7 +69,7 @@ async function getHospitalInfo() {
             class="item"
             v-for="(item, idx) in content"
             :key="item.id + '-' + idx"
-            :hospitalInfo="item"
+            :hospitalContent="item"
           />
         </div>
 
@@ -98,11 +97,11 @@ async function getHospitalInfo() {
             :background="true"
             layout="prev, pager, next, jumper, ->, sizes, total"
             :total="totalElements"
-            @current-change="getHospitalInfo()"
+            @current-change="getHospitalContent()"
             @size-change="
               () => {
                 currentPage = 1
-                getHospitalInfo()
+                getHospitalContent()
               }
             "
           />

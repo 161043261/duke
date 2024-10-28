@@ -1,4 +1,9 @@
-<!-- eslint-disable vue/multi-word-component-names -->
+<script lang="ts">
+export default {
+  name: 'SearchForm',
+}
+</script>
+
 <script setup lang="ts">
 // 导入 element-plus 图标
 import { Search } from '@element-plus/icons-vue'
