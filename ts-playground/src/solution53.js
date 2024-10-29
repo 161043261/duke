@@ -1,5 +1,6 @@
-function maxSubArray(nums: number[]): number {
-  let dp: number[] = new Array<number>(nums.length);
+"use strict";
+function maxSubArray(nums) {
+  let dp = new Array(nums.length);
   // [undefined undefined undefined ...]
   // dp.fill(0)
   // [0 0 0 ...]

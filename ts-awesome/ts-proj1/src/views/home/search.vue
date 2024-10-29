@@ -6,12 +6,37 @@ export default {
 
 <script setup lang="ts">
 // 导入 element-plus 图标
+import { reqHosContentList } from '@/api/home'
+import type { IHosContentListRespData } from '@/type'
 import { Search } from '@element-plus/icons-vue'
+import { ref } from 'vue'
+
+// v-model 双向绑定
+const hosname = ref<string>('')
+
+async function fecthData(hosname: string, cb: (arr: Array<unknown>) => object) {
+  // console.log("queryString:", hosname)
+  const respData: IHosContentListRespData = await reqHosContentList(hosname)
+  // console.log(respData.data)
+  cb(
+    respData.data.map(item => {
+      return {
+        value: item.hosname,
+      }
+    }),
+  )
+}
 </script>
 
 <template>
   <div class="search">
-    <el-autocomplete clearable placeholder="请输入医院名" />
+    <el-autocomplete
+      clearable
+      placeholder="请输入医院名"
+      v-model="hosname"
+      :fetch-suggestions="fecthData"
+      :trigger-on-focus="false"
+    />
     <el-button type="primary" size="default" :icon="Search">搜索</el-button>
   </div>
 </template>

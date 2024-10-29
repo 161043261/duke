@@ -8,7 +8,7 @@ npm install -g ts-node @types/node
 npm install sass
 ```
 
-[package.json](./package.json) 自动打开默认浏览器
+--open 自动打开默认浏览器
 
 ```json
 {
@@ -115,7 +115,7 @@ function recvHostype(args: string) {
 </template>
 ```
 
-v-if 和 v-else
+条件渲染: v-if 和 v-else
 
 ```vue
 <template>

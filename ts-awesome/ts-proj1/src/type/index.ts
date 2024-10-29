@@ -26,7 +26,7 @@ export interface IHosContent {
     stopTime: string
     quitDay: number
     quitTime: string
-    rule: string[] // 等价于 Array<string>
+    rule: Array<string> // 等价于 string[]
   }
 }
 
@@ -39,7 +39,7 @@ export interface IRespData {
 
 export interface IHosContentRespData extends IRespData {
   data: {
-    content: Array<IHosContent> // 等价于 IHospitalInfo[]
+    content: IHosContent[]
 
     pagetable: {
       sort: {
@@ -85,4 +85,8 @@ export interface IHosTypeOrDistrict {
 
 export interface IHosTypeOrDistrictRespData extends IRespData {
   data: IHosTypeOrDistrict[]
+}
+
+export interface IHosContentListRespData extends IRespData {
+  data: IHosContent[]
 }

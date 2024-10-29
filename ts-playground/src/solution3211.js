@@ -1,6 +1,7 @@
-function validStrings(n: number): string[] {
-  const ans: string[] = [];
-  const append = (prefix: string) => {
+"use strict";
+function validStrings(n) {
+  const ans = [];
+  const append = (prefix) => {
     if (prefix.length == n) {
       ans.push(prefix);
       return;

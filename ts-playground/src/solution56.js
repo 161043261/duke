@@ -1,16 +1,15 @@
-function merge(intervals: number[][]): number[][] {
-  let dupAns: number[][] = [];
+"use strict";
+function merge(intervals) {
+  let dupAns = [];
   for (const interval of intervals) {
     let [begin, end] = interval;
     tryMerge(begin, end, dupAns);
   }
   return deDup(dupAns);
 }
-
 // A rest parameter must be of an array type
-function tryMerge(b: number, e: number, ans: number[][]) {
+function tryMerge(b, e, ans) {
   let needPush = true;
-
   for (const interval of ans) {
     let [l, r] = interval;
     // b e l r
@@ -18,27 +17,23 @@ function tryMerge(b: number, e: number, ans: number[][]) {
     if (e < l || b > r) {
       continue;
     }
-
     // l b e r
     else if (b >= l && e <= r) {
       needPush = false;
       continue;
     }
-
     // b l e r
     if (b < l && e >= l && e <= r) {
       needPush = false;
       interval[0] = b;
       tryMerge(interval[0], interval[1], ans);
     }
-
     // l b r e
     else if (b >= l && b <= r && e > r) {
       needPush = false;
       interval[1] = e;
       tryMerge(interval[0], interval[1], ans);
     }
-
     // b l r e
     else if (b <= l && e >= r) {
       needPush = false;
@@ -47,31 +42,27 @@ function tryMerge(b: number, e: number, ans: number[][]) {
       tryMerge(interval[0], interval[1], ans);
     }
   }
-
   if (needPush) {
     ans.push([b, e]);
   }
 }
-
-function deDup(dupAns: number[][]): number[][] {
-  let aSet = new Map<number, number>();
+function deDup(dupAns) {
+  let aSet = new Map();
   for (let arr of dupAns) {
     aSet.set(arr[0], arr[1]);
   }
-  let ret: number[][] = [];
+  let ret = [];
   for (let arr /* [keyType, valueType] */ of aSet) {
     ret.push(arr);
   }
   return ret;
 }
-
 ///////////////////////////////////////////////////////////
-
-function merge1(intervals: number[][]): number[][] {
-  intervals.sort((x: number[], y: number[]) => {
+function merge1(intervals) {
+  intervals.sort((x, y) => {
     return x[0] - y[0];
   });
-  let ans: number[][] = [];
+  let ans = [];
   for (let interval of intervals) {
     let begin = interval[0];
     let end = interval[1];

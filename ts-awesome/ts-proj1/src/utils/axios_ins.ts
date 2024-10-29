@@ -4,7 +4,7 @@ import { ElMessage } from 'element-plus'
 
 const axiosIns: AxiosInstance = axios.create({
   baseURL: '/api', // 请求 URL 前缀
-  timeout: 5000, // 超时时间 10s, 超时 10s 请求失败
+  timeout: 10_000, // 超时时间 10s, 超时 10s 请求失败
 })
 
 // 请求拦截器
@@ -22,6 +22,7 @@ axiosIns.interceptors.response.use(
     return response.data
   },
   /* onRejected */ error => {
+    console.error(error)
     const status = error.response.status
     // console.log('status:', status)
 

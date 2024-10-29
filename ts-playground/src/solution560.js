@@ -24,17 +24,20 @@
 //   return ans
 // };
 function subarraySum(nums, k) {
-    var _a, _b;
-    // let index in array | let key   in map
-    // let value of array | let value of map
-    let preSum2cnt = new Map();
-    let [currSum, ans] = [0, 0];
-    preSum2cnt.set(0, 1);
-    for (let idx in nums) {
-        currSum += nums[idx];
-        ans += (_a = preSum2cnt.get(currSum - k)) !== null && _a !== void 0 ? _a : 0;
-        preSum2cnt.set(currSum, ((_b = preSum2cnt.get(currSum)) !== null && _b !== void 0 ? _b : 0) + 1);
-    }
-    return ans;
+  var _a, _b;
+  // let index in array | let key   in map
+  // let value of array | let value of map
+  let preSum2cnt = new Map();
+  let [currSum, ans] = [0, 0];
+  preSum2cnt.set(0, 1);
+  for (let idx in nums) {
+    currSum += nums[idx];
+    ans +=
+      (_a = preSum2cnt.get(currSum - k)) !== null && _a !== void 0 ? _a : 0;
+    preSum2cnt.set(
+      currSum,
+      ((_b = preSum2cnt.get(currSum)) !== null && _b !== void 0 ? _b : 0) + 1,
+    );
+  }
+  return ans;
 }
-;

@@ -1,11 +1,16 @@
-import type { IHosContentRespData, IHosTypeOrDistrictRespData } from '@/type'
+import type {
+  IHosContentListRespData,
+  IHosContentRespData,
+  IHosTypeOrDistrictRespData,
+} from '@/type'
 import axiosIns from '@/utils/axios_ins'
 
 // const HOS_CONTENT = '/hosp/hospital/{page}/{limit}'
 
 enum API_ENUM {
   HOS_CONTENT = '/hosp/hospital/',
-  HOS_TYPE_AND_ADDR = '/cmn/dict/findByDictCode/',
+  HOS_TYPE_OR_ADDR = '/cmn/dict/findByDictCode/',
+  HOS_CONTENT_LIST = '/hosp/hospital/findByHosname/',
 }
 
 // const API = {
@@ -33,7 +38,13 @@ export async function reqHosContent(
 }
 
 export async function reqHosTypeAndDistrict(
-  dictCode: string,
+  districtCode: string,
 ): Promise<IHosTypeOrDistrictRespData> {
-  return axiosIns.get(API_ENUM.HOS_TYPE_AND_ADDR + dictCode)
+  return axiosIns.get(API_ENUM.HOS_TYPE_OR_ADDR + districtCode)
+}
+
+export async function reqHosContentList(
+  hosname: string,
+): Promise<IHosContentListRespData> {
+  return axiosIns.get(API_ENUM.HOS_CONTENT_LIST + hosname)
 }
