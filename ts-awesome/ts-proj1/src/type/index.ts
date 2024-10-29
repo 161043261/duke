@@ -71,7 +71,7 @@ export interface IHosContentRespData extends IRespData {
   }
 }
 
-export interface IHosTypeAndAddr {
+export interface IHosTypeOrDistrict {
   id: number
   createTime: string
   updateTime: string
@@ -83,6 +83,6 @@ export interface IHosTypeAndAddr {
   hasChildren: boolean
 }
 
-export interface IHosTypeAndAddrRespData extends IRespData {
-  data: IHosTypeAndAddr[]
+export interface IHosTypeOrDistrictRespData extends IRespData {
+  data: IHosTypeOrDistrict[]
 }

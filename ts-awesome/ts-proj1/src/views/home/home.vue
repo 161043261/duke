@@ -6,10 +6,10 @@ export default {
 
 <script setup lang="ts">
 // 导入组件
+import HospitalDistrict from './district.vue'
 import Card from './card.vue'
 import HomeCarousel from './HomeCarousel.vue'
 import HospitalType from './hospital_type.vue'
-import HospitalAddress from './address.vue'
 import SearchForm from './search.vue'
 
 import { ElConfigProvider } from 'element-plus'
@@ -21,9 +21,10 @@ import { onMounted, ref } from 'vue'
 
 const currentPage = ref<number>(1)
 const pageSize = ref<number>(4)
-
 const content = ref<Array<IHosContent>>([])
 const totalElements = ref<number>(0)
+const hostype = ref<string>('')
+const districtCode = ref<string>('')
 
 // 组件挂载后, 发送 AJAX 请求
 onMounted(() => {
@@ -34,12 +35,28 @@ async function getHospitalContent() {
   const respData: IHosContentRespData = await reqHosContent(
     currentPage.value,
     pageSize.value,
+    hostype.value,
+    districtCode.value,
   )
   if (respData.code == 200) {
     content.value = respData.data.content
     totalElements.value = respData.data.totalElements
   }
   // console.log(respData)
+}
+
+// 父组件使用自定义事件, 从子组件接收数据
+function recvHostype(args: string) {
+  console.log(`Receive ${args} from ./hospital_type.vue`)
+  hostype.value = args
+  getHospitalContent()
+}
+
+// 父组件使用自定义事件, 从子组件接收数据
+function recvDistrict(args: string) {
+  console.log(`Receive ${args} from ./district.vue`)
+  districtCode.value = args
+  getHospitalContent()
 }
 </script>
 
@@ -58,20 +75,24 @@ async function getHospitalContent() {
       <!-- 该列 20 分栏-->
       <el-col :span="20">
         <!-- 等级组件 -->
-        <HospitalType />
-        <!-- 地区组件-->
-        <HospitalAddress />
+
+        <!-- 自定义事件 send-hostype -->
+        <HospitalType @send-hostype="recvHostype" />
+        <!-- 地区组件 -->
+        <HospitalDistrict @send-district="recvDistrict" />
 
         <!-- 卡片组件 -->
         <!--! 父组件使用 v-bind: 向子组件发送数据 -->
-        <div class="cards">
+        <div class="cards" v-if="content.length > 0">
           <Card
             class="item"
             v-for="(item, idx) in content"
             :key="item.id + '-' + idx"
-            :hospitalContent="item"
+            v-bind:hospitalContent="item"
           />
         </div>
+
+        <el-empty v-else description="暂无数据"></el-empty>
 
         <!-- element-plus 国际化 -->
         <el-config-provider :locale="zhCn">

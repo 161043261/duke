@@ -1,25 +1,25 @@
 <script lang="ts">
 export default {
-  name: 'HospitalAddress',
+  name: 'HospitalDistrict',
 }
 </script>
 
 <script setup lang="ts">
-import { reqHosTypeAndAddr } from '@/api/home'
-import type { IHosTypeAndAddr } from '@/type'
+import { reqHosTypeAndDistrict } from '@/api/home'
+import type { IHosTypeOrDistrict } from '@/type'
 import { onMounted, ref } from 'vue'
 
-const hosAddrs = ref<IHosTypeAndAddr[]>()
+const hosDistrict = ref<IHosTypeOrDistrict[]>()
 
 onMounted(() => {
-  getHosAddrs()
+  getHosDistrict()
 })
 
-async function getHosAddrs() {
-  const resp = await reqHosTypeAndAddr('Beijin')
+async function getHosDistrict() {
+  const resp = await reqHosTypeAndDistrict('Beijin')
   if (resp.code == 200) {
-    hosAddrs.value = resp.data
-    // console.log(hosAddrs.value)
+    hosDistrict.value = resp.data
+    // console.log(hosDistrict.value)
   } else {
     console.log(resp.message)
   }
@@ -28,7 +28,12 @@ async function getHosAddrs() {
 const flag = ref<string>('')
 function changeValue(value: string) {
   flag.value = value
+  // 子组件使用自定义事件, 向父组件发送数据
+  emitFunc('send-district' /* 事件名 */, value /* 参数列表 */)
 }
+
+// 自定义事件 send-address
+const emitFunc = defineEmits(['send-district']) // 事件名列表
 </script>
 
 <template>
@@ -41,7 +46,7 @@ function changeValue(value: string) {
         </li>
         <li
           :class="{ highlight: flag == hosAddr.value }"
-          v-for="hosAddr in hosAddrs"
+          v-for="hosAddr in hosDistrict"
           :key="hosAddr.value"
           @click="changeValue(hosAddr.value)"
         >
@@ -68,7 +73,7 @@ function changeValue(value: string) {
 
     .left {
       margin-right: 10px;
-      width: 70px;
+      width: 50px;
     }
 
     ul {

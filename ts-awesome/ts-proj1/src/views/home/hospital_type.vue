@@ -5,21 +5,21 @@ export default {
 </script> -->
 
 <script setup lang="ts">
-import { reqHosTypeAndAddr } from '@/api/home'
-import type { IHosTypeAndAddr, IHosTypeAndAddrRespData } from '@/type'
+import { reqHosTypeAndDistrict } from '@/api/home'
+import type { IHosTypeOrDistrict, IHosTypeOrDistrictRespData } from '@/type'
 import { onMounted, ref } from 'vue'
 
-const hosTypes = ref<IHosTypeAndAddr[]>()
+const hosTypes = ref<IHosTypeOrDistrict[]>()
 
 onMounted(() => {
   getHosTypes()
 })
 
 async function getHosTypes() {
-  const promiseIns = reqHosTypeAndAddr('HosType')
+  const promiseIns = reqHosTypeAndDistrict('HosType')
   // console.log(result)
   promiseIns.then(
-    (resp: IHosTypeAndAddrRespData) => {
+    (resp: IHosTypeOrDistrictRespData) => {
       hosTypes.value = resp.data
     },
     reason => {
@@ -31,7 +31,12 @@ async function getHosTypes() {
 const flag = ref<string>('')
 function changeValue(value: string) {
   flag.value = value
+  // 子组件使用自定义事件, 向父组件发送数据
+  emitFunc('send-hostype' /* 事件名 */, value /* 参数列表 */)
 }
+
+// 自定义事件 send-hostype
+const emitFunc = defineEmits(['send-hostype']) // 事件名列表
 </script>
 
 <template>
@@ -43,11 +48,15 @@ function changeValue(value: string) {
         <li :class="{ highlight: flag == '' }" @click="changeValue('')">
           全部
         </li>
+        <!-- 点击触发自定义事件 -->
         <li
           :class="{ highlight: flag == hosType.value }"
           v-for="hosType in hosTypes"
           :key="hosType.value"
-          @click="changeValue(hosType.value)"
+          @click="
+            changeValue(hosType.value)
+            /* ; emitFunc('send-hostype', hosType.value) */
+          "
         >
           {{ hosType.name }}
         </li>
@@ -71,7 +80,8 @@ function changeValue(value: string) {
     display: flex;
 
     .left {
-      margin-right: 10px;
+      // margin-right: 10px;
+      margin-right: 17px;
     }
 
     ul {
