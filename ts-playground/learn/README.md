@@ -30,7 +30,7 @@ typeof Object; // function
 typeof Array; // function
 ```
 
-例: map() 等 "数组方法" 是在 Array.prototype 上定义的方法, 在所有的数组实例上可用
+例: map() 等 "数组方法" 是 Array.prototype 上定义的方法, 所有数组实例上可用
 
 > 不要扩展 Object.prototype 等内置原型! (猴子修补 Monkey Patching), 存在向前兼容的风险
 
@@ -66,8 +66,6 @@ const obj = new Constructor();
 ```js
 function Base() {}
 function Derived() {}
-// @Deprecated
-// Derived.prototype = Object.create(Base.prototype);
 Object.setPrototypeOf(Derived.prototype, Base.prototype);
 
 const obj = new Derived();
@@ -77,9 +75,36 @@ const obj = new Derived();
 构建更长的原型链 (等价于 extends)
 
 ```js
+function Base() {}
+function Derived() {}
+
+// Object.create(Base.prototype) 创建一个对象 obj
+// 该对象的原型是 Base.prototype (obj.__proto__ === Base.prototype)
+Derived.prototype = Object.create(Base.prototype);
+```
+
+构建更长的原型链 (extends)
+
+```js
 class Base {}
 class Derived extends Base {}
 
 const obj = new Derived();
 // obj ---> Derived.prototype ---> Base.prototype ---> Object.prototype ---> null
+```
+
+> JavaScript 中, 函数也有属性
+>
+> 所有函数都有一个 prototype 的特殊属性
+
+```js
+function fn() {}
+console.log(fn.prototype)            // {...}
+const fnByArrowFunc = () => {}
+console.log(fnByArrowFunc.prototype) // undefined
+
+
+// 向 fn 的原型添加属性
+fn.prototype.foo = "bar"
+console.log(fn.prototype) // { foo: 'bar' }
 ```

@@ -2,7 +2,7 @@
   "name": "ts-playground",
   "version": "1.0.0",
   "description": "TS Playground",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "vitest",
     "format": "prettier --write algorithm/ src/"
