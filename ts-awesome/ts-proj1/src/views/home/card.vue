@@ -9,10 +9,14 @@ import type { IHosContent } from '@/type'
 
 //! 子组件使用 defineProps 从父组件接收数据
 defineProps(['hospitalContent'])
+
+function jump2Detail() {
+  console.log('execute')
+}
 </script>
 
 <template>
-  <el-card shadow="hover">
+  <el-card shadow="hover" @click="jump2Detail">
     <div class="content">
       <div class="left">
         <div>{{ (hospitalContent as IHosContent).hosname }}</div>

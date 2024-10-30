@@ -10,7 +10,9 @@ import { reqHosContentList } from '@/api/home'
 import type { IHosContentListRespData } from '@/type'
 import { Search } from '@element-plus/icons-vue'
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 // v-model 双向绑定
 const hosname = ref<string>('')
 
@@ -21,10 +23,21 @@ async function fecthData(hosname: string, cb: (arr: Array<unknown>) => object) {
   cb(
     respData.data.map(item => {
       return {
-        value: item.hosname,
+        value: item.hosname, // 医院名
+        hoscode: item.hoscode // 医院编号
       }
     }),
   )
+}
+
+function jump2hosDetail(item: {
+  value: string,
+  hoscode: string
+}) {
+  // console.log(item)
+  router.push({
+    path: '/hospital'
+  })
 }
 </script>
 
@@ -36,6 +49,7 @@ async function fecthData(hosname: string, cb: (arr: Array<unknown>) => object) {
       v-model="hosname"
       :fetch-suggestions="fecthData"
       :trigger-on-focus="false"
+      @select="jump2hosDetail"
     />
     <el-button type="primary" size="default" :icon="Search">搜索</el-button>
   </div>
