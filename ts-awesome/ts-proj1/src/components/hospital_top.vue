@@ -5,14 +5,25 @@ export default {
 }
 </script>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+function goHome() {
+  // 等价于 router.push('/home'); router.push({ path: '/home' });
+  router.push({
+    name: 'home',
+  })
+}
+</script>
 
 <template>
   <!-- 顶部 -->
   <div class="top">
     <div class="content">
       <!-- 左侧 -->
-      <div class="left">
+      <div class="left" @click="goHome">
         <img src="../assets/baizhu.webp" alt="baizhu" />
         <p>不卜庐 预约挂号统一平台</p>
       </div>

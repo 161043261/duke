@@ -6,17 +6,21 @@ export default {
 
 <script setup lang="ts">
 import type { IHosContent } from '@/type'
+import { useRouter } from 'vue-router'
 
 //! 子组件使用 defineProps 从父组件接收数据
-defineProps(['hospitalContent'])
+const props = defineProps(['hospitalContent'])
+const router = useRouter()
 
-function jump2Detail() {
-  console.log('execute')
+function goDetail() {
+  console.log(props.hospitalContent.hoscode)
+  // 等价于 router.push({ path: '/hospital' })
+  router.push('/hospital')
 }
 </script>
 
 <template>
-  <el-card shadow="hover" @click="jump2Detail">
+  <el-card shadow="hover" @click="goDetail">
     <div class="content">
       <div class="left">
         <div>{{ (hospitalContent as IHosContent).hosname }}</div>

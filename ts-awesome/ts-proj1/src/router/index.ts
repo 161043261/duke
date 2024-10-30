@@ -12,6 +12,7 @@ export default createRouter({
   routes: [
     {
       path: '/home',
+      name: 'home',
       // 路由懒加载: 访问 /home 路由时，才加载 *.vue 组件
       component: () => import('@/views/home/home.vue'),
     },

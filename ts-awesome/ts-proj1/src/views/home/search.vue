@@ -24,20 +24,16 @@ async function fecthData(hosname: string, cb: (arr: Array<unknown>) => object) {
     respData.data.map(item => {
       return {
         value: item.hosname, // 医院名
-        hoscode: item.hoscode // 医院编号
+        hoscode: item.hoscode, // 医院编号
       }
     }),
   )
 }
 
-function jump2hosDetail(item: {
-  value: string,
-  hoscode: string
-}) {
+function goHosDetail(item: { value: string; hoscode: string }) {
   // console.log(item)
-  router.push({
-    path: '/hospital'
-  })
+  // 等价于 router.push('/hospital')
+  router.push({ path: '/hospital' })
 }
 </script>
 
@@ -49,7 +45,7 @@ function jump2hosDetail(item: {
       v-model="hosname"
       :fetch-suggestions="fecthData"
       :trigger-on-focus="false"
-      @select="jump2hosDetail"
+      @select="goHosDetail"
     />
     <el-button type="primary" size="default" :icon="Search">搜索</el-button>
   </div>
