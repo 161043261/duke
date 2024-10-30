@@ -19,6 +19,8 @@ import { reqHosContent } from '@/api/home'
 import type { IHosContent, IHosContentRespData } from '@/type'
 import { onMounted, ref } from 'vue'
 
+import RightTips from './right_tips.vue'
+
 const currentPage = ref<number>(1)
 const pageSize = ref<number>(4)
 const content = ref<Array<IHosContent>>([])
@@ -130,6 +132,7 @@ function recvDistrict(args: string) {
       </el-col>
       <el-col :span="4">
         <!-- 该列 4 分栏 -->
+         <RightTips />
       </el-col>
     </el-row>
   </div>
