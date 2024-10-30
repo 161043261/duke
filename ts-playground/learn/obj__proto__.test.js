@@ -2,7 +2,7 @@
 // 基于原型链的继承
 import { test } from 'vitest'
 
-test('obj__proto__', () => {
+test('1', () => {
   console.log(typeof Object) // function
   console.log(Object.prototype) // [Object: null prototype] {}
 

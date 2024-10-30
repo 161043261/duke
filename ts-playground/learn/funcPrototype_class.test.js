@@ -2,12 +2,13 @@
 import { test } from 'vitest'
 
 // 构造函数
-test('funcPrototype', () => {
+test('1', () => {
   function Box(value) {
     console.log(this) // Box {}
     this.value = value
   }
 
+  // Function.prototype 「仅」用于创建实例
   // 构造函数的 prototype 传递给实例的 __proto__
   // Box.prototype 传递给 boxInstance.__proto__
   Box.prototype.getValue = function () {
@@ -26,7 +27,7 @@ test('funcPrototype', () => {
 })
 
 // 类是构造函数的语法糖
-test('class', () => {
+test('2', () => {
   class Box {
     constructor(value) {
       console.log(this) // Box {}
@@ -60,7 +61,7 @@ test('class', () => {
   console.log(box.__proto__.getValue.toString())
 })
 
-test('what', () => {
+test('3', () => {
   class Box {
     constructor(value) {
       this.value = value
@@ -73,7 +74,5 @@ test('what', () => {
   console.log(typeof Box) // function
   // Box.prototype 「仅」用于创建实例
   console.log(Box.prototype.getValue) // [Function: getValue]
-  // Box.__proto__ 是构造函数的自有原型
-  console.log(Box.__proto__.getValue) // undefined
   console.log(Object.getPrototypeOf(Box) === Box.__proto__) // true
 })
