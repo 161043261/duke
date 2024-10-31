@@ -10,9 +10,7 @@ import (
 )
 
 func ConnMysql() (*gorm.DB, error) {
-
 	gormLogMod := gormLogger.Info
-
 	if viper.GetString("buildType") == "Release" {
 		gormLogMod = gormLogger.Error
 	}

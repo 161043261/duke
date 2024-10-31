@@ -11,6 +11,7 @@ type HospDao struct {
 	db *gorm.DB
 }
 
+// HospDao 单例
 var hospDao *HospDao
 
 func NewHospDao() *HospDao {
@@ -27,7 +28,7 @@ func NewHospDao() *HospDao {
 // ! 链式调用: Where, First
 func (hospDao *HospDao) SelectHospByDistrictCode(districtCode string) (data.Hospital, error) {
 	var hosp data.Hospital // receiver
-	err := hospDao.db.Where("district_code = ?", districtCode).First(&hosp).Error
+	err := hospDao.db.Where("hosp_code = ?", districtCode).First(&hosp).Error
 	return hosp, err
 }
 

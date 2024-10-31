@@ -49,3 +49,9 @@ func TestHospDao_SelectAllHosp(t *testing.T) {
 		log.Println(hosp)
 	}
 }
+
+func TestHospDao_SelectHospByDistrictCode(t *testing.T) {
+	hospDao := dao.NewHospDao()
+	hosp, _ := hospDao.SelectHospByDistrictCode("1.1.1.1")
+	fmt.Printf("%#v", hosp)
+}
