@@ -5,7 +5,7 @@ export default {
 </script>
 
 <script setup lang="ts">
-import type { IHosContent } from '@/type'
+import type { IHospContent } from '@/type'
 import { useRouter } from 'vue-router'
 import { Star, Timer } from '@element-plus/icons-vue'
 
@@ -14,7 +14,7 @@ const props = defineProps(['hospitalContent'])
 const router = useRouter()
 
 function goDetail() {
-  console.log(props.hospitalContent.hoscode)
+  console.log(props.hospitalContent.hospCode)
   // 等价于 router.push({ path: '/hospital/register' })
   router.push('/hospital/register')
 }
@@ -24,15 +24,15 @@ function goDetail() {
   <el-card shadow="hover" @click="goDetail">
     <div class="content">
       <div class="left">
-        <div>{{ (hospitalContent as IHosContent).hosname }}</div>
+        <div>{{ (hospitalContent as IHospContent).hospName }}</div>
         <div class="tip">
           <div class="type">
             <el-icon>
               <Star />
             </el-icon>
             <span>{{
-              (hospitalContent as IHosContent).param.hostypeString
-            }}</span>
+                (hospitalContent as IHospContent).hospLevel
+              }}</span>
           </div>
           <div class="time">
             <el-icon>
@@ -40,7 +40,7 @@ function goDetail() {
             </el-icon>
             <span
               >每天
-              {{ (hospitalContent as IHosContent).bookingRule.releaseTime }}
+              {{ (hospitalContent as IHospContent).releaseTime }}
               放号</span
             >
           </div>
@@ -48,7 +48,7 @@ function goDetail() {
       </div>
       <div class="right">
         <img
-          :src="`data:image/jpeg;base64,${(hospitalContent as IHosContent).logoData}`"
+          :src="`data:image/jpeg;base64,${(hospitalContent as IHospContent).logoData}`"
           alt="qiqi"
         />
       </div>

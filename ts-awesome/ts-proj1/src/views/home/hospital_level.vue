@@ -1,26 +1,26 @@
 <!-- <script lang="ts">
 export default {
-  name: 'HospitalType',
+  name: 'HospitalLevel',
 }
 </script> -->
 
 <script setup lang="ts">
-import { reqHosTypeAndDistrict } from '@/api/home'
-import type { IHosTypeOrDistrict, IHosTypeOrDistrictRespData } from '@/type'
+import { reqHospLevelOrDistrict } from '@/api/home'
+import type { IHospLevelOrDistrict, IHospLevelOrDistrictRespData } from '@/type'
 import { onMounted, ref } from 'vue'
 
-const hosTypes = ref<IHosTypeOrDistrict[]>()
+const hospLevels = ref<IHospLevelOrDistrict[]>()
 
 onMounted(() => {
-  getHosTypes()
+  getHospLevels()
 })
 
-async function getHosTypes() {
-  const promiseIns = reqHosTypeAndDistrict('HosType')
+async function getHospLevels() {
+  const promiseIns = reqHospLevelOrDistrict('')
   // console.log(result)
   promiseIns.then(
-    (resp: IHosTypeOrDistrictRespData) => {
-      hosTypes.value = resp.data
+    (resp: IHospLevelOrDistrictRespData) => {
+      hospLevels.value = resp.data
     },
     reason => {
       console.log(reason)
@@ -32,11 +32,11 @@ const flag = ref<string>('')
 function changeValue(value: string) {
   flag.value = value
   // 子组件使用自定义事件, 向父组件发送数据
-  emitFunc('send-hostype' /* 事件名 */, value /* 参数列表 */)
+  emitFunc('send-hosp-level' /* 事件名 */, value /* 参数列表 */)
 }
 
-// 自定义事件 send-hostype
-const emitFunc = defineEmits(['send-hostype']) // 事件名列表
+// 自定义事件 send-hosp-level
+const emitFunc = defineEmits(['send-hosp-level']) // 事件名列表
 </script>
 
 <template>
@@ -50,15 +50,15 @@ const emitFunc = defineEmits(['send-hostype']) // 事件名列表
         </li>
         <!-- 点击触发自定义事件 -->
         <li
-          :class="{ highlight: flag == hosType.value }"
-          v-for="hosType in hosTypes"
-          :key="hosType.value"
+          :class="{ highlight: flag == hospLevel.value }"
+          v-for="hospLevel in hospLevels"
+          :key="hospLevel.value"
           @click="
-            changeValue(hosType.value)
-            /* ; emitFunc('send-hostype', hosType.value) */
+            changeValue(hospLevel.value)
+            /* ; emitFunc('send-hospLevel', hospLevel.value) */
           "
         >
-          {{ hosType.name }}
+          {{ hospLevel.name }}
         </li>
       </ul>
     </div>

@@ -5,21 +5,21 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { reqHosTypeAndDistrict } from '@/api/home'
-import type { IHosTypeOrDistrict } from '@/type'
+import { reqHospLevelOrDistrict } from '@/api/home'
+import type { IHospLevelOrDistrict } from '@/type'
 import { onMounted, ref } from 'vue'
 
-const hosDistrict = ref<IHosTypeOrDistrict[]>()
+const hospDistrictArr = ref<IHospLevelOrDistrict[]>()
 
 onMounted(() => {
   getHosDistrict()
 })
 
 async function getHosDistrict() {
-  const resp = await reqHosTypeAndDistrict('Beijin')
+  const resp = await reqHospLevelOrDistrict('Beijing')
   if (resp.code == 200) {
-    hosDistrict.value = resp.data
-    // console.log(hosDistrict.value)
+    hospDistrictArr.value = resp.data
+    // console.log(hospDistrictArr.value)
   } else {
     console.log(resp.message)
   }
@@ -45,12 +45,12 @@ const emitFunc = defineEmits(['send-district']) // 事件名列表
           全部
         </li>
         <li
-          :class="{ highlight: flag == hosAddr.value }"
-          v-for="hosAddr in hosDistrict"
-          :key="hosAddr.value"
-          @click="changeValue(hosAddr.value)"
+          :class="{ highlight: flag == hospDistrict.value }"
+          v-for="hospDistrict in hospDistrictArr"
+          :key="hospDistrict.value"
+          @click="changeValue(hospDistrict.value)"
         >
-          {{ hosAddr.name }}
+          {{ hospDistrict.name }}
         </li>
       </ul>
     </div>

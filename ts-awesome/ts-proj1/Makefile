@@ -1,4 +1,4 @@
-.PHONY: create install
+.PHONY: create install format
 
 create:
 	npm create vue@latest # deprecated

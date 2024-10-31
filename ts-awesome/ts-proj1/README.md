@@ -69,29 +69,29 @@ defineProps(['hospitalContent'])
 
 > 子组件到父组件的通信: 自定义事件
 
-[子组件](./src/views/home/hospital_type.vue)
+[子组件](./src/views/home/hospital_level.vue)
 
 ```vue
 <script lang="ts" setup>
 function changeValue(value: string) {
   flag.value = value
   // 子组件使用自定义事件, 向父组件发送数据
-  emitFunc('send-hostype' /* 事件名 */, value /* 参数列表 */)
+  emitFunc('send-hosp-level' /* 事件名 */, value /* 参数列表 */)
 }
 
-// 自定义事件 send-hostype
-const emitFunc = defineEmits(['send-hostype']) // 事件名列表
+// 自定义事件 send-hosp-level
+const emitFunc = defineEmits(['send-hospLevel']) // 事件名列表
 </script>
 
 <template>
   <!-- 点击触发自定义事件 -->
   <li
-    :class="{ highlight: flag == hosType.value }"
-    v-for="hosType in hosTypes"
-    :key="hosType.value"
+    :class="{ highlight: flag == hospLevel.value }"
+    v-for="hospLevel in hospLevels"
+    :key="hospLevel.value"
     @click="
-      changeValue(hosType.value)
-      /* ; emitFunc('send-hostype', hosType.value) */
+      changeValue(hospLevel.value)
+      /* ; emitFunc('send-hosp-level', hospLevel.value) */
     "
   ></li>
 </template>
@@ -102,16 +102,16 @@ const emitFunc = defineEmits(['send-hostype']) // 事件名列表
 ```vue
 <script lang="ts" setup>
 // 父组件使用自定义事件, 从子组件接收数据
-function recvHostype(args: string) {
+function getHospLevel(args: string) {
   console.log('子组件发送的数据:', args)
-  hostype.value = args
+  hospLevel.value = args
   getHospitalContent()
 }
 </script>
 
 <template>
-  <!-- 自定义事件 send-hostype -->
-  <HospitalType @send-hostype="recvHostype" />
+  <!-- 自定义事件 send-hospLevel -->
+  <HospitalLevel @send-hospLevel="getHospLevel" />
 </template>
 ```
 
@@ -119,7 +119,7 @@ function recvHostype(args: string) {
 
 ```vue
 <template>
-  <div class="cards" v-if="content.length > 0">
+  <div class="cards" v-if="content.length > 0"></div>
   <el-empty v-else description="暂无数据"></el-empty>
 </template>
 ```

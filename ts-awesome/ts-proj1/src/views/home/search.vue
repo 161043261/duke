@@ -6,31 +6,31 @@ export default {
 
 <script setup lang="ts">
 // 导入 element-plus 图标
-import { reqHosContentList } from '@/api/home'
-import type { IHosContentListRespData } from '@/type'
+import { reqHospContentArr } from '@/api/home'
+import type { IHospContentArrRespData } from '@/type'
 import { Search } from '@element-plus/icons-vue'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
 // v-model 双向绑定
-const hosname = ref<string>('')
+const hospName = ref<string>('')
 
-async function fecthData(hosname: string, cb: (arr: Array<unknown>) => object) {
-  // console.log("queryString:", hosname)
-  const respData: IHosContentListRespData = await reqHosContentList(hosname)
+async function fetchData(hospName: string, cb: (arr: Array<unknown>) => object) {
+  // console.log("queryString:", hospName)
+  const respData: IHospContentArrRespData = await reqHospContentArr(hospName)
   // console.log(respData.data)
   cb(
     respData.data.map(item => {
       return {
-        value: item.hosname, // 医院名
-        hoscode: item.hoscode, // 医院编号
+        value: item.hospName, // 医院名
+        hospCode: item.hospCode, // 医院编号
       }
     }),
   )
 }
 
-function goHosDetail(item: { value: string; hoscode: string }) {
+function goHospDetail(item: { value: string; hospCode: string }) {
   // console.log(item)
   // 等价于 router.push('/hospital/register')
   router.push({ path: '/hospital/register' })
@@ -42,10 +42,10 @@ function goHosDetail(item: { value: string; hoscode: string }) {
     <el-autocomplete
       clearable
       placeholder="请输入医院名"
-      v-model="hosname"
-      :fetch-suggestions="fecthData"
+      v-model="hospName"
+      :fetch-suggestions="fetchData"
       :trigger-on-focus="false"
-      @select="goHosDetail"
+      @select="goHospDetail"
     />
     <el-button type="primary" size="default" :icon="Search">搜索</el-button>
   </div>

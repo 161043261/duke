@@ -9,23 +9,23 @@ export default {
 import HospitalDistrict from './district.vue'
 import Card from './card.vue'
 import HomeCarousel from './HomeCarousel.vue'
-import HospitalType from './hospital_type.vue'
+import HospitalLevel from './hospital_level.vue'
 import SearchForm from './search.vue'
 
 import { ElConfigProvider } from 'element-plus'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 
-import { reqHosContent } from '@/api/home'
-import type { IHosContent, IHosContentRespData } from '@/type'
+import { reqHospContent } from '@/api/home'
+import type { IHospContent, IHospContentRespData } from '@/type'
 import { onMounted, ref } from 'vue'
 
 import RightTips from './right_tips.vue'
 
 const currentPage = ref<number>(1)
 const pageSize = ref<number>(4)
-const content = ref<Array<IHosContent>>([])
-const totalElements = ref<number>(0)
-const hostype = ref<string>('')
+const content = ref<Array<IHospContent>>([])
+const totalHosp = ref<number>(0)
+const hospLevel = ref<string>('')
 const districtCode = ref<string>('')
 
 // 组件挂载后, 发送 AJAX 请求
@@ -34,28 +34,28 @@ onMounted(() => {
 })
 
 async function getHospitalContent() {
-  const respData: IHosContentRespData = await reqHosContent(
+  const respData: IHospContentRespData = await reqHospContent(
     currentPage.value,
     pageSize.value,
-    hostype.value,
+    hospLevel.value,
     districtCode.value,
   )
   if (respData.code == 200) {
     content.value = respData.data.content
-    totalElements.value = respData.data.totalElements
+    totalHosp.value = respData.data.totalHosp
   }
   // console.log(respData)
 }
 
 // 父组件使用自定义事件, 从子组件接收数据
-function recvHostype(args: string) {
+function getHospLevel(args: string) {
   console.log(`Receive ${args} from ./hospital_type.vue`)
-  hostype.value = args
+  hospLevel.value = args
   getHospitalContent()
 }
 
 // 父组件使用自定义事件, 从子组件接收数据
-function recvDistrict(args: string) {
+function getHospDistrict(args: string) {
   console.log(`Receive ${args} from ./district.vue`)
   districtCode.value = args
   getHospitalContent()
@@ -78,10 +78,10 @@ function recvDistrict(args: string) {
       <el-col :span="20">
         <!-- 等级组件 -->
 
-        <!-- 自定义事件 send-hostype -->
-        <HospitalType @send-hostype="recvHostype" />
+        <!-- 自定义事件 send-hospLevel -->
+        <HospitalLevel @send-hostype="getHospLevel" />
         <!-- 地区组件 -->
-        <HospitalDistrict @send-district="recvDistrict" />
+        <HospitalDistrict @send-district="getHospDistrict" />
 
         <!-- 卡片组件 -->
         <!--! 父组件使用 v-bind: 向子组件发送数据 -->
@@ -119,7 +119,7 @@ function recvDistrict(args: string) {
             :page-sizes="[2, 4, 6, 8]"
             :background="true"
             layout="prev, pager, next, jumper, ->, sizes, total"
-            :total="totalElements"
+            :total="totalHosp"
             @current-change="getHospitalContent()"
             @size-change="
               () => {
