@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
 
 # 指定项目名
-project(cpp-concurrent)
+project(cc-concurrent)
 
 # 指定 c 语言级别
 set(CMAKE_C_STANDARD 17)
