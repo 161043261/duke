@@ -132,7 +132,7 @@ function recvDistrict(args: string) {
       </el-col>
       <el-col :span="4">
         <!-- 该列 4 分栏 -->
-         <RightTips />
+        <RightTips />
       </el-col>
     </el-row>
   </div>

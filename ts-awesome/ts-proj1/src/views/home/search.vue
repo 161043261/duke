@@ -32,8 +32,8 @@ async function fecthData(hosname: string, cb: (arr: Array<unknown>) => object) {
 
 function goHosDetail(item: { value: string; hoscode: string }) {
   // console.log(item)
-  // 等价于 router.push('/hospital')
-  router.push({ path: '/hospital' })
+  // 等价于 router.push('/hospital/register')
+  router.push({ path: '/hospital/register' })
 }
 </script>
 

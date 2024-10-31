@@ -19,6 +19,34 @@ export default createRouter({
     {
       path: '/hospital',
       component: () => import('@/views/hospital/hospital.vue'),
+      children: [
+        //! 子路由的 path 中不能有 '/'
+        {
+          // 医院详情
+          path: 'detail',
+          component: () => import('@/views/hospital/detail.vue'),
+        },
+        {
+          // 就诊通知
+          path: 'info',
+          component: () => import('@/views/hospital/info.vue'),
+        },
+        {
+          // 查询/取消
+          path: 'search',
+          component: () => import('@/views/hospital/search_cancel.vue'),
+        },
+        {
+          // 预约挂号
+          path: 'register',
+          component: () => import('@/views/hospital/register.vue'),
+        },
+        {
+          // 停诊通知
+          path: 'warn',
+          component: () => import('@/views/hospital/warn.vue'),
+        },
+      ],
     },
     {
       path: '/',

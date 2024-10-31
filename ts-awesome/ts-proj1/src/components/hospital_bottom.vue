@@ -12,14 +12,14 @@ export default {
   <div class="bottom">
     <div class="content">
       <!-- 左侧 -->
-      <div class="left">沪ICP备11111111号-11 电话挂号111-111</div>
+      <div class="left">沪 ICP 备 11111111 号, 电话挂号 111-111</div>
 
       <!-- 右侧 -->
       <div class="right">
         <span>联系客服</span>
         <span>合作医院</span>
         <span>用户协议</span>
-        <span>隐私协议</span>
+        <span>友情链接</span>
       </div>
     </div>
   </div>
