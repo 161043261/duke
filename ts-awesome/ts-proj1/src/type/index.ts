@@ -2,8 +2,8 @@ export interface IHospContent {
   id: string
   hospCode: string
   hospName: string
-  hospLevel: string
-  districtCode: string
+  level: string
+  districtName: string
   logoData: string
   openTime: string
 }
@@ -22,13 +22,8 @@ export interface IHospContentRespData extends IRespData {
   }
 }
 
-export interface ILevelOrDistrict {
-  name: string
-  value: string
-}
-
 export interface ILevelOrDistrictRespData extends IRespData {
-  data: ILevelOrDistrict[]
+  data: string[]
 }
 
 export interface IHospContentArrRespData extends IRespData {

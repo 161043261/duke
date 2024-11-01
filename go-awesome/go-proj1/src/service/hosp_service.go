@@ -25,6 +25,6 @@ func NewHospService() *HospService {
 	return hospService
 }
 
-func (hospService *HospService) SelectAllHospLevel() ([]string, error) {
+func (hospService *HospService) SelectAllLevel() ([]string, error) {
 	return hospService.HospDao.SelectAllLevel()
 }

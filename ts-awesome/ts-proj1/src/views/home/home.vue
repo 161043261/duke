@@ -21,12 +21,12 @@ import { onMounted, ref } from 'vue'
 
 import RightTips from './right_tips.vue'
 
-const currentPage = ref<number>(1)
-const pageSize = ref<number>(4)
+const currPage = ref<number>(1) // -> curr
+const sizeLimit = ref<number>(4) // -> limit
 const content = ref<Array<IHospContent>>([])
 const totalHosp = ref<number>(0)
-const hospLevel = ref<string>('')
-const districtCode = ref<string>('')
+const level = ref<string>('')
+const districtName = ref<string>('')
 
 // 组件挂载后, 发送 AJAX 请求
 onMounted(() => {
@@ -35,10 +35,10 @@ onMounted(() => {
 
 async function getHospitalContent() {
   const respData: IHospContentRespData = await reqHospContent(
-    currentPage.value,
-    pageSize.value,
-    hospLevel.value,
-    districtCode.value,
+    currPage.value,
+    sizeLimit.value,
+    level.value,
+    districtName.value,
   )
   if (respData.code == 200) {
     content.value = respData.data.content
@@ -48,16 +48,16 @@ async function getHospitalContent() {
 }
 
 // 父组件使用自定义事件, 从子组件接收数据
-function getHospLevel(args: string) {
-  console.log(`Receive ${args} from ./hospital_type.vue`)
-  hospLevel.value = args
+function getLevel(args: string) {
+  console.log(`Receive ${args} from ./hospital_level.vue`)
+  level.value = args
   getHospitalContent()
 }
 
 // 父组件使用自定义事件, 从子组件接收数据
 function getHospDistrict(args: string) {
   console.log(`Receive ${args} from ./district.vue`)
-  districtCode.value = args
+  districtName.value = args
   getHospitalContent()
 }
 </script>
@@ -78,8 +78,8 @@ function getHospDistrict(args: string) {
       <el-col :span="20">
         <!-- 等级组件 -->
 
-        <!-- 自定义事件 send-hospLevel -->
-        <HospitalLevel @send-hostype="getHospLevel" />
+        <!-- 自定义事件 send-level -->
+        <HospitalLevel @send-hosp-level="getLevel" />
         <!-- 地区组件 -->
         <HospitalDistrict @send-district="getHospDistrict" />
 
@@ -114,8 +114,8 @@ function getHospDistrict(args: string) {
             total  共 ? 条
             -->
           <el-pagination
-            v-model:current-page="currentPage"
-            v-model:page-size="pageSize"
+            v-model:current-page="currPage"
+            v-model:page-size="sizeLimit"
             :page-sizes="[2, 4, 6, 8]"
             :background="true"
             layout="prev, pager, next, jumper, ->, sizes, total"
@@ -123,7 +123,7 @@ function getHospDistrict(args: string) {
             @current-change="getHospitalContent()"
             @size-change="
               () => {
-                currentPage = 1
+                currPage = 1
                 getHospitalContent()
               }
             "

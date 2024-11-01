@@ -73,25 +73,25 @@ defineProps(['hospitalContent'])
 
 ```vue
 <script lang="ts" setup>
-function changeValue(value: string) {
-  flag.value = value
+function changeLevelId(id: string) {
+  flag.id = id
   // 子组件使用自定义事件, 向父组件发送数据
-  emitFunc('send-hosp-level' /* 事件名 */, value /* 参数列表 */)
+  emitFunc('send-hosp-level' /* 事件名 */, id /* 参数列表 */)
 }
 
 // 自定义事件 send-hosp-level
-const emitFunc = defineEmits(['send-hospLevel']) // 事件名列表
+const emitFunc = defineEmits(['send-level']) // 事件名列表
 </script>
 
 <template>
   <!-- 点击触发自定义事件 -->
   <li
-    :class="{ highlight: flag == hospLevel.value }"
-    v-for="hospLevel in hospLevels"
-    :key="hospLevel.value"
+    :class="{ highlight: flag == level.id }"
+    v-for="level in levels"
+    :key="level.id"
     @click="
-      changeValue(hospLevel.value)
-      /* ; emitFunc('send-hosp-level', hospLevel.value) */
+      changeLevelId(level.id)
+      /* ; emitFunc('send-hosp-level', level.id) */
     "
   ></li>
 </template>
@@ -102,16 +102,16 @@ const emitFunc = defineEmits(['send-hospLevel']) // 事件名列表
 ```vue
 <script lang="ts" setup>
 // 父组件使用自定义事件, 从子组件接收数据
-function getHospLevel(args: string) {
+function getLevel(args: string) {
   console.log('子组件发送的数据:', args)
-  hospLevel.value = args
+  level.id = args
   getHospitalContent()
 }
 </script>
 
 <template>
-  <!-- 自定义事件 send-hospLevel -->
-  <HospitalLevel @send-hospLevel="getHospLevel" />
+  <!-- 自定义事件 send-level -->
+  <HospitalLevel @send-level="getLevel" />
 </template>
 ```
 

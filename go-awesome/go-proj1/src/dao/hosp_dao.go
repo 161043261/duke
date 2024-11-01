@@ -4,7 +4,7 @@ import (
 	"bronya.com/go-proj1/src/data"
 	"bronya.com/go-proj1/src/global"
 	"gorm.io/gorm"
-	"log"
+	"sort"
 	"sync"
 )
 
@@ -28,18 +28,18 @@ func NewHospDao() *HospDao {
 	return hospDao
 }
 
-// SelectHospByDistrictId
+// SelectHospArrByDistrictId
 // ! 链式调用: Where, First
-func (hospDao *HospDao) SelectHospByDistrictId(districtId string) (data.Hosp, error) {
-	var hosp data.Hosp // receiver
-	err := hospDao.db.Where("hosp_code = ?", districtId).First(&hosp).Error
-	return hosp, err
+func (hospDao *HospDao) SelectHospArrByDistrictId(districtId uint) ([]data.Hosp, error) {
+	var hospArr []data.Hosp // receiver
+	err := hospDao.db.Where("district_id = ?", districtId).Find(&hospArr).Error
+	return hospArr, err
 }
 
 // InsertHosp
 // ! 链式调用: Save
 func (hospDao *HospDao) InsertHosp(hosp data.Hosp) error {
-	log.Printf("%#v\n", hosp)
+	global.Logger.Debugf("%#v\n", hosp)
 	//? Save is a combination function.
 	//? If save value does not contain primary key, it will execute Create, otherwise it will execute Update (with all fields).
 	//? Don’t use Save with Model, it’s an Undefined Behavior.
@@ -64,6 +64,7 @@ func (hospDao *HospDao) SelectAllHosp() ([]data.Hosp, error) {
 func (hospDao *HospDao) SelectAllLevel() ([]string, error) {
 	var levelArr []string
 	// select distinct hosp_level from t_hosps;
-	err := hospDao.db.Model(&data.Hosp{}).Select("hosp_level").Distinct("hosp_level").Find(&levelArr).Error
+	err := hospDao.db.Model(&data.Hosp{}).Select("level").Distinct("level").Find(&levelArr).Error
+	sort.Strings(levelArr)
 	return levelArr, err
 }

@@ -1,7 +1,6 @@
 package api
 
 import (
-	"log"
 	"sync"
 
 	"bronya.com/go-proj1/src/dto"
@@ -29,18 +28,22 @@ func NewHospApi() *HospApi {
 	return hospApi
 }
 
-func (hostApi *HospApi) SelectHospByHospCode() {
+// SelectHospByCode
+// /hosp/${hospCode}
+// TODO
+func (hostApi *HospApi) SelectHospByCode() {
 
 }
 
 // SelectHospLikeName
 // /hosp/likeName/${hospName}
+// TODO
 func (hostApi *HospApi) SelectHospLikeName() {
-
 }
 
 // SelectHospByPage
-// /hosp/page/${curr}/${limit}?hospLevel=${hospLevel}&districtId=${districtId}
+// /hosp/page/${curr}/${limit}?level=${level}&districtId=${districtId}
+// TODO
 func (hostApi *HospApi) SelectHospByPage(ctx *gin.Context) {
 	var pageDto dto.PageDto
 	validationErrs := ctx.ShouldBindUri(&pageDto)
@@ -56,21 +59,23 @@ func (hostApi *HospApi) SelectHospByPage(ctx *gin.Context) {
 
 func (hostApi *HospApi) SelectLevelOrDistrict(ctx *gin.Context) {
 	mode := ctx.Param("mode")
-	log.Println("mode:", mode)
+	global.Logger.Debugln("mode:", mode)
 	switch mode {
 	case "level":
-	case "district":
+		levelArr, _ := hospApi.HospService.SelectAllLevel()
+		global.Logger.Debugln(levelArr)
 		Ok(ctx, Resp{
-			Code:    0,
-			Message: "",
-			Data:    nil,
+			Data: levelArr,
+		})
+	case "district":
+		districtArr, _ := NewDistrictApi().districtService.SelectAllDistrict()
+		global.Logger.Debugln(districtArr)
+		Ok(ctx, Resp{
+			Data: districtArr,
 		})
 	default:
 		Err(ctx, Resp{
 			Message: "Unsupported mode",
 		})
 	}
-	Ok(ctx, Resp{
-		Data: gin.H{},
-	})
 }

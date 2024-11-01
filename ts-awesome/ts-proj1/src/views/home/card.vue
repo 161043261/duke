@@ -31,7 +31,7 @@ function goDetail() {
               <Star />
             </el-icon>
             <span>{{
-              (hospitalContent as IHospContent).hospLevel
+              (hospitalContent as IHospContent).level
               }}</span>
           </div>
           <div class="time">

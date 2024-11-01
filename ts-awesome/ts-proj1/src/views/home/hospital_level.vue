@@ -6,21 +6,21 @@ export default {
 
 <script setup lang="ts">
 import { reqLevelOrDistrict } from '@/api/home';
-import type { ILevelOrDistrict, ILevelOrDistrictRespData } from '@/type';
+import type { ILevelOrDistrictRespData } from '@/type';
 import { onMounted, ref } from 'vue';
 
-const hospLevels = ref<ILevelOrDistrict[]>()
+const levels = ref<string[]>()
 
 onMounted(() => {
-  getHospLevels()
+  getLevels()
 })
 
-async function getHospLevels() {
+async function getLevels() {
   const promiseIns = reqLevelOrDistrict("level")
   // console.log(result)
   promiseIns.then(
     (resp: ILevelOrDistrictRespData) => {
-      hospLevels.value = resp.data
+      levels.value = resp.data
     },
     reason => {
       console.log(reason)
@@ -28,11 +28,11 @@ async function getHospLevels() {
   )
 }
 
-const flag = ref<string>('')
-function changeValue(value: string) {
-  flag.value = value
+const currLevel = ref<string>('')
+function changeLevel(level: string) {
+  currLevel.value = level
   // 子组件使用自定义事件, 向父组件发送数据
-  emitFunc('send-hosp-level' /* 事件名 */, value /* 参数列表 */)
+  emitFunc('send-hosp-level' /* 事件名 */, level /* 参数列表 */)
 }
 
 // 自定义事件 send-hosp-level
@@ -45,20 +45,20 @@ const emitFunc = defineEmits(['send-hosp-level']) // 事件名列表
     <div class="content">
       <div class="left">等级:</div>
       <ul>
-        <li :class="{ highlight: flag == '' }" @click="changeValue('')">
+        <li :class="{ highlight: currLevel == '' }" @click="changeLevel('')">
           全部
         </li>
         <!-- 点击触发自定义事件 -->
         <li
-          :class="{ highlight: flag == hospLevel.value }"
-          v-for="hospLevel in hospLevels"
-          :key="hospLevel.value"
+          :class="{ highlight: currLevel == level }"
+          v-for="level in levels"
+          :key="level"
           @click="
-            changeValue(hospLevel.value)
-            /* ; emitFunc('send-hospLevel', hospLevel.value) */
+            changeLevel(level)
+            /* ; emitFunc('send-level', level.id) */
           "
         >
-          {{ hospLevel.name }}
+          {{ level }}
         </li>
       </ul>
     </div>

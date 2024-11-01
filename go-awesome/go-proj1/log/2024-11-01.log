@@ -1,59 +1,66 @@
-{"level":"ERROR","time":"2024-11-01 10:01:59","msg":"Connect mysql error dial tcp 127.0.0.1:3306: connectex: No connection could be made because the target machine actively refused it."}
-{"level":"INFO","time":"2024-11-01 10:01:59","msg":"==================== Done! ===================="}
-{"level":"INFO","time":"2024-11-01 10:04:32","msg":"Serving on http://127.0.0.1:3261"}
-{"level":"DEBUG","time":"2024-11-01 10:04:36","msg":"{0 0}"}
-{"level":"DEBUG","time":"2024-11-01 10:06:11","msg":"{0 0}"}
-{"level":"DEBUG","time":"2024-11-01 10:06:11","msg":"{0 0}"}
-{"level":"DEBUG","time":"2024-11-01 10:06:15","msg":"{0 0}"}
-{"level":"DEBUG","time":"2024-11-01 10:06:15","msg":"{0 0}"}
-{"level":"INFO","time":"2024-11-01 10:07:22","msg":"Shutdown ok"}
-{"level":"INFO","time":"2024-11-01 10:07:22","msg":"==================== Done! ===================="}
-{"level":"INFO","time":"2024-11-01 10:07:25","msg":"Serving on http://127.0.0.1:3261"}
-{"level":"DEBUG","time":"2024-11-01 10:07:40","msg":"dto.PageDto{Curr:0, Limit:0}"}
-{"level":"DEBUG","time":"2024-11-01 10:07:40","msg":"dto.PageDto{Curr:0, Limit:0}"}
-{"level":"INFO","time":"2024-11-01 10:10:13","msg":"Shutdown ok"}
-{"level":"INFO","time":"2024-11-01 10:10:13","msg":"==================== Done! ===================="}
-{"level":"INFO","time":"2024-11-01 10:10:15","msg":"Serving on http://127.0.0.1:3261"}
-{"level":"DEBUG","time":"2024-11-01 10:10:25","msg":"dto.PageDto{Curr:0, Limit:0}"}
-{"level":"INFO","time":"2024-11-01 10:12:24","msg":"Shutdown ok"}
-{"level":"INFO","time":"2024-11-01 10:12:24","msg":"==================== Done! ===================="}
-{"level":"INFO","time":"2024-11-01 10:12:26","msg":"Serving on http://127.0.0.1:3261"}
-{"level":"DEBUG","time":"2024-11-01 10:12:28","msg":"dto.PageDto{Curr:1, Limit:4}"}
-{"level":"DEBUG","time":"2024-11-01 11:00:10","msg":"dto.PageDto{Curr:1, Limit:4}"}
-{"level":"INFO","time":"2024-11-01 11:12:22","msg":"Shutdown ok"}
-{"level":"INFO","time":"2024-11-01 11:12:22","msg":"==================== Done! ===================="}
-{"level":"INFO","time":"2024-11-01 14:50:45","msg":"==================== Done! ===================="}
-{"level":"INFO","time":"2024-11-01 14:51:00","msg":"Serving on http://127.0.0.1:3261"}
-{"level":"DEBUG","time":"2024-11-01 14:51:29","msg":"dto.PageDto{Curr:1, Limit:4}"}
-{"level":"INFO","time":"2024-11-01 14:58:53","msg":"Shutdown ok"}
-{"level":"INFO","time":"2024-11-01 14:58:53","msg":"==================== Done! ===================="}
-{"level":"INFO","time":"2024-11-01 14:58:57","msg":"Serving on http://127.0.0.1:3261"}
-{"level":"DEBUG","time":"2024-11-01 15:02:31","msg":"dto.PageDto{Curr:1, Limit:4}"}
-{"level":"INFO","time":"2024-11-01 15:03:55","msg":"Shutdown ok"}
-{"level":"INFO","time":"2024-11-01 15:03:55","msg":"==================== Done! ===================="}
-{"level":"INFO","time":"2024-11-01 15:03:57","msg":"Serving on http://127.0.0.1:3261"}
-{"level":"DEBUG","time":"2024-11-01 15:04:04","msg":"dto.PageDto{Curr:1, Limit:4}"}
-{"level":"INFO","time":"2024-11-01 15:09:24","msg":"Shutdown ok"}
-{"level":"INFO","time":"2024-11-01 15:09:24","msg":"==================== Done! ===================="}
-{"level":"INFO","time":"2024-11-01 15:09:27","msg":"Serving on http://127.0.0.1:3261"}
-{"level":"DEBUG","time":"2024-11-01 15:09:32","msg":"dto.PageDto{Curr:1, Limit:4}"}
-{"level":"INFO","time":"2024-11-01 15:09:46","msg":"Shutdown ok"}
-{"level":"INFO","time":"2024-11-01 15:09:46","msg":"==================== Done! ===================="}
-{"level":"INFO","time":"2024-11-01 15:09:48","msg":"Serving on http://127.0.0.1:3261"}
-{"level":"DEBUG","time":"2024-11-01 15:09:48","msg":"dto.PageDto{Curr:1, Limit:4}"}
-{"level":"DEBUG","time":"2024-11-01 15:09:50","msg":"dto.PageDto{Curr:1, Limit:4}"}
-{"level":"DEBUG","time":"2024-11-01 15:09:51","msg":"dto.PageDto{Curr:1, Limit:4}"}
-{"level":"DEBUG","time":"2024-11-01 15:09:51","msg":"dto.PageDto{Curr:1, Limit:4}"}
-{"level":"INFO","time":"2024-11-01 15:11:27","msg":"Shutdown ok"}
-{"level":"INFO","time":"2024-11-01 15:11:27","msg":"==================== Done! ===================="}
-{"level":"INFO","time":"2024-11-01 15:11:30","msg":"Serving on http://127.0.0.1:3261"}
-{"level":"DEBUG","time":"2024-11-01 15:11:33","msg":"dto.PageDto{Curr:1, Limit:4}"}
-{"level":"INFO","time":"2024-11-01 15:12:23","msg":"Shutdown ok"}
-{"level":"INFO","time":"2024-11-01 15:12:23","msg":"==================== Done! ===================="}
-{"level":"INFO","time":"2024-11-01 15:12:25","msg":"Serving on http://127.0.0.1:3261"}
-{"level":"INFO","time":"2024-11-01 15:12:31","msg":"Shutdown ok"}
-{"level":"INFO","time":"2024-11-01 15:12:31","msg":"==================== Done! ===================="}
-{"level":"INFO","time":"2024-11-01 15:12:33","msg":"Serving on http://127.0.0.1:3261"}
-{"level":"DEBUG","time":"2024-11-01 15:12:35","msg":"dto.PageDto{Curr:1, Limit:4}"}
-{"level":"INFO","time":"2024-11-01 15:18:02","msg":"Shutdown ok"}
-{"level":"INFO","time":"2024-11-01 15:18:02","msg":"==================== Done! ===================="}
+{"level":"INFO","time":"2024-11-01 16:24:53","msg":"Serving on http://127.0.0.1:3261"}
+{"level":"DEBUG","time":"2024-11-01 16:25:02","msg":"mode: level"}
+{"level":"DEBUG","time":"2024-11-01 16:25:02","msg":"mode: district"}
+{"level":"DEBUG","time":"2024-11-01 16:25:02","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"DEBUG","time":"2024-11-01 16:25:33","msg":"mode: level"}
+{"level":"DEBUG","time":"2024-11-01 16:25:33","msg":"mode: district"}
+{"level":"DEBUG","time":"2024-11-01 16:25:33","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"INFO","time":"2024-11-01 16:26:18","msg":"Shutdown ok"}
+{"level":"INFO","time":"2024-11-01 16:26:18","msg":"==================== Done! ===================="}
+{"level":"INFO","time":"2024-11-01 16:26:20","msg":"Serving on http://127.0.0.1:3261"}
+{"level":"DEBUG","time":"2024-11-01 16:26:23","msg":"mode: level"}
+{"level":"DEBUG","time":"2024-11-01 16:26:23","msg":"mode: district"}
+{"level":"DEBUG","time":"2024-11-01 16:26:23","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"DEBUG","time":"2024-11-01 16:26:23","msg":"[]"}
+{"level":"DEBUG","time":"2024-11-01 16:26:23","msg":"[]"}
+{"level":"INFO","time":"2024-11-01 16:29:02","msg":"Shutdown ok"}
+{"level":"INFO","time":"2024-11-01 16:29:02","msg":"==================== Done! ===================="}
+{"level":"INFO","time":"2024-11-01 16:46:10","msg":"Serving on http://127.0.0.1:3261"}
+{"level":"DEBUG","time":"2024-11-01 16:46:15","msg":"mode: level"}
+{"level":"DEBUG","time":"2024-11-01 16:46:15","msg":"mode: district"}
+{"level":"DEBUG","time":"2024-11-01 16:46:15","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"DEBUG","time":"2024-11-01 16:46:15","msg":"[三级甲等]"}
+{"level":"DEBUG","time":"2024-11-01 16:46:15","msg":"[黄浦区 徐汇区 长宁区 静安区 普陀区 虹口区 杨浦区 闵行区 宝山区 嘉定区 浦东新区 金山区 松江区 青浦区 奉贤区 崇明区]"}
+{"level":"DEBUG","time":"2024-11-01 16:46:55","msg":"mode: district"}
+{"level":"DEBUG","time":"2024-11-01 16:46:55","msg":"[黄浦区 徐汇区 长宁区 静安区 普陀区 虹口区 杨浦区 闵行区 宝山区 嘉定区 浦东新区 金山区 松江区 青浦区 奉贤区 崇明区]"}
+{"level":"DEBUG","time":"2024-11-01 16:46:57","msg":"mode: level"}
+{"level":"DEBUG","time":"2024-11-01 16:46:57","msg":"mode: district"}
+{"level":"DEBUG","time":"2024-11-01 16:46:57","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"DEBUG","time":"2024-11-01 16:46:57","msg":"[黄浦区 徐汇区 长宁区 静安区 普陀区 虹口区 杨浦区 闵行区 宝山区 嘉定区 浦东新区 金山区 松江区 青浦区 奉贤区 崇明区]"}
+{"level":"DEBUG","time":"2024-11-01 16:46:57","msg":"[三级甲等]"}
+{"level":"DEBUG","time":"2024-11-01 16:48:52","msg":"mode: district"}
+{"level":"DEBUG","time":"2024-11-01 16:48:52","msg":"[黄浦区 徐汇区 长宁区 静安区 普陀区 虹口区 杨浦区 闵行区 宝山区 嘉定区 浦东新区 金山区 松江区 青浦区 奉贤区 崇明区]"}
+{"level":"DEBUG","time":"2024-11-01 16:48:55","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"DEBUG","time":"2024-11-01 16:48:55","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"DEBUG","time":"2024-11-01 16:48:57","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"DEBUG","time":"2024-11-01 16:48:58","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"DEBUG","time":"2024-11-01 16:48:58","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"DEBUG","time":"2024-11-01 16:51:13","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"DEBUG","time":"2024-11-01 16:51:28","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"DEBUG","time":"2024-11-01 16:58:37","msg":"mode: level"}
+{"level":"DEBUG","time":"2024-11-01 16:58:37","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"DEBUG","time":"2024-11-01 16:58:37","msg":"mode: district"}
+{"level":"DEBUG","time":"2024-11-01 16:58:37","msg":"[三级甲等]"}
+{"level":"DEBUG","time":"2024-11-01 16:58:37","msg":"[黄浦区 徐汇区 长宁区 静安区 普陀区 虹口区 杨浦区 闵行区 宝山区 嘉定区 浦东新区 金山区 松江区 青浦区 奉贤区 崇明区]"}
+{"level":"DEBUG","time":"2024-11-01 16:58:37","msg":"mode: level"}
+{"level":"DEBUG","time":"2024-11-01 16:58:37","msg":"mode: district"}
+{"level":"DEBUG","time":"2024-11-01 16:58:37","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"DEBUG","time":"2024-11-01 16:58:37","msg":"[三级甲等]"}
+{"level":"DEBUG","time":"2024-11-01 16:58:37","msg":"[黄浦区 徐汇区 长宁区 静安区 普陀区 虹口区 杨浦区 闵行区 宝山区 嘉定区 浦东新区 金山区 松江区 青浦区 奉贤区 崇明区]"}
+{"level":"DEBUG","time":"2024-11-01 16:58:37","msg":"mode: level"}
+{"level":"DEBUG","time":"2024-11-01 16:58:37","msg":"mode: district"}
+{"level":"DEBUG","time":"2024-11-01 16:58:37","msg":"[黄浦区 徐汇区 长宁区 静安区 普陀区 虹口区 杨浦区 闵行区 宝山区 嘉定区 浦东新区 金山区 松江区 青浦区 奉贤区 崇明区]"}
+{"level":"DEBUG","time":"2024-11-01 16:58:37","msg":"[三级甲等]"}
+{"level":"INFO","time":"2024-11-01 16:59:00","msg":"Shutdown ok"}
+{"level":"INFO","time":"2024-11-01 16:59:00","msg":"==================== Done! ===================="}
+{"level":"INFO","time":"2024-11-01 17:14:39","msg":"Serving on http://127.0.0.1:3261"}
+{"level":"DEBUG","time":"2024-11-01 17:14:43","msg":"mode: level"}
+{"level":"DEBUG","time":"2024-11-01 17:14:43","msg":"mode: district"}
+{"level":"DEBUG","time":"2024-11-01 17:14:43","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"DEBUG","time":"2024-11-01 17:14:43","msg":"[一级丙等 一级乙等 一级甲等 三级丙等 三级乙等 三级甲等 二级丙等 二级乙等 二级甲等]"}
+{"level":"DEBUG","time":"2024-11-01 17:14:43","msg":"[黄浦区 徐汇区 长宁区 静安区 普陀区 虹口区 杨浦区 闵行区 宝山区 嘉定区 浦东新区 金山区 松江区 青浦区 奉贤区 崇明区]"}
+{"level":"DEBUG","time":"2024-11-01 17:14:59","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"DEBUG","time":"2024-11-01 17:17:20","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"DEBUG","time":"2024-11-01 17:17:49","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"INFO","time":"2024-11-01 17:18:46","msg":"Shutdown ok"}
+{"level":"INFO","time":"2024-11-01 17:18:46","msg":"==================== Done! ===================="}

@@ -6,13 +6,12 @@ import (
 	"bronya.com/go-proj1/src/router"
 )
 
-// Start
+// Init
 // 1. 读取配置文件
 // 2. 启动日志
 // 3. 连接 mysql, 创建表
 // 4. 连接 redis
-// 5. 创建路由组, 启动路由器
-func Start(confPath string) {
+func Init(confPath string) {
 	conf.ReadConf(confPath)          //! 读取配置文件
 	global.Logger = conf.NewLogger() //! 启动日志
 	session, err := conf.InitMysql() //! 连接 mysql, 创建表
@@ -29,6 +28,10 @@ func Start(confPath string) {
 		panic(err.Error())
 	}
 	global.RedisCli = redisCli
+}
+
+// Start 创建路由组, 启动路由器
+func Start() {
 	router.StartRouter() //! 创建路由组, 启动路由器
 }
 

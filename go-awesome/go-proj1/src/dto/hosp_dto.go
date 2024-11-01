@@ -1,6 +1,6 @@
 package dto
 
 type HospDto struct {
-	HospLevel  string
+	Level      string
 	DistrictId string
 }
