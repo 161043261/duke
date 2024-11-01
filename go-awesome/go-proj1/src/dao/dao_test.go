@@ -6,6 +6,7 @@ import (
 	"bronya.com/go-proj1/src/data"
 	"fmt"
 	"log"
+	"os"
 	"testing"
 )
 
@@ -31,6 +32,10 @@ func init() {
 // TestFileName_FuncName
 // ! go test -run TestHospDao_InsertHosp
 func TestHospDao_InsertHosp(t *testing.T) {
+
+	// 读文件
+	b64Str, _ := os.ReadFile("./qiqi.txt")
+
 	hospId, levelIdx := 1, 0
 	for i, districtName := range districts {
 		for j := 0; j < 3; j, hospId, levelIdx =
@@ -44,7 +49,7 @@ func TestHospDao_InsertHosp(t *testing.T) {
 				// "不卜庐 " + districtName + "第" + strconv.Itoa(districtIdx) + "医院"
 				HospName:   fmt.Sprintf("不卜庐-%v第%v医院", districtName, districtId),
 				Level:      levels[levelIdx],
-				LogoData:   "",
+				LogoData:   string(b64Str),
 				DistrictId: districtId,
 				OpenTime:   "09:00",
 			}
@@ -72,7 +77,7 @@ func TestHospDao_SelectAllLevel(t *testing.T) {
 }
 
 func TestHospDao_SelectHospArrByDistrictId(t *testing.T) {
-	hospArr, err := hospDao.SelectHospArrByDistrictId(1)
+	hospArr, err := hospDao.SelectHospByDistrictId(1)
 	if err != nil {
 		log.Fatalln(err.Error())
 	}

@@ -28,9 +28,10 @@ func NewDistrictDao() *DistrictDao {
 
 // SelectAllDistrict
 // ! 链式调用: Model, Find
-func (districtDao *DistrictDao) SelectAllDistrict() ([]string, error) {
-	var districtArr []string
-	err := districtDao.db.Model(&data.District{}).Select("district_name").Find(&districtArr).Error
+func (districtDao *DistrictDao) SelectAllDistrict() ([]data.District, error) {
+	var districtArr []data.District
+	// err := districtDao.db.Model(&data.District{}).Select("district_name").Find(&districtArr).Error
+	err := districtDao.db.Model(&data.District{}).Find(&districtArr).Error
 	return districtArr, err
 }
 

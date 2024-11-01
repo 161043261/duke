@@ -5,7 +5,7 @@ import type {
 } from '@/type'
 import axiosIns from '@/utils/axios_ins'
 
-// const HOSP_CONTENT_ARR1 = '/hosp/hospital/{page}/{limit}'
+// const HOSP_CONTENT_ARR1 = '/hosp/page/{curr}/{limit}'
 
 enum API_ENUM {
   HOSP_CONTENT_ARR1 = '/hosp/page/', // 分页查询
@@ -14,11 +14,11 @@ enum API_ENUM {
 }
 
 // const API = {
-//   HOSP_CONTENT_ARR1: '/hosp/hospital/{page}/{limit}',
+//   HOSP_CONTENT_ARR1: '/hosp/page/{curr}/{limit}'
 // }
 
 // namespace API_NS {
-//   export const HOSP_CONTENT_ARR1 = '/hosp/hospital/{curr}/{limit}'
+//   export const HOSP_CONTENT_ARR1 = '/hosp/page/{curr}/{limit}'
 // }
 
 export async function reqHospContent(

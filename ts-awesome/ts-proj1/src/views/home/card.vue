@@ -18,6 +18,14 @@ function goDetail() {
   // 等价于 router.push({ path: '/hospital/register' })
   router.push('/hospital/register')
 }
+
+function getImgSrc(logoData: string): string {
+  // console.log(logoData)
+  if (logoData.length > 0) {
+    return `data:image/jpeg;base64,${logoData}`
+  }
+  return '@/assets/qiqi.webp'
+}
 </script>
 
 <template>
@@ -32,7 +40,7 @@ function goDetail() {
             </el-icon>
             <span>{{
               (hospitalContent as IHospContent).level
-              }}</span>
+            }}</span>
           </div>
           <div class="time">
             <el-icon>
@@ -45,10 +53,7 @@ function goDetail() {
         </div>
       </div>
       <div class="right">
-        <img :src="(hospitalContent as IHospContent).logoData == '' ?
-          `data:image/jpeg;base64,${((hospitalContent as IHospContent).logoData)}`
-          : '@/assets/qiqi.webp'"
-          alt="logoData" />
+        <img :src="getImgSrc((hospitalContent as IHospContent).logoData)" alt="logoData" />
       </div>
     </div>
   </el-card>

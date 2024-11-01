@@ -2,6 +2,7 @@ package service
 
 import (
 	"bronya.com/go-proj1/src/dao"
+	"strconv"
 	"sync"
 )
 
@@ -25,6 +26,19 @@ func NewDistrictService() *DistrictService {
 	return districtService
 }
 
-func (districtService *DistrictService) SelectAllDistrict() ([]string, error) {
-	return districtService.DistrictDao.SelectAllDistrict()
+func (districtService *DistrictService) SelectAllDistrict() ([]map[string]string, error) {
+	// kvs: Key-Value (s) Slice
+	var kvs []map[string]string
+	districts, err := districtService.DistrictDao.SelectAllDistrict()
+	if err != nil {
+		return nil, err
+	}
+
+	for _, district := range districts {
+		kvs = append(kvs, map[string]string{
+			"id":    strconv.Itoa(int(district.ID)),
+			"value": district.DistrictName,
+		})
+	}
+	return kvs, nil
 }

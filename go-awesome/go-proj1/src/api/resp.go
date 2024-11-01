@@ -18,7 +18,7 @@ func (resp Resp) IsEmpty() bool {
 	return reflect.DeepEqual(resp, Resp{})
 }
 
-func Ok(ctx *gin.Context, resp Resp) {
+func RespOk(ctx *gin.Context, resp Resp) {
 	if resp.IsEmpty() {
 		ctx.AbortWithStatus(http.StatusOK) // 200
 		return
@@ -27,7 +27,7 @@ func Ok(ctx *gin.Context, resp Resp) {
 	ctx.AbortWithStatusJSON(resp.Code, resp)
 }
 
-func Err(ctx *gin.Context, resp Resp) { //* 4xx 客户端错误
+func RespErr(ctx *gin.Context, resp Resp) { //* 4xx 客户端错误
 	if resp.IsEmpty() {
 		ctx.AbortWithStatus(http.StatusNotFound) // 404
 		return

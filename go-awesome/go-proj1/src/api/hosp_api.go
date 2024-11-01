@@ -28,54 +28,71 @@ func NewHospApi() *HospApi {
 	return hospApi
 }
 
-// SelectHospByCode
+// SelectHospById
 // /hosp/${hospCode}
 // TODO
-func (hostApi *HospApi) SelectHospByCode() {
+func (hostApi HospApi) SelectHospById() {
 
 }
 
 // SelectHospLikeName
 // /hosp/likeName/${hospName}
 // TODO
-func (hostApi *HospApi) SelectHospLikeName() {
+func (hostApi HospApi) SelectHospLikeName() {
+
 }
 
-// SelectHospByPage
+// SelectHospByCondPage
 // /hosp/page/${curr}/${limit}?level=${level}&districtId=${districtId}
-// TODO
-func (hostApi *HospApi) SelectHospByPage(ctx *gin.Context) {
+// level: string, districtId: number
+func (hostApi HospApi) SelectHospByCondPage(ctx *gin.Context) {
 	var pageDto dto.PageDto
 	validationErrs := ctx.ShouldBindUri(&pageDto)
+
 	if validationErrs != nil {
 		global.Logger.Errorln(validationErrs.Error())
-		Err(ctx, Resp{
+		RespErr(ctx, Resp{
 			Message: validationErrs.Error(),
 		})
 		return
 	}
 	global.Logger.Debugf("%#v", pageDto)
+	data, err := hospApi.HospService.SelectHospByCondPage(&pageDto)
+	if err != nil {
+		global.Logger.Errorln(err.Error())
+		RespErr(ctx, Resp{
+			Message: err.Error(),
+		})
+		return
+	}
+
+	RespOk(ctx, Resp{
+		Data: data,
+	})
 }
 
-func (hostApi *HospApi) SelectLevelOrDistrict(ctx *gin.Context) {
+func (hostApi HospApi) SelectLevelOrDistrict(ctx *gin.Context) {
 	mode := ctx.Param("mode")
 	global.Logger.Debugln("mode:", mode)
 	switch mode {
+
 	case "level":
-		levelArr, _ := hospApi.HospService.SelectAllLevel()
-		global.Logger.Debugln(levelArr)
-		Ok(ctx, Resp{
-			Data: levelArr,
+		kvs, _ := hospApi.HospService.SelectAllLevel()
+		// global.Logger.Debugln(levelArr)
+		RespOk(ctx, Resp{
+			Data: kvs,
 		})
+
 	case "district":
-		districtArr, _ := NewDistrictApi().districtService.SelectAllDistrict()
-		global.Logger.Debugln(districtArr)
-		Ok(ctx, Resp{
-			Data: districtArr,
+		kvs, _ := NewDistrictApi().districtService.SelectAllDistrict()
+		// global.Logger.Debugln(districtArr)
+		RespOk(ctx, Resp{
+			Data: kvs,
 		})
+
 	default:
-		Err(ctx, Resp{
-			Message: "Unsupported mode",
+		RespErr(ctx, Resp{
+			Message: "Unsupported Mode",
 		})
 	}
 }

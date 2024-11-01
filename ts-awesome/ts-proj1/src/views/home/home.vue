@@ -41,6 +41,7 @@ async function getHospitalContent() {
     districtName.value,
   )
   if (respData.code == 200) {
+    // console.log((respData.data.content as IHospContent[])[0].logoData)
     content.value = respData.data.content
     totalHosp.value = respData.data.totalHosp
   }

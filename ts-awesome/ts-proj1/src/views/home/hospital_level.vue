@@ -9,7 +9,7 @@ import { reqLevelOrDistrict } from '@/api/home';
 import type { ILevelOrDistrictRespData } from '@/type';
 import { onMounted, ref } from 'vue';
 
-const levels = ref<string[]>()
+const levels = ref<string[]>([])
 
 onMounted(() => {
   getLevels()
@@ -20,7 +20,13 @@ async function getLevels() {
   // console.log(result)
   promiseIns.then(
     (resp: ILevelOrDistrictRespData) => {
-      levels.value = resp.data
+      // FIXME
+      levels.value = []
+      resp.data.forEach((kvs) => {
+        // console.log(kvs.value)
+        levels.value.push(kvs.value)
+      })
+      console.log(levels.value)
     },
     reason => {
       console.log(reason)
@@ -49,15 +55,10 @@ const emitFunc = defineEmits(['send-hosp-level']) // 事件名列表
           全部
         </li>
         <!-- 点击触发自定义事件 -->
-        <li
-          :class="{ highlight: currLevel == level }"
-          v-for="level in levels"
-          :key="level"
-          @click="
-            changeLevel(level)
-            /* ; emitFunc('send-level', level.id) */
-          "
-        >
+        <li :class="{ highlight: currLevel == level }" v-for="level in levels" :key="level" @click="
+          changeLevel(level)
+          /* ; emitFunc('send-level', level.id) */
+          ">
           {{ level }}
         </li>
       </ul>

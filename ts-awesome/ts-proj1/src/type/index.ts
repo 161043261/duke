@@ -23,7 +23,10 @@ export interface IHospContentRespData extends IRespData {
 }
 
 export interface ILevelOrDistrictRespData extends IRespData {
-  data: string[]
+  data: {
+    id?: number // districtId
+    value: string // level | districtName
+  }[]
 }
 
 export interface IHospContentArrRespData extends IRespData {
