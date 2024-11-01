@@ -5,20 +5,20 @@ import type {
 } from '@/type'
 import axiosIns from '@/utils/axios_ins'
 
-// const HOSP_CONTENT_ARR1 = '/hosp/page/{curr}/{limit}'
+// const Hosp_Page = '/hosp/page/{curr}/{limit}'
 
 enum API_ENUM {
-  HOSP_CONTENT_ARR1 = '/hosp/page/', // 分页查询
-  HOSP_LEVEL_OR_DISTRICT = '/hosp/levelOrDistrict/',
-  HOSP_CONTENT_ARR2 = '/hosp/likeName/',
+  Hosp_Page = '/hosp/page/', // 分页查询
+  Hosp_LevelOrDistrict = '/hosp/levelOrDistrict/',
+  Hosp_LikeName = '/hosp/likeName/',
 }
 
 // const API = {
-//   HOSP_CONTENT_ARR1: '/hosp/page/{curr}/{limit}'
+//   Hosp_Page: '/hosp/page/{curr}/{limit}'
 // }
 
 // namespace API_NS {
-//   export const HOSP_CONTENT_ARR1 = '/hosp/page/{curr}/{limit}'
+//   export const Hosp_Page = '/hosp/page/{curr}/{limit}'
 // }
 
 export async function reqHospContent(
@@ -32,7 +32,7 @@ export async function reqHospContent(
   // axiosIns.get(API.HOSP_CONTENT_ARR1      + `${curr}/${limit}`)
   // axiosIns.get(API_NS.HOSP_CONTENT_ARR1   + `${curr}/${limit}`)
   return axiosIns.get(
-    API_ENUM.HOSP_CONTENT_ARR1 +
+    API_ENUM.Hosp_Page +
       `${curr}/${limit}?level=${level}&districtName=${districtName}`,
   )
 }
@@ -40,11 +40,11 @@ export async function reqHospContent(
 export async function reqLevelOrDistrict(
   mode: string
 ): Promise<ILevelOrDistrictRespData> {
-  return axiosIns.get(API_ENUM.HOSP_LEVEL_OR_DISTRICT + mode)
+  return axiosIns.get(API_ENUM.Hosp_LevelOrDistrict + mode)
 }
 
 export async function reqHospContentArr(
   hospName: string,
 ): Promise<IHospContentArrRespData> {
-  return axiosIns.get(API_ENUM.HOSP_CONTENT_ARR2 + hospName)
+  return axiosIns.get(API_ENUM.Hosp_LikeName + hospName)
 }

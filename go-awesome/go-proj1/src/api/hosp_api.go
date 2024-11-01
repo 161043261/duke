@@ -21,18 +21,9 @@ func NewHospApi() *HospApi {
 	}
 	once := sync.Once{}
 	once.Do(func() {
-		hospApi = &HospApi{
-			HospService: service.NewHospService(),
-		}
+		hospApi = &HospApi{HospService: service.NewHospService()}
 	})
 	return hospApi
-}
-
-// SelectHospById
-// /hosp/${hospCode}
-// TODO
-func (hostApi HospApi) SelectHospById() {
-
 }
 
 // SelectHospLikeName
@@ -51,24 +42,17 @@ func (hostApi HospApi) SelectHospByCondPage(ctx *gin.Context) {
 
 	if validationErrs != nil {
 		global.Logger.Errorln(validationErrs.Error())
-		RespErr(ctx, Resp{
-			Message: validationErrs.Error(),
-		})
+		RespErr(ctx, Resp{Message: validationErrs.Error()})
 		return
 	}
-	global.Logger.Debugf("%#v", pageDto)
+	// global.Logger.Debugf("%#v\n", pageDto)
 	data, err := hospApi.HospService.SelectHospByCondPage(&pageDto)
 	if err != nil {
 		global.Logger.Errorln(err.Error())
-		RespErr(ctx, Resp{
-			Message: err.Error(),
-		})
+		RespErr(ctx, Resp{Message: err.Error()})
 		return
 	}
-
-	RespOk(ctx, Resp{
-		Data: data,
-	})
+	RespOk(ctx, Resp{Data: data})
 }
 
 func (hostApi HospApi) SelectLevelOrDistrict(ctx *gin.Context) {
@@ -79,20 +63,14 @@ func (hostApi HospApi) SelectLevelOrDistrict(ctx *gin.Context) {
 	case "level":
 		kvs, _ := hospApi.HospService.SelectAllLevel()
 		// global.Logger.Debugln(levelArr)
-		RespOk(ctx, Resp{
-			Data: kvs,
-		})
+		RespOk(ctx, Resp{Data: kvs})
 
 	case "district":
 		kvs, _ := NewDistrictApi().districtService.SelectAllDistrict()
 		// global.Logger.Debugln(districtArr)
-		RespOk(ctx, Resp{
-			Data: kvs,
-		})
+		RespOk(ctx, Resp{Data: kvs})
 
 	default:
-		RespErr(ctx, Resp{
-			Message: "Unsupported Mode",
-		})
+		RespErr(ctx, Resp{Message: "Unsupported Mode"})
 	}
 }
