@@ -1,0 +1,59 @@
+{"level":"ERROR","time":"2024-11-01 10:01:59","msg":"Connect mysql error dial tcp 127.0.0.1:3306: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"INFO","time":"2024-11-01 10:01:59","msg":"==================== Done! ===================="}
+{"level":"INFO","time":"2024-11-01 10:04:32","msg":"Serving on http://127.0.0.1:3261"}
+{"level":"DEBUG","time":"2024-11-01 10:04:36","msg":"{0 0}"}
+{"level":"DEBUG","time":"2024-11-01 10:06:11","msg":"{0 0}"}
+{"level":"DEBUG","time":"2024-11-01 10:06:11","msg":"{0 0}"}
+{"level":"DEBUG","time":"2024-11-01 10:06:15","msg":"{0 0}"}
+{"level":"DEBUG","time":"2024-11-01 10:06:15","msg":"{0 0}"}
+{"level":"INFO","time":"2024-11-01 10:07:22","msg":"Shutdown ok"}
+{"level":"INFO","time":"2024-11-01 10:07:22","msg":"==================== Done! ===================="}
+{"level":"INFO","time":"2024-11-01 10:07:25","msg":"Serving on http://127.0.0.1:3261"}
+{"level":"DEBUG","time":"2024-11-01 10:07:40","msg":"dto.PageDto{Curr:0, Limit:0}"}
+{"level":"DEBUG","time":"2024-11-01 10:07:40","msg":"dto.PageDto{Curr:0, Limit:0}"}
+{"level":"INFO","time":"2024-11-01 10:10:13","msg":"Shutdown ok"}
+{"level":"INFO","time":"2024-11-01 10:10:13","msg":"==================== Done! ===================="}
+{"level":"INFO","time":"2024-11-01 10:10:15","msg":"Serving on http://127.0.0.1:3261"}
+{"level":"DEBUG","time":"2024-11-01 10:10:25","msg":"dto.PageDto{Curr:0, Limit:0}"}
+{"level":"INFO","time":"2024-11-01 10:12:24","msg":"Shutdown ok"}
+{"level":"INFO","time":"2024-11-01 10:12:24","msg":"==================== Done! ===================="}
+{"level":"INFO","time":"2024-11-01 10:12:26","msg":"Serving on http://127.0.0.1:3261"}
+{"level":"DEBUG","time":"2024-11-01 10:12:28","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"DEBUG","time":"2024-11-01 11:00:10","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"INFO","time":"2024-11-01 11:12:22","msg":"Shutdown ok"}
+{"level":"INFO","time":"2024-11-01 11:12:22","msg":"==================== Done! ===================="}
+{"level":"INFO","time":"2024-11-01 14:50:45","msg":"==================== Done! ===================="}
+{"level":"INFO","time":"2024-11-01 14:51:00","msg":"Serving on http://127.0.0.1:3261"}
+{"level":"DEBUG","time":"2024-11-01 14:51:29","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"INFO","time":"2024-11-01 14:58:53","msg":"Shutdown ok"}
+{"level":"INFO","time":"2024-11-01 14:58:53","msg":"==================== Done! ===================="}
+{"level":"INFO","time":"2024-11-01 14:58:57","msg":"Serving on http://127.0.0.1:3261"}
+{"level":"DEBUG","time":"2024-11-01 15:02:31","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"INFO","time":"2024-11-01 15:03:55","msg":"Shutdown ok"}
+{"level":"INFO","time":"2024-11-01 15:03:55","msg":"==================== Done! ===================="}
+{"level":"INFO","time":"2024-11-01 15:03:57","msg":"Serving on http://127.0.0.1:3261"}
+{"level":"DEBUG","time":"2024-11-01 15:04:04","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"INFO","time":"2024-11-01 15:09:24","msg":"Shutdown ok"}
+{"level":"INFO","time":"2024-11-01 15:09:24","msg":"==================== Done! ===================="}
+{"level":"INFO","time":"2024-11-01 15:09:27","msg":"Serving on http://127.0.0.1:3261"}
+{"level":"DEBUG","time":"2024-11-01 15:09:32","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"INFO","time":"2024-11-01 15:09:46","msg":"Shutdown ok"}
+{"level":"INFO","time":"2024-11-01 15:09:46","msg":"==================== Done! ===================="}
+{"level":"INFO","time":"2024-11-01 15:09:48","msg":"Serving on http://127.0.0.1:3261"}
+{"level":"DEBUG","time":"2024-11-01 15:09:48","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"DEBUG","time":"2024-11-01 15:09:50","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"DEBUG","time":"2024-11-01 15:09:51","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"DEBUG","time":"2024-11-01 15:09:51","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"INFO","time":"2024-11-01 15:11:27","msg":"Shutdown ok"}
+{"level":"INFO","time":"2024-11-01 15:11:27","msg":"==================== Done! ===================="}
+{"level":"INFO","time":"2024-11-01 15:11:30","msg":"Serving on http://127.0.0.1:3261"}
+{"level":"DEBUG","time":"2024-11-01 15:11:33","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"INFO","time":"2024-11-01 15:12:23","msg":"Shutdown ok"}
+{"level":"INFO","time":"2024-11-01 15:12:23","msg":"==================== Done! ===================="}
+{"level":"INFO","time":"2024-11-01 15:12:25","msg":"Serving on http://127.0.0.1:3261"}
+{"level":"INFO","time":"2024-11-01 15:12:31","msg":"Shutdown ok"}
+{"level":"INFO","time":"2024-11-01 15:12:31","msg":"==================== Done! ===================="}
+{"level":"INFO","time":"2024-11-01 15:12:33","msg":"Serving on http://127.0.0.1:3261"}
+{"level":"DEBUG","time":"2024-11-01 15:12:35","msg":"dto.PageDto{Curr:1, Limit:4}"}
+{"level":"INFO","time":"2024-11-01 15:18:02","msg":"Shutdown ok"}
+{"level":"INFO","time":"2024-11-01 15:18:02","msg":"==================== Done! ===================="}

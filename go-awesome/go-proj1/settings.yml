@@ -1,5 +1,5 @@
 server:
-  port: 3333
+  port: 3261
 
 buildType: Debug # Debug | Release
 

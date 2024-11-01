@@ -6,7 +6,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-func ConnRedis() (redisCli *redis.Client, err error) {
+func InitRedis() (redisCli *redis.Client, err error) {
 	redisCli = redis.NewClient(&redis.Options{
 		Addr:     viper.GetString("redis.addr"),
 		Password: "",

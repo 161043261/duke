@@ -5,21 +5,21 @@ export default {
 </script> -->
 
 <script setup lang="ts">
-import { reqHospLevelOrDistrict } from '@/api/home'
-import type { IHospLevelOrDistrict, IHospLevelOrDistrictRespData } from '@/type'
-import { onMounted, ref } from 'vue'
+import { reqLevelOrDistrict } from '@/api/home';
+import type { ILevelOrDistrict, ILevelOrDistrictRespData } from '@/type';
+import { onMounted, ref } from 'vue';
 
-const hospLevels = ref<IHospLevelOrDistrict[]>()
+const hospLevels = ref<ILevelOrDistrict[]>()
 
 onMounted(() => {
   getHospLevels()
 })
 
 async function getHospLevels() {
-  const promiseIns = reqHospLevelOrDistrict('')
+  const promiseIns = reqLevelOrDistrict("level")
   // console.log(result)
   promiseIns.then(
-    (resp: IHospLevelOrDistrictRespData) => {
+    (resp: ILevelOrDistrictRespData) => {
       hospLevels.value = resp.data
     },
     reason => {

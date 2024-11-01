@@ -27,12 +27,13 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://syt.atguigu.cn/",
+        target: "http://127.0.0.1:3261/",
         changeOrigin: true,
         rewrite: (path: string) => {
-          // return path.replace(/^\/api/, '')
-          // console.log(path) // /api/hosp/hospital/1/10
-          return path
+          // /.../ 正则表达式的定界符
+          // ^ 匹配 path 的开头
+          // console.log(path.replace(/^\/api/, '/api/v1'))
+          return path.replace(/^\/api/, '/api/v1')
         }
       }
     }

@@ -5,18 +5,18 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { reqHospLevelOrDistrict } from '@/api/home'
-import type { IHospLevelOrDistrict } from '@/type'
-import { onMounted, ref } from 'vue'
+import { reqLevelOrDistrict } from '@/api/home';
+import type { ILevelOrDistrict } from '@/type';
+import { onMounted, ref } from 'vue';
 
-const hospDistrictArr = ref<IHospLevelOrDistrict[]>()
+const hospDistrictArr = ref<ILevelOrDistrict[]>()
 
 onMounted(() => {
-  getHosDistrict()
+  getDistricts()
 })
 
-async function getHosDistrict() {
-  const resp = await reqHospLevelOrDistrict('Beijing')
+async function getDistricts() {
+  const resp = await reqLevelOrDistrict("district")
   if (resp.code == 200) {
     hospDistrictArr.value = resp.data
     // console.log(hospDistrictArr.value)

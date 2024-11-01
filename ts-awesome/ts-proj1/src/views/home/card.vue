@@ -31,26 +31,24 @@ function goDetail() {
               <Star />
             </el-icon>
             <span>{{
-                (hospitalContent as IHospContent).hospLevel
+              (hospitalContent as IHospContent).hospLevel
               }}</span>
           </div>
           <div class="time">
             <el-icon>
               <Timer />
             </el-icon>
-            <span
-              >每天
-              {{ (hospitalContent as IHospContent).releaseTime }}
-              放号</span
-            >
+            <span>每天
+              {{ (hospitalContent as IHospContent).openTime }}
+              放号</span>
           </div>
         </div>
       </div>
       <div class="right">
-        <img
-          :src="`data:image/jpeg;base64,${(hospitalContent as IHospContent).logoData}`"
-          alt="qiqi"
-        />
+        <img :src="(hospitalContent as IHospContent).logoData == '' ?
+          `data:image/jpeg;base64,${((hospitalContent as IHospContent).logoData)}`
+          : '@/assets/qiqi.webp'"
+          alt="logoData" />
       </div>
     </div>
   </el-card>
