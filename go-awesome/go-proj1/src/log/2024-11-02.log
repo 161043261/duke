@@ -1,0 +1,52 @@
+{"level":"INFO","time":"2024-11-02 11:44:40","msg":"Serving on http://127.0.0.1:3261"}
+{"level":"DEBUG","time":"2024-11-02 11:46:05","msg":"mode: district"}
+{"level":"DEBUG","time":"2024-11-02 11:46:05","msg":"mode: level"}
+{"level":"ERROR","time":"2024-11-02 11:46:05","msg":"Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND district_id = AND `t_hosps`.`deleted_at` IS NULL LIMIT ?' at line 1"}
+{"level":"DEBUG","time":"2024-11-02 11:46:18","msg":"mode: level"}
+{"level":"DEBUG","time":"2024-11-02 11:46:18","msg":"mode: district"}
+{"level":"ERROR","time":"2024-11-02 11:46:18","msg":"Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND district_id = AND `t_hosps`.`deleted_at` IS NULL LIMIT ?' at line 1"}
+{"level":"DEBUG","time":"2024-11-02 11:47:55","msg":"mode: level"}
+{"level":"DEBUG","time":"2024-11-02 11:47:55","msg":"mode: district"}
+{"level":"ERROR","time":"2024-11-02 11:47:55","msg":"Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND district_id = AND `t_hosps`.`deleted_at` IS NULL LIMIT ?' at line 1"}
+{"level":"INFO","time":"2024-11-02 11:53:47","msg":"Shutdown ok"}
+{"level":"INFO","time":"2024-11-02 11:53:47","msg":"==================== Done! ===================="}
+{"level":"INFO","time":"2024-11-02 11:53:51","msg":"Serving on http://127.0.0.1:3261"}
+{"level":"DEBUG","time":"2024-11-02 11:53:55","msg":"mode: level"}
+{"level":"DEBUG","time":"2024-11-02 11:53:55","msg":"mode: district"}
+{"level":"ERROR","time":"2024-11-02 11:54:11","msg":"Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND `t_hosps`.`deleted_at` IS NULL LIMIT ?' at line 1"}
+{"level":"INFO","time":"2024-11-02 11:56:17","msg":"Shutdown ok"}
+{"level":"INFO","time":"2024-11-02 11:56:17","msg":"==================== Done! ===================="}
+{"level":"INFO","time":"2024-11-02 11:56:20","msg":"Serving on http://127.0.0.1:3261"}
+{"level":"DEBUG","time":"2024-11-02 11:56:22","msg":"mode: district"}
+{"level":"DEBUG","time":"2024-11-02 11:56:22","msg":"mode: level"}
+{"level":"ERROR","time":"2024-11-02 11:56:26","msg":"Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND `t_hosps`.`deleted_at` IS NULL' at line 1"}
+{"level":"INFO","time":"2024-11-02 11:57:54","msg":"Shutdown ok"}
+{"level":"INFO","time":"2024-11-02 11:57:54","msg":"==================== Done! ===================="}
+{"level":"INFO","time":"2024-11-02 11:57:57","msg":"Serving on http://127.0.0.1:3261"}
+{"level":"DEBUG","time":"2024-11-02 11:58:00","msg":"mode: district"}
+{"level":"DEBUG","time":"2024-11-02 11:58:00","msg":"mode: level"}
+{"level":"DEBUG","time":"2024-11-02 11:58:23","msg":"mode: level"}
+{"level":"DEBUG","time":"2024-11-02 11:58:23","msg":"mode: district"}
+{"level":"INFO","time":"2024-11-02 11:59:47","msg":"Shutdown ok"}
+{"level":"INFO","time":"2024-11-02 11:59:47","msg":"==================== Done! ===================="}
+{"level":"INFO","time":"2024-11-02 11:59:55","msg":"Serving on http://127.0.0.1:3261"}
+{"level":"DEBUG","time":"2024-11-02 12:00:01","msg":"mode: level"}
+{"level":"DEBUG","time":"2024-11-02 12:00:01","msg":"mode: district"}
+{"level":"INFO","time":"2024-11-02 12:00:43","msg":"Shutdown ok"}
+{"level":"INFO","time":"2024-11-02 12:00:43","msg":"==================== Done! ===================="}
+{"level":"INFO","time":"2024-11-02 12:00:46","msg":"Serving on http://127.0.0.1:3261"}
+{"level":"DEBUG","time":"2024-11-02 12:00:50","msg":"mode: district"}
+{"level":"DEBUG","time":"2024-11-02 12:00:50","msg":"mode: level"}
+{"level":"DEBUG","time":"2024-11-02 12:00:53","msg":"mode: level"}
+{"level":"DEBUG","time":"2024-11-02 12:00:53","msg":"mode: district"}
+{"level":"DEBUG","time":"2024-11-02 12:02:56","msg":"mode: level"}
+{"level":"DEBUG","time":"2024-11-02 12:02:56","msg":"mode: district"}
+{"level":"DEBUG","time":"2024-11-02 12:03:08","msg":"mode: level"}
+{"level":"DEBUG","time":"2024-11-02 12:03:08","msg":"mode: district"}
+{"level":"DEBUG","time":"2024-11-02 12:04:20","msg":"mode: level"}
+{"level":"DEBUG","time":"2024-11-02 12:04:20","msg":"mode: district"}
+{"level":"INFO","time":"2024-11-02 12:06:10","msg":"Shutdown ok"}
+{"level":"INFO","time":"2024-11-02 12:06:10","msg":"==================== Done! ===================="}
+{"level":"INFO","time":"2024-11-02 12:06:47","msg":"Serving on http://127.0.0.1:3261"}
+{"level":"INFO","time":"2024-11-02 12:07:19","msg":"Shutdown ok"}
+{"level":"INFO","time":"2024-11-02 12:07:19","msg":"==================== Done! ===================="}

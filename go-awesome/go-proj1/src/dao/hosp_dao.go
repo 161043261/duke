@@ -70,13 +70,23 @@ func (hospDao *HospDao) SelectAllLevel() ([]string, error) {
 	return levelArr, err
 }
 
-func (hospDao *HospDao) SelectHospByCondPage(pageDto *dto.PageDto) ([]data.Hosp, int64, error) {
+func (hospDao *HospDao) SelectHospByCondPage(level string, districtId uint, pageDto *dto.PageDto) ([]data.Hosp, int64, error) {
 	var hospArr []data.Hosp // ! 接收分页查询结果
 	var total int64         // ! 接收总记录数
-	err := hospDao.db.Model(&data.Hosp{}).
-		Scopes(GetPageFunc(pageDto)). // ! 传递分页函数
-		Find(&hospArr).               // ! 分页查询
-		Offset(-1).Limit(-1).         // ! 取消分页查询条件
-		Count(&total).Error           // ! 总记录数
+	tx := hospDao.db.Model(&data.Hosp{})
+	if level != "" {
+		// 条件查询
+		tx = tx.Where("level = ?", level)
+	}
+	if districtId > 0 {
+		tx = tx.Where("district_id = ?", districtId)
+	}
+  tx = tx.Find(&hospArr)
+
+	// 分页查询
+	err := tx.Scopes(GetPageFunc(pageDto)). // ! 传递分页函数
+						Find(&hospArr).       // ! 分页查询
+						Offset(-1).Limit(-1). // ! 取消分页查询条件
+						Count(&total).Error   // ! 总记录数
 	return hospArr, total, err
 }

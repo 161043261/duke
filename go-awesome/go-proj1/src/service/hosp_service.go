@@ -1,11 +1,12 @@
 package service
 
 import (
+	"strconv"
+	"sync"
+
 	"bronya.com/go-proj1/src/dao"
 	"bronya.com/go-proj1/src/data"
 	"bronya.com/go-proj1/src/dto"
-	"strconv"
-	"sync"
 )
 
 type HospService struct {
@@ -54,8 +55,8 @@ func (hospService *HospService) SelectAllLevel() ([]map[string]string, error) {
 	return kvs, nil
 }
 
-func (hospService *HospService) SelectHospByCondPage(pageDto *dto.PageDto) (map[string]any, error) {
-	hospArr, total, err := hospService.HospDao.SelectHospByCondPage(pageDto)
+func (hospService *HospService) SelectHospByCondPage(level string, districtId uint, pageDto *dto.PageDto) (map[string]any, error) {
+	hospArr, total, err := hospService.HospDao.SelectHospByCondPage(level, districtId, pageDto)
 	if err != nil {
 		return map[string]any{}, err
 	}
@@ -71,6 +72,9 @@ func (hospService *HospService) SelectHospByCondPage(pageDto *dto.PageDto) (map[
 			"openTime":   hosp.OpenTime,
 		})
 	}
+
+	// log.Println(hospContent)
+
 	return map[string]any{
 		"content":   hospContent,
 		"totalHosp": total,

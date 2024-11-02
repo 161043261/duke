@@ -86,7 +86,7 @@ function getHospDistrict(args: number) {
 
         <!-- 卡片组件 -->
         <!--! 父组件使用 v-bind: 向子组件发送数据 -->
-        <div class="cards" v-if="content.length > 0">
+        <div class="cards" v-if="content != null && content.length > 0">
           <Card
             class="item"
             v-for="(item, idx) in content"
