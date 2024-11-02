@@ -5,7 +5,7 @@
 对象字面量的隐式构造函数是 Object 函数
 
 ```js
-const obj = {a: 1};
+const obj = { a: 1 };
 
 Object.prototype === obj.__proto__; // true
 Object.getPrototypeOf(obj) === Object.prototype; // true
@@ -15,9 +15,9 @@ Object.getPrototypeOf(obj) === obj.__proto__; // true
 解糖 (desugar)
 
 ```js
-const obj = {a: 1};
+const obj = { a: 1 };
 // 解糖
-const obj = new Object({a: 1});
+const obj = new Object({ a: 1 });
 
 const arr = [1, 2, 3];
 // 解糖
@@ -55,8 +55,7 @@ Map.prototype; // Object [Map] {}
 一个构造函数将构建以下的原型链
 
 ```js
-function Constructor() {
-}
+function Constructor() {}
 
 const obj = new Constructor();
 // obj ---> Constructor.prototype ---> Object.prototype ---> null
@@ -65,11 +64,9 @@ const obj = new Constructor();
 构建更长的原型链 (等价于 extends)
 
 ```js
-function Base() {
-}
+function Base() {}
 
-function Derived() {
-}
+function Derived() {}
 
 Object.setPrototypeOf(Derived.prototype, Base.prototype);
 
@@ -80,11 +77,9 @@ const obj = new Derived();
 构建更长的原型链 (等价于 extends)
 
 ```js
-function Base() {
-}
+function Base() {}
 
-function Derived() {
-}
+function Derived() {}
 
 // Object.create(Base.prototype) 创建一个对象 obj
 // 该对象的原型是 Base.prototype (obj.__proto__ === Base.prototype)
@@ -94,11 +89,9 @@ Derived.prototype = Object.create(Base.prototype);
 构建更长的原型链 (extends)
 
 ```js
-class Base {
-}
+class Base {}
 
-class Derived extends Base {
-}
+class Derived extends Base {}
 
 const obj = new Derived();
 // obj ---> Derived.prototype ---> Base.prototype ---> Object.prototype ---> null
@@ -123,5 +116,5 @@ const obj = new Derived();
 - 所有实例**共享** Construct.prototype 上定义的所有属性
 
 ```js
-instance.__proto__ /* [[Prototype]] */ === Constructor.prototype
+instance.__proto__ /* [[Prototype]] */ === Constructor.prototype;
 ```
