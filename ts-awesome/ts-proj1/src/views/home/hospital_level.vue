@@ -5,9 +5,9 @@ export default {
 </script> -->
 
 <script setup lang="ts">
-import { reqLevelOrDistrict } from '@/api/home';
-import type { ILevelOrDistrictRespData } from '@/type';
-import { onMounted, ref } from 'vue';
+import { reqLevelOrDistrict } from '@/api/home'
+import type { ILevelOrDistrictRespData } from '@/type'
+import { onMounted, ref } from 'vue'
 
 const levels = ref<string[]>([])
 
@@ -16,13 +16,13 @@ onMounted(() => {
 })
 
 async function getLevels() {
-  const promiseIns = reqLevelOrDistrict("level")
+  const promiseIns = reqLevelOrDistrict('level')
   // console.log(result)
   promiseIns.then(
     (resp: ILevelOrDistrictRespData) => {
       // FIXME
       levels.value = []
-      resp.data.forEach((kvs) => {
+      resp.data.forEach(kvs => {
         // console.log(kvs.value)
         levels.value.push(kvs.value)
       })
@@ -35,7 +35,7 @@ async function getLevels() {
 }
 
 const currLevel = ref<string>('')
-function changeLevel(level: string) {
+function switchLevel(level: string) {
   currLevel.value = level
   // 子组件使用自定义事件, 向父组件发送数据
   emitFunc('send-hosp-level' /* 事件名 */, level /* 参数列表 */)
@@ -51,14 +51,19 @@ const emitFunc = defineEmits(['send-hosp-level']) // 事件名列表
     <div class="content">
       <div class="left">等级:</div>
       <ul>
-        <li :class="{ highlight: currLevel == '' }" @click="changeLevel('')">
+        <li :class="{ highlight: currLevel == '' }" @click="switchLevel('')">
           全部
         </li>
         <!-- 点击触发自定义事件 -->
-        <li :class="{ highlight: currLevel == level }" v-for="level in levels" :key="level" @click="
-          changeLevel(level)
-          /* ; emitFunc('send-level', level.id) */
-          ">
+        <li
+          :class="{ highlight: currLevel == level }"
+          v-for="level in levels"
+          :key="level"
+          @click="
+            switchLevel(level)
+            /* ; emitFunc('send-level', level.id) */
+          "
+        >
           {{ level }}
         </li>
       </ul>

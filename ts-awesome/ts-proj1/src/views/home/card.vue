@@ -38,22 +38,25 @@ function getImgSrc(logoData: string): string {
             <el-icon>
               <Star />
             </el-icon>
-            <span>{{
-              (hospitalContent as IHospContent).level
-            }}</span>
+            <span>{{ (hospitalContent as IHospContent).level }}</span>
           </div>
           <div class="time">
             <el-icon>
               <Timer />
             </el-icon>
-            <span>每天
+            <span
+              >每天
               {{ (hospitalContent as IHospContent).openTime }}
-              放号</span>
+              放号</span
+            >
           </div>
         </div>
       </div>
       <div class="right">
-        <img :src="getImgSrc((hospitalContent as IHospContent).logoData)" alt="logoData" />
+        <img
+          :src="getImgSrc((hospitalContent as IHospContent).logoData)"
+          alt="logoData"
+        />
       </div>
     </div>
   </el-card>

@@ -26,7 +26,7 @@ const sizeLimit = ref<number>(4) // -> limit
 const content = ref<Array<IHospContent>>([])
 const totalHosp = ref<number>(0)
 const level = ref<string>('')
-const districtName = ref<string>('')
+const districtId = ref<number>(0)
 
 // 组件挂载后, 发送 AJAX 请求
 onMounted(() => {
@@ -38,7 +38,7 @@ async function getHospitalContent() {
     currPage.value,
     sizeLimit.value,
     level.value,
-    districtName.value,
+    districtId.value,
   )
   if (respData.code == 200) {
     // console.log((respData.data.content as IHospContent[])[0].logoData)
@@ -50,15 +50,15 @@ async function getHospitalContent() {
 
 // 父组件使用自定义事件, 从子组件接收数据
 function getLevel(args: string) {
-  console.log(`Receive ${args} from ./hospital_level.vue`)
+  console.log(`Receive level: ${args} from ./hospital_level.vue`)
   level.value = args
   getHospitalContent()
 }
 
 // 父组件使用自定义事件, 从子组件接收数据
-function getHospDistrict(args: string) {
-  console.log(`Receive ${args} from ./district.vue`)
-  districtName.value = args
+function getHospDistrict(args: number) {
+  console.log(`Receive districtId: ${args} from ./district.vue`)
+  districtId.value = args
   getHospitalContent()
 }
 </script>

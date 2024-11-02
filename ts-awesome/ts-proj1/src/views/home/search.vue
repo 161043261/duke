@@ -16,7 +16,7 @@ const router = useRouter()
 // v-model 双向绑定
 const hospName = ref<string>('')
 
-async function fetchData(hospName: string, cb: (arr: Array<unknown>) => object) {
+async function getData(hospName: string, cb: (arr: Array<unknown>) => object) {
   // console.log("queryString:", hospName)
   const respData: IHospContentArrRespData = await reqHospContentArr(hospName)
   // console.log(respData.data)
@@ -43,7 +43,7 @@ function goHospDetail(item: { value: string; hospCode: string }) {
       clearable
       placeholder="请输入医院名"
       v-model="hospName"
-      :fetch-suggestions="fetchData"
+      :fetch-suggestions="getData"
       :trigger-on-focus="false"
       @select="goHospDetail"
     />

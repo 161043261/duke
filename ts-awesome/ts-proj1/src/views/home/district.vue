@@ -5,20 +5,22 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { reqLevelOrDistrict } from '@/api/home';
-import { onMounted, ref } from 'vue';
+import { reqLevelOrDistrict } from '@/api/home'
+import { onMounted, ref } from 'vue'
 
-const hospDistrictArr = ref<{
-  id?: number;
-  value: string;
-}[]>()
+const hospDistrictArr = ref<
+  {
+    id?: number
+    value: string
+  }[]
+>()
 
 onMounted(() => {
   getDistricts()
 })
 
 async function getDistricts() {
-  const resp = await reqLevelOrDistrict("district")
+  const resp = await reqLevelOrDistrict('district')
   // console.log(resp.data)
   if (resp.code == 200) {
     hospDistrictArr.value = resp.data
@@ -28,9 +30,9 @@ async function getDistricts() {
   }
 }
 
-const currValue = ref<string>('')
-function changeDistrict(districtName: string, districtId?: number) {
-  currValue.value = districtName
+const currId = ref<number>(0)
+function switchDistrict(districtId: number) {
+  currId.value = districtId
   // 子组件使用自定义事件, 向父组件发送数据
   emitFunc('send-district' /* 事件名 */, districtId /* 参数列表 */)
 }
@@ -44,14 +46,14 @@ const emitFunc = defineEmits(['send-district']) // 事件名列表
     <div class="content">
       <div class="left">地区:</div>
       <ul>
-        <li :class="{ highlight: currValue == '' }" @click="changeDistrict('')">
+        <li :class="{ highlight: currId == 0 }" @click="switchDistrict(0)">
           全部
         </li>
         <li
-          :class="{ highlight: currValue == hospDistrict.value }"
+          :class="{ highlight: currId == hospDistrict.id }"
           v-for="hospDistrict in hospDistrictArr"
           :key="hospDistrict.id"
-          @click="changeDistrict(hospDistrict.value, hospDistrict.id)"
+          @click="switchDistrict(hospDistrict.id!)"
         >
           {{ hospDistrict.value }}
         </li>

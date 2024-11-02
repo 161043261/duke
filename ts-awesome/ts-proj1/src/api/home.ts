@@ -1,7 +1,7 @@
 import type {
-    IHospContentArrRespData,
-    IHospContentRespData,
-    ILevelOrDistrictRespData,
+  IHospContentArrRespData,
+  IHospContentRespData,
+  ILevelOrDistrictRespData,
 } from '@/type'
 import axiosIns from '@/utils/axios_ins'
 
@@ -25,7 +25,7 @@ export async function reqHospContent(
   curr: number,
   limit: number,
   level: string = '', // 隐式声明 level 是 ? 可选参数
-  districtName: string = '', // 隐式声明 districtName 是 ? 可选参数
+  districtId: number = 0, // 隐式声明 districtId 是 ? 可选参数
 ): Promise<IHospContentRespData> {
   // axiosIns.get(HOSP_CONTENT_ARR1          + `${curr}/${limit}`)
   // axiosIns.get(API_ENUM.HOSP_CONTENT_ARR1 + `${curr}/${limit}`)
@@ -33,12 +33,12 @@ export async function reqHospContent(
   // axiosIns.get(API_NS.HOSP_CONTENT_ARR1   + `${curr}/${limit}`)
   return axiosIns.get(
     API_ENUM.Hosp_Page +
-      `${curr}/${limit}?level=${level}&districtName=${districtName}`,
+      `${curr}/${limit}?level=${level}&districtId=${districtId}`,
   )
 }
 
 export async function reqLevelOrDistrict(
-  mode: string
+  mode: string,
 ): Promise<ILevelOrDistrictRespData> {
   return axiosIns.get(API_ENUM.Hosp_LevelOrDistrict + mode)
 }
