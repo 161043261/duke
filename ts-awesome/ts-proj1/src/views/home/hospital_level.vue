@@ -6,7 +6,7 @@ export default {
 
 <script setup lang="ts">
 import { reqLevelOrDistrict } from '@/api/home'
-import type { ILevelOrDistrictRespData } from '@/type'
+import type { ILevelOrDistrictResp } from '@/type'
 import { onMounted, ref } from 'vue'
 
 const levels = ref<string[]>([])
@@ -19,15 +19,17 @@ async function getLevels() {
   const promiseIns = reqLevelOrDistrict('level')
   // console.log(result)
   promiseIns.then(
-    (resp: ILevelOrDistrictRespData) => {
-      // FIXME
-      levels.value = []
-      resp.data.forEach(kvs => {
-        // console.log(kvs.value)
-        levels.value.push(kvs.value)
+    //! on fulfilled 成功时的回调函数
+    (resp: ILevelOrDistrictResp) => {
+      // levels.value = []
+      // resp.data.forEach(kvs => {
+      //   levels.value.push(kvs.value)
+      // })
+      levels.value = resp.data.map(item => {
+        return item.value
       })
-      console.log(levels.value)
     },
+    //! on rejected 失败时的回调函数
     reason => {
       console.log(reason)
     },
@@ -35,14 +37,15 @@ async function getLevels() {
 }
 
 const currLevel = ref<string>('')
+
 function switchLevel(level: string) {
   currLevel.value = level
   // 子组件使用自定义事件, 向父组件发送数据
-  emitFunc('send-hosp-level' /* 事件名 */, level /* 参数列表 */)
+  emitFunc('send-level' /* 事件名 */, level /* 参数列表 */)
 }
 
-// 自定义事件 send-hosp-level
-const emitFunc = defineEmits(['send-hosp-level']) // 事件名列表
+// 自定义事件 send-level
+const emitFunc = defineEmits(['send-level']) // 事件名列表
 </script>
 
 <template>

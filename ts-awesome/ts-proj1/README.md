@@ -25,13 +25,10 @@ npm install sass
   "Vue3 snippet": {
     "prefix": "v3",
     "body": [
-      "<!-- eslint-disable vue/multi-word-component-names -->",
       "<script setup lang=\"ts\">",
       "</script>",
       "",
       "<template>",
-      "  <div class=\"\">",
-      "  </div>",
       "</template>",
       "",
       "<style lang=\"css\" scoped>",
@@ -53,7 +50,7 @@ npm install sass
     class="item"
     v-for="(item, idx) in content"
     :key="item.id + '-' + idx"
-    v-bind:hospitalContent="item"
+    v-bind:hosp="item"
   />
 </div>
 ```
@@ -63,7 +60,7 @@ npm install sass
 ```vue
 <script lang="ts" setup>
 //! 子组件使用 defineProps 从父组件接收数据
-defineProps(['hospitalContent'])
+defineProps(['hosp'])
 </script>
 ```
 
@@ -76,10 +73,10 @@ defineProps(['hospitalContent'])
 function changeLevelId(id: string) {
   flag.id = id
   // 子组件使用自定义事件, 向父组件发送数据
-  emitFunc('send-hosp-level' /* 事件名 */, id /* 参数列表 */)
+  emitFunc('send-level' /* 事件名 */, id /* 参数列表 */)
 }
 
-// 自定义事件 send-hosp-level
+// 自定义事件 send-level
 const emitFunc = defineEmits(['send-level']) // 事件名列表
 </script>
 
@@ -91,7 +88,7 @@ const emitFunc = defineEmits(['send-level']) // 事件名列表
     :key="level.id"
     @click="
       changeLevelId(level.id)
-      /* ; emitFunc('send-hosp-level', level.id) */
+      /* ; emitFunc('send-level', level.id) */
     "
   ></li>
 </template>
@@ -105,7 +102,7 @@ const emitFunc = defineEmits(['send-level']) // 事件名列表
 function getLevel(args: string) {
   console.log('子组件发送的数据:', args)
   level.id = args
-  getHospitalContent()
+  getHospArr()
 }
 </script>
 

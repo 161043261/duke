@@ -5,16 +5,17 @@ export default {
 </script>
 
 <script setup lang="ts">
-import type { IHospContent } from '@/type'
+import type { IHosp } from '@/type'
 import { useRouter } from 'vue-router'
 import { Star, Timer } from '@element-plus/icons-vue'
 
-//! 子组件使用 defineProps 从父组件接收数据
-const props = defineProps(['hospitalContent'])
+//! 子组件使用 defineProps 从父组件 ./home.vue 接收数据
+// v-bind:hospBind="hosp"
+const props = defineProps(['hospBind'])
 const router = useRouter()
 
 function goDetail() {
-  console.log(props.hospitalContent.hospCode)
+  console.log(props.hospBind.hospCode)
   // 等价于 router.push({ path: '/hospital/register' })
   router.push('/hospital/register')
 }
@@ -32,13 +33,13 @@ function getImgSrc(logoData: string): string {
   <el-card shadow="hover" @click="goDetail">
     <div class="content">
       <div class="left">
-        <div>{{ (hospitalContent as IHospContent).hospName }}</div>
+        <div>{{ (hospBind as IHosp).hospName }}</div>
         <div class="tip">
           <div class="type">
             <el-icon>
               <Star />
             </el-icon>
-            <span>{{ (hospitalContent as IHospContent).level }}</span>
+            <span>{{ (hospBind as IHosp).level }}</span>
           </div>
           <div class="time">
             <el-icon>
@@ -46,17 +47,14 @@ function getImgSrc(logoData: string): string {
             </el-icon>
             <span
               >每天
-              {{ (hospitalContent as IHospContent).openTime }}
+              {{ (hospBind as IHosp).openTime }}
               放号</span
             >
           </div>
         </div>
       </div>
       <div class="right">
-        <img
-          :src="getImgSrc((hospitalContent as IHospContent).logoData)"
-          alt="logoData"
-        />
+        <img :src="getImgSrc((hospBind as IHosp).logoData)" alt="logoData" />
       </div>
     </div>
   </el-card>

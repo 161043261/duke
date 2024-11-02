@@ -27,7 +27,7 @@ func RespOk(ctx *gin.Context, resp Resp) {
 	ctx.AbortWithStatusJSON(resp.Code, resp)
 }
 
-func RespErr(ctx *gin.Context, resp Resp) { //* 4xx 客户端错误
+func RespErr(ctx *gin.Context, resp Resp) { // * 4xx 客户端错误
 	if resp.IsEmpty() {
 		ctx.AbortWithStatus(http.StatusNotFound) // 404
 		return

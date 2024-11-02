@@ -1,34 +1,44 @@
-export interface IHospContent {
-  id: string
+// type Hosp struct {
+// 	gorm.Model
+// 	HospCode   string `json:"hospCode"`
+// 	HospName   string `json:"hospName"`
+// 	Level      string `json:"level"`
+// 	LogoData   string `json:"logoData"`
+// 	DistrictId uint   `json:"districtId"`
+// 	OpenTime   string `json:"openTime"`
+// }
+
+export interface IHosp {
+  id: number
   hospCode: string
   hospName: string
   level: string
-  districtName: string
   logoData: string
+  districtId: number
   openTime: string
 }
 
-export interface IRespData {
+export interface IResp {
   code: number
   message: string
   // data: unknown
   ok: boolean
 }
 
-export interface IHospContentRespData extends IRespData {
+export interface IHospArrByCondPageResp extends IResp {
   data: {
-    content: IHospContent[]
-    totalHosp: number
+    content: IHosp[]
+    total: number
   }
 }
 
-export interface ILevelOrDistrictRespData extends IRespData {
+export interface ILevelOrDistrictResp extends IResp {
   data: {
-    id?: number // districtId
-    value: string // level | districtName
+    id?: number //          districtId
+    value: string // level, districtId
   }[]
 }
 
-export interface IHospContentArrRespData extends IRespData {
-  data: IHospContent[]
+export interface IHospLikeNameResp extends IResp {
+  data: IHosp[]
 }

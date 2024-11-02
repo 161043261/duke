@@ -55,14 +55,15 @@ func (hospService *HospService) SelectAllLevel() ([]map[string]string, error) {
 	return kvs, nil
 }
 
-func (hospService *HospService) SelectHospByCondPage(level string, districtId uint, pageDto *dto.PageDto) (map[string]any, error) {
+func (hospService *HospService) SelectHospByCondPage(
+	level string, districtId uint, pageDto *dto.PageDto) (map[string]any, error) {
 	hospArr, total, err := hospService.HospDao.SelectHospByCondPage(level, districtId, pageDto)
 	if err != nil {
 		return map[string]any{}, err
 	}
-	var hospContent []map[string]string
+	var kvs []map[string]string
 	for _, hosp := range hospArr {
-		hospContent = append(hospContent, map[string]string{
+		kvs = append(kvs, map[string]string{
 			"id":         strconv.Itoa(int(hosp.ID)),
 			"hospCode":   hosp.HospCode,
 			"hospName":   hosp.HospName,
@@ -73,10 +74,15 @@ func (hospService *HospService) SelectHospByCondPage(level string, districtId ui
 		})
 	}
 
-	// log.Println(hospContent)
+	// log.Println(kvs)
 
 	return map[string]any{
-		"content":   hospContent,
-		"totalHosp": total,
+		"content": kvs,
+		"total":   total,
 	}, nil
+}
+
+func (hospService *HospService) SelectHospLikeName(
+	hospName string, pageDto *dto.PageDto) ([]data.Hosp, error) {
+	return hospService.HospDao.SelectHospLikeName(hospName, pageDto)
 }

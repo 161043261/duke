@@ -32,7 +32,7 @@ func Init(confPath string) {
 
 // Start 创建路由组, 启动路由器
 func Start() {
-	router.StartRouter() //! 创建路由组, 启动路由器
+	router.Start() //! 创建路由组, 启动路由器
 }
 
 func Done() {

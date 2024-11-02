@@ -16,7 +16,7 @@ import (
 
 var rg *gin.RouterGroup
 
-func StartRouter() {
+func Start() {
 	notifyCtx, notifyCancel := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
 	defer notifyCancel()
 

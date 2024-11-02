@@ -10,6 +10,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// 总结
+// 1. ? 查询参数: value := ctx.Query("key")
+// 2. URI 路径参数: value := ctx.Param("key"); ctx.ShouldBindUri(&value);
+
 type HospApi struct {
 	HospService *service.HospService
 }
@@ -30,19 +34,31 @@ func NewHospApi() *HospApi {
 // SelectHospLikeName
 // /hosp/likeName/${hospName}
 // TODO
-func (hostApi HospApi) SelectHospLikeName() {
-
+func (hostApi HospApi) SelectHospLikeName(ctx *gin.Context) {
+	// CurrPage: 1, SizeLimit: 10
+	pageDto := dto.PageDto{
+		Curr:  1,
+		Limit: 8,
+	}
+	hospName := ctx.Param("hospName")
+	hospArr, err := hospApi.HospService.SelectHospLikeName(hospName, &pageDto)
+	if err != nil {
+		global.Logger.Errorln(err.Error())
+		RespErr(ctx, Resp{Message: err.Error()})
+		return
+	}
+	RespOk(ctx, Resp{Data: hospArr})
 }
 
 // SelectHospByCondPage
-// /hosp/page/${curr}/${limit}?level=${level}&districtId=${districtId}
+// /hosp/condPage/${curr}/${limit}?level=${level}&districtId=${districtId}
 // level: string, districtId: number
 func (hostApi HospApi) SelectHospByCondPage(ctx *gin.Context) {
 	var pageDto dto.PageDto
 	validationErrs := ctx.ShouldBindUri(&pageDto)
 	level := ctx.Query("level")
-	districtIdStr := ctx.Query("districtId")
-	districtId, _ := strconv.Atoi(districtIdStr)
+	districtStr := ctx.Query("districtId")
+	districtId, _ := strconv.Atoi(districtStr)
 
 	if validationErrs != nil {
 		global.Logger.Errorln(validationErrs.Error())

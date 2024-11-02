@@ -6,8 +6,8 @@ export default {
 
 <script setup lang="ts">
 // 导入 element-plus 图标
-import { reqHospContentArr } from '@/api/home'
-import type { IHospContentArrRespData } from '@/type'
+import { reqHospLikeName } from '@/api/home'
+import type { IHospLikeNameResp } from '@/type'
 import { Search } from '@element-plus/icons-vue'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -16,11 +16,14 @@ const router = useRouter()
 // v-model 双向绑定
 const hospName = ref<string>('')
 
-async function getData(hospName: string, cb: (arr: Array<unknown>) => object) {
+async function fetchSuggestions(
+  hospName: string,
+  callback: (arr: Array<unknown>) => object,
+) {
   // console.log("queryString:", hospName)
-  const respData: IHospContentArrRespData = await reqHospContentArr(hospName)
+  const respData: IHospLikeNameResp = await reqHospLikeName(hospName)
   // console.log(respData.data)
-  cb(
+  callback(
     respData.data.map(item => {
       return {
         value: item.hospName, // 医院名
@@ -30,6 +33,7 @@ async function getData(hospName: string, cb: (arr: Array<unknown>) => object) {
   )
 }
 
+// FIXME
 function goHospDetail(item: { value: string; hospCode: string }) {
   // console.log(item)
   // 等价于 router.push('/hospital/register')
@@ -43,7 +47,7 @@ function goHospDetail(item: { value: string; hospCode: string }) {
       clearable
       placeholder="请输入医院名"
       v-model="hospName"
-      :fetch-suggestions="getData"
+      :fetch-suggestions="fetchSuggestions"
       :trigger-on-focus="false"
       @select="goHospDetail"
     />

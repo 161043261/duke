@@ -15,35 +15,35 @@ import SearchForm from './search.vue'
 import { ElConfigProvider } from 'element-plus'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 
-import { reqHospContent } from '@/api/home'
-import type { IHospContent, IHospContentRespData } from '@/type'
+import { repHospArrByCondPage } from '@/api/home'
+import type { IHosp, IHospArrByCondPageResp } from '@/type'
 import { onMounted, ref } from 'vue'
 
 import RightTips from './right_tips.vue'
 
 const currPage = ref<number>(1) // -> curr
 const sizeLimit = ref<number>(4) // -> limit
-const content = ref<Array<IHospContent>>([])
-const totalHosp = ref<number>(0)
+const hospArr = ref<Array<IHosp>>([])
+const total = ref<number>(0)
 const level = ref<string>('')
 const districtId = ref<number>(0)
 
 // 组件挂载后, 发送 AJAX 请求
 onMounted(() => {
-  getHospitalContent()
+  getHospArr()
 })
 
-async function getHospitalContent() {
-  const respData: IHospContentRespData = await reqHospContent(
+async function getHospArr() {
+  const respData: IHospArrByCondPageResp = await repHospArrByCondPage(
     currPage.value,
     sizeLimit.value,
     level.value,
     districtId.value,
   )
   if (respData.code == 200) {
-    // console.log((respData.data.content as IHospContent[])[0].logoData)
-    content.value = respData.data.content
-    totalHosp.value = respData.data.totalHosp
+    // console.log((respData.data.content as IHosp[])[0].logoData)
+    hospArr.value = respData.data.content
+    total.value = respData.data.total
   }
   // console.log(respData)
 }
@@ -52,14 +52,14 @@ async function getHospitalContent() {
 function getLevel(args: string) {
   console.log(`Receive level: ${args} from ./hospital_level.vue`)
   level.value = args
-  getHospitalContent()
+  getHospArr()
 }
 
 // 父组件使用自定义事件, 从子组件接收数据
-function getHospDistrict(args: number) {
+function getDistrictId(args: number) {
   console.log(`Receive districtId: ${args} from ./district.vue`)
   districtId.value = args
-  getHospitalContent()
+  getHospArr()
 }
 </script>
 
@@ -80,18 +80,18 @@ function getHospDistrict(args: number) {
         <!-- 等级组件 -->
 
         <!-- 自定义事件 send-level -->
-        <HospitalLevel @send-hosp-level="getLevel" />
+        <HospitalLevel @send-level="getLevel" />
         <!-- 地区组件 -->
-        <HospitalDistrict @send-district="getHospDistrict" />
+        <HospitalDistrict @send-district-id="getDistrictId" />
 
         <!-- 卡片组件 -->
         <!--! 父组件使用 v-bind: 向子组件发送数据 -->
-        <div class="cards" v-if="content != null && content.length > 0">
+        <div class="cards" v-if="hospArr != null && hospArr.length > 0">
           <Card
             class="item"
-            v-for="(item, idx) in content"
-            :key="item.id + '-' + idx"
-            v-bind:hospitalContent="item"
+            v-for="hosp in hospArr"
+            :key="hosp.id"
+            v-bind:hospBind="hosp"
           />
         </div>
 
@@ -120,12 +120,12 @@ function getHospDistrict(args: number) {
             :page-sizes="[2, 4, 6, 8]"
             :background="true"
             layout="prev, pager, next, jumper, ->, sizes, total"
-            :total="totalHosp"
-            @current-change="getHospitalContent()"
+            :total="total"
+            @current-change="getHospArr()"
             @size-change="
               () => {
                 currPage = 1
-                getHospitalContent()
+                getHospArr()
               }
             "
           />

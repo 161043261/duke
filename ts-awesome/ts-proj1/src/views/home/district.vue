@@ -34,11 +34,11 @@ const currId = ref<number>(0)
 function switchDistrict(districtId: number) {
   currId.value = districtId
   // 子组件使用自定义事件, 向父组件发送数据
-  emitFunc('send-district' /* 事件名 */, districtId /* 参数列表 */)
+  emitFunc('send-district-id' /* 事件名 */, districtId /* 参数列表 */)
 }
 
 // 自定义事件 send-address
-const emitFunc = defineEmits(['send-district']) // 事件名列表
+const emitFunc = defineEmits(['send-district-id']) // 事件名列表
 </script>
 
 <template>

@@ -81,7 +81,7 @@ func (hospDao *HospDao) SelectHospByCondPage(level string, districtId uint, page
 	if districtId > 0 {
 		tx = tx.Where("district_id = ?", districtId)
 	}
-  tx = tx.Find(&hospArr)
+	tx = tx.Find(&hospArr)
 
 	// 分页查询
 	err := tx.Scopes(GetPageFunc(pageDto)). // ! 传递分页函数
@@ -89,4 +89,13 @@ func (hospDao *HospDao) SelectHospByCondPage(level string, districtId uint, page
 						Offset(-1).Limit(-1). // ! 取消分页查询条件
 						Count(&total).Error   // ! 总记录数
 	return hospArr, total, err
+}
+
+func (hospDao *HospDao) SelectHospLikeName(hospName string, pageDto *dto.PageDto) ([]data.Hosp, error) {
+	var hospArr []data.Hosp
+	err := hospDao.db.Model(&data.Hosp{}).
+		Where("hosp_name LIKE ?", "%"+hospName+"%").
+		Scopes(GetPageFunc(pageDto)). // ! 传递分页函数
+		Find(&hospArr).Error          // ! 分页查询
+	return hospArr, err
 }
