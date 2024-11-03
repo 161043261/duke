@@ -9,7 +9,7 @@ type Hosp struct {
 	gorm.Model
 	HospCode   string `json:"hospCode"`
 	HospName   string `json:"hospName"`
-	Level      string `json:"level"`
+	LevelId    uint   `json:"level"`
 	LogoData   string `json:"logoData"`
 	DistrictId uint   `json:"districtId"`
 	OpenTime   string `json:"openTime"`

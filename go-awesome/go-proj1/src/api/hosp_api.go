@@ -51,12 +51,14 @@ func (hostApi HospApi) SelectHospLikeName(ctx *gin.Context) {
 }
 
 // SelectHospByCondPage
-// /hosp/condPage/${curr}/${limit}?level=${level}&districtId=${districtId}
-// level: string, districtId: number
+// /hosp/condPage/${curr}/${limit}?levelId=${levelId}&districtId=${districtId}
 func (hostApi HospApi) SelectHospByCondPage(ctx *gin.Context) {
 	var pageDto dto.PageDto
 	validationErrs := ctx.ShouldBindUri(&pageDto)
-	level := ctx.Query("level")
+
+	levelStr := ctx.Query("levelId")
+	levelId, _ := strconv.Atoi(levelStr)
+
 	districtStr := ctx.Query("districtId")
 	districtId, _ := strconv.Atoi(districtStr)
 
@@ -68,7 +70,7 @@ func (hostApi HospApi) SelectHospByCondPage(ctx *gin.Context) {
 
 	// log.Println("level:", level, "districtId:", districtId)
 
-	data, err := hospApi.HospService.SelectHospByCondPage(level, uint(districtId), &pageDto)
+	data, err := hospApi.HospService.SelectHospByCondPage(uint(levelId), uint(districtId), &pageDto)
 	if err != nil {
 		global.Logger.Errorln(err.Error())
 		RespErr(ctx, Resp{Message: err.Error()})

@@ -5,7 +5,6 @@ import (
 	"bronya.com/go-proj1/src/dto"
 	"bronya.com/go-proj1/src/global"
 	"gorm.io/gorm"
-	"sort"
 	"sync"
 )
 
@@ -62,21 +61,20 @@ func (hospDao *HospDao) SelectAllHosp() ([]data.Hosp, error) {
 
 // SelectAllLevel
 // ! 链式调用: Model, Find
-func (hospDao *HospDao) SelectAllLevel() ([]string, error) {
-	var levelArr []string
+func (hospDao *HospDao) SelectAllLevel() ([]uint, error) {
+	var levelArr []uint
 	// select distinct hosp_level from t_hosps;
-	err := hospDao.db.Model(&data.Hosp{}).Select("level").Distinct("level").Find(&levelArr).Error
-	sort.Strings(levelArr)
+	err := hospDao.db.Model(&data.Hosp{}).Select("level_id").Distinct("level_id").Find(&levelArr).Error
 	return levelArr, err
 }
 
-func (hospDao *HospDao) SelectHospByCondPage(level string, districtId uint, pageDto *dto.PageDto) ([]data.Hosp, int64, error) {
+func (hospDao *HospDao) SelectHospByCondPage(levelId uint, districtId uint, pageDto *dto.PageDto) ([]data.Hosp, int64, error) {
 	var hospArr []data.Hosp // ! 接收分页查询结果
 	var total int64         // ! 接收总记录数
 	tx := hospDao.db.Model(&data.Hosp{})
-	if level != "" {
-		// 条件查询
-		tx = tx.Where("level = ?", level)
+	// 条件查询
+	if levelId > 0 {
+		tx = tx.Where("level_id = ?", levelId)
 	}
 	if districtId > 0 {
 		tx = tx.Where("district_id = ?", districtId)
@@ -94,7 +92,7 @@ func (hospDao *HospDao) SelectHospByCondPage(level string, districtId uint, page
 func (hospDao *HospDao) SelectHospLikeName(hospName string, pageDto *dto.PageDto) ([]data.Hosp, error) {
 	var hospArr []data.Hosp
 	err := hospDao.db.Model(&data.Hosp{}).
-		Where("hosp_name LIKE ?", "%"+hospName+"%").
+		Where("hosp_name like ?", "%"+hospName+"%").
 		Scopes(GetPageFunc(pageDto)). // ! 传递分页函数
 		Find(&hospArr).Error          // ! 分页查询
 	return hospArr, err

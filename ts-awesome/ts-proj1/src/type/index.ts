@@ -34,7 +34,7 @@ export interface IHospArrByCondPageResp extends IResp {
 
 export interface ILevelOrDistrictResp extends IResp {
   data: {
-    id?: number //          districtId
+    id: number //          districtId
     value: string // level, districtId
   }[]
 }

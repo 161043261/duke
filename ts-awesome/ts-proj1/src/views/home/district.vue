@@ -8,9 +8,9 @@ export default {
 import { reqLevelOrDistrict } from '@/api/home'
 import { onMounted, ref } from 'vue'
 
-const hospDistrictArr = ref<
+const districts = ref<
   {
-    id?: number
+    id: number
     value: string
   }[]
 >()
@@ -23,7 +23,7 @@ async function getDistricts() {
   const resp = await reqLevelOrDistrict('district')
   // console.log(resp.data)
   if (resp.code == 200) {
-    hospDistrictArr.value = resp.data
+    districts.value = resp.data
     // console.log(hospDistrictArr.id)
   } else {
     console.log(resp.message)
@@ -50,12 +50,12 @@ const emitFunc = defineEmits(['send-district-id']) // 事件名列表
           全部
         </li>
         <li
-          :class="{ highlight: currId == hospDistrict.id }"
-          v-for="hospDistrict in hospDistrictArr"
-          :key="hospDistrict.id"
-          @click="switchDistrict(hospDistrict.id!)"
+          :class="{ highlight: currId == district.id }"
+          v-for="district in districts"
+          :key="district.id"
+          @click="switchDistrict(district.id!)"
         >
-          {{ hospDistrict.value }}
+          {{ district.value }}
         </li>
       </ul>
     </div>

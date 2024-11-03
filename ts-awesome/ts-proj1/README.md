@@ -73,11 +73,11 @@ defineProps(['hosp'])
 function changeLevelId(id: string) {
   flag.id = id
   // 子组件使用自定义事件, 向父组件发送数据
-  emitFunc('send-level' /* 事件名 */, id /* 参数列表 */)
+  emitFunc('send-level-id' /* 事件名 */, id /* 参数列表 */)
 }
 
-// 自定义事件 send-level
-const emitFunc = defineEmits(['send-level']) // 事件名列表
+// 自定义事件 send-level-id
+const emitFunc = defineEmits(['send-level-id']) // 事件名列表
 </script>
 
 <template>
@@ -88,7 +88,7 @@ const emitFunc = defineEmits(['send-level']) // 事件名列表
     :key="level.id"
     @click="
       changeLevelId(level.id)
-      /* ; emitFunc('send-level', level.id) */
+      /* ; emitFunc('send-level-id', level.id) */
     "
   ></li>
 </template>
@@ -99,7 +99,7 @@ const emitFunc = defineEmits(['send-level']) // 事件名列表
 ```vue
 <script lang="ts" setup>
 // 父组件使用自定义事件, 从子组件接收数据
-function getLevel(args: string) {
+function getLevelId(args: string) {
   console.log('子组件发送的数据:', args)
   level.id = args
   getHospArr()
@@ -107,8 +107,8 @@ function getLevel(args: string) {
 </script>
 
 <template>
-  <!-- 自定义事件 send-level -->
-  <HospitalLevel @send-level="getLevel" />
+  <!-- 自定义事件 send-level-id -->
+  <HospitalLevel @send-level="getLevelId" />
 </template>
 ```
 

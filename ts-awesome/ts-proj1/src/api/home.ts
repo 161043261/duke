@@ -3,29 +3,30 @@ import type {
   IHospArrByCondPageResp,
   ILevelOrDistrictResp,
 } from '@/type'
+
 import axiosIns from '@/utils/axios_ins'
 
-// const Hosp_Page = '/hosp/page/{curr}/{limit}'
+// const Hosp_CondPage = '/hosp/page/{curr}/{limit}'
 
 enum API_ENUM {
-  Hosp_Page = '/hosp/condPage/', // 分页查询
+  Hosp_CondPage = '/hosp/condPage/', // 分页查询
   Hosp_LevelOrDistrict = '/hosp/levelOrDistrict/',
   Hosp_LikeName = '/hosp/likeName/',
 }
 
 // const API = {
-//   Hosp_Page: '/hosp/page/{curr}/{limit}'
+//   Hosp_CondPage: '/hosp/condPage/${curr}/${limit}'
 // }
 
 // namespace API_NS {
-//   export const Hosp_Page = '/hosp/page/{curr}/{limit}'
+//   export const Hosp_CondPage = '/hosp/condPage/${curr}/${limit}'
 // }
 
 export async function repHospArrByCondPage(
   // argv
   curr: number,
   limit: number,
-  level: string = '', // 隐式声明 level 是 ? 可选参数
+  levelId: number = 0, // 隐式声明 levelId 是 ? 可选参数
   districtId: number = 0, // 隐式声明 districtId 是 ? 可选参数
 ): Promise<IHospArrByCondPageResp> {
   // axiosIns.get(HOSP_CONTENT_ARR1          + `${curr}/${limit}`)
@@ -33,8 +34,8 @@ export async function repHospArrByCondPage(
   // axiosIns.get(API.HOSP_CONTENT_ARR1      + `${curr}/${limit}`)
   // axiosIns.get(API_NS.HOSP_CONTENT_ARR1   + `${curr}/${limit}`)
   return axiosIns.get(
-    API_ENUM.Hosp_Page +
-      `${curr}/${limit}?level=${level}&districtId=${districtId}`,
+    API_ENUM.Hosp_CondPage +
+      `${curr}/${limit}?levelId=${levelId}&districtId=${districtId}`,
   )
 }
 

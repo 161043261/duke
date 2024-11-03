@@ -8,8 +8,14 @@ export default {
 import { reqLevelOrDistrict } from '@/api/home'
 import type { ILevelOrDistrictResp } from '@/type'
 import { onMounted, ref } from 'vue'
+import { getLevelName } from '@/utils'
 
-const levels = ref<string[]>([])
+const levels = ref<
+  {
+    id: number
+    value: string
+  }[]
+>([])
 
 onMounted(() => {
   getLevels()
@@ -26,7 +32,10 @@ async function getLevels() {
       //   levels.value.push(kvs.value)
       // })
       levels.value = resp.data.map(item => {
-        return item.value
+        return {
+          id: item.id,
+          value: getLevelName(item.id),
+        }
       })
     },
     //! on rejected 失败时的回调函数
@@ -36,16 +45,16 @@ async function getLevels() {
   )
 }
 
-const currLevel = ref<string>('')
+const currId = ref<number>(0)
 
-function switchLevel(level: string) {
-  currLevel.value = level
+function switchLevel(levelId: number) {
+  currId.value = levelId
   // 子组件使用自定义事件, 向父组件发送数据
-  emitFunc('send-level' /* 事件名 */, level /* 参数列表 */)
+  emitFunc('send-level-id' /* 事件名 */, levelId /* 参数列表 */)
 }
 
-// 自定义事件 send-level
-const emitFunc = defineEmits(['send-level']) // 事件名列表
+// 自定义事件 send-level-id
+const emitFunc = defineEmits(['send-level-id']) // 事件名列表
 </script>
 
 <template>
@@ -54,20 +63,20 @@ const emitFunc = defineEmits(['send-level']) // 事件名列表
     <div class="content">
       <div class="left">等级:</div>
       <ul>
-        <li :class="{ highlight: currLevel == '' }" @click="switchLevel('')">
+        <li :class="{ highlight: currId == 0 }" @click="switchLevel(0)">
           全部
         </li>
         <!-- 点击触发自定义事件 -->
         <li
-          :class="{ highlight: currLevel == level }"
+          :class="{ highlight: currId == level.id }"
           v-for="level in levels"
-          :key="level"
+          :key="level.id"
           @click="
-            switchLevel(level)
-            /* ; emitFunc('send-level', level.id) */
+            switchLevel(level.id)
+            /* ; emitFunc('send-level-id', level.id) */
           "
         >
-          {{ level }}
+          {{ level.value }}
         </li>
       </ul>
     </div>

@@ -4,7 +4,7 @@ import { test } from "vitest";
 // JavaScript 中, 函数也有属性
 // 所有函数都有一个特殊属性 prototype
 
-test("proto2_test1", () => {
+test("test1", () => {
   function ConstructFunc() {}
   console.log(ConstructFunc.prototype); // {}
 
@@ -29,7 +29,7 @@ test("proto2_test1", () => {
 // instance.__proto__.__proto__ === ConstructFunc.prototype.__proto__
 // instance.__proto__.__proto__.__proto__ === ConstructFunc.prototype.__proto__.__proto__
 
-test("proto2_test2", () => {
+test("test2", () => {
   function ConstructFunc() {}
   ConstructFunc.prototype.foo = "bar";
   const instance = new ConstructFunc();

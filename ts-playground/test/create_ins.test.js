@@ -1,7 +1,7 @@
 // pnpm test create_ins
 import { test } from "vitest";
 
-test("create_ins_test1", () => {
+test("test1", () => {
   const obj = { a: 1 };
   console.log(obj.__proto__ === Object.prototype); // true
   // obj ---> Object.prototype ---> null
@@ -28,7 +28,7 @@ test("create_ins_test1", () => {
   // extendsObj ---> obj ---> Object.prototype ---> null
 });
 
-test("create_ins_test2", () => {
+test("test2", () => {
   function ArrWrapper() {
     this.arr = [];
   }
@@ -41,7 +41,7 @@ test("create_ins_test2", () => {
   arrWrapper.pushElem(1);
 });
 
-test("create_ins_test3", () => {
+test("test3", () => {
   const grandpa = { v: 1 };
   console.log(grandpa.__proto__ === Object.prototype); // true
   // grandpa ---> Object.prototype ---> null
@@ -67,7 +67,7 @@ test("create_ins_test3", () => {
   // extendsNull 未继承 Object.prototype
 });
 
-test("create_ins_test4", () => {
+test("test4", () => {
   class Rectangle {
     constructor(height, width) {
       console.log("Construct rectangle");
@@ -99,7 +99,7 @@ test("create_ins_test4", () => {
   // square ---> Square.prototype ---> Rectangle.prototype ---> Object.prototype ---> null
 });
 
-test("create_ins_test5", () => {
+test("test5", () => {
   const base = {
     val: 1,
     func() {
@@ -141,7 +141,7 @@ test("create_ins_test5", () => {
   console.log(obj5.val, obj5.func()); // newVal retStr
 });
 
-test("create_ins_test6", () => {
+test("test6", () => {
   const son = { age: 1 };
   son.__proto__ = { papaAge: 2 };
   son.__proto__.__proto__ = { grandpaAge: 3 };

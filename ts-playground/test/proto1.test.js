@@ -3,7 +3,7 @@
 import { test } from "vitest";
 
 // 构造函数
-test("proto1_test1", () => {
+test("test1", () => {
   function Box(value) {
     console.log(this); // Box {}
     this.value = value;
@@ -28,7 +28,7 @@ test("proto1_test1", () => {
 });
 
 // 类是构造函数的语法糖
-test("proto1_test2", () => {
+test("test2", () => {
   class Box {
     constructor(value) {
       console.log(this); // Box {}
@@ -62,7 +62,7 @@ test("proto1_test2", () => {
   console.log(box.__proto__.getValue.toString());
 });
 
-test("proto1_test3", () => {
+test("test3", () => {
   class Box {
     constructor(value) {
       this.value = value;

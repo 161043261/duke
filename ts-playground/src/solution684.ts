@@ -83,3 +83,5 @@ function moveLeaf(x: number, y: number) {
   sizes[yroot] += 1;
   parentIdx[x] = yroot;
 }
+
+export {};

@@ -41,23 +41,24 @@ func (hospService *HospService) SelectAllHosp() ([]data.Hosp, error) {
 	return hospService.HospDao.SelectAllHosp()
 }
 
-func (hospService *HospService) SelectAllLevel() ([]map[string]string, error) {
+func (hospService *HospService) SelectAllLevel() ([]map[string]uint, error) {
 	levels, err := hospService.HospDao.SelectAllLevel()
 	if err != nil {
 		return nil, err
 	}
-	var kvs []map[string]string
+	var kvs []map[string]uint
 	for _, level := range levels {
-		kvs = append(kvs, map[string]string{
-			"value": level,
+		kvs = append(kvs, map[string]uint{
+			"id": level,
+			// "level": levelName,
 		})
 	}
 	return kvs, nil
 }
 
 func (hospService *HospService) SelectHospByCondPage(
-	level string, districtId uint, pageDto *dto.PageDto) (map[string]any, error) {
-	hospArr, total, err := hospService.HospDao.SelectHospByCondPage(level, districtId, pageDto)
+	levelId uint, districtId uint, pageDto *dto.PageDto) (map[string]any, error) {
+	hospArr, total, err := hospService.HospDao.SelectHospByCondPage(levelId, districtId, pageDto)
 	if err != nil {
 		return map[string]any{}, err
 	}
@@ -67,7 +68,7 @@ func (hospService *HospService) SelectHospByCondPage(
 			"id":         strconv.Itoa(int(hosp.ID)),
 			"hospCode":   hosp.HospCode,
 			"hospName":   hosp.HospName,
-			"level":      hosp.Level,
+			"level":      strconv.Itoa(int(hosp.LevelId)),
 			"districtId": strconv.Itoa(int(hosp.DistrictId)),
 			"logoData":   hosp.LogoData,
 			"openTime":   hosp.OpenTime,

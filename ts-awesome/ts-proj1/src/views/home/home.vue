@@ -20,12 +20,13 @@ import type { IHosp, IHospArrByCondPageResp } from '@/type'
 import { onMounted, ref } from 'vue'
 
 import RightTips from './right_tips.vue'
+import { getLevelName } from '@/utils'
 
 const currPage = ref<number>(1) // -> curr
 const sizeLimit = ref<number>(4) // -> limit
 const hospArr = ref<Array<IHosp>>([])
 const total = ref<number>(0)
-const level = ref<string>('')
+const levelId = ref<number>(0)
 const districtId = ref<number>(0)
 
 // 组件挂载后, 发送 AJAX 请求
@@ -37,21 +38,25 @@ async function getHospArr() {
   const respData: IHospArrByCondPageResp = await repHospArrByCondPage(
     currPage.value,
     sizeLimit.value,
-    level.value,
+    levelId.value,
     districtId.value,
   )
   if (respData.code == 200) {
     // console.log((respData.data.content as IHosp[])[0].logoData)
     hospArr.value = respData.data.content
+    hospArr.value?.forEach(item => {
+      item.level = getLevelName(parseInt(item.level))
+    })
+    // console.log(hospArr.value)
     total.value = respData.data.total
   }
   // console.log(respData)
 }
 
 // 父组件使用自定义事件, 从子组件接收数据
-function getLevel(args: string) {
-  console.log(`Receive level: ${args} from ./hospital_level.vue`)
-  level.value = args
+function getLevelId(args: number) {
+  console.log(`Receive levelName: ${args} from ./hospital_level.vue`)
+  levelId.value = args
   getHospArr()
 }
 
@@ -79,8 +84,8 @@ function getDistrictId(args: number) {
       <el-col :span="20">
         <!-- 等级组件 -->
 
-        <!-- 自定义事件 send-level -->
-        <HospitalLevel @send-level="getLevel" />
+        <!-- 自定义事件 send-level-id -->
+        <HospitalLevel @send-level-id="getLevelId" />
         <!-- 地区组件 -->
         <HospitalDistrict @send-district-id="getDistrictId" />
 

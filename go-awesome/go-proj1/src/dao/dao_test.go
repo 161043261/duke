@@ -15,11 +15,7 @@ var districts = [...]string{
 	"虹口区", "杨浦区", "闵行区", "宝山区", "嘉定区",
 	"浦东新区", "金山区", "松江区", "青浦区", "奉贤区", "崇明区"}
 
-var levels = [...]string{
-	"三级甲等", "三级乙等", "三级丙等",
-	"二级甲等", "二级乙等", "二级丙等",
-	"一级甲等", "一级乙等", "一级丙等",
-}
+var levels = [...]uint{31, 32, 33, 21, 22, 23, 11, 12, 13}
 var hospDao *dao.HospDao
 var districtDao *dao.DistrictDao
 
@@ -37,18 +33,17 @@ func TestHospDao_InsertHosp(t *testing.T) {
 	b64Str, _ := os.ReadFile("./qiqi.txt")
 
 	hospId, levelIdx := 1, 0
-	for i, districtName := range districts {
-		for j := 0; j < 3; j, hospId, levelIdx =
-			j+1, hospId+1, (levelIdx+1)%len(levels) {
+	for districtId_, districtName := range districts {
+		districtId := uint(districtId_ + 1)
+		for j := 0; j < 3; j, hospId, levelIdx = j+1, hospId+1, (levelIdx+1)%len(levels) {
 
-			districtId := uint(i + 1)
 			hosp := data.Hosp{
 				// 区编号.医院编号
 				// strconv.Itoa(districtId) + "." + strconv.Itoa(hospId),
 				HospCode: fmt.Sprintf("%v.%v", districtId, hospId),
 				// "不卜庐 " + districtName + "第" + strconv.Itoa(districtIdx) + "医院"
-				HospName:   fmt.Sprintf("不卜庐-%v第%v医院", districtName, districtId),
-				Level:      levels[levelIdx],
+				HospName:   fmt.Sprintf("不卜庐-%v第%v医院", districtName, hospId),
+				LevelId:    levels[levelIdx],
 				LogoData:   string(b64Str),
 				DistrictId: districtId,
 				OpenTime:   "09:00",
