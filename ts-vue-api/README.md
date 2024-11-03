@@ -1,4 +1,4 @@
-# ts-vue-down
+# ts-vue-api
 
 ```ts
 require('@rushstack/eslint-patch/modern-module-resolution')

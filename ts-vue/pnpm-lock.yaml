@@ -20,7 +20,7 @@ importers:
       pinia:
         specifier: ^2.1.7
         version: 2.1.7(typescript@5.4.5)(vue@3.4.33(typescript@5.4.5))
-      ts-vue-up:
+      ts-vue:
         specifier: 'file:'
         version: file:(typescript@5.4.5)
       tslib:
@@ -1128,7 +1128,7 @@ packages:
     peerDependencies:
       typescript: '>=4.2.0'
 
-  'ts-vue-up@file:':
+  'ts-vue@file:':
     resolution: {directory: '', type: directory}
 
   tslib@2.6.3:
@@ -2224,7 +2224,7 @@ snapshots:
     dependencies:
       typescript: 5.4.5
 
-  ts-vue-up@file:(typescript@5.4.5):
+  ts-vue@file:(typescript@5.4.5):
     dependencies:
       axios: 1.7.2
       mitt: 3.0.1

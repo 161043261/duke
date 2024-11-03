@@ -1,10 +1,10 @@
-# ts-vue-up
+# ts-vue
 
 ### Project Setup
 
 ```sh
 pnpm create vue
-cd ts-vue-up || exit
+cd ts-vue || exit
 pnpm install
 pnpm install vite-plugin-vue-setup-extend -D
 pnpm install eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin --save-dev

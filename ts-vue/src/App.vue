@@ -34,7 +34,7 @@ let display = ref(true)
 
 <template>
   <div class="app">
-    <p class="title">ts-vue-up</p>
+    <p class="title">ts-vue</p>
     <div class="navigate">
       <RouterLink active-class="act" to="/computed">computed</RouterLink>
       <RouterLink active-class="act" v-bind:to="{ path: '/torefs' }">ToRefs</RouterLink>
