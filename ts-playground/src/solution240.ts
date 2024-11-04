@@ -20,9 +20,11 @@ function searchMatrix(matrix: number[][], target: number): boolean {
       dfs(x, nextY);
     }
 
-    if (nextX < matrix.length
-      && nextY < matrix[0].length
-      && !visited[nextX][nextY]) {
+    if (
+      nextX < matrix.length &&
+      nextY < matrix[0].length &&
+      !visited[nextX][nextY]
+    ) {
       dfs(nextX, nextY);
     }
   };

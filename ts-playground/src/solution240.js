@@ -12,7 +12,7 @@ function searchMatrix(matrix, target) {
       length: matrix.length,
     },
     () => /* new */ Array(matrix[0].length).fill(false),
-  )
+  );
 
   let ans = false;
   const dfs = (x, y) => {
@@ -29,9 +29,11 @@ function searchMatrix(matrix, target) {
     if (nextY < matrix[0].length && !visited[x][nextY]) {
       dfs(x, nextY);
     }
-    if (nextX < matrix.length
-      && nextY < matrix[0].length
-      && !visited[nextX][nextY]) {
+    if (
+      nextX < matrix.length &&
+      nextY < matrix[0].length &&
+      !visited[nextX][nextY]
+    ) {
       dfs(nextX, nextY);
     }
   };

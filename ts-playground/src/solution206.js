@@ -1,9 +1,8 @@
 class ListNode {
-  val_
-  next_
+  val_;
+  next_;
 
   /**
-   *
    * @returns {number}
    */
   get val() {
@@ -11,7 +10,6 @@ class ListNode {
   }
 
   /**
-   *
    * @param {number} newVal
    */
   set val(newVal) {
@@ -19,7 +17,6 @@ class ListNode {
   }
 
   /**
-   *
    * @returns {ListNode}
    */
   get next() {
@@ -27,7 +24,6 @@ class ListNode {
   }
 
   /**
-   *
    * @param {ListNode} newNext
    */
   set next(newNext) {
@@ -39,6 +35,31 @@ class ListNode {
  * @param {ListNode} head
  * @return {ListNode}
  */
-var reverseList = function(head) {
+var reverseList = function (head) {
+  if (head == null) {
+    return head;
+  }
+  let tail = head;
+  while (tail.next != null) {
+    tail = tail.next;
+  }
+  let p = head;
+  while (p !== tail) {
+    let nextP = p.next;
+    p.next = tail.next;
+    tail.next = p;
+    p = nextP;
+  }
+  return tail;
+};
 
+// recurse
+var reverseList1 = function (head) {
+  if (head == null || head.next == null) {
+    return head;
+  }
+  const newHead = reverseList(head.next);
+  head.next.next = head;
+  head.next = null;
+  return newHead;
 };

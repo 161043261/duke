@@ -24,11 +24,11 @@ var getIntersectionNode = function (headA, headB) {
 
   let delta = 0;
   if (pa.next == null) {
-    [headA, headB, pa, pb] = [headB, headA, pb, pa]
+    [headA, headB, pa, pb] = [headB, headA, pb, pa];
   }
   while (pa.next != null) {
-    pa = pa.next
-    delta++
+    pa = pa.next;
+    delta++;
   }
 
   [pa, pb] = [headA, headB];
@@ -42,5 +42,5 @@ var getIntersectionNode = function (headA, headB) {
     pa = pa.next;
     pb = pb.next;
   }
-  return pa
+  return pa;
 };
