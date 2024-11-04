@@ -1,19 +1,9 @@
 "use strict";
 function searchMatrix(matrix, target) {
-  // const visited = new Array(matrix.length);
-  // for (let i = 0; i < matrix.length; i++) {
-  //   visited[i] = new Array(matrix[0].length).fill(false);
-  // }
-
-  //! error
-  // const visited = new Array(matrix.length).fill(new Array(matrix[0].length).fill(false))
-  const visited = Array.from(
-    {
-      length: matrix.length,
-    },
-    () => /* new */ Array(matrix[0].length).fill(false),
-  );
-
+  const visited = new Array(matrix.length);
+  for (let i = 0; i < matrix.length; i++) {
+    visited[i] = new Array(matrix[0].length).fill(false);
+  }
   let ans = false;
   const dfs = (x, y) => {
     visited[x][y] = true;

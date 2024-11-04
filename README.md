@@ -5,7 +5,6 @@
 - Linux
 - MySQL
 - Redis
-- Kafka
 - 网络协议 TCP, UDP, HTTP, ...
 - 网络安全 SSH, TLS, ...
 - 分布式 Raft
@@ -13,8 +12,6 @@
 - gRPC
 - Protocol Buffer
 - Git
-- Kafka (Optional)
-- K8S (Optional)
 
 ## Java
 
@@ -28,10 +25,6 @@
 - Java 函数编程
   - [java-func](./java-func/)
 - MyBatis, SpringBoot
-  - [java-proj](./java-proj/)
-- Netty
-  - [java-socket](./java-socket/)
-- 面试: JVM
 
 ## Go
 
@@ -45,19 +38,19 @@
 - Go 设计模式
   - [go-design-pattern](./go-design-pattern/)
 - GORM, Gin
-  - [go-proj](./go-proj/)
+  - [go-awesome](./go-awesome/)
 - 面试: GC, GMP
 
 ## C/C++
 
 - C/C++ 基础
-  - [cpp-playground](./cpp-playground/)
+  - [cc-playground](./cc-playground/)
 - C/C++ 命令 gcc/g++, clang/clang++, ...
 - Makefile, CMake
 - C/C++ 并发编程
-  - [cpp-concurrent](./cpp-concurrent/)
+  - [cc-concurrent](./cc-concurrent/)
 - C/C++ 网络编程, IO
-  - [c-socket](./c-socket/)
+  - [cc-socket](./cc-socket/)
 
 ## JavaScript/TypeScript
 
@@ -67,11 +60,5 @@
 - node, npm, pnpm 命令
 - Vue3
   - [ts-vue](./ts-vue/)
-  - [ts-vue3](./ts-vue3/)
-  - [ts-proj](./ts-proj/)
-
-## Python
-
-- Python 基础
-- Pytest
-- Numpy...
+  - [ts-vue-api](./ts-vue-api/)
+  - [ts-awesome](./ts-awesome/)
