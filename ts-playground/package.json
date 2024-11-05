@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "test": "vitest",
-    "format": "prettier --write algorithm/ src/ learn/ test/"
+    "format": "prettier --write ./"
   },
   "author": "",
   "license": "ISC",

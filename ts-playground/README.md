@@ -34,13 +34,13 @@ let reply = handler(
             // ...
             return reply;
           },
-          errCallback // 1
+          errCallback, // 1
         );
       },
-      errCallback // 2
+      errCallback, // 2
     );
   },
-  errCallback
+  errCallback,
 ); // 3
 ```
 
@@ -208,7 +208,7 @@ doKernel()
       .then((optResult) => doNextOpt(optResult))
       .catch((e) => {
         /* ignored */
-      })
+      }),
   ) // 可选处理抛出异常时，继续执行
   .then(() => doNextKernel())
   .catch((e) => console.log(`Fatal error: ${e.message}`));
@@ -294,7 +294,7 @@ process.on("unhandledRejection", (reason, promise) => {
 ```js
 // 等待多个异步操作
 Promise.all([func1(), func2(), func3()]).then(
-  ([result1, result2, result3]) => {}
+  ([result1, result2, result3]) => {},
 );
 ```
 
@@ -312,7 +312,7 @@ console.log("sum:", sum);
 [asyncf1, asyncf2, asyncf3]
   .reduce(
     (promise, asyncf) => promise.then(asyncf) /* reducer 函数 */,
-    Promise.resolve()
+    Promise.resolve(),
   )
   .then((result) => {
     // ...
