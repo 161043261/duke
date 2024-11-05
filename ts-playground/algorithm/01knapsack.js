@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 function maxTotalValue(numGoods, bagCapacity, weight, value) {
   // 初始化 dp 数组
   // let rowCount = numGoods;

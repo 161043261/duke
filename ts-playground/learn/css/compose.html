@@ -16,6 +16,24 @@
 
   <body>
     <!-- 内联样式表 -->
-    <h1 style="color: pink">样式</h1>
+    <h1 style="color: red">CSS 是如何工作的</h1>
+    <ul>
+      <li>浏览器请求 HTML 文件</li>
+      <li>
+        浏览器解析 HTML 文件, 将 HTML 文件转换为一个 DOM 对象, DOM 对象是 HTML
+        文件在内存中的表现形式
+      </li>
+      <li>浏览器请求相关资源, 例如图片, 视频, CSS 样式表, JavaScript 脚本等</li>
+      <li>
+        浏览器解析 CSS 文件, 根据选择器的类型 (例如 element, class, id)
+        将选择器分发到不同的桶 (bucket) 中
+      </li>
+      <li>
+        浏览器将规则应用到对应的 DOM 节点, 渲染节点的样式
+        (浏览器将规则应用到渲染树)
+      </li>
+      <li>布局, 着色</li>
+    </ul>
+    <img src="../../assets/rendering.svg" alt="rendering" width="500px" />
   </body>
 </html>
