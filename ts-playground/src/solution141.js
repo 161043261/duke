@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 class ListNode {
   constructor(val, next) {
     this.val = val === undefined ? 0 : val;
@@ -7,13 +8,16 @@ class ListNode {
 }
 function hasCycle(head) {
   var _a;
-  let test_a = head === null || head === void 0 ? void 0 : head.next;
-  console.log(test_a);
+  // test begin
+  let undefinedVar = head === null || head === void 0 ? void 0 : head.next;
+  console.log(undefinedVar);
   try {
-    let test_b = head.next;
-  } catch (e) {
-    console.log(e);
-  }
+    let typeErroredVar = head.next;
+    // catch 子句
+    // 变量类型注释必须为 "any" 或 "unknown"
+  } catch (e /* unknown */) {
+    console.log(e); // TypeError
+  } // test end
   let fast = head;
   let slow = head;
   while (fast != undefined && fast != null) {

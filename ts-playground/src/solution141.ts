@@ -9,6 +9,7 @@ class ListNode {
 }
 
 function hasCycle(head: ListNode | null): boolean {
+  // test begin
   let undefinedVar = head?.next;
   console.log(undefinedVar);
   try {
@@ -17,7 +18,7 @@ function hasCycle(head: ListNode | null): boolean {
     // 变量类型注释必须为 "any" 或 "unknown"
   } catch (e: any /* unknown */) {
     console.log(e); // TypeError
-  }
+  } // test end
 
   let fast: ListNode | null | undefined = head;
   let slow: ListNode | null = head;
@@ -32,3 +33,5 @@ function hasCycle(head: ListNode | null): boolean {
 }
 
 hasCycle(null);
+
+export {};
