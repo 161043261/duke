@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        font-family: "Iosevka SS06", "Sarasa Mono SC";
+      }
+
+      a[title] {
+        background-color: lightpink;
+      }
+
+      a[href='https://example.com']
+      {
+        background-color: lightgreen;
+      }
+
+      p[class~="special"] {
+        color: lightblue;
+      }
+
+      div[lang|="zh"] {
+        color: lightpink;
+      }
+
+      article p:first-child {
+        background-color: lightgreen;
+      }
+
+      article p:last-child {
+        background-color: lightblue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <a title="example.com">example.com</a>
+    <a href="https://example.com">example.com</a>
+    <p class="special love you">Special love for special you</p>
+    <div lang="zh-CN">特别的爱给特别的你</div>
+    <hr />
+    <article>
+      <div>
+        <p>第一个子元素</p>
+        <p>第二个子元素</p>
+        <p>最后一个子元素</p>
+      </div>
+    </article>
+  </body>
+</html>
