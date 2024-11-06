@@ -1,7 +1,5 @@
 # CSS
 
-优先级: 行内样式 > 内部样式 > 外部样式
-
 使用选择器列表 (并集选择器) 时, 如果一个选择器无效, 则整个规则都会被忽略
 
 ```css
@@ -154,7 +152,6 @@ li[class*="box"] {
 - 2n 或 odd: 选择序号为奇数的后代元素
 - -n+3: 选择前 3 个后代元素
 
-
 ```html
 <style>
   article p:first-child {
@@ -188,7 +185,7 @@ a:hover {
 
 **伪元素: 一个元素的部分, 以 :: 开头**
 
-- ::first-letter 选择第一个单词
+- ::first-letter 选择第一个字符
 - ::first-line 选择第一行
 - ::selection 匹配鼠标选择的内容
 - ::placeholder 选择输入框的提示文字 (占位符)
@@ -237,4 +234,77 @@ ul > li[class="a"] {
 
 - 优先级: id 选择器 > 类选择器 > 标签选择器
 
-## CSS 常用属性
+## CSS 三大特性
+
+1. 层叠性: 如果有样式冲突, 则根据选择器优先级, 层叠 (覆盖) 样式
+2. 继承性: 元素继承父元素或祖先元素的某些样式
+3. 优先级: !important > 行内样式 > ID 选择器 > 类选择器 > 标签选择器 > \* > 继承的样式
+
+颜色
+
+```css
+* {
+  /* RGB 表示 */
+  color: rgb(255, 0, 0); /* 红色 */
+  color: rgb(0, 255, 0); /* 绿色 */
+  color: rgb(0, 0, 255); /* 蓝色 */
+  /* HEX 十六进制表示 */
+  color: #ff0000;
+  color: #00ff00;
+  color: #0000ff;
+}
+```
+
+字体
+
+- 字体大小 font-size
+- 字体族 font-family
+- 字体风格 font-style
+- 字体粗细 font-weight
+- 复合属性 font
+
+文本
+
+- 文本颜色 color
+- 字符间距 letter-spacing
+- 单词间距 word-spacing
+- 文本装饰 text-decoration
+  - none 无装饰
+  - dotted 虚线, wavy 波浪线
+  - underline 下划线, overline 上划线, line-through 删除线
+- 文本缩进 text-indent
+- 文本水平对齐 text-align
+  - left 左对齐 (默认)
+  - right 右对齐
+  - center 居中对齐
+- 行高 line-height
+- 文字垂直对齐 vertical-align
+
+列表
+
+- 列表符号 list-style-type
+- 列表符号的位置 list-style-position
+- 列表符号的图片 list-style-image
+- 复合属性 list-style
+
+表格
+
+- 边框宽度 border-width
+- 边框颜色 border-color
+- 边框风格 border-style
+- 复合属性 border
+
+背景
+
+- 背景颜色 background-color: 默认 transparent
+- 背景图片 background-image
+- 背景的重复方式 background-repeat
+  - repeat 重复, 默认
+  - repeat-x 只在水平方向重复
+  - repeat-y 只在垂直方向重复
+- 背景位置 background-position
+- 复合属性 background
+
+鼠标
+
+- 鼠标 cursor: pointer 手, move, text, crosshair, wait, help
