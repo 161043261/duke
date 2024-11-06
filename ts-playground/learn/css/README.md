@@ -40,7 +40,7 @@ article :first-child {
 /* 选择是父元素的第一个后代元素的 article 元素 */
 /* <div>
      <article>
-       选我!
+       选我
      </article>
    </div> */
 /* 该 article 元素是父元素 div 的第一个后代元素, 将被选中 */
@@ -81,7 +81,7 @@ span.highlight {
 ```css
 /* 并集选择器, 选择 id = heading 的 h1 标签 */
 h1#heading {
-  color: rebeccapurple;
+  color: lightpink;
 }
 ```
 
@@ -128,16 +128,16 @@ li[class*="box"] {
 
 ### 伪类和伪元素选择器
 
-伪类: 一个元素的特定状态, 以冒号 : 开头的关键字 `:pseudo-class-name`
+伪类: 一个元素的状态, 以 : 开头
 
 一组兄弟元素中
 
 - :first-child 第一个后代元素
 - :last-child 最后一个后代元素
-- :only-child 唯一一个后代元素
+- :only-child 唯一的后代元素
 - :nth-child(n) 第 n 个后代元素
 - :nth-last-child(1) 倒数第 n 个后代元素
-- :invalid
+- :invalid 选择未通过校验的 form, fieldset, input 等表单元素
 
 ```html
 <style>
@@ -158,16 +158,16 @@ li[class*="box"] {
 
 用户行为伪类 (动态伪类)
 
-- :hover 鼠标悬浮时
-- :focus
+- :hover 鼠标悬浮的元素
+- :focus 获得焦点的元素
 
 ```css
-/* 鼠标悬浮在 a 标签上时, 选择该 a 标签 */
+/* 鼠标悬浮时, 选择该 a 标签 */
 a:hover {
 }
 ```
 
-伪元素: 一个元素的部分
+伪元素: 一个元素的部分, 以 :: 开头
 
 ```css
 /* 选择 p 标签的第一行 */
@@ -175,7 +175,34 @@ p::first-line {
 }
 ```
 
-运算符选择器
+```html
+<style>
+  .box::before {
+    content: "Hello ";
+  }
+
+  .box::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 100px;
+    background-color: lightpink;
+    border: 1px solid black;
+  }
+</style>
+
+<body>
+  <div class="box">World</div>
+</body>
+```
+
+### 关系选择器
+
+- 后代选择器 空格
+- 子代选择器 >
+- 邻接兄弟选择器 +
+- 通用兄弟选择器 ~
+
 
 ```css
 /* 子代选择器 */

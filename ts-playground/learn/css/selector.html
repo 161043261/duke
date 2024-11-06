@@ -33,6 +33,38 @@
       article p:last-child {
         background-color: lightblue;
       }
+
+      label {
+        display: block;
+        margin-top: 1em;
+      }
+
+      input:invalid {
+        border: none;
+        outline: 2px solid lightpink;
+        border-radius: 5px;
+      }
+
+      input:focus {
+        background-color: lightgreen;
+      }
+
+      select:focus {
+        background-color: lightblue;
+      }
+
+      .box::before {
+        content: "Hello ";
+      }
+
+      .box::after {
+        content: "";
+        display: block;
+        width: 100px;
+        height: 100px;
+        background-color: lightpink;
+        border: 1px solid black;
+      }
     </style>
   </head>
 
@@ -49,5 +81,41 @@
         <p>最后一个子元素</p>
       </div>
     </article>
+
+    <form>
+      <label for="emailId">邮箱</label>
+      <input id="emailId" name="email" type="email" value="name@example.com" />
+
+      <label for="codeId">验证码</label>
+      <!-- :invalid 选择未通过校验的 form, fieldset, input 等表单元素-->
+      <input
+        id="codeId"
+        name="text"
+        type="text"
+        value="请输入密码"
+        pattern="[a-z]+"
+      />
+
+      <label for="ageId">年龄: (18+)</label>
+      <input id="ageId" name="age" type="number" value="20" min="18" />
+
+      <label
+        ><input name="agree" type="checkbox" required checked />同意协议?</label
+      >
+    </form>
+
+    <form>
+      <p>DIY 网名</p>
+      <label>姓: <input name="firstName" type="text" /></label>
+      <label>名:
+        <select name="flavor">
+          <option>小红</option>
+          <option>小绿</option>
+          <option>小蓝</option>
+        </select>
+      </label>
+    </form>
+
+    <div class="box">World</div>
   </body>
 </html>
