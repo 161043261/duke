@@ -4,20 +4,20 @@ function resultsArray(nums: number[], k: number): number[] {
     if (r - l + 1 == k) {
       ans.push(nums[r]);
       l++;
-      continue
+      continue;
     }
     // r - l + 1 < k
-    if ((nums[r + 1] == nums[r] + 1)) {
+    if (nums[r + 1] == nums[r] + 1) {
       r++;
       continue;
     }
-    ans.push(...(new Array(
-      Math.min(nums.length - k - l + 1, r - l + 1)
-    ).fill(-1)));
+    ans.push(
+      ...new Array(Math.min(nums.length - k - l + 1, r - l + 1)).fill(-1),
+    );
     r++;
     l = r;
   }
-  return ans
+  return ans;
 }
 
 resultsArray([1, 2, 3, 2], 3);
