@@ -19,3 +19,7 @@
 | u              | 下划线 underline        |
 
 统一资源定位符: URL, Uniform Resource Locator
+
+- jpg: 有损压缩
+- png: 无损压缩
+- bmp: 不压缩
