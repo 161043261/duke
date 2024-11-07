@@ -425,14 +425,17 @@ padding: 10px 20px 30px 40px; /* 上 10px, 右 20px, 下 30px, 左 40px */
 
 1. inline 行内元素, inline-block 行内块元素, 可以视为文本, 使用 text-align, line-height, text-indent 等处理行内元素, 行内块元素
 2. 子元素在父元素中水平居中
-  - 若子元素为块级元素, 则父元素设置 `margin: 0, auto`
-  - 若子元素为行内, 行内块元素, 则父元素设置 `text-align: center`
+
+- 若子元素为块级元素, 则父元素设置 `margin: 0, auto`
+- 若子元素为行内, 行内块元素, 则父元素设置 `text-align: center`
+
 3. 子元素在父元素中垂直居中
-  - 若子元素为块元素, 则子元素设置 margin-top: (父元素 content - 子元素总高) / 2;
-  - 若子元素为行内, 行内块元素
-    1. 父元素设置 `font-size: 0` (可选)
-    2. 令父元素: height == line-height
-    3. 子元素设置 `vertical-align: middle`
+
+- 若子元素为块元素, 则子元素设置 margin-top: (父元素 content - 子元素总高) / 2;
+- 若子元素为行内, 行内块元素
+  1. 父元素设置 `font-size: 0` (可选)
+  2. 令父元素: height == line-height
+  3. 子元素设置 `vertical-align: middle`
 
 #### margin 塌陷问题
 
@@ -463,7 +466,7 @@ padding: 10px 20px 30px 40px; /* 上 10px, 右 20px, 下 30px, 左 40px */
 解决
 
 1. 行内块设置 `vertical: middle | bottom | top` 属性值 != baseline 即可
-2. 若父元素是图片,  则设置 `display: block`
+2. 若父元素是图片, 则设置 `display: block`
 3. 父元素设置 `font-size: 0`
 
 ## 浮动
