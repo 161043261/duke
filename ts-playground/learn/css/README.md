@@ -431,7 +431,7 @@ padding: 10px 20px 30px 40px; /* 上 10px, 右 20px, 下 30px, 左 40px */
    1. 若子元素为块元素, 则子元素设置 margin-top: (父元素 content - 子元素总高) / 2;
    2. 若子元素为行内, 行内块元素
       1. 父元素设置 `font-size: 0` (可选)
-      2. 令父元素: height == line-height
+      2. 令父元素: line-height == height
       3. 子元素设置 `vertical-align: middle`
 
 #### margin 塌陷问题
