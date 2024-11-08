@@ -468,6 +468,8 @@ padding: 10px 20px 30px 40px; /* 上 10px, 右 20px, 下 30px, 左 40px */
 
 ## 浮动
 
+浮动的目标: 文字环绕
+
 ### 元素浮动后
 
 1. 脱离文档流
@@ -497,18 +499,29 @@ padding: 10px 20px 30px 40px; /* 上 10px, 右 20px, 下 30px, 左 40px */
 
 解决父元素高度塌陷, 后面的未浮动的兄弟元素, 会占据浮动元素未浮动时的位置
 
-1. 所有浮动元素后面, 添加一个没有宽高, 没有内容的**块级**元素, 该元素设置 `clear: both`
+1. **所有浮动元素后面**, 添加一个没有宽高, 没有内容的**块级**元素, 该元素设置 `clear: both`
    1. clear: left 清除前面所有左浮动兄弟元素产生的影响
    2. clear: right 清除前面所有右浮动兄弟元素产生的影响
    3. clear: both 清除前面所有浮动兄弟元素产生的影响
-2. 使用伪元素: 在父元素后使用 `::after` 创建一个子元素
+2. 父元素使用 `::after` 创建伪元素, 等价于 1
 
-```css
+```html
+<style>
+/* 父元素使用 ::after 创建伪元素 */
 .parent::after {
   content: "";
   display: block;
   clear: both;
 }
+</style>
+
+<body>
+  <div class="parent">
+    <div class="float-1"></div>
+    <div class="float-2"></div>
+    <!-- 父元素创建的伪元素 -->
+  </div>
+</body>
 ```
 
 布局原则: 设置浮动时, 父元素中的兄弟元素要么全部都浮动, 要么全部都不浮动
