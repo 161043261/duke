@@ -8,7 +8,7 @@ class TreeNode {
     this.right = right === undefined ? null : right;
   }
 }
-export { };
+export {};
 
 // FIXME
 function isValidBST(root: TreeNode | null): boolean {
