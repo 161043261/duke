@@ -1,0 +1,242 @@
+:root {
+  --ts-blue: #3178c6;
+}
+
+/* #region 基础设置 start */
+@font-face {
+  font-family: "HYWenHei";
+  src: url("../assets/HYWenHei-45W.ttf") format("truetype");
+}
+
+* {
+  font-size: 12px;
+  font-family: "HYWenHei", monospace;
+}
+
+img {
+  display: block;
+}
+
+a {
+  color: grey;
+}
+
+a:hover {
+  color: red;
+}
+
+/* 左浮动 */
+.left-fix {
+  float: left;
+}
+
+/* 右浮动 */
+.right-fix {
+  float: right;
+}
+
+/* 清除浮动 */
+.clear-fix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.container {
+  width: 1190px;
+  margin: 0 auto;
+}
+
+/* #endregion 基础设置 end */
+
+/* #region 顶部导航条 start */
+.topbar {
+  /* 默认 width: 100%; */
+  height: 30px;
+  background-color: #ececec;
+}
+
+.welcome {
+  height: 30px;
+  /* 文本 (行内元素) 水平居中 */
+  line-height: 30px;
+  font-size: 0;
+  /* 等价于 color: #666666; */
+  color: #666;
+}
+
+.welcome span,
+.welcome a {
+  font-size: 12px;
+}
+
+.welcome .hello {
+  margin-right: 28px;
+}
+
+.welcome .login {
+  padding-right: 10px;
+  border-right: 1px solid #666;
+}
+
+.welcome .register {
+  padding-left: 10px;
+}
+
+.topbar-nav .list {
+  height: 30px;
+  line-height: 30px;
+}
+
+.topbar-nav .list li {
+  float: left;
+}
+
+.topbar-nav .list li a {
+  padding: 0 15px;
+  border-right: 1px solid #666;
+}
+
+.topbar-nav .list li:first-child a {
+  padding-left: 0;
+}
+
+.topbar-nav .list li:last-child a {
+  padding-right: 0;
+  border: 0;
+}
+
+/* #endregion 顶部导航条 end */
+
+/* #region 头部 start  */
+.header {
+  height: 120px;
+  background-color: lightblue;
+}
+
+.header .logo {
+  width: 190px;
+  height: 120px;
+  /* padding: calc((120px - 66px) / 2) 0; */
+}
+
+.header .logo > img {
+  width: 190px;
+  margin: calc((120px - 66px) / 2) 0;
+}
+
+.header .search form {
+  margin-top: 42px;
+  font-size: 0;
+}
+
+.header .search input {
+  width: 508px;
+  height: 34px;
+  border: 1px solid var(--ts-blue);
+}
+
+.header .search button {
+  width: 80px;
+  height: 36px;
+  background-color: var(--ts-blue);
+  vertical-align: top;
+  background-image: url("../assets/search.svg");
+  background-repeat: no-repeat;
+  background-position: 28px 6px;
+  /* background-position: center; */
+}
+
+/* #endregion 头部 end */
+
+/* #region 主导航区 start */
+.main-nav {
+  height: 48px;
+  border-bottom: 1px solid var(--ts-blue);
+}
+
+.main-nav .all-types {
+  width: 190px;
+  height: 48px;
+  /* 文字垂直居中 */
+  line-height: 48px;
+  background-color: var(--ts-blue);
+  color: white;
+  /* 文字水平居中 */
+  text-align: center;
+  font-size: 16px;
+}
+
+.main-nav-list {
+  height: 48px;
+  line-height: 48px;
+}
+
+.main-nav-list li {
+  float: left;
+  margin: 0 10px;
+}
+
+.main-nav-list li a {
+  font-size: 16px;
+}
+
+/* #endregion 主导航区 end */
+
+/* #region 主内容区 start */
+.main-content {
+  margin-top: 10px;
+}
+
+.main-content .slide-nav {
+  width: 190px;
+  height: 458px;
+  background-color: azure;
+}
+
+.main-content .slide-nav li {
+  height: 28px;
+  line-height: 28px;
+  /* 背景色填充 padding; 不填充 margin */
+  padding-left: 16px;
+  /* 子绝父相: 父元素相对定位 */
+  position: relative;
+}
+
+.main-content .slide-nav li:hover {
+  background-color: var(--ts-blue);
+}
+
+.main-content .slide-nav li a {
+  font-size: 14px;
+}
+
+.main-content .slide-nav li a:hover {
+  color: white;
+}
+
+.main-content .slide-nav .sub-menu {
+  width: 700px;
+  height: 458px;
+  background-color: lightgreen;
+  /* 子绝父相: 子元素绝对定位 */
+  position: absolute;
+  /* 子元素距离父元素顶端 0 */
+  top: 0;
+  /* 子元素距离父元素左端 190px */
+  left: 190px;
+}
+
+.main-content .banner {
+  width: 690px;
+  height: 458px;
+  background-color: lightpink;
+  margin: 0 10px;
+}
+
+.main-content .slide-other {
+  width: 290px;
+  height: 458px;
+  background-color: lightblue;
+}
+/* #endregion 主内容区 end */
