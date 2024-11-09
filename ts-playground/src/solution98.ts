@@ -10,24 +10,41 @@ class TreeNode {
 }
 export {};
 
-// FIXME
 function isValidBST(root: TreeNode | null): boolean {
-  if (root == null || (root.left == null && root.right == null)) {
+  const isValid = (
+    root: TreeNode,
+    lfrom: number,
+    lto: number,
+    rfrom: number,
+    rto: number,
+  ): boolean => {
+    return (
+      (root.right == null
+        ? true
+        : root.right!.val > rfrom &&
+          root.right!.val < rto &&
+          isValid(
+            root.right, // root
+            root.val, // lfrom
+            root.right!.val, // lto
+            root.right!.val, // rfrom
+            rto, // rto
+          )) &&
+      (root.left == null
+        ? true
+        : root.left!.val > lfrom &&
+          root.left!.val < lto &&
+          isValid(
+            root.left, //root
+            lfrom, // lfrom
+            root.left!.val, // lto
+            root.left!.val, // rfrom
+            root.val, // rto
+          ))
+    );
+  };
+  if (root == null) {
     return true;
   }
-
-  if (root.left == null) {
-    return root.val < root.right!.val && isValidBST(root.right);
-  }
-
-  if (root.right == null) {
-    return root.val > root.left!.val && isValidBST(root.left);
-  }
-
-  return (
-    root.val > root.left!.val &&
-    root.val < root.right!.val &&
-    isValidBST(root.left) &&
-    isValidBST(root.right)
-  );
+  return isValid(root, -Infinity, root.val, root.val, Infinity);
 }
