@@ -440,8 +440,8 @@ padding: 10px 20px 30px 40px; /* 上 10px, 右 20px, 下 30px, 左 40px */
 
 解决 margin 塌陷问题
 
-1. 父元素设置 >0 的 padding
-2. 父元素设置 >0 的 border
+1. 父元素设置大于 0 的 padding
+2. 父元素设置大于 0 的 border
 3. 父元素设置 `overflow: hidden`
 
 #### margin 合并问题
