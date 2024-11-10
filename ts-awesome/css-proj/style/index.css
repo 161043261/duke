@@ -229,9 +229,13 @@ a:hover {
   background-color: azure;
   /* 子绝父相: 子元素绝对定位 */
   position: absolute;
-  /* 子元素距离父元素顶端 0 */
+  /* 子元素的上 margin 距离父元素的上边沿 0px */
+  /* Specifies how far an absolutely positioned box's top margin edge is offset below
+   the top edge of the box' s 'containing block'. */
   top: 0;
-  /* 子元素距离父元素左端 190px */
+  /* 子元素左 margin 距离父元素左边沿 190px */
+  /* Specifies how far an absolutely positioned box's left margin edge is offset to
+  the right of the left edge of the box' s 'containing block'. */
   left: 190px;
   padding-left: 20px;
   display: none;
@@ -381,7 +385,13 @@ a:hover {
   /* 子绝父相: 子元素绝对定位 */
   position: absolute;
   display: none;
+  /* 子元素的左 margin 距离父元素的左边沿 0px */
+  /* Specifies how far an absolutely positioned box's left margin edge is offset to
+   the right of the left edge of the box' s 'containing block'. */
   left: 0;
+  /* 子元素的下 margin 距离父元素的下边沿 34px */
+  /* Specifies how far an absolutely positioned box's bottom margin edge is offset above
+  the bottom edge of the box' s 'containing block'. */
   bottom: 34px;
 }
 
@@ -457,6 +467,10 @@ a:hover {
   font-size: 14px;
 }
 
+.link-list a:hover {
+  color: lightpink;
+}
+
 /* FIXME */
 .link-list li {
   height: 28px;
@@ -490,6 +504,10 @@ a:hover {
   border-right: 1px solid white;
 }
 
+.bottom-link-list li a:hover {
+  color: lightpink;
+}
+
 .bottom-link-list li:first-child a {
   padding-left: 0;
 }
@@ -505,6 +523,10 @@ a:hover {
 
 .copyright a {
   color: white;
+}
+
+.copyright a:hover {
+  color: lightpink;
 }
 
 /* #endregion 页脚 */

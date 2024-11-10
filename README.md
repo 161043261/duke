@@ -1,4 +1,4 @@
-# A Gopher Named Duke
+# Type
 
 ## [计算机基础](https://161043261.github.io/)
 
@@ -7,7 +7,6 @@
 - Redis
 - 网络协议 TCP, UDP, HTTP, ...
 - 网络安全 SSH, TLS, ...
-- 分布式 Raft
 - [Docker](./docker/)
 - gRPC
 - Protocol Buffer

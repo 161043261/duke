@@ -19,7 +19,7 @@ function isValidBST(root) {
             root.val, // lfrom
             root.right.val, // lto
             root.right.val, // rfrom
-            rto, // rto
+            rto,
           )) &&
       (root.left == null
         ? true
@@ -30,7 +30,7 @@ function isValidBST(root) {
             lfrom, // lfrom
             root.left.val, // lto
             root.left.val, // rfrom
-            root.val, // rto
+            root.val,
           ))
     );
   };
