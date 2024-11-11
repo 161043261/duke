@@ -229,11 +229,11 @@ a:hover {
   background-color: azure;
   /* 子绝父相: 子元素绝对定位 */
   position: absolute;
-  /* 子元素的上 margin 距离父元素的上边沿 0px */
+  /* 子元素的上 margin 距离包含块 (父元素)的上边沿 0px */
   /* Specifies how far an absolutely positioned box's top margin edge is offset below
    the top edge of the box' s 'containing block'. */
   top: 0;
-  /* 子元素左 margin 距离父元素左边沿 190px */
+  /* 子元素左 margin 距离包含块 (父元素)左边沿 190px */
   /* Specifies how far an absolutely positioned box's left margin edge is offset to
   the right of the left edge of the box' s 'containing block'. */
   left: 190px;

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 500px;
+        height: 500px;
+        background-color: lightpink;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .outer {
+        width: 400px;
+        height: 400px;
+        background-color: lightpink;
+        /* 父元素开启 flex 布局 */
+        display: flex;
+        /* 水平居中 */
+        justify-content: center;
+        /* 垂直居中 */
+        align-items: center;
+      }
+
+      .inner {
+        width: 100px;
+        height: 100px;
+        background-color: lightgreen;
+      }
+
+      .outer1 {
+        width: 400px;
+        height: 400px;
+        background-color: lightgreen;
+        /* 父元素开启 flex 布局 */
+        display: flex;
+      }
+
+      .inner1 {
+        width: 100px;
+        height: 100px;
+        background-color: lightblue;
+        margin: auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- <div class="box"></div> -->
+    <div class="outer">
+      <div class="inner"></div>
+    </div>
+
+    <div class="outer1">
+      <div class="inner1"></div>
+    </div>
+  </body>
+</html>

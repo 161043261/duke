@@ -34,4 +34,8 @@ function maxIncreasingSubarrays(nums: number[]): number {
   return ans;
 }
 
+// #region
+
 maxIncreasingSubarrays([2, 5, 7, 8, 9, 2, 3, 4, 3, 1]);
+
+// #endregion
