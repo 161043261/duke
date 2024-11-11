@@ -1017,14 +1017,14 @@ transform: translate(-50%, -50%) rotate(45deg);
 ## 伸缩盒模型 (弹性盒子)
 
 - 传统布局: 基于传统盒模型: display + position + float
-- flex 布局: 广泛用于移动端
+- flex 布局: 广泛用于 Web 端, 移动端
 
 ### 伸缩容器, 伸缩项目
 
-- 伸缩容器: 设置 `display: flex` 或 `display: inline-flex` 的元素
-- 伸缩项目: 伸缩容器的**子元素是伸缩项目, 孙元素不是伸缩项目**
+- 伸缩容器: 开启 `display: flex` 或 `display: inline-flex` 的元素
+- 伸缩项目: 伸缩容器的**子元素**是伸缩项目, 孙元素不是伸缩项目
 - `display: inline-flex` 不常用: 可以将多个伸缩容器的父容器, 也设置为伸缩容器
-- 一个元素可以同时是伸缩容器, 伸缩项目 (一个元素可以同时浮动, 清除浮动)
+- 一个元素可以同时是伸缩容器, 伸缩项目 (一个元素可以同时左/右浮动, 清除浮动)
 - 块级, 行内块, 行内元素成为伸缩项目后, 都会 "块状化"
 
 #### 主轴和侧轴
@@ -1044,7 +1044,7 @@ flex-direction: 设置主轴方向
 | flex-direction: column         | 从上到下       | 从左到右       |
 | flex-direction: column-reverse | 从下到上       | 从右到左       |
 
-#### 主轴换行方向
+#### 主轴换行方式
 
 - `flex-wrap: nowrap` 不换行, 默认
 - `flex-wrap: wrap` 自动换行
