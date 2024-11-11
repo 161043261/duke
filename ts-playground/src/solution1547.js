@@ -1,6 +1,7 @@
+"use strict";
 // FIXME
-function minCost_(n: number, cuts: number[]): number {
-  let slices = new Array<number>(cuts.length + 1).fill(0);
+function minCost_(n, cuts) {
+  let slices = new Array(cuts.length + 1).fill(0);
   cuts.sort((a, b) => a - b);
   slices[0] = cuts[0];
   for (let i = 1; i < cuts.length; i++) {
@@ -9,17 +10,15 @@ function minCost_(n: number, cuts: number[]): number {
   slices[cuts.length] = n - cuts[cuts.length - 1];
   slices.sort((a, b) => a - b);
   let ans = 0;
-
-  const binarySearch = (val: number): number => {
+  const binarySearch = (val) => {
     let l = 0,
       r = slices.length - 1;
-    let mid: number;
+    let mid;
     while (l < r) {
       mid = Math.floor(l + (r - l) / 2);
       if (slices[mid] == val) {
         return mid;
       }
-
       if (slices[mid] <= val) {
         l = mid + 1;
       } else {
@@ -28,10 +27,9 @@ function minCost_(n: number, cuts: number[]): number {
     }
     return l;
   };
-
   while (slices.length >= 2) {
-    const minVal1 = slices.shift()!;
-    const minVal2 = slices.shift()!;
+    const minVal1 = slices.shift();
+    const minVal2 = slices.shift();
     const val = minVal1 + minVal2;
     ans += val;
     const idx = binarySearch(val);
@@ -51,17 +49,16 @@ function minCost_(n: number, cuts: number[]): number {
   }
   return ans;
 }
-
 // dfs(i, j) = min(dfs(i, k) + dfs(k, j) + cuts[j] - cuts[i])
-function minCost(n: number, cuts: number[]): number {
+function minCost(n, cuts) {
   cuts.push(0);
   cuts.push(n);
   cuts.sort((a, b) => a - b);
   const memo = Array.from(
     { length: cuts.length },
-    () => new Array<number>(cuts.length),
+    () => new Array(cuts.length),
   );
-  const dfs = (i: number, j: number): number => {
+  const dfs = (i, j) => {
     if (i + 1 == j) {
       return 0;
     }

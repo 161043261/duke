@@ -653,3 +653,19 @@ padding: 10px 20px 30px 40px; /* 上 10px, 右 20px, 下 30px, 左 40px */
 [reset.css](../../assets/reset.css)
 
 [normalize.css](https://github.com/necolas/normalize.css/blob/master/normalize.css)
+
+## CSS3
+
+### 私有前缀
+
+W3C 提出新的 CSS 特性, 被浏览器正式支持前, 浏览器厂商会根据浏览器的内核, 使用私有前缀测试该 CSS 特性
+
+- chrome, edge, safari 浏览器: -webkit-
+- firefox 浏览器: -moz-
+
+### 长度单位
+
+- rem 相对根元素 (html 标签) font-size 的倍数
+- vw 占视口宽度的百分比, 10vw 占视口宽度的 10%
+- vh 占视口高度的百分比, 10vh 占视口高度的 10%
+- vmax
