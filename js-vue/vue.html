@@ -21,17 +21,17 @@
     </script>
 
     <!-- Vue 的核心是: 声明式的将数据渲染到 DOM -->
-    <div id="app">{{ message }}</div>
+    <div id="app">{{ msg }}</div>
 
-    <div id="app-2">
-      <span v-bind:title="message"> 鼠标悬浮以查看 title </span>
+    <div id="app2">
+      <span v-bind:title="msg"> 鼠标悬浮以查看 title </span>
     </div>
 
-    <div id="app-3">
+    <div id="app3">
       <p v-if="seen">控制台输入 <code>app3.seen = false</code> 以隐藏</p>
     </div>
 
-    <div id="app-4">
+    <div id="app4">
       控制台输入 <code>app4.todos.push({ text: '学习 Vue' })</code> 以添加新
       item
       <ol>
@@ -39,18 +39,18 @@
       </ol>
     </div>
 
-    <div id="app-5">
-      <p>{{ message }}</p>
-      <button v-on:click="reverseMessage">点击以反转消息</button>
+    <div id="app5">
+      <p>{{ msg }}</p>
+      <button v-on:click="reverseMsg">点击以反转消息</button>
     </div>
 
-    <div id="app-6">
-      <p>{{ message }}</p>
-      <input v-model="message" />
+    <div id="app6">
+      <p>{{ msg }}</p>
+      <input v-model="msg" />
     </div>
 
     <!-- 父元素 div -->
-    <div id="app-7">
+    <div id="app7">
       <ol>
         <!-- 子元素 todo-item -->
         <todo-item
@@ -67,21 +67,21 @@
     var app = new Vue({
       el: "#app",
       data: {
-        message: "Hello Vue!",
+        msg: "Hello Vue!",
       },
     });
 
     // v-bind 单向绑定
     var app2 = new Vue({
-      el: "#app-2",
+      el: "#app2",
       data: {
-        message: "页面加载于 " + new Date().toLocaleString(),
+        msg: "页面加载于 " + new Date().toLocaleString(),
       },
     });
 
     // v-if 条件渲染
     var app3 = new Vue({
-      el: "#app-3",
+      el: "#app3",
       data: {
         seen: true,
       },
@@ -89,7 +89,7 @@
 
     // v-for 循环
     var app4 = new Vue({
-      el: "#app-4",
+      el: "#app4",
       data: {
         todos: [{ text: "学习 HTML/CSS" }, { text: "学习 JS/TS" }],
       },
@@ -97,22 +97,22 @@
 
     // 字符串插值也是单向绑定
     var app5 = new Vue({
-      el: "#app-5",
+      el: "#app5",
       data: {
-        message: "Hello Vue.js!",
+        msg: "Hello Vue.js!",
       },
       methods: {
-        reverseMessage: function () {
-          this.message = this.message.split("").reverse().join("");
+        reverseMsg: function () {
+          this.msg = this.msg.split("").reverse().join("");
         },
       },
     });
 
     // v-model 双向绑定
     var app6 = new Vue({
-      el: "#app-6",
+      el: "#app6",
       data: {
-        message: "Hello Vue!",
+        msg: "Hello Vue!",
       },
     });
 
@@ -127,7 +127,7 @@
     });
 
     var app7 = new Vue({
-      el: "#app-7",
+      el: "#app7",
       data: {
         fruitList: [
           { id: 0, text: "苹果" },

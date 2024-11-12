@@ -6,8 +6,11 @@
     <title>Document</title>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
     <link rel="stylesheet" href="./base.css" />
   </head>
+
   <body>
     模板中不应该有过多的逻辑, 应该使用计算属性
     <div id="example">{{ msg.split('').reverse().join('') }}</div>
@@ -19,22 +22,49 @@
       <p>计算属性与模版中调用方法的区别:</p>
       重新渲染时, 只有响应式依赖更新时, 计算属性才会重新求值;
       模版中调用方法都会重新求值
-
-      <h3>计算属性 vs. 监听属性</h3>
-
-      <div id="example3">
-        <label for="firstName">firstName</label>
-        <input type="text" name="firstName" id="firstName" :value="firstName" />
-        <label for="lastName">lastName</label>
-        <input type="text" name="lastName" id="lastName" :value="lastName" />
-        使用计算属性: {{ computedFullName }} 使用监听属性: {{ watchFullName }}
-      </div>
     </div>
 
+    <h3>计算属性 vs. 监听属性</h3>
+    <div style="color: white; background-color: slateblue">
+      v-bind 单向绑定: vue 响应式变量 --> DOM
+      <br />
+      v-model 双向绑定: vue 响应式变量 <--> DOM
+    </div>
+    <br />
+    <div id="example3">
+      <label for="firstName">firstName</label>
+      <input
+        type="text"
+        name="firstName"
+        id="firstName"
+        v-model:value="firstName"
+      />
+      <label for="lastName">lastName</label>
+      <input
+        type="text"
+        name="lastName"
+        id="lastName"
+        v-model:value="lastName"
+      />
+
+      <label for="computedFullName">computedFullName</label>
+      <input
+        type="text"
+        name="computedFullName"
+        id="computedFullName"
+        v-model:value="computedFullName"
+      />
+      <br />
+      使用计算属性: {{ computedFullName }}; 使用监听属性: {{ watchFullName }}
+    </div>
     Vue 使用 "监听属性" 观察和响应 Vue 实例上的数据更新
+
+    <hr />
+    <div id="watch-example"></div>
   </body>
 
   <script>
+    //#region
     new Vue({
       el: "#example",
       data: {
@@ -42,7 +72,8 @@
       },
     });
 
-    /* const vm = */ new Vue({
+    /* const vm = */
+    new Vue({
       el: "#example2",
       data: {
         msg: "Hello, Vue3!",
@@ -63,30 +94,86 @@
         },
       },
     });
+    //#endregion
 
-    new Vue({
+    const vm3 = new Vue({
       el: "#example3",
       data: {
         firstName: "Foo",
         lastName: "Bar",
-        watchFullName: "",
+        watchFullName: "呵呵",
       },
       computed: {
         // 计算属性的 getter
-        computedFullName: function () {
-          return this.firstName + " " + this.lastName;
+        // computedFullName: function () {
+        //   console.log("Use computed");
+        //   return this.firstName + " " + this.lastName;
+        // },
+
+        computedFullName: {
+          // 计算属性的 getter
+          get: function () {
+            console.log("Use computed getter");
+            return this.firstName + " " + this.lastName;
+          },
+          /**
+           * 计算属性的 setter
+           * @param {string} newVal
+           */
+          set: function (newVal) {
+            console.log("Use computed setter");
+            const names = newVal.split(" ");
+            this.firstName = names[0];
+            this.lastName = names.length > 1 ? names[1] : "lastName";
+          },
         },
       },
       watch: {
-        // 监听属性的 getter
+        // 监听属性的 setter
         firstName: function (val) {
-          console.log(val);
+          console.log("Use watch", val);
           this.watchFullName = val + " " + this.lastName;
         },
-        // 监听属性的 getter
+        // 监听属性的 setter
         lastName: function (val) {
-          console.log(val);
+          console.log("Use watch", val);
           this.watchFullName = this.firstName + " " + val;
+        },
+      },
+    });
+
+    // console.log(vm3.$el === document.getElementById("example3"))
+    const watchExampleVm = new Vue({
+      el: "#watch-example",
+      data: {
+        question: "",
+        answer: "I cannot give you an answer until you ask a question!",
+      },
+      watch: {
+        question: function (newVal, oldVal) {
+          this.answer = "Waiting for you to stop typing..";
+          this.debouncedGetAnswer();
+        },
+      },
+      created: function () {
+        this.debouncedGetAnswer = _.debounce(this.getAnswer, 500);
+      },
+      methods: {
+        getAnswer: function () {
+          if (this.question.indexOf("?") === -1) {
+            this.answer = "Questions usually contain a question mark";
+            return;
+          }
+          this.answer = "Thinking...";
+          var vm = this;
+          axios
+            .get("https://yesno.wtf/api")
+            .then(function (response) {
+              vm.answer = _.capitalize(response.data.answer);
+            })
+            .catch(function (error) {
+              vm.answer = "Error! Could not reach the API. " + error;
+            });
         },
       },
     });
