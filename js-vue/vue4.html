@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <link rel="stylesheet" href="./base.css" />
+  </head>
+  <body>
+    模板中不应该有过多的逻辑, 应该使用计算属性
+    <div id="example">{{ msg.split('').reverse().join('') }}</div>
+    <h3>计算属性 vs. 方法</h3>
+    <div id="example2">
+      <p>msg: {{ msg }}</p>
+      <p>计算属性: {{ computedMsg }}</p>
+      <p>模板中调用方法 {{ methodMsg() }}</p>
+      <p>计算属性与模版中调用方法的区别:</p>
+      重新渲染时, 只有响应式依赖更新时, 计算属性才会重新求值;
+      模版中调用方法都会重新求值
+
+      <h3>计算属性 vs. 监听属性</h3>
+
+      <div id="example3">
+        <label for="firstName">firstName</label>
+        <input type="text" name="firstName" id="firstName" :value="firstName" />
+        <label for="lastName">lastName</label>
+        <input type="text" name="lastName" id="lastName" :value="lastName" />
+        使用计算属性: {{ computedFullName }} 使用监听属性: {{ watchFullName }}
+      </div>
+    </div>
+
+    Vue 使用 "监听属性" 观察和响应 Vue 实例上的数据更新
+  </body>
+
+  <script>
+    new Vue({
+      el: "#example",
+      data: {
+        msg: "Hello, React!",
+      },
+    });
+
+    /* const vm = */ new Vue({
+      el: "#example2",
+      data: {
+        msg: "Hello, Vue3!",
+      },
+      computed: {
+        // 计算属性的 getter
+        computedMsg: function () {
+          // this 指向该 vm 实例
+          console.log("Use computed");
+          return this.msg.split("").reverse().join("");
+        },
+      },
+      methods: {
+        methodMsg: function () {
+          console.log("Use methods");
+          // this 指向该 vm 实例
+          return this.msg.split("").reverse().join("");
+        },
+      },
+    });
+
+    new Vue({
+      el: "#example3",
+      data: {
+        firstName: "Foo",
+        lastName: "Bar",
+        watchFullName: "",
+      },
+      computed: {
+        // 计算属性的 getter
+        computedFullName: function () {
+          return this.firstName + " " + this.lastName;
+        },
+      },
+      watch: {
+        // 监听属性的 getter
+        firstName: function (val) {
+          console.log(val);
+          this.watchFullName = val + " " + this.lastName;
+        },
+        // 监听属性的 getter
+        lastName: function (val) {
+          console.log(val);
+          this.watchFullName = this.firstName + " " + val;
+        },
+      },
+    });
+  </script>
+</html>
