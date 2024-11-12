@@ -60,7 +60,14 @@
     Vue 使用 "监听属性" 观察和响应 Vue 实例上的数据更新
 
     <hr />
-    <div id="watch-example"></div>
+    <div id="watch-example">
+      <p>
+        输入您的 yes/no 问题
+        <label for="question">question</label>
+        <input v-model="question" id="question" name="question" />
+      </p>
+      <p>{{ answer }}</p>
+    </div>
   </body>
 
   <script>
@@ -147,11 +154,11 @@
       el: "#watch-example",
       data: {
         question: "",
-        answer: "I cannot give you an answer until you ask a question!",
+        answer: "输入您的 yes/no 问题",
       },
       watch: {
         question: function (newVal, oldVal) {
-          this.answer = "Waiting for you to stop typing..";
+          this.answer = "等待输入中";
           this.debouncedGetAnswer();
         },
       },
@@ -161,10 +168,10 @@
       methods: {
         getAnswer: function () {
           if (this.question.indexOf("?") === -1) {
-            this.answer = "Questions usually contain a question mark";
+            this.answer = "问题需要以 ? 结尾";
             return;
           }
-          this.answer = "Thinking...";
+          this.answer = "思考问题中";
           var vm = this;
           axios
             .get("https://yesno.wtf/api")
@@ -172,7 +179,7 @@
               vm.answer = _.capitalize(response.data.answer);
             })
             .catch(function (error) {
-              vm.answer = "Error! Could not reach the API. " + error;
+              vm.answer = "服务器错误" + error;
             });
         },
       },
