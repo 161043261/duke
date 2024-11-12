@@ -426,11 +426,11 @@ padding: 10px 20px 30px 40px; /* 上 10px, 右 20px, 下 30px, 左 40px */
 
 1. inline 行内元素, inline-block 行内块元素, 可以视为文本, 使用 text-align, line-height, text-indent 等处理行内元素, 行内块元素
 2. 子元素在父元素中水平居中
-   1. 若子元素为块级元素, 则父元素设置 `margin: 0 auto`
-   2. 若子元素为行内, 行内块元素, 则父元素设置 `text-align: center`
+   1. 如果子元素为块级元素, 则父元素设置 `margin: 0 auto`
+   2. 如果子元素为行内, 行内块元素, 则父元素设置 `text-align: center`
 3. 子元素在父元素中垂直居中
-   1. 若子元素为块元素, 则子元素设置 margin-top: (父元素 content - 子元素总高) / 2;
-   2. 若子元素为行内, 行内块元素
+   1. 如果子元素为块元素, 则子元素设置 margin-top: (父元素 content - 子元素总高) / 2;
+   2. 如果子元素为行内, 行内块元素
       1. 父元素设置 `font-size: 0` (可选)
       2. 令父元素: line-height == height
       3. 子元素设置 `vertical-align: middle`
@@ -464,7 +464,7 @@ padding: 10px 20px 30px 40px; /* 上 10px, 右 20px, 下 30px, 左 40px */
 解决
 
 1. 行内块设置 `vertical: middle | bottom | top` 属性值 != baseline 即可
-2. 若父元素是图片, 则设置 `display: block`
+2. 如果父元素是图片, 则设置 `display: block`
 3. 父元素设置 `font-size: 0`
 
 ## 浮动
@@ -1069,22 +1069,22 @@ flex-direction: 设置主轴方向
 
 默认情况下, 侧轴方向从上到下, 侧轴对齐方式即 (文本) 垂直对齐方式
 
-**单行的情况**
+**单行的情况 align-items**
 
 | 属性: 值                | 说明               |          |
 | ----------------------- | ------------------ | -------- |
-| align-items: flex-start | 侧轴起点对齐, 默认 | 顶部对齐 |
-| align-items: flex-end   | 侧轴终点对齐       | 底部对齐 |
+| align-items: flex-start | 侧轴起点对齐, 默认 | 行顶对齐 |
+| align-items: flex-end   | 侧轴终点对齐       | 行底对齐 |
 | align-items: center     | 侧轴中点对齐       | 垂直居中 |
 | align-items: baseline   | 基线对齐           |          |
 | align-items: strech     | 填充整行           | 默认     |
 
-**多行的情况**
+**多行的情况: align-content**
 
 | 属性: 值                     | 说明                                 |          |
 | ---------------------------- | ------------------------------------ | -------- |
-| align-content: flex-start    | 侧轴起点对齐, 默认                   | 顶部对齐 |
-| align-content: flex-end      | 侧轴终点对齐                         | 底部对齐 |
+| align-content: flex-start    | 侧轴起点对齐, 默认                   | 上对齐   |
+| align-content: flex-end      | 侧轴终点对齐                         | 下对齐   |
 | align-content: center        | 侧轴中点对齐                         | 垂直居中 |
 | align-content: space-between | 均匀分布: 两端距离等于 0             |          |
 | align-content: space-around  | 均匀分布: 两端距离等于中间距离的一半 |          |
@@ -1138,14 +1138,87 @@ flex-direction: 设置主轴方向
 
 #### flex-basis
 
-#### flex-grow
+flex-basis
 
-#### flex-shrink
+- 主轴方向的基准长度, 会导致主轴水平方向时宽度失效; 主轴垂直方向时高度失效
+- 默认 `flex-basis: auto`, 即默认基准长度等于伸缩项目的宽或高
+- 浏览器根据 flex-basis 属性值, 计算主轴上是否有剩余空间
+
+#### flex-grow 伸
+
+flex-grow: 设置伸缩项目的拉伸比例
+
+1. 默认所有伸缩项目的 flex-grow 值都为 0: 不拉伸
+2. 如果 3 个伸缩项目的 flex-grow 值都为 1, 则拉伸剩余空间的 1/3, 1/3, 1/3
+3. 如果 3 个伸缩项目的 flex-grow 值分别为 1, 2, 3, 则拉伸剩余空间的 1/6, 2/6, 3/6
+
+#### flex-shrink 缩
+
+flex-shrink: 设置伸缩项目的压缩比例
+
+3 个伸缩项目宽度分别为 200px, 300px, 400px, 容器 500px
+
+1. 默认所有伸缩项目的 flex-grow 值都为 1: 压缩溢出空间 (400px) 的
+   - `200 / (200 + 300 + 400) = 2/9`
+   - `300 / (200 + 300 + 400) = 3/9`
+   - `400 / (200 + 300 + 400) = 4/9`
+2. 如果 3 个伸缩项目的 flex-grow 值为 1, 2, 3, 则压缩溢出空间 (400px) 的
+   - `(200 * 1) / (200 * 1 + 300 * 2 + 400 * 3) = 1/10`
+   - `(300 * 2) / (200 * 1 + 300 * 2 + 400 * 3) = 3/10`
+   - `(400 * 3) / (200 * 1 + 300 * 2 + 400 * 3) = 6/10`
 
 #### flex 复合属性
 
-#### order 项目排序
+flex: flex-grow, flex-shrink, flex-basis
 
-#### align-self 单独对齐
+默认 `flex: 0 1 auto;`
+
+**其他**
+
+- order 属性: 指定伸缩项目的排列顺序, 值越小, 排列顺序越靠前, 默认 0
+- align-self 属性: 单独指定某个伸缩项目的对齐方式, 默认 auto
 
 ### 响应式布局
+
+| 值               | 说明                          |
+| ---------------- | ----------------------------- |
+| all              | 检测所有设备                  |
+| screen           | 检测设备屏幕                  |
+| print            | 检测打印机                    |
+| width            | 检测视口宽度                  |
+| max-width        | 检测视口最大宽度              |
+| min-width        | 检测视口最小宽度              |
+| height           | 检测视口高度                  |
+| max-height       | 检测视口最大高度              |
+| min-height       | 检测视口最小高度              |
+| device-width     | 检测设备屏幕的宽度            |
+| max-device-width | 检测设备屏幕的最大宽度        |
+| min-device-width | 检测设备屏幕的最小宽度        |
+| orientation      | 检测视口的旋转方向 (是否横屏) |
+
+orientation
+
+1. portrait: 纵向视口, 即高度 >= 宽度
+2. landscape: 横向视口, 即宽度 >= 高度
+
+#### BFC
+
+BFC, Block Formatting Context 块级格式上下文
+
+1. 元素开启 BFC 后, 该元素的子元素不会有 margin 塌陷问题
+2. 元素开启 BFC 后, 该元素不会被其他浮动元素覆盖
+3. 元素开启 BFC 后, 即使该元素的子元素浮动, 该元素高度也不会塌陷
+
+开启了 BFC 的元素
+
+- 根元素
+- 浮动元素
+- 绝对定位, 固定定位的元素
+- 行内块元素
+- 表格单元格: table, thead, tbody, tfoot, th, td, tr, caption
+- overflow 属性值不等于 visible 的元素
+  父元素设置 `overflow: hidden` 可以解决父元素高度塌陷问题
+- 伸缩项目
+- 多列容器
+- 设置 `column-span: all` 的元素
+- 设置 `display: flow-root` 的元素
