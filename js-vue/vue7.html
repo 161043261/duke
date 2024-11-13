@@ -1,47 +1,45 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Document</title>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
-  <link rel="stylesheet" href="./base.css"/>
-  <style>
-    .emphasis {
-      color: white;
-      width: 700px;
-      background-color: slateblue;
-    }
-  </style>
-</head>
-<body>
-<ul id="example1">
-  <!-- in 和 of 都可以 -->
-  <li v-for="item in items">{{ item.msg }}</li>
-</ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <link rel="stylesheet" href="./base.css" />
+    <style>
+      .emphasis {
+        color: white;
+        width: 700px;
+        background-color: slateblue;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="example1">
+      <!-- in 和 of 都可以 -->
+      <li v-for="item in items">{{ item.msg }}</li>
+    </ul>
 
-<ul id="example2">
-  <li v-for="(item, idx) in items" :key="idx">
-    {{ idx }}. {{ item.msg }}
-  </li>
-</ul>
+    <ul id="example2">
+      <li v-for="(item, idx) in items" :key="idx">{{ idx }}. {{ item.msg }}</li>
+    </ul>
 
-<ul id="example3">
-  <!-- in 和 of 都可以 -->
-  <li v-for="val of obj">{{ val }}</li>
-</ul>
+    <ul id="example3">
+      <!-- in 和 of 都可以 -->
+      <li v-for="val of obj">{{ val }}</li>
+    </ul>
 
-<ul id="example4">
-  <li v-for="(val, field) of obj">{{ field }}: {{ val }}</li>
-</ul>
+    <ul id="example4">
+      <li v-for="(val, field) of obj">{{ field }}: {{ val }}</li>
+    </ul>
 
-<ul id="example5">
-  <li v-for="(val, field, idx) of obj">
-    {{ idx }}. {{ field }}: {{ val }}
-  </li>
-</ul>
+    <ul id="example5">
+      <li v-for="(val, field, idx) of obj">
+        {{ idx }}. {{ field }}: {{ val }}
+      </li>
+    </ul>
 
-<pre class="emphasis">
+    <pre class="emphasis">
       Vue 更新 v-for 渲染的元素列表时, 默认使用 "就地更新" 的策略
       如果数据项的顺序改变, Vue 不会重新排序 DOM 元素以匹配数据项的顺序
       而是就地更新每个元素, 保证元素在索引位置正确渲染
@@ -52,62 +50,64 @@
 
       不要使用数组, 对象等非基本类型值作为 v-for 的 key, 请使用数值或字符串
     </pre>
-Vue 包裹了监听的数组的变更方法, 包括:
-<ul>
-  <li><code>push() 右插</code></li>
-  <li><code>pop() 右删</code></li>
-  <li><code>unshift() 左插</code></li>
-  <li><code>shift() 左删</code></li>
-  <li><code>splice() </code></li>
-</ul>
-</body>
+    Vue 包裹了监听的数组的变更方法, 包括:
+    <ul>
+      <li><code>push() 右插</code></li>
+      <li><code>pop() 右删</code></li>
+      <li><code>unshift() 左插</code></li>
+      <li><code>shift() 左删</code></li>
+      <li><code>splice() 指定位置的删除, 插入</code></li>
+      <li><code>sort() 排序</code></li>
+      <li><code>reverse() 反转</code></li>
+    </ul>
+  </body>
 
-<script>
-  new Vue({
-    el: "#example1",
-    data: {
-      items: [{msg: "Vue"}, {msg: "Evan You"}, {msg: "2014"}],
-    },
-  });
-
-  new Vue({
-    el: "#example2",
-    data: {
-      items: [{msg: "Vue"}, {msg: "Evan You"}, {msg: "2014"}],
-    },
-  });
-
-  new Vue({
-    el: "#example3",
-    data: {
-      obj: {
-        title: "Vue",
-        author: "Evan You",
-        releaseDate: "2014",
+  <script>
+    new Vue({
+      el: "#example1",
+      data: {
+        items: [{ msg: "Vue" }, { msg: "Evan You" }, { msg: "2014" }],
       },
-    },
-  });
+    });
 
-  new Vue({
-    el: "#example4",
-    data: {
-      obj: {
-        title: "Vue",
-        author: "Evan You",
-        releaseDate: "2014",
+    new Vue({
+      el: "#example2",
+      data: {
+        items: [{ msg: "Vue" }, { msg: "Evan You" }, { msg: "2014" }],
       },
-    },
-  });
+    });
 
-  new Vue({
-    el: "#example5",
-    data: {
-      obj: {
-        title: "Vue",
-        author: "Evan You",
-        releaseDate: "2014",
+    new Vue({
+      el: "#example3",
+      data: {
+        obj: {
+          title: "Vue",
+          author: "Evan You",
+          releaseDate: "2014",
+        },
       },
-    },
-  });
-</script>
+    });
+
+    new Vue({
+      el: "#example4",
+      data: {
+        obj: {
+          title: "Vue",
+          author: "Evan You",
+          releaseDate: "2014",
+        },
+      },
+    });
+
+    new Vue({
+      el: "#example5",
+      data: {
+        obj: {
+          title: "Vue",
+          author: "Evan You",
+          releaseDate: "2014",
+        },
+      },
+    });
+  </script>
 </html>
