@@ -3,19 +3,16 @@ function countKConstraintSubstrings(
   k: number,
   queries: number[][],
 ): number[] {
-
   let [l, r, n0, n1] = [0, 0, 0, 0];
   let query2cnt = new Map<number[], number>();
   // let total = 0
-  const updateCnt = (i: number,
-                     j: number): void => {
+  const updateCnt = (i: number, j: number): void => {
     for (const query of queries) {
       if (query[0] <= i && query[1] >= j) {
-        query2cnt.set(query,
-          query2cnt.get(query)! + 1)
+        query2cnt.set(query, query2cnt.get(query)! + 1);
       }
     }
-  }
+  };
 
   for (let query of queries) {
     query2cnt.set(query, 0);
@@ -39,7 +36,7 @@ function countKConstraintSubstrings(
     // console.log(l, r)
     // total += (r - l)
     for (let i = l; i < r; i++) {
-      updateCnt(l, i)
+      updateCnt(l, i);
     }
 
     if (s.charAt(l) === "0") {
@@ -54,7 +51,7 @@ function countKConstraintSubstrings(
   // total += ((r - l + 1) * (r - l) / 2)
   for (let i = l; i < r; i++) {
     for (let j = i; j < r; j++) {
-      updateCnt(i, j)
+      updateCnt(i, j);
     }
   }
   let ans: number[] = [];
@@ -66,6 +63,4 @@ function countKConstraintSubstrings(
   return ans;
 }
 
-console.log(
-  countKConstraintSubstrings("0001111", 2, [[0, 6]])
-)
+console.log(countKConstraintSubstrings("0001111", 2, [[0, 6]]));

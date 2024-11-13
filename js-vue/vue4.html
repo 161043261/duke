@@ -62,11 +62,10 @@
     <hr />
     <div id="watch-example">
       <p>
-        输入您的 yes/no 问题
         <label for="question">question</label>
         <input v-model="question" id="question" name="question" />
       </p>
-      <p>{{ answer }}</p>
+      <p>answer {{ answer }}</p>
     </div>
   </body>
 
@@ -154,7 +153,7 @@
       el: "#watch-example",
       data: {
         question: "",
-        answer: "输入您的 yes/no 问题",
+        answer: "请输入问题",
       },
       watch: {
         question: function (newVal, oldVal) {
@@ -163,26 +162,34 @@
         },
       },
       created: function () {
-        this.debouncedGetAnswer = _.debounce(this.getAnswer, 500);
+        // _.debounce 通过 Lodash 限制操作频率
+        // _.debounce 返回一个 debounced 函数, 该函数延迟调用 func,
+        // 延迟: 距离上次调用 debounced 函数 wait 毫秒后
+        this.debouncedGetAnswer = _.debounce(
+          this.getAnswer /* func */,
+          1000 /* wait */,
+        );
       },
       methods: {
         getAnswer: function () {
-          if (this.question.indexOf("?") === -1) {
+          if (!this.question.endsWith("?")) {
             this.answer = "问题需要以 ? 结尾";
             return;
           }
           this.answer = "思考问题中";
-          var vm = this;
           axios
             .get("https://yesno.wtf/api")
-            .then(function (response) {
-              vm.answer = _.capitalize(response.data.answer);
-            })
-            .catch(function (error) {
-              vm.answer = "服务器错误" + error;
+            .then(
+              (response) => {
+                this.answer = _.capitalize(response.data.answer);
+              } /* onfulfilled */,
+            )
+            .catch((error) => {
+              this.answer = "服务器错误" + error;
             });
         },
       },
     });
+    // 可选: 命令式的 vm.$watch API
   </script>
 </html>
