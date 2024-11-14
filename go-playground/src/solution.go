@@ -2,62 +2,55 @@ package main
 
 import "fmt"
 
-func countKConstraintSubstrings(s string, k int, queries [][]int) []int64 {
-	l, r, n0, n1 := 0, 0, 0, 0
-	query2cnt := map[[2]int]int{}
-
-	updateCnt := func(i, j int) {
-		for _, query := range queries {
-			if query[0] <= i && query[1] >= j {
-				query2cnt[[2]int{query[0], query[1]}]++
-			}
-		}
+func countGoodNodes(edges [][]int) int {
+	n := len(edges) + 1
+	faAndSons := make([][]int, n)
+	for i := range faAndSons {
+		faAndSons[i] = []int{}
+	}
+	for _, edge := range edges {
+		fa, son := edge[0], edge[1]
+		faAndSons[fa] = append(faAndSons[fa], son)
+		faAndSons[son] = append(faAndSons[son], fa)
 	}
 
-	for _, query := range queries {
-		query2cnt[[2]int{query[0], query[1]}] = 0
-	}
+	// fmt.Println("faAndSons", faAndSons)
 
-	for r < len(s) {
-		if n0 <= k || n1 <= k {
-			if s[r] == '0' && (n0 < k || n1 <= k) {
-				n0++
-				r++
+	var dfs func(int, int) int
+	ans := 0
+
+	dfs = func(cur, pa int) int {
+		firstSonSz := 0
+		curSz := 1
+
+		ok := true
+		for _, son := range faAndSons[cur] {
+			if son == pa {
 				continue
 			}
-			if s[r] == '1' && (n0 <= k || n1 < k) {
-				n1++
-				r++
-				continue
+
+			sonSz := dfs(son, cur)
+			if firstSonSz == 0 {
+				firstSonSz = sonSz
+			} else if sonSz != firstSonSz {
+				ok = false
 			}
+
+			curSz += sonSz
 		}
 
-		for i := l; i < r; i++ {
-			updateCnt(l, i)
+		if ok {
+			ans++
 		}
-
-		if s[l] == '0' {
-			n0--
-		} else {
-			n1--
-		}
-		l++
-	}
-	for i := l; i < r; i++ {
-		for j := i; j < r; j++ {
-			updateCnt(i, j)
-		}
+		return curSz
 	}
 
-	var ans []int64
-	for _, query := range queries {
-		ans = append(ans, int64(query2cnt[[2]int{query[0], query[1]}]))
-	}
+	dfs(0, -1)
+
 	return ans
 }
 
 func main() {
 	fmt.Println(
-		countKConstraintSubstrings("0001111", 2, [][]int{{0, 6}}),
-	)
+		countGoodNodes([][]int{{0, 1}, {0, 2}, {1, 3}, {1, 4}, {2, 5}, {2, 6}}))
 }
