@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <link rel="stylesheet" href="./base.css" />
+
+    <style>
+      #box2 div:first-child {
+        width: 100px;
+        height: 100px;
+        background-color: azure;
+      }
+
+      .emphasis {
+        color: white;
+        background-color: slateblue;
+        /* 开启 flex 布局 */
+        display: flex;
+      }
+
+      .emphasis > :nth-child(2) {
+        border-left: 1px solid azure;
+        border-right: 1px solid azure;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="box1">
+      <template v-if="ok">
+        <h3>Title</h3>
+        <p>Paragraph 1</p>
+        <p>Paragraph 2</p>
+      </template>
+      <button type="button" @click="changeDisplay">changeDisplay</button>
+    </div>
+
+    <div class="emphasis">
+      <ol>
+        <li>v-if 为 false 时, 不渲染该元素</li>
+        <li>
+          v-if 是真正的条件渲染, v-if 切换时,
+          条件块内的事件监听器和子组件被销毁和重建
+        </li>
+        <li>
+          v-if 是惰性的, 初始条件为 false 时, 不渲染条件块; 直到条件第一次为
+          true 时，才开始渲染条件块
+        </li>
+      </ol>
+
+      <ol>
+        <li>v-show 不支持 template</li>
+        <li>
+          v-show 不管初始条件是什么, 始终渲染该元素并保存在 DOM 中, v-show 为
+          false 时, 简单的使用 `display: none` 隐藏该元素
+        </li>
+      </ol>
+
+      <ol>
+        <li>v-if 有更高的切换开销</li>
+        <li>v-show 有更高的初始渲染开销</li>
+        <li>如果需要频繁的切换, 则使用 v-show 较好</li>
+        <li>如果运行时条件很少改变，则使用 v-if 较好</li>
+      </ol>
+    </div>
+
+    不推荐同时使用 v-if 和 v-for<br />
+    同时使用 v-if 和 v-for 时, v-for 有比 v-if 更高的优先级<br />
+
+    <div id="box2">
+      <div v-if="display">你看的见: {{ Math.round(rand) }}</div>
+      <div v-else>你看不见: {{ Math.round(rand) }}</div>
+      <div v-show="display">人生若只如初见</div>
+      <button type="button" @click="refresh">刷新</button>
+    </div>
+
+    Vue 会尽可能高效的渲染元素, 通常是复用已有元素, 而不是从头开始渲染<br />
+    切换 loginType 不会清除用户输入的内容, 因为两个模板使用了相同的元素<br />
+    &lt;input&gt; 不会被替换, 仅替换他的 placeholder
+    <div id="box3">
+      <template v-if="loginType === 'username'">
+        <label>Username</label>
+        <input placeholder="Enter your username" />
+      </template>
+
+      <template v-else>
+        <label>Email</label>
+        <input placeholder="Enter your email address" />
+      </template>
+      <button type="button" v-on:click="changeLoginType">
+        changeLoginType
+      </button>
+    </div>
+
+    <br />
+    Vue 提供了一种方式, 以表达 "这两个元素是独立的, 不要复用他们"<br />
+    只需要添加一个唯一的 key 属性, 每次切换时, 输入框会被重新渲染
+    <pre id="box4">
+      <code> {{ rawHtml }} </code>
+    </pre>
+  </body>
+  <script>
+    new Vue({
+      el: "#box1",
+      data: {
+        ok: true,
+      },
+      methods: {
+        changeDisplay: function () {
+          this.ok = !this.ok;
+        },
+      },
+    });
+
+    new Vue({
+      el: "#box2",
+      data: {
+        rand: Math.random(),
+      },
+      methods: {
+        refresh: function () {
+          this.rand = Math.random();
+        },
+      },
+      computed: {
+        display: function () {
+          return this.rand > 0.5;
+        },
+      },
+    });
+
+    new Vue({
+      el: "#box3",
+      data: {
+        loginType: "",
+      },
+      created: function () {
+        this.loginType = "username";
+      },
+      methods: {
+        changeLoginType: function () {
+          this.loginType = this.loginType === "username" ? "email" : "username";
+        },
+      },
+    });
+
+    new Vue({
+      el: "#box4",
+      data: {
+        rawHtml: `
+        <input placeholder="Enter your username" key="username-input">
+        <input placeholder="Enter your email address" key="email-input">`,
+      },
+    });
+  </script>
+</html>

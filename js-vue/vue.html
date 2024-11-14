@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+
+    <!-- <script type="module">
+      import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.esm.browser.js'
+    </script> -->
+
+    <link rel="stylesheet" href="./base.css" />
+  </head>
+
+  <body>
+    <script type="text/javascript">
+      // 关闭 vue 生产提示
+      Vue.config.productionTip = false;
+    </script>
+
+    <!-- Vue 的核心是: 声明式的将数据渲染到 DOM -->
+    <div id="app">{{ msg }}</div>
+
+    <div id="app2">
+      <span v-bind:title="msg"> 鼠标悬浮以查看 title </span>
+    </div>
+
+    <div id="app3">
+      <p v-if="seen">控制台输入 <code>app3.seen = false</code> 以隐藏</p>
+    </div>
+
+    <div id="app4">
+      控制台输入 <code>app4.todos.push({ text: '学习 Vue' })</code> 以添加新
+      item
+      <ol>
+        <li v-for="todo in todos">{{ todo.text }}</li>
+      </ol>
+    </div>
+
+    <div id="app5">
+      <p>{{ msg }}</p>
+      <button v-on:click="reverseMsg">点击以反转消息</button>
+    </div>
+
+    <div id="app6">
+      <p>{{ msg }}</p>
+      <input v-model="msg" />
+    </div>
+
+    <!-- 父元素 div -->
+    <div id="app7">
+      <ol>
+        <!-- 子元素 todo-item -->
+        <todo-item
+          v-for="item in fruitList"
+          v-bind:todo="item"
+          v-bind:key="item.id"
+        ></todo-item>
+      </ol>
+    </div>
+  </body>
+
+  <script>
+    //! 字符串插值
+    var app = new Vue({
+      el: "#app",
+      data: {
+        msg: "Hello Vue!",
+      },
+    });
+
+    // v-bind 单向绑定
+    var app2 = new Vue({
+      el: "#app2",
+      data: {
+        msg: "页面加载于 " + new Date().toLocaleString(),
+      },
+    });
+
+    // v-if 条件渲染
+    var app3 = new Vue({
+      el: "#app3",
+      data: {
+        seen: true,
+      },
+    });
+
+    // v-for 循环
+    var app4 = new Vue({
+      el: "#app4",
+      data: {
+        todos: [{ text: "学习 HTML/CSS" }, { text: "学习 JS/TS" }],
+      },
+    });
+
+    // 字符串插值也是单向绑定
+    var app5 = new Vue({
+      el: "#app5",
+      data: {
+        msg: "Hello Vue.js!",
+      },
+      methods: {
+        reverseMsg: function () {
+          this.msg = this.msg.split("").reverse().join("");
+        },
+      },
+    });
+
+    // v-model 双向绑定
+    var app6 = new Vue({
+      el: "#app6",
+      data: {
+        msg: "Hello Vue!",
+      },
+    });
+
+    // 一个页面可以抽象为一个组件树
+    // 一个组件是一个 Vue 实例
+    // 注册组件
+    Vue.component("todo-item", {
+      // props: 自定义属性列表
+      // todo: 自定义属性名
+      props: ["todo"],
+      template: "<li>{{ todo.text }}</li>",
+    });
+
+    var app7 = new Vue({
+      el: "#app7",
+      data: {
+        fruitList: [
+          { id: 0, text: "苹果" },
+          { id: 1, text: "橘子" },
+          { id: 2, text: "香蕉" },
+        ],
+      },
+    });
+  </script>
+</html>

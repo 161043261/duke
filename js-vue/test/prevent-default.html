@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../base.css" />
+  </head>
+  <body>
+    <label for="box">请输入</label>
+    <input id="box" name="box" type="checkbox" />
+    <div class="warn"></div>
+  </body>
+
+  <script>
+    const box = document.querySelector("#box");
+    box.addEventListener("click", boxClick, false);
+
+    function boxClick(event) {
+      /* preventDefault */
+      event.preventDefault();
+      document.querySelector(".warn").innerHTML +=
+        "preventDefault() won't let you check this!<br>";
+    }
+  </script>
+</html>
