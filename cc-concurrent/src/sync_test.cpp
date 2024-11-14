@@ -82,6 +82,8 @@ bool ThreadSafeQueue<T>::empty() const /* // 该方法不会修改类的非静�
   return queue_.empty();
 }
 
+void MoveOnly::printAddr() { cout << this; }
+
 //! ctest -R ThreadSafeQueueTest
 TEST(ThreadSafeQueueTest, TestThreadSafeQueue) {
   ThreadSafeQueue<int> queue_;
@@ -165,7 +167,7 @@ TEST(AsyncTest2, TestAsync2) {
       },
       std::move(x));
   MoveOnly ret = fut3.get();
-  cout << "Future3 async task returns: " << ret << '\n';
+  ret.printAddr();
 }
 
 TEST(AsyncTest3, TestAsync3) {

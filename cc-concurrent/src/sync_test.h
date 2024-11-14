@@ -42,10 +42,7 @@ struct MoveOnly {
   //! 删除拷贝构造函数
   MoveOnly(const MoveOnly &) = delete;
 
-  friend std::ostream &operator<<(std::ostream &os, const MoveOnly &) {
-    os << "Overload operator<< output stream operator";
-    return os;
-  }
+  void printAddr();
 };
 
 #endif  // SYNC_TEST_H

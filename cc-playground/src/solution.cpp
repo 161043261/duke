@@ -27,14 +27,14 @@ int main() {
   for (int i = 1, j = 1; i <= range; i++) {
     int j_ = j;
     for (; j <= i; j++) {
-      if (dp[i][j] == cur + 1) { // 找到
+      if (dp[i][j] == cur + 1) {  // 找到
         // cout << i - 1 << " " << j - 1 << endl;
         cur++;
         ans += A[i - 1];
         break;
       }
     }
-    j = j_; // 未找到, 复位
+    j = j_;  // 未找到, 复位
   }
 
   cout << "dp: " << endl;
