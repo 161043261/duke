@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <link rel="stylesheet" href="./base.css" />
+  </head>
+
+  <body>
+    <div id="box1">{{ rootprop }}, {{ nonreact }}, {{ items }}</div>
+  </body>
+  <script>
+    const vm = new Vue({
+      el: "#box1",
+      data: {
+        rootprop: { a: 1 }, // vm.rootprop 是响应式的
+        items: ["a", "b", "c"],
+      },
+    });
+
+    vm.nonreact = 2; // vm.nonreact 是非响应式的
+
+    // 对于已经创建的对象
+    Vue.set(vm.rootprop, "b", 3); // { a: 1, b: 3}
+    vm.$set(vm.rootprop, "c", 5); // { a: 1, b: 3, c: 5 }
+
+    vm.rootprop = Object.assign({}, vm.rootprop, { a: 3, c: 3, d: 3 });
+
+    // 对于数组
+    // Vue 不能检查以下数组的更新
+    // 1. 使用索引直接更新一个数组项: vm.items[idx] = newVal
+    // 2. 修改数组长度: vm.items.length = newLen
+    // 非响应式的
+    vm.items[1 /* idx */] = "x" /* newVal */;
+
+    // 非响应式的
+    vm.items.length = 2 /* newLen */;
+
+    // 响应式的
+    vm.set(vm.items, 1 /* idx */, "x" /* newVal */);
+    vm.$set(vm.items, 1 /* idx */, "x" /* newVal */);
+
+    // 响应式的
+    vm.items.splice(1 /* idx */, 1, "x" /* newVal */);
+  </script>
+</html>

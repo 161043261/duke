@@ -14,6 +14,7 @@
       }
     </style>
   </head>
+
   <body>
     <ul id="example1">
       <!-- in 和 of 都可以 -->
@@ -50,7 +51,7 @@
 
       不要使用数组, 对象等非基本类型值作为 v-for 的 key, 请使用数值或字符串
     </pre>
-    Vue 包裹了监听的数组的变更方法, 包括:
+    Vue 包裹了被监听的数组的更新方法, 包括:
     <ul>
       <li><code>push() 右插</code></li>
       <li><code>pop() 右删</code></li>
@@ -60,6 +61,10 @@
       <li><code>sort() 排序</code></li>
       <li><code>reverse() 反转</code></li>
     </ul>
+    调用以上更新方法时, 会触发视图更新 对于非更新方法 (返回一个新数组):
+    filter(), concat(), slice() 可以使用新数组替换旧数组<br />
+
+    Vue 为了重用 DOM 元素, 使用了启发式方法, 使用新数组替换旧数组是高效的<br />
   </body>
 
   <script>

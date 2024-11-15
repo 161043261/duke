@@ -7,6 +7,9 @@ settings:
 importers:
   .:
     dependencies:
+      flv.js:
+        specifier: ^1.6.2
+        version: 1.6.2
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -484,6 +487,12 @@ packages:
       }
     engines: { node: ">=6" }
 
+  es6-promise@4.2.8:
+    resolution:
+      {
+        integrity: sha512-HJDGx5daxeIvxdBxvG2cb9g4tEvwIk3i8+nhX0yGrYmZUzbkdg8QbDevheDB8gd0//uPj4c1EQua8Q+MViT0/w==,
+      }
+
   esbuild@0.21.5:
     resolution:
       {
@@ -504,6 +513,12 @@ packages:
         integrity: sha512-bFi65yM+xZgk+u/KRIpekdSYkTB5W1pEf0Lt8Q8Msh7b+eQ7LXVtIB1Bkm4fvclDEL1b2CZkMhv2mOeF8tMdkA==,
       }
     engines: { node: ">=12.0.0" }
+
+  flv.js@1.6.2:
+    resolution:
+      {
+        integrity: sha512-xre4gUbX1MPtgQRKj2pxJENp/RnaHaxYvy3YToVVCrSmAWUu85b9mug6pTXF6zakUjNP2lFWZ1rkSX7gxhB/2A==,
+      }
 
   fsevents@2.3.3:
     resolution:
@@ -709,6 +724,12 @@ packages:
       jsdom:
         optional: true
 
+  webworkify-webpack@2.1.5:
+    resolution:
+      {
+        integrity: sha512-2akF8FIyUvbiBBdD+RoHpoTbHMQF2HwjcxfDvgztAX5YwbZNyrtfUMgvfgFVsgDhDPVTlkbb5vyasqDHfIDPQw==,
+      }
+
   why-is-node-running@2.3.0:
     resolution:
       {
@@ -905,6 +926,8 @@ snapshots:
 
   deep-eql@5.0.2: {}
 
+  es6-promise@4.2.8: {}
+
   esbuild@0.21.5:
     optionalDependencies:
       "@esbuild/aix-ppc64": 0.21.5
@@ -936,6 +959,11 @@ snapshots:
       "@types/estree": 1.0.6
 
   expect-type@1.1.0: {}
+
+  flv.js@1.6.2:
+    dependencies:
+      es6-promise: 4.2.8
+      webworkify-webpack: 2.1.5
 
   fsevents@2.3.3:
     optional: true
@@ -1063,6 +1091,8 @@ snapshots:
       - sugarss
       - supports-color
       - terser
+
+  webworkify-webpack@2.1.5: {}
 
   why-is-node-running@2.3.0:
     dependencies:
