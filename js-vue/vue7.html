@@ -13,27 +13,22 @@
         background-color: slateblue;
       }
 
-      #example6 ul {
-        margin: 0;
-        padding: 0;
-        width: 100px;
-        background-color: azure;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        list-style: none;
-      }
-
+      #example6 ul,
       #example6 ol {
         margin: 0;
         padding: 0;
         width: 100px;
         background-color: azure;
         display: flex;
-        justify-content: space-evenly;
-        /* justify-content: space-around; */
-        align-items: center;
         list-style: none;
+      }
+
+      #example6 ul {
+        justify-content: space-between;
+      }
+
+      #example6 ol {
+        justify-content: space-evenly;
       }
     </style>
   </head>
@@ -106,13 +101,14 @@
     </div>
 
     <p>
-      <strong style="color: red">TODO</strong> 在 &lt;template&gt; 上使用 v-for
+      <strong style="color: slateblue">TODO</strong>
+      在 &lt;template&gt; 上使用 v-for
     </p>
 
     不推荐 v-for 和 v-if 同时使用, v-for 比 v-if 优先级更高<br />
     这意味着: v-if 将在每个 v-for 循环中重复执行
     <br />
-    <strong style="color: red">TODO</strong>
+    <strong style="color: slateblue">TODO</strong>
     <div id="example7">
       <ol>
         <li v-for="todo of todos" v-if="!todo.done">Study {{ todo.lang }}</li>
@@ -124,15 +120,16 @@
 
     <div id="todo-list">
       <form v-on:submit.prevent="addNewTodo">
-        <label for="new-todo">Add a todo</label>
+        <label for="new-todo">Add a TODO</label>
         <input
           v-model="newTodoText"
           id="new-todo"
           placeholder="e.g. Learn Vue3"
         />
-        <button>Add</button>
+        <button type="submit">Add</button>
       </form>
       <ul>
+        <!-- is 属性: 将一个 HTML 元素转换为一个 Vue 组件实例 -->
         <li
           is="todo-item"
           v-for="(todo, idx) of todos"
@@ -203,7 +200,7 @@
       },
       computed: {
         evenNums: function () {
-          return this.nums.filter((num) => num % 2 === 0);
+          return this.nums.filter((num) => num % 2 === 1);
         },
       },
       methods: {

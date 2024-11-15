@@ -1,6 +1,6 @@
-function minFlips(grid: number[][]): number {
+"use strict";
+function minFlips(grid) {
   let ans = 0;
-
   for (let i = 0; i < Math.floor(grid.length / 2); i++) {
     for (let j = 0; j < Math.floor(grid[0].length / 2); j++) {
       const cnt1 =
@@ -14,10 +14,8 @@ function minFlips(grid: number[][]): number {
   if (grid.length % 2 == 1 && grid[0].length % 2 == 1) {
     ans += grid[Math.floor(grid.length / 2)][Math.floor(grid[0].length / 2)];
   }
-
   let diff = 0,
     cnt1 = 0;
-
   if (grid.length % 2 == 1) {
     for (let j = 0; j < Math.floor(grid[0].length / 2); j++) {
       if (
@@ -30,7 +28,6 @@ function minFlips(grid: number[][]): number {
       }
     }
   }
-
   if (grid[0].length % 2 == 1) {
     for (let i = 0; i < Math.floor(grid.length / 2); i++) {
       if (
