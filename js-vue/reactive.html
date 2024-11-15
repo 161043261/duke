@@ -10,6 +10,12 @@
 
   <body>
     <div id="box1">{{ rootprop }}, {{ nonreact }}, {{ items }}</div>
+
+    <!-- TODO -->
+    <article>
+      TODO<br />
+      异步更新队列
+    </article>
   </body>
   <script>
     const vm = new Vue({
@@ -39,10 +45,20 @@
     vm.items.length = 2 /* newLen */;
 
     // 响应式的
-    vm.set(vm.items, 1 /* idx */, "x" /* newVal */);
+    Vue.set(vm.items, 1 /* idx */, "x" /* newVal */);
     vm.$set(vm.items, 1 /* idx */, "x" /* newVal */);
 
     // 响应式的
     vm.items.splice(1 /* idx */, 1, "x" /* newVal */);
+
+    // 响应式的
+    vm.splice(2 /* newLen */);
+
+    // 声明响应式 property
+    // Vue 不允许动态添加根级响应式 prop
+    // 初始化 vm (View Model) 实例前
+    // 必须在 data 块中声明所有根级响应式 prop
+
+    // 否则收到警告: 渲染 render 函数试图访问不存在的 prop
   </script>
 </html>

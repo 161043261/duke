@@ -2,6 +2,7 @@ package src
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"testing"
 
@@ -66,4 +67,29 @@ func Test_incr(t *testing.T) {
 	fmt.Println(res9) // >>> 1
 	res10, _ := rdb.IncrBy(ctx, "total_crashes", 10).Result()
 	fmt.Println(res10) // >>> 11
+}
+
+type User struct {
+	Name string
+	Age  int
+}
+
+// go test
+func Test_setgetstruct(t *testing.T) {
+	ctx := context.Background()
+	rdb := redis.NewClient(&redis.Options{
+		Addr:     "localhost:6379",
+		Password: "", // no password docs
+		DB:       0,  // use default DB
+	})
+	bytes, _ := json.Marshal(&User{
+		Name: "Trump", Age: 10,
+	})
+	// fmt.Println(string(bytes))
+	rdb.Set(ctx, "user:4", bytes, 0)
+	str, _ := rdb.Get(ctx, "user:4").Result()
+	fmt.Println(str)
+	var user User
+	json.Unmarshal([]byte(str), &user)
+	fmt.Printf("%#v\n", user)
 }

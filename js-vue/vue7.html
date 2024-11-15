@@ -12,6 +12,29 @@
         width: 700px;
         background-color: slateblue;
       }
+
+      #example6 ul {
+        margin: 0;
+        padding: 0;
+        width: 100px;
+        background-color: azure;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style: none;
+      }
+
+      #example6 ol {
+        margin: 0;
+        padding: 0;
+        width: 100px;
+        background-color: azure;
+        display: flex;
+        justify-content: space-evenly;
+        /* justify-content: space-around; */
+        align-items: center;
+        list-style: none;
+      }
     </style>
   </head>
 
@@ -51,7 +74,7 @@
 
       不要使用数组, 对象等非基本类型值作为 v-for 的 key, 请使用数值或字符串
     </pre>
-    Vue 包裹了被监听的数组的更新方法, 包括:
+    Vue 包裹了被监听的数组的变更, 包括:
     <ul>
       <li><code>push() 右插</code></li>
       <li><code>pop() 右删</code></li>
@@ -61,10 +84,64 @@
       <li><code>sort() 排序</code></li>
       <li><code>reverse() 反转</code></li>
     </ul>
-    调用以上更新方法时, 会触发视图更新 对于非更新方法 (返回一个新数组):
-    filter(), concat(), slice() 可以使用新数组替换旧数组<br />
+    调用以上变更时, 会触发视图更新 对于非变更 (返回一个新数组): filter(),
+    concat(), slice() 可以使用新数组替换旧数组<br />
 
     Vue 为了重用 DOM 元素, 使用了启发式方法, 使用新数组替换旧数组是高效的<br />
+
+    渲染过滤/排序 filter/sort 后的数组, 并且不变更原数组, 可以使用计算属性
+    <div id="example6">
+      <ul>
+        <li v-for="num of evenNums">{{ num }}</li>
+      </ul>
+
+      <ol v-for="nums of numsArr">
+        <li v-for="num of even(nums)">{{ num }}</li>
+      </ol>
+    </div>
+
+    v-for 可以接受整数, 这里重复该模板 10 次
+    <div>
+      <span v-for="n of 10">{{ n }}, </span>
+    </div>
+
+    <p>
+      <strong style="color: red">TODO</strong> 在 &lt;template&gt; 上使用 v-for
+    </p>
+
+    不推荐 v-for 和 v-if 同时使用, v-for 比 v-if 优先级更高<br />
+    这意味着: v-if 将在每个 v-for 循环中重复执行
+    <br />
+    <strong style="color: red">TODO</strong>
+    <div id="example7">
+      <ol>
+        <li v-for="todo of todos" v-if="!todo.done">Study {{ todo.lang }}</li>
+      </ol>
+    </div>
+
+    如果目的是条件的跳过循环, 则可以将 v-if 置于 v-for 的外层
+    <h3>在组件上使用 v-for 时, key 是必须的</h3>
+
+    <div id="todo-list">
+      <form v-on:submit.prevent="addNewTodo">
+        <label for="new-todo">Add a todo</label>
+        <input
+          v-model="newTodoText"
+          id="new-todo"
+          placeholder="e.g. Learn Vue3"
+        />
+        <button>Add</button>
+      </form>
+      <ul>
+        <li
+          is="todo-item"
+          v-for="(todo, idx) of todos"
+          :key="todo.id"
+          :title="todo.title"
+          @remove="todos.splice(idx, 1)"
+        ></li>
+      </ul>
+    </div>
   </body>
 
   <script>
@@ -111,6 +188,79 @@
           title: "Vue",
           author: "Evan You",
           releaseDate: "2014",
+        },
+      },
+    });
+
+    new Vue({
+      el: "#example6",
+      data: {
+        nums: [1, 2, 3, 4, 5],
+        numsArr: [
+          [1, 2, 3, 4, 5],
+          [6, 7, 8, 9, 10],
+        ],
+      },
+      computed: {
+        evenNums: function () {
+          return this.nums.filter((num) => num % 2 === 0);
+        },
+      },
+      methods: {
+        /**
+         * @param {number[]} nums_
+         */
+        even: function (nums_) {
+          return nums_.filter((num) => num % 2 === 0);
+        },
+      },
+    });
+
+    new Vue({
+      el: "#example7",
+      data: {
+        todos: [
+          { done: false, lang: "C/C++" },
+          { done: true, lang: "Java" },
+          { done: true, lang: "JS/TS" },
+          { done: false, lang: "Python" },
+        ],
+      },
+    });
+
+    Vue.component("todo-item", {
+      template:
+        "<li>{{ title }}<button @click=\"$emit('remove')\">Remove</button></li>",
+      props: ["title"],
+    });
+
+    new Vue({
+      el: "#todo-list",
+      data: {
+        newTodoText: "",
+        todos: [
+          {
+            id: 1,
+            title: "Learn HTML5",
+          },
+          {
+            id: 2,
+            title: "Learn CSS3",
+          },
+          {
+            id: 3,
+            title: "Learn JS/TS",
+          },
+        ],
+        nextTodoId: 4,
+      },
+      methods: {
+        addNewTodo: function () {
+          this.todos.push({
+            id: this.nextTodoId++,
+            title: this.newTodoText,
+          });
+          this.newTodoText = "";
         },
       },
     });
