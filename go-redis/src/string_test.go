@@ -86,8 +86,8 @@ func Test_setgetstruct(t *testing.T) {
 		Name: "Trump", Age: 10,
 	})
 	// fmt.Println(string(bytes))
-	rdb.Set(ctx, "user:4", bytes, 0)
-	str, _ := rdb.Get(ctx, "user:4").Result()
+	rdb.Set(ctx, "user:0", bytes, 0)
+	str, _ := rdb.Get(ctx, "user:0").Result()
 	fmt.Println(str)
 	var user User
 	json.Unmarshal([]byte(str), &user)
