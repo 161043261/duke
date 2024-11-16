@@ -1077,7 +1077,7 @@ flex-direction: 设置主轴方向
 | align-items: flex-end   | 侧轴终点对齐       | 行底对齐 |
 | align-items: center     | 侧轴中点对齐       | 垂直居中 |
 | align-items: baseline   | 基线对齐           |          |
-| align-items: strech     | 填充整行           | 默认     |
+| align-items: stretch    | 填充整行           | 默认     |
 
 **多行的情况: align-content**
 

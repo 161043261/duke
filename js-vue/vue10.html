@@ -1,13 +1,229 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <link rel="stylesheet" href="./base.css" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
-  <link rel="stylesheet" href="./base.css" />
+    <style>
+      h3 {
+        color: deepskyblue;
+      }
 
-</head>
+      img {
+        /* 默认 inline-block */
+        display: block;
+      }
 
+      #box4 .blog-post {
+        width: 300px;
+        display: flex;
+        /* 单行, 水平方向 */
+        /* justify-content: flex-start; 主轴起点对齐, 默认 */
+        /* justify-content: space-between; 均匀分布: 两端距离等于 0 */
+        justify-content: space-between;
+        /* 单行, 垂直方向 */
+        /* align-items: stretch; 填充整行, 默认 */
+        /* align-items: center; 垂直居中 */
+        align-items: center;
+      }
+
+      #box4 .blog-post p {
+        color: orange;
+      }
+
+      table {
+        border: 1px solid black;
+        border-spacing: 0;
+        /* 合并相邻单元格的边框 */
+        border-collapse: collapse;
+      }
+
+      td,
+      th {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+
+  <body>
+    组件是可以复用的 Vue 实例, 有组件名<br />
+    <strong>一个组件的 data 选项必须是一个函数</strong>, 每个实例可以维护独立的,
+    返回对象的拷贝<br />
+
+    组件名: button-counter<br />
+    每个组件维护独立的, 返回对象 { count: 0 } 的拷贝<br />
+
+    <div id="box1">
+      <custom-counter></custom-counter>
+      <custom-counter></custom-counter>
+    </div>
+
+    <h3>组件的组织</h3>
+    通常, 一个应用以一个组件树的形式组织
+    <img src="./assets/comp_tree.png" alt="comp_tree" width="500px" />
+
+    组件注册的类型: 全局注册, 局部注册
+    <h3>父组件通过 prop 向子组件传递数据</h3>
+
+    <div id="box2">
+      <custom-post title="Vue2"></custom-post>
+      <custom-post title="爱情证书"></custom-post>
+    </div>
+
+    <div id="box3">
+      <custom-post
+        v-for="post of posts"
+        :key="post.id"
+        :title="post.title"
+      ></custom-post>
+    </div>
+
+    <p><strong>每个组件必须只有 1 个根元素</strong></p>
+
+    <div id="box4">
+      <p>属性名必须是 fontSize (font-size => fontSize)</p>
+      <div :style="{ fontSize: fontSizeVal + 'em' }">
+        <!-- 父组件可以使用 $event 接收子组件抛出 (发射) 的参数 -->
+        <!-- @enlarge-text="fontSizeVal += $event" -->
+        <blog-post
+          v-for="post of posts"
+          :key="post.id"
+          :post="post"
+          @enlarge-text="enlargeText"
+        ></blog-post>
+      </div>
+    </div>
+
+    <h1 style="transform: rotate(0.03turn); color: lightcoral">
+      v-model 只是语法糖!
+    </h1>
+    <div style="background-color: lemonchiffon">
+      <code style="color: red"> &lt;input v-model="text"&gt; </code>
+
+      <p>等价于</p>
+      <table>
+        <tr>
+          <td>v-bind:value</td>
+          <td>vm.data => DOM</td>
+        </tr>
+        <tr>
+          <td>v-on:input="text = $event.target.value"</td>
+          <td>DOM => vm.data</td>
+        </tr>
+      </table>
+
+      <code style="white-space: pre-line; color: green">
+        <!-- <input v-bind:value="text" v-on:input="text = $event.target.value"> -->
+        &lt;input v-bind:value="text" v-on:input="text =
+        $event.target.value"&gt;
+      </code>
+
+      <p>v-model 作用于组件时, 等价于</p>
+      <code style="white-space: pre-line; color: blue">
+        <!-- <custom-input v-bind:value="text" v-on:input="text = $event"></custom-input> -->
+        &lt;custom-input v-bind:value="text" v-on:input="text = $event"
+        &gt;&lt;/custom-input&gt;
+      </code>
+    </div>
+
+    <h3>在组件上使用 v-model</h3>
+    <div id="box5">
+      <custom-input
+        v-bind:textvalue="valueOfText"
+        v-on:child2parent-when-input="valueOfText = $event"
+      ></custom-input>
+      <p>vm.data => DOM</p>
+      presentation: {{ valueOfText }}
+    </div>
+  </body>
+
+  <script>
+    Vue.component("custom-counter" /* 组件名 */, {
+      // Vue.component 接收与 new Vue 相同的选项
+      // 例: data, computed, watch, methods, 生命周期钩子等选项
+      // 例外: el 等根实例特有的选项
+      data: function () {
+        return {
+          count: 0,
+        };
+      },
+      template: '<button @click="count++">count: {{ count }}</button>',
+    });
+
+    new Vue({ el: "#box1" });
+
+    Vue.component("custom-post", {
+      // 通过 prop 向子组件传递数据
+      props: ["title"],
+      template: '<p style="color: lightcoral">title: {{ title }}</p>',
+    });
+
+    new Vue({ el: "#box2" });
+
+    new Vue({
+      el: "#box3",
+      data: {
+        posts: [
+          { id: 1, title: "Vue3" },
+          { id: 2, title: "和平" },
+        ],
+      },
+    });
+
+    Vue.component("blog-post", {
+      props: ["post"],
+      template: `
+      <div class="blog-post">
+        <h3>{{ post.title }}</h3>
+        <!--
+          <button @click="$emit('enlarge-text')">放大文本</button>
+        -->
+
+        <!-- 子组件可以使用 $emit 函数的第 2..n 个形参, 抛出 (发射) 参数 给父组件 -->
+        <button @click="$emit('enlarge-text', 0.1/* args */)">放大文本</button>
+        <div v-html="post.content"></div>
+      </div>`,
+    });
+
+    new Vue({
+      el: "#box4",
+      data: {
+        posts: [
+          { id: 1, title: "Vue3", content: "<p>学: Vue3</p>" },
+          { id: 2, title: "和平", content: "<p>听: 和平</p>" },
+        ],
+        fontSize: "font-size",
+        fontSizeVal: 1,
+      },
+
+      methods: {
+        /**
+         * @param {number} delta
+         */
+        enlargeText: function (delta) {
+          this.fontSizeVal += delta;
+        },
+      },
+    });
+
+    Vue.component("custom-input", {
+      props: ["textvalue"],
+      template: `
+      DOM => vm.data
+      <input type="text"
+             v-bind:value="textvalue"
+             v-on:input="$emit('child2parent-when-input', $event.target.value)"
+      />`,
+    });
+
+    new Vue({
+      el: "#box5",
+      data: {
+        valueOfText: "edit me!",
+      },
+    });
+  </script>
 </html>
