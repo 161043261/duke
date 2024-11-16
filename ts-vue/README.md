@@ -26,16 +26,15 @@ pnpm run build
 ### Vue2 Options API
 
 ```vue
-
 <script lang="ts">
-  export default {
-    name: 'Person',
-    // data
-    data() {
-      return {}
-    },
-    // methods
-    methods: {}
-  }
+export default {
+  name: 'Person',
+  // data
+  data() {
+    return {}
+  },
+  // methods
+  methods: {}
+}
 </script>
 ```

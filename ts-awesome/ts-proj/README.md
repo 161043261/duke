@@ -26,13 +26,13 @@ npm run build
 npm run lint
 ```
 
-* v-bind: == :
-* v-on: == @
-* Iosevka SS04, Menlo Style
-* Iosevka SS06, Liberation Mono Style
+- v-bind: == :
+- v-on: == @
+- Iosevka SS04, Menlo Style
+- Iosevka SS06, Liberation Mono Style
 
 ### Life Cycle
 
-* onMounted
-* onUpdated
-* onBeforeUnmount
+- onMounted
+- onUpdated
+- onBeforeUnmount

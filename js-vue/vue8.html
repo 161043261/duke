@@ -7,6 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
     <link rel="stylesheet" href="./base.css" />
   </head>
+
   <body>
     <div id="example1">
       <button type="button" v-on:click="counter++">Add 1</button>
@@ -17,9 +18,44 @@
       <button type="button" @click="greet">Greet</button>
     </div>
 
+    <!-- 内联 -->
     <div id="example3">
-      <button type="button" @click="say('hi')">Say hi</button>
+      <button type="button" @click="info('Vue3')">Info 'Vue3'</button>
     </div>
+
+    使用 $event 将 DOM 事件传入方法
+    <div id="example4">
+      <button type="submit" @click="warn('Prevent Default', $event)">
+        Submit
+      </button>
+    </div>
+
+    <h3>事件修饰符</h3>
+    <ul>
+      <li>v-on:click<code>.stop</code></li>
+      <li>v-on:submit<code>.prevent</code></li>
+      <li>v-on:click<code>.capture</code></li>
+      <li>v-on:click<code>.self</code></li>
+      <li>v-on:click<code>.once</code></li>
+      <li>v-on:scroll<code>.passive</code></li>
+    </ul>
+
+    <p>使用修饰符时, 顺序很重要</p>
+    <code>v-on:click.prevent.self </code>会阻止所有的点击<br />
+    <code>v-on:click.self.prevent </code>只会阻止当前元素的点击
+
+    <h3>按键修饰符</h3>
+    <ul>
+      <li>v-on:keyup<code>.enter</code></li>
+      <li>v-on:keyup<code>.tab</code></li>
+      <li>v-on:keyup<code>.delete</code></li>
+      <li>v-on:keyup<code>.esc</code></li>
+      <li>v-on:keyup<code>.space</code></li>
+      <li>v-on:keyup<code>.up</code></li>
+      <li>v-on:keyup<code>.down</code></li>
+      <li>v-on:keyup<code>.left</code></li>
+      <li>v-on:keyup<code>.right</code></li>
+    </ul>
   </body>
 
   <script>
@@ -48,12 +84,29 @@
       },
     });
 
-    vm2.greet();
+    // vm2.greet();
 
     new Vue({
       el: "#example3",
       methods: {
-        say: function (msg) {
+        info: function (msg) {
+          alert(msg);
+        },
+      },
+    });
+
+    new Vue({
+      el: "#example4",
+      methods: {
+        /**
+         * @param {string} msg
+         * @param {Event} event
+         */
+        warn: function (msg, event) {
+          if (event) {
+            // console.log(event) // PointerEvent
+            event.preventDefault();
+          }
           alert(msg);
         },
       },

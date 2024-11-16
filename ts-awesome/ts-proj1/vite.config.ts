@@ -21,21 +21,21 @@ export default defineConfig({
     alias: {
       // 设置 src 目录别名
       // '@': path.resolve(__dirname, 'src'),
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
   },
   server: {
     proxy: {
-      "/api": {
-        target: "http://127.0.0.1:3261/",
+      '/api': {
+        target: 'http://127.0.0.1:3261/',
         changeOrigin: true,
         rewrite: (path: string) => {
           // /.../ 正则表达式的定界符
           // ^ 匹配 path 的开头
           // console.log(path.replace(/^\/api/, '/api/v1'))
           return path.replace(/^\/api/, '/api/v1')
-        }
-      }
-    }
+        },
+      },
+    },
   },
 })
