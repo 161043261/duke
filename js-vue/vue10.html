@@ -43,7 +43,24 @@
 
       td,
       th {
-        border: 1px solid black;
+        border: 1px solid gray;
+      }
+
+      .tab {
+        border: 1px solid gray;
+        padding: 10px;
+        width: 100px;
+      }
+
+      .tab-button {
+        border-radius: 30px;
+        border: 1px solid gray;
+        cursor: pointer;
+      }
+
+      .tab-button.active {
+        background: lightpink;
+        /* background-color:lightpink; */
       }
     </style>
   </head>
@@ -136,13 +153,60 @@
         v-bind:textval="valofText"
         v-on:child2parent="valofText = $event"
       ></custom-input>
-      <p>vm.data => DOM</p>
-      presentation: {{ valofText }}
+      <!-- vm.data => DOM -->
+      <br />
+      预览: {{ valofText }}
     </div>
 
     <!-- 父组件 data 选项中的响应式数据 valofText ==>
     使用 v-bind 到自定义属性 textval ==>
     父组件使用 prop 传递数据给子组件 -->
+
+    <div id="box6">
+      <custom-input2 v-model:textval="valofText"></custom-input2>
+      <br />
+      预览: {{ valofText }}
+    </div>
+
+    <h3>插槽 slot</h3>
+    <div id="box7">
+      <alert-box> 父组件使用插槽 slot 传递内容给子组件 </alert-box>
+    </div>
+
+    <h3>动态组件</h3>
+    <div id="box8">
+      <button
+        v-for="tab of tabs"
+        :key="tab"
+        :class="['tab-button', { active: curTab === tab }]"
+        v-on:click="curTab = tab"
+      >
+        {{ tab }}
+      </button>
+      <component :is="curTabComp" class="tab"></component>
+    </div>
+
+    有些 HTML 元素, 例如 ul, ol, table, select, 限制内部的元素<br />
+    有些 HTML 元素, 例如 li, tr, option, 限制在指定元素的内部<br />
+
+    使用有限制条件的元素时, 会遇到问题:<br />
+
+    <code style="white-space: pre-line">
+      &lt;table&gt; &lt;blog-post-row&gt;&lt;/blog-post-row&gt; &lt;/table&gt;
+    </code>
+
+    解决: 使用 is 属性, 将一个 HTML 元素转换为一个 Vue 组件实例
+
+    <code style="white-space: pre-line">
+      &lt;table&gt; &lt;tr is="blog-post-row"&gt;&lt;/tr&gt; &lt;/table&gt;
+    </code>
+
+    以下方式使用模板时，不存在该限制:
+    <ol>
+      <li>字符串 (例如：template: '...')</li>
+      <li>单文件组件 (.vue)</li>
+      <li>&lt;script type="text/x-template"&gt;</li>
+    </ol>
   </body>
 
   <script>
@@ -218,7 +282,7 @@
       // 父组件通过 prop 向子组件传递数据
       props: ["textval"],
       template: `
-      DOM => vm.data
+      <!-- DOM => vm.data -->
       <!-- 子组件可以使用 $emit 函数的第 2..n 个形参, 抛出 (发射) 参数给父组件 -->
       <input type="text"
              v-bind:value="textval"
@@ -226,10 +290,66 @@
       />`,
     });
 
-    const vm5 = new Vue({
+    new Vue({
       el: "#box5",
       data: {
         valofText: "edit me!",
+      },
+    });
+
+    Vue.component("custom-input2", {
+      // 父组件通过 prop 向子组件传递数据
+      props: ["textval"],
+      template: `
+      <input type="text"
+             v-bind:value="textval"
+             v-on:input="$emit('input', $event.target.value)"
+      />`,
+    });
+
+    new Vue({
+      el: "#box6",
+      data: {
+        valofText: "edit me!",
+      },
+    });
+
+    Vue.component("alert-box", {
+      template: `
+        <div class="demo-alert-box">
+          <strong>[WARN] </strong>
+          <slot></slot>
+        </div>
+        `,
+    });
+
+    new Vue({
+      el: "#box7",
+    });
+
+    Vue.component("tab-home", {
+      template: "<div>Home component</div>",
+    });
+    Vue.component("tab-posts", {
+      template: "<div>Posts component</div>",
+    });
+    Vue.component("tab-archive", {
+      template: "<div>Archive component</div>",
+    });
+
+    new Vue({
+      el: "#box8",
+      data: {
+        curTab: "Home",
+        tabs: ["Home", "Posts", "Archive"],
+      },
+      computed: {
+        /**
+         * @returns {string}
+         */
+        curTabComp: function () {
+          return "tab-" + this.curTab.toLowerCase();
+        },
       },
     });
   </script>

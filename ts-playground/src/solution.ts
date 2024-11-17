@@ -1,17 +1,25 @@
-function numFriendRequests(ages: number[]): number {
-  ages.sort((a, b) => b - a);
-  let ans = 0
-  for (let e = 0; e < ages.length - 1; e++) {
-    for (let y = e + 1; y < ages.length; y++) {
-      if (ages[y] <= 0.5 * ages[e] + 7) {
-        break;
+function countValidSelections(nums: number[]): number {
+  let ans = 0;
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] != 0) {
+      continue;
+    }
+    for (let direction of [-1, 1]) {
+      let tempNums = nums.slice();
+      let curr = i;
+      while (curr >= 0 && curr < nums.length) {
+        if (tempNums[curr] == 0) {
+          curr += direction
+        } else if (tempNums[curr] > 0) {
+          tempNums[curr]--;
+          direction *= -1;
+          curr += direction
+        }
       }
-      if (ages[y] === ages[e]) {
-        ans += 2;
-        continue;
+      if (tempNums.every((num) => num === 0)) {
+        ans++;
       }
-      ans++
     }
   }
   return ans;
-};
+}
