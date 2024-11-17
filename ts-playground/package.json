@@ -16,5 +16,5 @@
   "devDependencies": {
     "vitest": "^2.1.4"
   },
-  "type": "module"
+  "type": "commonjs"
 }

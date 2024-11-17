@@ -6,33 +6,33 @@
 var isZeroArray_ = function (nums, queries) {
   for (let query of queries) {
     for (let idx = query[0]; idx <= query[1]; idx++) {
-      nums[idx] -= 1
+      nums[idx] -= 1;
     }
   }
-  console.log(nums)
-  return nums.every((num) => num <= 0)
+  console.log(nums);
+  return nums.every((num) => num <= 0);
 };
 
 //! 差分数组
 var isZeroArray = function (nums, queries) {
-  let diffArr = new Array(nums.length + 1).fill(0)
+  let diffArr = new Array(nums.length + 1).fill(0);
   for (let query of queries) {
-    let l = query[0]
-    let r = query[1]
-    diffArr[l]++
-    diffArr[r + 1]--
+    let l = query[0];
+    let r = query[1];
+    diffArr[l]++;
+    diffArr[r + 1]--;
   }
   for (let i = 1; i <= nums.length; i++) {
     diffArr[i] += diffArr[i - 1];
   }
-  console.log(diffArr)
+  console.log(diffArr);
 
   for (let i = 0; i < nums.length; i++) {
     if (nums[i] - diffArr[i] > 0) {
       return false;
     }
   }
-  return true
+  return true;
 };
 
 // [3, 5, 10]
@@ -48,28 +48,28 @@ var isZeroArray = function (nums, queries) {
  */
 var minZeroArray = function (nums, queries) {
   if (nums.every((num) => num === 0)) {
-    return 0
+    return 0;
   }
 
-  let diffArr = new Array(nums.length + 1).fill(0)
+  let diffArr = new Array(nums.length + 1).fill(0);
   let k = 0;
 
   for (let query of queries) {
     k++;
-    let l = query[0]
-    let r = query[1]
-    let v = query[2]
-    diffArr[l] += v
-    diffArr[r + 1] -= v
+    let l = query[0];
+    let r = query[1];
+    let v = query[2];
+    diffArr[l] += v;
+    diffArr[r + 1] -= v;
 
-    let diffArrCopy = diffArr.slice()
+    let diffArrCopy = diffArr.slice();
     for (let i = 1; i <= nums.length; i++) {
       diffArrCopy[i] += diffArrCopy[i - 1];
     }
 
     // console.log(diffArrCopy)
 
-    let ok = true
+    let ok = true;
     for (let i = 0; i < nums.length; i++) {
       if (nums[i] - diffArrCopy[i] > 0) {
         ok = false;
@@ -83,4 +83,25 @@ var minZeroArray = function (nums, queries) {
   return -1;
 };
 
-console.log(minZeroArray([0, 8], [[0, 1, 4], [0, 1, 1], [0, 1, 4], [0, 1, 1], [1, 1, 5], [0, 1, 2], [1, 1, 4], [0, 1, 1], [1, 1, 3], [0, 0, 2], [1, 1, 3], [1, 1, 2], [0, 1, 5], [1, 1, 2], [1, 1, 5]]))
+console.log(
+  minZeroArray(
+    [0, 8],
+    [
+      [0, 1, 4],
+      [0, 1, 1],
+      [0, 1, 4],
+      [0, 1, 1],
+      [1, 1, 5],
+      [0, 1, 2],
+      [1, 1, 4],
+      [0, 1, 1],
+      [1, 1, 3],
+      [0, 0, 2],
+      [1, 1, 3],
+      [1, 1, 2],
+      [0, 1, 5],
+      [1, 1, 2],
+      [1, 1, 5],
+    ],
+  ),
+);

@@ -9,11 +9,11 @@ function countValidSelections(nums: number[]): number {
       let curr = i;
       while (curr >= 0 && curr < nums.length) {
         if (tempNums[curr] == 0) {
-          curr += direction
+          curr += direction;
         } else if (tempNums[curr] > 0) {
           tempNums[curr]--;
           direction *= -1;
-          curr += direction
+          curr += direction;
         }
       }
       if (tempNums.every((num) => num === 0)) {
