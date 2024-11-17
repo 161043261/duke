@@ -131,14 +131,18 @@
 
     <h3>在组件上使用 v-model</h3>
     <div id="box5">
-        <!-- 父组件可以使用 $event 接收子组件抛出 (发射) 的参数 -->
+      <!-- 父组件使用 $event 接收子组件抛出 (发射) 的参数 -->
       <custom-input
-        v-bind:textval="valueOfText"
-        v-on:child2parent="valueOfText = $event"
+        v-bind:textval="valofText"
+        v-on:child2parent="valofText = $event"
       ></custom-input>
       <p>vm.data => DOM</p>
-      presentation: {{ valueOfText }}
+      presentation: {{ valofText }}
     </div>
+
+    <!-- 父组件 data 选项中的响应式数据 valofText ==>
+    使用 v-bind 到自定义属性 textval ==>
+    父组件使用 prop 传递数据给子组件 -->
   </body>
 
   <script>
@@ -157,7 +161,7 @@
     new Vue({ el: "#box1" });
 
     Vue.component("custom-post", {
-      // 通过 prop 向子组件传递数据
+      // 父组件使用 prop 传递数据给子组件
       props: ["title"],
       template: '<p style="color: lightcoral">title: {{ title }}</p>',
     });
@@ -183,7 +187,7 @@
           <button @click="$emit('enlarge-text')">放大文本</button>
         -->
 
-        <!-- 子组件可以使用 $emit 函数的第 2..n 个形参, 抛出 (发射) 参数给父组件 -->
+        <!-- 子组件使用 $emit 函数的第 2..n 个形参, 抛出 (发射) 参数给父组件 -->
         <button @click="$emit('enlarge-text', 0.1/* args */)">放大文本</button>
         <div v-html="post.content"></div>
       </div>`,
@@ -222,10 +226,10 @@
       />`,
     });
 
-    new Vue({
+    const vm5 = new Vue({
       el: "#box5",
       data: {
-        valueOfText: "edit me!",
+        valofText: "edit me!",
       },
     });
   </script>
