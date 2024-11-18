@@ -116,23 +116,25 @@ var imageSmoother = function (img) {
    * @return {{number, number}}
    */
   const cnt = (cells) => {
-    let sum = 0, ret = 0
+    let sum = 0,
+      ret = 0;
     for (const cell of cells) {
-      const [x, y] = cell
-      if (x >= 0 && x < img.length &&
-        y >= 0 && y < img[0].length
-      ) {
-        sum += img[x][y]
-        ret++
+      const [x, y] = cell;
+      if (x >= 0 && x < img.length && y >= 0 && y < img[0].length) {
+        sum += img[x][y];
+        ret++;
       }
     }
     // console.log(sum, ret)
-    return { sum, ret }
-  }
+    return { sum, ret };
+  };
 
-  let ans = Array.from({
-    length: img.length
-  }, item => new Array(img[0].length))
+  let ans = Array.from(
+    {
+      length: img.length,
+    },
+    (item) => new Array(img[0].length),
+  );
   // console.log(ans)
 
   for (let i = 0; i < img.length; i++) {
@@ -146,14 +148,18 @@ var imageSmoother = function (img) {
         [i, j + 1],
         [i + 1, j - 1],
         [i + 1, j],
-        [i + 1, j + 1]
-      ])
+        [i + 1, j + 1],
+      ]);
       // console.log(sum, ret)
-      ans[i][j] = Math.floor(sum / ret)
+      ans[i][j] = Math.floor(sum / ret);
     }
   }
-  return ans
+  return ans;
 };
 console.log(
-  imageSmoother([[1, 1, 1], [1, 0, 1], [1, 1, 1]])
-)
+  imageSmoother([
+    [1, 1, 1],
+    [1, 0, 1],
+    [1, 1, 1],
+  ]),
+);

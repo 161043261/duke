@@ -18,5 +18,7 @@ console.log(path.basename(pathname));
 console.log(path.dirname(pathname));
 console.log(path.extname(pathname));
 
-const http_ = require('./http.js')
-console.log(http_)
+console.warn("Test require");
+require("./mod"); //! 多次 require 时, 只会执行一次
+require("./mod");
+require("./mod");

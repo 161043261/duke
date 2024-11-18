@@ -10,8 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/node": "^22.9.0",
+    "mongoose": "^8.8.1",
     "prettier": "^3.3.3",
-    "ts-playground": "file:"
+    "ts-playground": "file:",
+    "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
     "vitest": "^2.1.4"
