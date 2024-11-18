@@ -17,3 +17,6 @@ console.log(path.parse(pathname));
 console.log(path.basename(pathname));
 console.log(path.dirname(pathname));
 console.log(path.extname(pathname));
+
+const http_ = require('./http.js')
+console.log(http_)
