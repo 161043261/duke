@@ -107,59 +107,48 @@
 // );
 
 /**
- * @param {number[][]} img
- * @return {number[][]}
+ * @param {number} n
+ * @param {number[][]} queries
+ * @return {number[]}
  */
-var imageSmoother = function (img) {
-  /**
-   * @param {number[][]} cells
-   * @return {{number, number}}
-   */
-  const cnt = (cells) => {
-    let sum = 0,
-      ret = 0;
-    for (const cell of cells) {
-      const [x, y] = cell;
-      if (x >= 0 && x < img.length && y >= 0 && y < img[0].length) {
-        sum += img[x][y];
-        ret++;
+var shortestDistanceAfterQueries = function (n, queries) {
+  let nexts = Array.from({
+    length: n
+  }, (v, k) => [])
+
+  for (let i = 0; i < n - 1; i++) {
+    nexts[i].push(i + 1)
+  }
+
+  const bfs = () => {
+    let dist = new Array(n).fill(-1);
+    dist[0] = 0
+    let q = [0]
+
+    while (q.length > 0) {
+      let cur = q.shift()
+      for (const next of nexts[cur]) {
+        if (dist[next] >= 0) { // 已访问
+          continue
+        }
+        q.push(next)
+        dist[next] = dist[cur] + 1
       }
     }
-    // console.log(sum, ret)
-    return { sum, ret };
-  };
-
-  let ans = Array.from(
-    {
-      length: img.length,
-    },
-    (item) => new Array(img[0].length),
-  );
-  // console.log(ans)
-
-  for (let i = 0; i < img.length; i++) {
-    for (let j = 0; j < img[0].length; j++) {
-      let { sum, ret } = cnt([
-        [i - 1, j - 1],
-        [i - 1, j],
-        [i - 1, j + 1],
-        [i, j - 1],
-        [i, j],
-        [i, j + 1],
-        [i + 1, j - 1],
-        [i + 1, j],
-        [i + 1, j + 1],
-      ]);
-      // console.log(sum, ret)
-      ans[i][j] = Math.floor(sum / ret);
-    }
+    return dist[n - 1]
   }
-  return ans;
+
+  let ans = []
+
+  for (const query of queries) {
+    let [cur, next] = query
+    nexts[cur].push(next)
+    ans.push(bfs())
+  }
+
+  return ans
 };
+
 console.log(
-  imageSmoother([
-    [1, 1, 1],
-    [1, 0, 1],
-    [1, 1, 1],
-  ]),
-);
+  shortestDistanceAfterQueries(5, [[2, 4], [0, 2], [0, 4]])
+)
