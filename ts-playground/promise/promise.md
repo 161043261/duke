@@ -71,3 +71,17 @@ Promise 实例有 3 种 PromiseState
 1. 如果抛出异常, 则新 promise 的 PromiseState 为 rejected, reason 是抛出的异常
 2. 如果返回值为非 Promise 对象 (包括 Error 对象), 则新的 promise 的 PromiseState 为 fulfilled, PromiseResult 是返回值
 3. 也可以返回新的 Promise 对象
+
+### Promise 的方法
+
+1. [Promise.resolve()](./api/resolve.js) 返回的 Promise 实例的 PromiseState 可能为 fulfilled, 也可能为 rejected
+2. [Promise.reject()](./api/reject.js) 返回的 Promise 实例的 PromiseState 始终为 rejected
+3. [Promise.catch()](./api/catch.js) 指定异步任务失败时, 即 `reject(...); throw new Error(...)` 时的回调函数
+4. [Promise.all()](./api/all.js)
+   - 将多个子 promise 包装为一个新的 promise (将多个子异步任务包装为一个新的异步任务)
+   - 全部子 promise 都成功时, 新的 promise 成功 fulfilled
+   - 有一个子 promise 失败时, 新的 promise 失败 rejected
+5. Promise.race()
+6. Promise.allSettled()
+7. Promise.any()
+8. Promise.finally()
