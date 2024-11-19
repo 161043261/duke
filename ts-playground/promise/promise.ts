@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 // let timerId: number = setTimeout(() => { console.log("Sleeped 10s"), 10_000; });
 // console.log("Timer ID:", timerId);
 

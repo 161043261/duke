@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 /**
  * @param {number} x
  * @param {number} y

@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-require-imports */
 const fs = require("fs");
 
 // console.log(process.argv);
@@ -37,11 +39,24 @@ if (process.argv[2].toLowerCase() === "n") {
   p.then(
     (value) => {
       console.log(value.toString().slice(0, 10));
+
+      // TODO try to uncomment next line
+      // return value.toString().slice(0, 10)
     } /* onfulfilled */,
     (reason) => {
       console.log(reason);
     } /* onrejected */,
-  );
+  )
+
+    .then(
+      (value) => {
+        // TODO see output
+        console.log(value); // undefined
+      } /* onfulfilled */,
+      (reason) => {
+        console.log(reason);
+      } /* onrejected */,
+    );
   //#endregion
 } else {
   console.log("Useage: node demo1 [n|p], n as normal, p as promise");

@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-require-imports */
 // pnpm install mongoose
 
 //! docker exec -it mongo_container bash

@@ -75,6 +75,8 @@ services:
     container_name: mongo_container
     hostname: mongo_host
     restart: always
+    ports:
+      - "27017:27017"
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: pass
@@ -90,7 +92,7 @@ services:
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: pass
-      ME_CONFIG_MONGODB_URL: mongodb://root:pass@mongo:27017/
+      ME_CONFIG_MONGODB_URL: mongodb://root:pass@mongo_host:27017/
       ME_CONFIG_BASICAUTH: false
 
 # docker-compose down -v # volume

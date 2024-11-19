@@ -1,4 +1,6 @@
-var request = require("xmlhttprequest");
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-require-imports */
+const request = require("xmlhttprequest");
 
 let { XMLHttpRequest } = request;
 

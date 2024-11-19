@@ -13,12 +13,14 @@ test("test1", () => {
 test("test2", () => {
   let arr2d = new Array(2);
   for (let arr /* 值拷贝 */ of arr2d) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     arr = new Array(2).fill(1);
   }
   // [test2] First arr2d: [ <2 empty items> ]
   console.log("[test2] First arr2d:", arr2d);
 
   let entered = false;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   for (let idx in arr2d) {
     entered = true; //! 不会进入该 for 循环
   }

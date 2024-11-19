@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-require-imports */
 // fs: file system
 
 //! fs.writeFile(file, data[, options], callback)   异步写入
@@ -7,10 +9,10 @@
 //! fs.createWriteStream(path[, options])           (异步) 创建文件写入流
 
 // CommonJS
-// const fs = require("fs");
+const fs = require("fs");
 
 // ES module
-import fs from "fs";
+// import fs from "fs";
 
 //? Node.js 的磁盘操作是其他线程执行的
 //? handlerSync: 同步处理, JS 主线程等待其他线的执行结果, 效率较低

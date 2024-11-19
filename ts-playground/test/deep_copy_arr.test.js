@@ -24,7 +24,10 @@ test("test3", () => {
   const deepCopyObj = (obj) => {
     const newObj = {};
     for (let key in obj) {
-      if (obj.hasOwnProperty(key)) {
+      if (
+        Object.prototype.hasOwnProperty.call(obj, key)
+        // obj.hasOwnProperty(key)
+      ) {
         // 不是从原型链上继承的属性
         if (Array.isArray(obj[key] /* obj.key */)) {
           newObj[key] = deepCopyArr(obj[key]);

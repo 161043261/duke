@@ -7,7 +7,7 @@ function maxTotalValue(
   // 初始化 dp 数组
   // let rowCount = numGoods;
   // let columnCount = bagCapacity;
-  let dp: number[][] = new Array(numGoods)
+  const dp: number[][] = new Array(numGoods)
     .fill([])
     .map(() => new Array(bagCapacity + 1).fill(0));
 
@@ -41,11 +41,9 @@ function maxTotalValue(
   return dp[numGoods - 1][bagCapacity];
 }
 
-let numGoods = 7;
-let bagCapacity = 15;
-let weight: number[] = [2, 3, 5, 7, 1, 4, 1];
-let value: number[] = [10, 5, 15, 7, 6, 18, 3];
+const numGoods = 7;
+const bagCapacity = 15;
+const weight: number[] = [2, 3, 5, 7, 1, 4, 1];
+const value: number[] = [10, 5, 15, 7, 6, 18, 3];
 
 console.log(maxTotalValue(numGoods, bagCapacity, weight, value));
-
-export {};

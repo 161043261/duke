@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+// LCS 算法
 const A = "xzyzzyx";
 const B = "zxyyzxz";
 // interface ArrayLike<T> {
@@ -28,9 +28,9 @@ for (let i = 1; i < dp.length; i++) {
 console.log(dp);
 let cur = 0;
 let ans = "";
-let range = Math.min(A.length, B.length);
+const range = Math.min(A.length, B.length);
 for (let i = 1, j = 1; i <= range; i++) {
-  let j_ = j;
+  const j_ = j;
   for (; j <= i; j++) {
     if (dp[i][j] == cur + 1) {
       // 找到

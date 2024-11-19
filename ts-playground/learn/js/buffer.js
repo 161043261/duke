@@ -1,15 +1,17 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-undef */
 //! alloc: 分配一块已初始化的内存区域, 没有脏数据
-let buf = Buffer.alloc(10);
+const buf = Buffer.alloc(10);
 //! allocUnsafe: 分配一块未初始化的内存区域, 可能有脏数据
-let buf1 = Buffer.allocUnsafe(10);
+const buf1 = Buffer.allocUnsafe(10);
 
 //! Buffer.from 使用字符串创建 Buffer
-let buf2 = Buffer.from("Hello");
+const buf2 = Buffer.from("Hello");
 //! 调用 buf.toString 方法, 将 Buffer 转为字符串 (默认 UTF-8)
 console.log(buf2.toString()); // Hello
 
 //! Buffer.from 使用数组创建 Buffer
-let buf3 = Buffer.from([108 /* l */, 111 /* o */, 118 /* v */, 101 /* e */]);
+const buf3 = Buffer.from([108 /* l */, 111 /* o */, 118 /* v */, 101 /* e */]);
 //! 调用 buf.toString 方法, 将 Buffer 转为字符串 (默认 UTF-8)
 console.log(buf3.toString()); // love
 

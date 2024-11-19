@@ -1,5 +1,4 @@
 /**
- *
  * @param {(value: any) => void} resolve
  * @param {(reason?: any) => void} reject
  */
