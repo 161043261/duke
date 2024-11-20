@@ -899,7 +899,7 @@ repeating-radial-gradient 重复径向渐变, 相关参数同 radial-gradient
 
 ```css
 @font-face {
-  font-family: "HYWenHei";
+  font-family: "JS", "TS", "LXGW WenKai Mono", emoji;
   /* font-display: swap; */
   src: url("../assets/HYWenHei-45W.ttf") format("truetype");
 }
