@@ -12,7 +12,7 @@ const p2 = Promise.reject(
   }),
 );
 //! p2.PromiseState = rejected
-//! p2.PromiseResult = Promise { PromiseState: 'fufilled', PromiseResult: 'Any value' }
+//! p2.PromiseResult = Promise{ PromiseState: 'fufilled', PromiseResult: 'Any value' }
 console.log(p2);
 
 // 传递一个 PromiseState === rejected 的 Promise 对象
@@ -22,5 +22,5 @@ const p3 = Promise.reject(
   }),
 );
 //! p3.PromiseState = rejected
-//! p3.PromiseResult = Promise { PromiseState: 'rejected', PromiseResult: 'Any reason' }
+//! p3.PromiseResult = Promise{ PromiseState: 'rejected', PromiseResult: 'Any reason' }
 console.log(p3);

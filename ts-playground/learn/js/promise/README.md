@@ -75,9 +75,9 @@ Promise 对象有 3 种 PromiseState
 
 [demo5](./demo5.js)
 
-1. 如果抛出异常, 则新 promise 的 PromiseState 为 rejected, reason 是抛出的异常
+1. 如果抛出错误, 则新 promise 的 PromiseState 为 rejected, reason 是抛出的错误 Error 对象
 2. 如果返回值为非 Promise 对象 (包括 Error 对象), 则新的 promise 的 PromiseState 为 fulfilled, PromiseResult 是返回值
-3. 也可以返回新的 Promise 对象
+3. 可以返回新的 Promise 对象
 
 ### Promise 的方法
 
@@ -117,7 +117,7 @@ Promise 对象有 3 种 PromiseState
    - 如果 executor 函数体中是同步代码, 则先切换 promise 对象的 PromiseState, 后指定回调函数. 即先执行 executor 函数体, 后 then(...)
 
 ```js
-let p = new Promise((resolve, reject) => {
+const p = new Promise((resolve, reject) => {
   // 同步代码: 先执行 executor 函数体, 后 then(...)
   // resolve('ok')
   // reject('err')
@@ -130,7 +130,7 @@ let p = new Promise((resolve, reject) => {
 
 ```js
 // 这里是先执行 executor 函数体, 后 then(...)
-let p = new Promise((resolve, reject) => {
+const p = new Promise((resolve, reject) => {
   setTimeout(() => { resolve('ok'); }, 1000);
 }).then(...)
 

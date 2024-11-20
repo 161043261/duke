@@ -1,55 +1,54 @@
-[buildPlans.Js]
-family = "JS"
+[buildPlans.Ts]
+family = "TS"
 spacing = "normal"
 serifs = "sans"
 noCvSs = true
 exportGlyphNames = false
 
-  [buildPlans.Js.variants]
-  inherits = "ss06"
+  [buildPlans.Ts.variants]
+  inherits = "ss05"
 
-    [buildPlans.Js.variants.design]
-    two = "straight-neck-serifless"
+    [buildPlans.Ts.variants.design]
     six = "straight-bar"
     nine = "straight-bar"
+    zero = "dotted"
     capital-g = "toothed-serifless-hookless"
+    capital-m = "hanging-serifless"
     capital-q = "crossing"
-    tittle = "round"
-    diacritic-dot = "round"
-    punctuation-dot = "round"
+    f = "flat-hook-serifless"
+    g = "single-storey-serifless"
+    r = "hookless-serifless"
     ampersand = "closed"
-    at = "compact"
-    lig-ltgteq = "slanted"
 
-  [buildPlans.Js.ligations]
+  [buildPlans.Ts.ligations]
   inherits = "javascript"
 
-[buildPlans.Js.weights.Light]
+[buildPlans.Ts.weights.Light]
 shape = 300
 menu = 300
 css = 300
 
-[buildPlans.Js.weights.Regular]
+[buildPlans.Ts.weights.Regular]
 shape = 400
 menu = 400
 css = 400
 
-[buildPlans.Js.weights.Medium]
+[buildPlans.Ts.weights.Medium]
 shape = 500
 menu = 500
 css = 500
 
-[buildPlans.Js.weights.SemiBold]
+[buildPlans.Ts.weights.SemiBold]
 shape = 600
 menu = 600
 css = 600
 
-[buildPlans.Js.weights.Bold]
+[buildPlans.Ts.weights.Bold]
 shape = 700
 menu = 700
 css = 700
 
-[buildPlans.Js.widths.Normal]
+[buildPlans.Ts.widths.Normal]
 shape = 500
 menu = 5
 css = "normal"

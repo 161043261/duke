@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use strict";
 function countValidSelections(nums) {
   let ans = 0;

@@ -417,7 +417,7 @@ const promise = new Promise((resolve, reject) => {
 });
 
 setTimeout(() => {
-  // TODO Event loop: Promise (fulfilled) Promise { undefined }
+  // TODO Event loop: Promise (fulfilled) Promise{ undefined }
   console.log("Event loop: Promise (fulfilled)", promise);
 }, 0);
 
