@@ -7,7 +7,9 @@ const p = new Promise(
     reject /* function reject(reason: any): void */,
   ) => {
     resolve("ok1");
-    console.warn("[Preface] p.PromiseStage: pending => fulfilled, p.PromiseResult = 'ok1'")
+    console.warn(
+      "[Preface] p.PromiseStage: pending => fulfilled, p.PromiseResult = 'ok1'",
+    );
   },
 );
 
@@ -15,14 +17,16 @@ const p = new Promise(
 const p1 = p.then(
   (value) => {
     console.log("[Stage1] value:", value); //! value: ok1
-    console.warn("[Stage1] p1.PromiseState: pending => rejected, p1.PromiseResult = `new Error('err')`")
+    console.warn(
+      "[Stage1] p1.PromiseState: pending => rejected, p1.PromiseResult = `new Error('err')`",
+    );
     // return new Error('err') // 走 onfulfilled
-    throw new Error('err'); // 走 onrejected
+    throw new Error("err"); // 走 onrejected
   },
   (reason) => {
     console.log(reason);
   },
-)
+);
 
 // debugger
 const p2 = p1.then(
@@ -34,28 +38,34 @@ const p2 = p1.then(
     //!!! 复活赛
     return new Promise((resolve, reject) => {
       resolve("ok2");
-      console.warn("[Stage2] p2.PromiseState: pending => fulfilled, p2.PromiseResult = 'ok2'");
+      console.warn(
+        "[Stage2] p2.PromiseState: pending => fulfilled, p2.PromiseResult = 'ok2'",
+      );
     });
   }, // onrejected
-)
+);
 
 // debugger
 const p3 = p2.then(
   (value) => {
-    console.log("[Stage3] value:", value)
-    console.warn("[Stage3] p3.PromiseState: pending => fulfilled, p3.PromiseResult = 'done'");
+    console.log("[Stage3] value:", value);
+    console.warn(
+      "[Stage3] p3.PromiseState: pending => fulfilled, p3.PromiseResult = 'done'",
+    );
     return "done";
   },
   (reason) => {
     console.log(reason);
   },
-)
+);
 
 // debugger
 const p4 = p3.then(
   (value) => {
-    console.log("[Stage4] value:", value) // value: ok2
-    console.warn("[Stage4] p4.PromiseState: pending => fulfilled, p4.PromiseResult = undefined")
+    console.log("[Stage4] value:", value); // value: ok2
+    console.warn(
+      "[Stage4] p4.PromiseState: pending => fulfilled, p4.PromiseResult = undefined",
+    );
     // return undefined
   },
   (reason) => {

@@ -1,5 +1,12 @@
 # Promise
 
+**executor**
+
+```js
+const executor = (resolve, reject) => {};
+new Promise(executor);
+```
+
 Promise 的优点
 
 1. 传统的: 必须在启动异步任务前, 指定回调函数
@@ -79,12 +86,55 @@ Promise 对象有 3 种 PromiseState
    - 传递一个 PromiseState == fulfilled 的 Promise 对象, 返回的 promise 的 PromiseState 为 fulfilled
    - 传递一个 PromiseState == rejected 的 Promise 对象, 返回的 promise 的 PromiseState 为 rejected
 2. [Promise.reject()](./api/reject.js) 返回的 promise 的 PromiseState 始终为 rejected
-3. [Promise.catch()](./api/catch.js) 指定异步任务失败时, 即 `reject(...); throw new Error(...)` 时的回调函数
-4. [Promise.all()](./api/all.js)
-   - 将多个子 promise 包装为一个新的 promise (将多个子异步任务包装为一个新的异步任务)
-   - 全部子 promise 都成功时, 新的 promise 成功 fulfilled
-   - 有一个子 promise 失败时, 新的 promise 失败 rejected
-5. Promise.race()
-6. Promise.allSettled()
-7. Promise.any()
-8. Promise.finally()
+3. [Promise.catch()](./api/catch.js) 指定异步任务失败时, 即 `reject(...); throw new Error(...)` 时的错误处理函数
+4. [Promise.finally()](./api/finally.js) 不管 PromiseState 是 fulfilled 还是 rejected, 最终都会执行
+
+`Promise.all(), Promise.any(), Promise.race(), Promise.allSettled`: 将一组子 promise 包装为一个新的 promise (将一组子异步任务包装为一个新的异步任务)
+
+1. [Promise.all()](./api/all.js)
+   - 有一个子 promise 失败时, 返回的 promise 失败 rejected
+   - 全部子 promise 都成功时, 返回的 promise 才成功 fulfilled
+2. [Promise.any()](./api/any.js)
+   - 有一个子 promise 成功时, 返回的 promise 成功 fulfilled
+   - 全部子 promise 都失败时, 返回的 promise 才失败 rejected
+3. [Promise.race()](./api/race.js)
+   - 最先切换 PromiseState 的子 promise 成功时, 返回的 promise 成功 fulfilled
+   - 最先切换 PromiseState 的子 promise 失败时, 返回的 promise 失败 rejected
+4. [Promise.allSettled()](./api/allSettled.js)
+   - settled: 包含 fulfilled 和 rejected 两种情况
+   - 全部子 promise 是否都 "已解决" (可能成功, 可能失败)
+
+### 终止 Promise 链
+
+有且只有一种方式: 返回一个 PromiseState = pending 的 promise 对象, 且 finally 块的无参回调函数**不会**被执行 [abort](./abort.js)
+
+### 关键问题
+
+1. 可以指定多个回调函数 [multi_cb](./multi_cb.js)
+2. 切换 promise 对象的 PromiseState 和指定回调函数的先后问题
+   - `const executor = (resolve, reject) => {...}`
+   - 如果 executor 函数体中是异步代码, 则先指定回调函数, 后切换 promise 对象的 PromiseState. 即先 then(...), 后执行 executor 函数体
+   - 如果 executor 函数体中是同步代码, 则先切换 promise 对象的 PromiseState, 后指定回调函数. 即先执行 executor 函数体, 后 then(...)
+
+```js
+let p = new Promise((resolve, reject) => {
+  // 同步代码: 先执行 executor 函数体, 后 then(...)
+  // resolve('ok')
+  // reject('err')
+
+  // 异步代码: 先 then(...), 后执行 executor 函数体
+  setTimeout(() => { resolve('ok'); }, 1000);
+})
+.then(...) // 指定回调函数 onfulfilled, onrejected
+```
+
+```js
+// 这里是先执行 executor 函数体, 后 then(...)
+let p = new Promise((resolve, reject) => {
+  setTimeout(() => { resolve('ok'); }, 1000);
+}).then(...)
+
+setTimeout(() => {
+  p.then(...) // 指定回调函数 onfulfilled, onrejected
+}, 3000)
+```
