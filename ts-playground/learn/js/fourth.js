@@ -42,7 +42,8 @@ p1.walk();
 ///////////////////
 // 改变 this 的指向
 ///////////////////
-//! func.call(thisVal, ...args); func.apply(thisVal, args[]);
+//! func.call(thisVal, ...args);
+//! func.apply(thisVal, args[]);
 //! 指定 this 的值为 thisVal
 function icmp(...args) {
   console.log(this, args);

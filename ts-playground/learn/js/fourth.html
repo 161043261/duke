@@ -8,6 +8,18 @@
       * {
         font-family: "TS", "LXGW WenKai Mono", emoji;
       }
+
+      #outer {
+        width: 130px;
+        height: 130px;
+        background-color: lightpink;
+      }
+
+      #inner {
+        width: 100px;
+        height: 100px;
+        background-color: lightblue;
+      }
     </style>
   </head>
 
@@ -24,7 +36,16 @@
     节流 (throttle): 连续触发事件, n 秒内函数只执行第 1 次 (技能 CD)<br />
     思路: 闭包 + 定时器<br />
     <button type="button" class="throttle">throttle</button>
+
+    <hr />
+    区别 <code>event.currentTarget</code> 和 <code>event.target</code>
+
+    <div id="outer">
+      click outer
+      <div id="inner">click inner</div>
+    </div>
   </body>
+
   <script>
     const btn = document.querySelector("button");
 
@@ -70,5 +91,21 @@
         };
       })(),
     );
+
+    const outerBtn = document
+      .getElementById("outer")
+      .addEventListener("click", function (event) {
+        // curentTarget 附加了事件处理函数的元素
+        console.log("currentTarget:", event.currentTarget.id);
+        // this 附加了事件处理函数的元素
+        console.log("this:", this.id);
+        // target 实际触发事件的元素
+        console.log("target:", event.target.id);
+      });
+
+    // 点击 outer div
+    // currentTarget: outer; this: outer; target: outer
+    // 点击 inner div
+    // currentTarget: outer; this: outer; target: inner
   </script>
 </html>
