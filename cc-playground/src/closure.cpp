@@ -10,7 +10,7 @@ auto outer() {
   auto cnt = make_shared<int>(1);
   using t = function<void()>;
   auto ret = make_shared<t>([cnt]() -> void {
-    std::cout << "Called " << *cnt << " times";
+    std::cout << "Called " << *cnt << " times\n";
     (*cnt)++;
   });
   return ret;

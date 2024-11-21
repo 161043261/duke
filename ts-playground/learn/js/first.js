@@ -1,3 +1,4 @@
+//! 闭包
 function outer() {
   let cnt = 1;
   return () => {
@@ -34,7 +35,7 @@ try {
     console.log("bar1");
   };
 } catch (e) {
-  console.log(e.toString().slice(16));
+  console.error(e.toString().slice(16));
 }
 
 try {
@@ -43,7 +44,7 @@ try {
     console.log("bar2");
   };
 } catch (e) {
-  console.log(e.toString().slice(16));
+  console.error(e.toString().slice(16));
 }
 
 //! 参数默认值
@@ -60,32 +61,32 @@ function sum() {
   // [Arguments] { '0': 1, '1': 2, '2': 3 }
   console.log(arguments);
   let ret = 0;
-  for (let i = 0; i < arguments.length; i++) {
-    ret += arguments[i];
+  for (let key /* string */ in arguments) {
+    ret += arguments[key];
   }
   return ret;
 }
 
 console.log(sum(1, 2, 3)); // 6
 
-//! 剩余参数
-function req(url, ...methods) {
-  console.log(url); // google.com
-  console.log(methods); // [ 'get', 'post' ]
+//! 剩余参数 (最右边)
+function req(url, ...queries) {
+  console.log(url);
+  console.log(queries);
 }
-req("google.com", "get", "post");
+req("developer.mozilla.org", "zh-CN", "docs", "Learn");
 
-// 1. 箭头函数不能使用 arguments 动态参数, 可以使用 ...剩余参数
-// 2. 箭头函数没有 this, this 被视为变量到外层查找
-
+//!1. 箭头函数不能使用 arguments 动态参数, 可以使用 ...剩余参数
+//!2. 箭头函数 (lambda 表达式) 没有 this, this 被视为变量向外层查找
+//!3. 匿名函数 (函数表达式) 和具名函数有 this, this 指向函数的调用者
 const fn = () => {
-  console.log(this); // {}, Window{}
+  console.log(this); // {} | Window{}
 };
 fn();
 
 const o1 = {
   method: () => {
-    console.log(this); // {}, Window{}
+    console.log(this); // {} | Window{}
   },
 };
 o1.method();

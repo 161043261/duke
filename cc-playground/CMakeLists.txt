@@ -12,7 +12,7 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
 # 指定 c++ 语言级别
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # 使用 clang
@@ -59,6 +59,8 @@ endif ()
 # 添加可执行文件
 add_executable(auto_ptr ./src/auto_ptr.cpp)
 add_executable(solution ./src/solution.cpp)
+add_executable(closure ./src/closure.cpp)
+add_executable(backtrack ./src/backtrack.cpp)
 
 # 链接 ??? 库
 target_link_libraries(auto_ptr GTest::gtest_main)

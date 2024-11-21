@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        font-family: "TS", "LXGW WenKai Mono", emoji;
+      }
+    </style>
+  </head>
+
+  <body>
+    DOM 事件的回调函数不推荐使用箭头函数<br />
+    <button type="button">click me!</button>
+
+    <hr />
+    防抖 (debounce): 连续触发事件, n 秒内函数只执行最后 1 次 (回城)<br />
+    思路: 闭包 + 定时器<br />
+    <button type="button" class="debounce">debounce</button>
+
+    <hr />
+    节流 (throttle): 连续触发事件, n 秒内函数只执行第 1 次 (技能 CD)<br />
+    思路: 闭包 + 定时器<br />
+    <button type="button" class="throttle">throttle</button>
+  </body>
+  <script>
+    const btn = document.querySelector("button");
+
+    btn.addEventListener("click", () => {
+      console.log(this); // Window{}
+    });
+
+    btn.addEventListener("click", function () {
+      console.log(this); // DOM element
+    });
+
+    const debounceBtn = document.querySelector(".debounce");
+    debounceBtn.addEventListener(
+      "click",
+      (() => {
+        let timerId = null;
+        return function () {
+          if (timerId !== null) {
+            console.log("WTF, don't click anymore!");
+            clearTimeout(timerId);
+          }
+          timerId = setTimeout(() => {
+            console.log("Debounce");
+          }, 3000);
+        };
+      })(),
+    );
+
+    const throttleBtn = document.querySelector(".throttle");
+    throttleBtn.addEventListener(
+      "click",
+      (() => {
+        let timerId = null;
+        return function () {
+          if (timerId !== null) {
+            console.log("Damn, don't click anymore!");
+            return;
+          }
+          timerId = setTimeout(() => {
+            console.log("Throttle");
+            timerId = null;
+          }, 3000);
+        };
+      })(),
+    );
+  </script>
+</html>
