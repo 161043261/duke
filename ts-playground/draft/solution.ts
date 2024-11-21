@@ -1,26 +1,58 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-function countValidSelections(nums: number[]): number {
-  let ans = 0;
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[i] != 0) {
-      continue;
+function nonSpecialCount_(l: number, r: number): number {
+  const isSpecialCount = function (n: number): boolean {
+    if (n == 1) {
+      return false;
     }
-    for (let direction of [-1, 1]) {
-      const tempNums = nums.slice();
-      let curr = i;
-      while (curr >= 0 && curr < nums.length) {
-        if (tempNums[curr] == 0) {
-          curr += direction;
-        } else if (tempNums[curr] > 0) {
-          tempNums[curr]--;
-          direction *= -1;
-          curr += direction;
-        }
+
+    if (Math.floor(Math.sqrt(n)) != Math.sqrt(n)) {
+      return false;
+    }
+
+    for (let i = 2; i < Math.sqrt(n); i++) {
+      if (n % i == 0) {
+        return false;
       }
-      if (tempNums.every((num) => num === 0)) {
-        ans++;
-      }
+    }
+    return true;
+  };
+
+  let ans = 0;
+  for (let i = l; i <= r; i++) {
+    if (!isSpecialCount(i)) {
+      ans++;
     }
   }
   return ans;
 }
+
+function nonSpecialCount(l: number, r: number): number {
+  const n = Math.floor(Math.sqrt(r));
+  const v = new Array<number>(n + 1).fill(0);
+  let res = r - l + 1;
+  for (let i = 2; i <= n; i++) {
+    if (v[i] == 0) {
+      if (i * i >= l && i * i <= r) {
+        res--;
+      }
+      for (let j = i * i; j <= n; j += i) {
+        v[j] = 1;
+      }
+    }
+  }
+  return res;
+}
+
+const countPrimes = function (n: number) {
+  const isPrim = new Array(n).fill(1);
+  let ans = 0;
+  for (let i = 2; i < n; i++) {
+    if (isPrim[i] == 1) {
+      ans++;
+    }
+    for (let j = i * i; j < n; j += i) {
+      isPrim[j] = 0;
+    }
+  }
+  return ans;
+};

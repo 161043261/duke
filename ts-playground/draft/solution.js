@@ -1,112 +1,53 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-"use strict";
-
-/**
- * @param {number} n
- * @param {number[][]} queries
- * @return {number[]}
- */
-var shortestDistanceAfterQueries = function (n, queries) {
-  let dp = Array.from(
-    {
-      length: n,
-    },
-    (val, idx) => {
-      return idx;
-    },
-  );
-  console.log(dp); // when n = 5, dp = [ 0, 1, 2, 3, 4 ]
-
-  /**
-   * @type {number[][]}
-   */
-  let prev = Array.from(
-    {
-      length: n,
-    },
-    (val, idx) => {
-      if (idx === 0) {
-        return;
-      }
-      return idx - 1;
-    },
-  );
-  console.log(prev);
-
-  let ans = [];
-
-  for (const query of queries) {
-    // p --> q
-    let [p, q] = query;
-    prev[q].push(p);
-
-    for (let j = q; j < n; j++) {
-      for (let i of prev[j]) {
-        dp[j] = Math.min(dp[j], dp[i] + 1);
+function nonSpecialCount_(l, r) {
+  var isSpecialCount = function (n) {
+    if (n == 1) {
+      return false;
+    }
+    if (Math.floor(Math.sqrt(n)) != Math.sqrt(n)) {
+      return false;
+    }
+    for (var i = 2; i < Math.sqrt(n); i++) {
+      if (n % i == 0) {
+        return false;
       }
     }
-    ans.push(dp[n - 1]);
+    return true;
+  };
+  var ans = 0;
+  for (var i = l; i <= r; i++) {
+    if (!isSpecialCount(i)) {
+      ans++;
+    }
   }
   return ans;
-};
-
-/**
- * @param {number} n
- * @param {number[][]} queries
- * @return {number[]}
- */
-var shortestDistanceAfterQueries_ = function (n, queries) {
-  /**
-   * @type {number[]}
-   */
-  const pa = Array.from(
-    {
-      length: n - 1,
-    },
-    (val, idx) => {
-      return idx;
-    },
-  );
-
-  /**
-   * @param {number} x
-   */
-  const find = (x) => {
-    let root = x;
-    while (pa[root] !== root) {
-      root = pa[root];
+}
+function nonSpecialCount(l, r) {
+  var n = Math.floor(Math.sqrt(r));
+  var v = new Array(n + 1).fill(0);
+  var res = r - l + 1;
+  for (var i = 2; i <= n; i++) {
+    if (v[i] == 0) {
+      if (i * i >= l && i * i <= r) {
+        res--;
+      }
+      for (var j = i * i; j <= n; j += i) {
+        v[j] = 1;
+      }
     }
-
-    // pa[root] === root
-
-    //! 路径压缩
-    while (pa[x] !== root) {
-      let temp = pa[x];
-      pa[x] = root;
-      x = temp;
-    }
-    // pa[x] === root
-    return root;
-  };
-
-  /**
-   * @type {number[]}
-   */
-  const ans = [];
-  let cnt = n - 1;
-
-  for (const query of queries) {
-    let [p, q] = query;
-    // FIXME
-    q--;
-    const j = find(q);
-
-    for (let i = find(p); i < q; i = find(i + 1)) {
-      pa[i] = j;
-      cnt--;
-    }
-    ans.push(cnt);
   }
-
+  return res;
+}
+var countPrimes = function (n) {
+  var isPrim = new Array(n).fill(1);
+  var ans = 0;
+  for (var i = 2; i < n; i++) {
+    if (isPrim[i] == 1) {
+      ans++;
+    }
+    for (var j = i * i; j < n; j += i) {
+      isPrim[j] = 0;
+    }
+  }
   return ans;
 };
