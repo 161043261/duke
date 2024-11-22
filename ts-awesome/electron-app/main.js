@@ -1,14 +1,25 @@
 // console.log("Hello from Electron 👋");
 
-import { app, BrowserWindow } from "electron";
+const { app, BrowserWindow } = require("electron/main");
+const path = require("node:path");
+
+//// const __dirname = import.meta.dirname;
+// import { dirname } from "node:path";
+// import { fileURLToPath } from "node:url";
+// const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const createWindow = () => {
-  const window = new BrowserWindow({
+  const win = new BrowserWindow({
     width: 800,
     height: 600,
+    webPreferences: {
+      //! must be a string, can NOT be a anonymous function!!!
+      preload: path.join(__dirname, "preload.js"),
+    },
   });
 
-  window.loadFile("index.html");
+  win.loadFile("index.html");
+  win.webContents.openDevTools();
 };
 
 app.whenReady().then(() => {
