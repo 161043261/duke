@@ -1,6 +1,4 @@
-// console.log("Hello from Electron 👋");
-
-const { app, BrowserWindow } = require("electron/main");
+const { app, BrowserWindow, ipcMain } = require("electron/main");
 const path = require("node:path");
 
 //// const __dirname = import.meta.dirname;
@@ -13,7 +11,6 @@ const createWindow = () => {
     width: 800,
     height: 600,
     webPreferences: {
-      //! must be a string, can NOT be a anonymous function!!!
       preload: path.join(__dirname, "preload.js"),
     },
   });
@@ -23,6 +20,7 @@ const createWindow = () => {
 };
 
 app.whenReady().then(() => {
+  ipcMain.handle('pingChannel', () => 'pong')
   createWindow();
 
   app.on("activate", () => {

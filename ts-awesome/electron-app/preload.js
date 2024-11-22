@@ -1,4 +1,6 @@
-// 主进程: 从主进程访问 HTML 文档对象模型 (DOM) 是不可能的
+// preload.js 由 node 主进程执行
+// node 主进程直接访问 HTML 文档对象模型 (DOM) 是不可能的
+// 解决方法: 使用 Electron 的 ipcMain 模块和 ipcRenderer 模块进行进程间通信
 
 const { contextBridge, ipcRenderer } = require("electron/renderer");
 
@@ -33,5 +35,7 @@ contextBridge.exposeInMainWorld("versions", {
     return process.versions.electron;
   },
 
-  ping: () => ipcRenderer.invoke('ping')
+  ping: () => ipcRenderer.invoke('pingChannel')
+  // node 主进程
+  // ipcMain.handle('ping', () => 'pong')
 });
