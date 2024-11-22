@@ -85,57 +85,59 @@ public class ThreadTest {
 
   @Test // ! mvn -Dtest=ThreadTest#testJoin test -q
   public void testJoin() {
-    Thread t1 = new Thread(
-        () -> {
-          try {
-            Thread.sleep(3000);
-          } catch (InterruptedException ignored) {
-          }
-          System.out.println("I'm thread1!");
-        },
-        "thread1");
+    Thread t1 =
+        new Thread(
+            () -> {
+              try {
+                Thread.sleep(3000);
+              } catch (InterruptedException ignored) {
+              }
+              System.out.println("I'm thread1!");
+            },
+            "thread1");
     t1.start();
     try {
       t1.join(); // 主线程等待 t1 线程运行结束
     } catch (InterruptedException ignored) {
     }
     new Thread(
-        () -> {
-          System.out.println("I'm thread2!");
-        },
-        "thread2")
+            () -> {
+              System.out.println("I'm thread2!");
+            },
+            "thread2")
         .start();
     new Thread(
-        () -> {
-          System.out.println("I'm thread3!");
-        },
-        "thread3")
+            () -> {
+              System.out.println("I'm thread3!");
+            },
+            "thread3")
         .start();
   }
 
   @Test // ! mvn -Dtest=ThreadTest#testDaemon test -q
   public void testDaemon() {
-    Thread t1 = new Thread(
-        () -> {
-          try {
-            Thread.sleep(3000);
-            System.out.println("I'm " + Thread.currentThread().getName());
-          } catch (InterruptedException ignored) {
-          }
-        },
-        "Daemon concurrent");
+    Thread t1 =
+        new Thread(
+            () -> {
+              try {
+                Thread.sleep(3000);
+                System.out.println("I'm " + Thread.currentThread().getName());
+              } catch (InterruptedException ignored) {
+              }
+            },
+            "Daemon concurrent");
     t1.setDaemon(true);
     t1.start();
 
     new Thread(
-        () -> {
-          try {
-            Thread.sleep(1000);
-            System.out.println("I'm " + Thread.currentThread().getName());
-          } catch (InterruptedException ignored) {
-          }
-        },
-        "Normal concurrent")
+            () -> {
+              try {
+                Thread.sleep(1000);
+                System.out.println("I'm " + Thread.currentThread().getName());
+              } catch (InterruptedException ignored) {
+              }
+            },
+            "Normal concurrent")
         .start();
     System.out.println("I'm Main concurrent");
   }

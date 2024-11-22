@@ -9,8 +9,7 @@ import org.junit.jupiter.api.Test;
 public class ThreadStateTest {
   @Test // ! mvn -Dtest=ThreadStateTest#testNew test -q
   public void testNew() {
-    Thread t = new Thread(() -> {
-    });
+    Thread t = new Thread(() -> {});
     System.out.println(t.getState()); // new
   }
 

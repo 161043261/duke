@@ -73,29 +73,30 @@ public class ForkJoinTest {
       long sumUpDo();
     }
 
-    SumUp sumUp = () -> {
-      ExecutorService fixedThreadPool = Executors.newFixedThreadPool(parallel);
-      var range = ceil / parallel;
+    SumUp sumUp =
+        () -> {
+          ExecutorService fixedThreadPool = Executors.newFixedThreadPool(parallel);
+          var range = ceil / parallel;
 
-      var futArr = new ArrayList<Future<Long>>();
-      for (var i = 0; i < parallel; i++) {
-        var from = i * range;
-        var to = from + range;
-        if (i == parallel - 1) {
-          to = ceil + 1;
-        }
-        var fut = fixedThreadPool.submit(new SumTask(from, to));
-        futArr.add(fut);
-      }
-      var ret = 0L;
-      for (var fut : futArr) {
-        try {
-          ret += fut.get();
-        } catch (InterruptedException | ExecutionException ignored) {
-        }
-      }
-      return ret;
-    };
+          var futArr = new ArrayList<Future<Long>>();
+          for (var i = 0; i < parallel; i++) {
+            var from = i * range;
+            var to = from + range;
+            if (i == parallel - 1) {
+              to = ceil + 1;
+            }
+            var fut = fixedThreadPool.submit(new SumTask(from, to));
+            futArr.add(fut);
+          }
+          var ret = 0L;
+          for (var fut : futArr) {
+            try {
+              ret += fut.get();
+            } catch (InterruptedException | ExecutionException ignored) {
+            }
+          }
+          return ret;
+        };
     var begin = System.nanoTime();
     var unused = sumUp.sumUpDo();
     var end = System.nanoTime();

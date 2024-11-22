@@ -1,15 +1,13 @@
 package com.bronya;
 
 import java.util.Map;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import redis.clients.jedis.Jedis;
 
 public class JedisTest {
-  private  Jedis jedis;
+  private Jedis jedis;
 
   @BeforeEach
   void init() {
@@ -22,7 +20,8 @@ public class JedisTest {
     jedis.select(0);
   }
 
-  @AfterEach void tearDown() {
+  @AfterEach
+  void tearDown() {
     if (jedis != null) {
       jedis.close();
     }
@@ -42,7 +41,7 @@ public class JedisTest {
     String field = jedis.hget("user:1", "name");
     System.out.println(field);
     jedis.hset("user:1", "framework", "Vue");
-    Map<String,String> kvs = jedis.hgetAll("user:1");
+    Map<String, String> kvs = jedis.hgetAll("user:1");
     System.out.println(kvs);
   }
 }

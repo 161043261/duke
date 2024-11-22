@@ -4,7 +4,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicIntegerArray;
 import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 import java.util.concurrent.atomic.AtomicReference;
-
 import org.junit.jupiter.api.Test;
 
 public class AtomicTest {
@@ -19,7 +18,7 @@ public class AtomicTest {
     System.out.println("Get: atomicInt = " + atomicInt.get()); // 2
   }
 
-  private static int[] initArr = new int[] { 1, 2, 3 };
+  private static int[] initArr = new int[] {1, 2, 3};
   private static AtomicIntegerArray atomicIntArr = new AtomicIntegerArray(initArr);
 
   @Test
@@ -60,8 +59,8 @@ public class AtomicTest {
   }
 
   // 创建一个原子更新器, 指定更新的类; 字段 (volatile 修饰)
-  private static final AtomicIntegerFieldUpdater<User> atomicIntFieldUpdater = AtomicIntegerFieldUpdater
-      .newUpdater(User.class, "age" /* volatile 修饰 */);
+  private static final AtomicIntegerFieldUpdater<User> atomicIntFieldUpdater =
+      AtomicIntegerFieldUpdater.newUpdater(User.class, "age" /* volatile 修饰 */);
 
   @Test
   void testAtomicIntegerFieldUpdater() {

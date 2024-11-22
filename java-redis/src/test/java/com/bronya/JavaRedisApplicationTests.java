@@ -2,14 +2,13 @@ package com.bronya;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.Map;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
-
-import java.util.Map;
 
 @SpringBootTest
 class JavaRedisApplicationTests {
@@ -20,8 +19,8 @@ class JavaRedisApplicationTests {
   @Autowired
   // private RedisTemplate<String, String> redisTemplate;
   private RedisTemplate<String, Object> redisTemplateBean;
-  @Autowired
-  private StringRedisTemplate stringRedisTemplate;
+
+  @Autowired private StringRedisTemplate stringRedisTemplate;
 
   @Test // mvn test -Dtest=JavaRedisApplicationTests#testString -q
   void testString() {
@@ -41,8 +40,7 @@ class JavaRedisApplicationTests {
     System.out.println(user);
   }
 
-  @Autowired
-  private StringRedisTemplate strRedisTemplate;
+  @Autowired private StringRedisTemplate strRedisTemplate;
   private static final ObjectMapper mapper = new ObjectMapper();
 
   @Test

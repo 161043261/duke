@@ -7,11 +7,10 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
 
-
 @Configuration
 public class RedisConf {
 
-  //! 方法名
+  // ! 方法名
   @Bean
   public RedisTemplate<String, Object> redisTemplateBean(RedisConnectionFactory factory) {
     // 创建 RedisTemplate 连接对象

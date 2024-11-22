@@ -2537,6 +2537,7 @@ snapshots:
   "ts-playground@file:":
     dependencies:
       "@types/node": 22.9.0
+      lodash: 4.17.21
       mongoose: 8.8.1
       prettier: 3.3.3
       xmlhttprequest: 1.8.0

@@ -6,7 +6,6 @@ import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.locks.ReentrantLock;
-
 import org.junit.jupiter.api.Test;
 
 // 生产者-消费者问题
@@ -19,27 +18,29 @@ public class ProducerConsumerTest {
   @Test
   void testEarlyNotify() {
     var mut = ProducerConsumerTest.class;
-    Thread waiter = new Thread(
-        () -> {
-          synchronized (mut) {
-            System.out.println(Thread.currentThread().getName() + ": Waiting...");
-            while (flag) {
-              try {
-                mut.wait();
-              } catch (InterruptedException ignored) {
+    Thread waiter =
+        new Thread(
+            () -> {
+              synchronized (mut) {
+                System.out.println(Thread.currentThread().getName() + ": Waiting...");
+                while (flag) {
+                  try {
+                    mut.wait();
+                  } catch (InterruptedException ignored) {
+                  }
+                }
+                System.out.println(Thread.currentThread().getName() + ": Waken up!");
               }
-            }
-            System.out.println(Thread.currentThread().getName() + ": Waken up!");
-          }
-        });
-    Thread notifier = new Thread(
-        () -> {
-          synchronized (mut) {
-            System.out.println(Thread.currentThread().getName() + ": Notify~");
-            mut.notifyAll();
-            flag = false;
-          }
-        });
+            });
+    Thread notifier =
+        new Thread(
+            () -> {
+              synchronized (mut) {
+                System.out.println(Thread.currentThread().getName() + ": Notify~");
+                mut.notifyAll();
+                flag = false;
+              }
+            });
     notifier.start(); // 过早唤醒
     try {
       Thread.sleep(3000);
@@ -54,39 +55,41 @@ public class ProducerConsumerTest {
   void testCondChange() {
     final var strArr /* mut */ = new ArrayList<String>();
     final var mut = strArr;
-    Runnable consume = () -> {
-      synchronized (mut) {
-        while /* 不可以使用 if, 预防 str.isEmpty(); 等待条件改变, 导致抛出异常 */ (strArr.isEmpty()) {
-          System.out.println(
-              Thread.currentThread().getName() + " [x] Array is empty, waiting...");
-          try {
-            mut.wait();
-          } catch (InterruptedException ignored) {
-          }
-          System.out.println(
-              Thread.currentThread().getName() + " [o] Array is not empty, waken up!");
-        }
-        String elem = strArr.removeFirst(); // 等价于 strArr.remove(0);
-        System.out.println(
-            Thread.currentThread().getName() + " <== Consumer is removing data: " + elem);
-      }
-    };
-
-    Thread producer = new Thread(
+    Runnable consume =
         () -> {
-          try {
-            Thread.sleep(3000);
-          } catch (InterruptedException ignored) {
-          }
           synchronized (mut) {
-            var elem = "Duke";
-            strArr.add(elem);
+            while /* 不可以使用 if, 预防 str.isEmpty(); 等待条件改变, 导致抛出异常 */ (strArr.isEmpty()) {
+              System.out.println(
+                  Thread.currentThread().getName() + " [x] Array is empty, waiting...");
+              try {
+                mut.wait();
+              } catch (InterruptedException ignored) {
+              }
+              System.out.println(
+                  Thread.currentThread().getName() + " [o] Array is not empty, waken up!");
+            }
+            String elem = strArr.removeFirst(); // 等价于 strArr.remove(0);
             System.out.println(
-                Thread.currentThread().getName() + " ==> Producer is adding data: " + elem);
-            mut.notifyAll();
+                Thread.currentThread().getName() + " <== Consumer is removing data: " + elem);
           }
-        },
-        "producer");
+        };
+
+    Thread producer =
+        new Thread(
+            () -> {
+              try {
+                Thread.sleep(3000);
+              } catch (InterruptedException ignored) {
+              }
+              synchronized (mut) {
+                var elem = "Duke";
+                strArr.add(elem);
+                System.out.println(
+                    Thread.currentThread().getName() + " ==> Producer is adding data: " + elem);
+                mut.notifyAll();
+              }
+            },
+            "producer");
 
     new Thread(consume, "consumer1").start();
     new Thread(consume, "consumer2").start();
@@ -105,57 +108,59 @@ public class ProducerConsumerTest {
     var cap = 2;
     var mut = numList;
 
-    Runnable produce = () -> {
-      while (true) {
-        synchronized (mut) {
-          while (numList.size() == cap) { // 缓冲区满
-            System.out.println(
-                Thread.currentThread().getName() + " [x] List is full, waiting...");
-            try {
-              mut.wait();
-            } catch (InterruptedException ignored) {
+    Runnable produce =
+        () -> {
+          while (true) {
+            synchronized (mut) {
+              while (numList.size() == cap) { // 缓冲区满
+                System.out.println(
+                    Thread.currentThread().getName() + " [x] List is full, waiting...");
+                try {
+                  mut.wait();
+                } catch (InterruptedException ignored) {
+                }
+                System.out.println(
+                    Thread.currentThread().getName() + " [o] List is writable, waken up!");
+              }
+              try {
+                Thread.sleep(3000);
+              } catch (InterruptedException ignored) {
+              }
+              Random rand = new Random();
+              var elem = rand.nextInt(0, 10);
+              System.out.println(
+                  Thread.currentThread().getName() + " ==> Producer is adding data: " + elem);
+              numList.add(elem);
+              mut.notifyAll();
             }
-            System.out.println(
-                Thread.currentThread().getName() + " [o] List is writable, waken up!");
-          }
-          try {
-            Thread.sleep(3000);
-          } catch (InterruptedException ignored) {
-          }
-          Random rand = new Random();
-          var elem = rand.nextInt(0, 10);
-          System.out.println(
-              Thread.currentThread().getName() + " ==> Producer is adding data: " + elem);
-          numList.add(elem);
-          mut.notifyAll();
-        }
-      } // while
-    };
+          } // while
+        };
 
-    Runnable consume = () -> {
-      while (true) {
-        synchronized (mut) {
-          while (numList.isEmpty()) { // 缓冲区空
-            System.out.println(
-                Thread.currentThread().getName() + " [x] List is empty, waiting...");
-            try {
-              mut.wait();
-            } catch (InterruptedException ignored) {
+    Runnable consume =
+        () -> {
+          while (true) {
+            synchronized (mut) {
+              while (numList.isEmpty()) { // 缓冲区空
+                System.out.println(
+                    Thread.currentThread().getName() + " [x] List is empty, waiting...");
+                try {
+                  mut.wait();
+                } catch (InterruptedException ignored) {
+                }
+                System.out.println(
+                    Thread.currentThread().getName() + " [o] List is readable, waken up!");
+              }
+              try {
+                Thread.sleep(3000);
+              } catch (InterruptedException ignored) {
+              }
+              var elem = numList.removeFirst();
+              System.out.println(
+                  Thread.currentThread().getName() + " <== Consumer is removing data: " + elem);
+              mut.notifyAll();
             }
-            System.out.println(
-                Thread.currentThread().getName() + " [o] List is readable, waken up!");
-          }
-          try {
-            Thread.sleep(3000);
-          } catch (InterruptedException ignored) {
-          }
-          var elem = numList.removeFirst();
-          System.out.println(
-              Thread.currentThread().getName() + " <== Consumer is removing data: " + elem);
-          mut.notifyAll();
-        }
-      } // while
-    };
+          } // while
+        };
 
     try (var fixThreadPool = Executors.newFixedThreadPool(6)) {
       for (int i = 0; i < 3; i++) {
@@ -177,53 +182,55 @@ public class ProducerConsumerTest {
     var writable /* 可读 */ = reentrantLock.newCondition();
     var readable /* 可写 */ = reentrantLock.newCondition();
 
-    Runnable produce = () -> {
-      while (true) {
-        reentrantLock.lock();
-        try {
-          while (numList.size() == cap) { // 缓冲区满
-            System.out.println(
-                Thread.currentThread().getName() + " [x] List is full, waiting...");
-            writable.await();
-            System.out.println(
-                Thread.currentThread().getName() + " [o] List is writable, waken up!");
-          }
-          Thread.sleep(3000);
-          Random rand = new Random();
-          var elem = rand.nextInt(0, 10);
-          System.out.println(
-              Thread.currentThread().getName() + " ==> Producer is adding data: " + elem);
-          numList.add(elem);
-          readable.signalAll();
-        } catch (InterruptedException ignored) {
-        } finally {
-          reentrantLock.unlock();
-        }
-      } // while
-    };
+    Runnable produce =
+        () -> {
+          while (true) {
+            reentrantLock.lock();
+            try {
+              while (numList.size() == cap) { // 缓冲区满
+                System.out.println(
+                    Thread.currentThread().getName() + " [x] List is full, waiting...");
+                writable.await();
+                System.out.println(
+                    Thread.currentThread().getName() + " [o] List is writable, waken up!");
+              }
+              Thread.sleep(3000);
+              Random rand = new Random();
+              var elem = rand.nextInt(0, 10);
+              System.out.println(
+                  Thread.currentThread().getName() + " ==> Producer is adding data: " + elem);
+              numList.add(elem);
+              readable.signalAll();
+            } catch (InterruptedException ignored) {
+            } finally {
+              reentrantLock.unlock();
+            }
+          } // while
+        };
 
-    Runnable consume = () -> {
-      while (true) {
-        reentrantLock.lock();
-        try {
-          while (numList.isEmpty()) { // 缓冲区空
-            System.out.println(
-                Thread.currentThread().getName() + " [x] List is empty, waiting...");
-            readable.await();
-            System.out.println(
-                Thread.currentThread().getName() + " [o] List is readable, waken up!");
-          }
-          Thread.sleep(3000);
-          Integer elem = numList.removeFirst();
-          System.out.println(
-              Thread.currentThread().getName() + " <== Consumer is removing data: " + elem);
-          writable.signalAll();
-        } catch (InterruptedException ignored) {
-        } finally {
-          reentrantLock.unlock();
-        }
-      } // while
-    };
+    Runnable consume =
+        () -> {
+          while (true) {
+            reentrantLock.lock();
+            try {
+              while (numList.isEmpty()) { // 缓冲区空
+                System.out.println(
+                    Thread.currentThread().getName() + " [x] List is empty, waiting...");
+                readable.await();
+                System.out.println(
+                    Thread.currentThread().getName() + " [o] List is readable, waken up!");
+              }
+              Thread.sleep(3000);
+              Integer elem = numList.removeFirst();
+              System.out.println(
+                  Thread.currentThread().getName() + " <== Consumer is removing data: " + elem);
+              writable.signalAll();
+            } catch (InterruptedException ignored) {
+            } finally {
+              reentrantLock.unlock();
+            }
+          } // while
+        };
 
     try (var fixThreadPool = Executors.newFixedThreadPool(6)) {
       for (int i = 0; i < 3; i++) {
@@ -240,31 +247,33 @@ public class ProducerConsumerTest {
   void testBlockingQueue() {
     var linkedBlockingQueue = new LinkedBlockingQueue<Integer>();
 
-    Runnable produce = () -> {
-      while (true) {
-        try {
-          Thread.sleep(3000);
-          var rand = new Random();
-          int elem = rand.nextInt(0, 10);
-          System.out.println(
-              Thread.currentThread().getName() + " ==> Producer is putting data: " + elem);
-          linkedBlockingQueue.put(elem);
-        } catch (InterruptedException ignored) {
-        }
-      }
-    };
+    Runnable produce =
+        () -> {
+          while (true) {
+            try {
+              Thread.sleep(3000);
+              var rand = new Random();
+              int elem = rand.nextInt(0, 10);
+              System.out.println(
+                  Thread.currentThread().getName() + " ==> Producer is putting data: " + elem);
+              linkedBlockingQueue.put(elem);
+            } catch (InterruptedException ignored) {
+            }
+          }
+        };
 
-    Runnable consume = () -> {
-      while (true) {
-        try {
-          Thread.sleep(3000);
-          Integer elem = linkedBlockingQueue.take();
-          System.out.println(
-              Thread.currentThread().getName() + " <== Consumer is taking data: " + elem);
-        } catch (InterruptedException ignored) {
-        }
-      }
-    };
+    Runnable consume =
+        () -> {
+          while (true) {
+            try {
+              Thread.sleep(3000);
+              Integer elem = linkedBlockingQueue.take();
+              System.out.println(
+                  Thread.currentThread().getName() + " <== Consumer is taking data: " + elem);
+            } catch (InterruptedException ignored) {
+            }
+          }
+        };
 
     try (var fixThreadPool = Executors.newFixedThreadPool(6)) {
       for (int i = 0; i < 3; i++) {

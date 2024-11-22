@@ -1,7 +1,6 @@
 package com.bronya.concurrent;
 
 import java.util.concurrent.locks.LockSupport;
-
 import org.junit.jupiter.api.Test;
 
 public class LockSupportTest {
@@ -9,20 +8,21 @@ public class LockSupportTest {
   @Test // ! mvn test -Dtest=LockSupportTest#testLockSupport1 -q
   public void testLockSupport1() {
     Thread mainThread = Thread.currentThread();
-    Thread subThread = new Thread(
-        () -> {
-          for (int count = 0; count < 10; count++) {
-            try {
-              Thread.sleep(1000);
-            } catch (InterruptedException ignored) {
-            }
-            System.out.println("count = " + count);
-            if (count == 5) {
-              // 子线程调用 unpark 方法唤醒主线程
-              LockSupport.unpark(mainThread);
-            }
-          }
-        });
+    Thread subThread =
+        new Thread(
+            () -> {
+              for (int count = 0; count < 10; count++) {
+                try {
+                  Thread.sleep(1000);
+                } catch (InterruptedException ignored) {
+                }
+                System.out.println("count = " + count);
+                if (count == 5) {
+                  // 子线程调用 unpark 方法唤醒主线程
+                  LockSupport.unpark(mainThread);
+                }
+              }
+            });
     subThread.start();
     // 主线程调用 park 方法, 主动等待
     System.out.println("Main concurrent is parking");
@@ -33,14 +33,15 @@ public class LockSupportTest {
 
   @Test // ! mvn test -Dtest=LockSupportTest#testLockSupport1 -q
   public void testLockSupport2() {
-    Thread subThread = new Thread(
-        () -> {
-          System.out.println("Sub concurrent is parking");
-          // 子线程调用 park 方法, 主动等待
-          LockSupport.park();
-          // 子线程被动唤醒
-          System.out.println("Sub concurrent has been unparked");
-        });
+    Thread subThread =
+        new Thread(
+            () -> {
+              System.out.println("Sub concurrent is parking");
+              // 子线程调用 park 方法, 主动等待
+              LockSupport.park();
+              // 子线程被动唤醒
+              System.out.println("Sub concurrent has been unparked");
+            });
     subThread.start();
 
     try {
@@ -60,35 +61,38 @@ public class LockSupportTest {
 
   @Test
   public void testApp() {
-    printerA = new Thread(
-        () -> {
-          while (true) {
-            // printerA 主动等待
-            LockSupport.park();
-            // printerA 被动唤醒
-            System.out.print("A ");
-            // printerA 唤醒 printerB
-            LockSupport.unpark(printerB);
-          }
-        });
+    printerA =
+        new Thread(
+            () -> {
+              while (true) {
+                // printerA 主动等待
+                LockSupport.park();
+                // printerA 被动唤醒
+                System.out.print("A ");
+                // printerA 唤醒 printerB
+                LockSupport.unpark(printerB);
+              }
+            });
 
-    printerB = new Thread(
-        () -> {
-          while (true) {
-            LockSupport.park();
-            System.out.print("B ");
-            LockSupport.unpark(printerC);
-          }
-        });
+    printerB =
+        new Thread(
+            () -> {
+              while (true) {
+                LockSupport.park();
+                System.out.print("B ");
+                LockSupport.unpark(printerC);
+              }
+            });
 
-    printerC = new Thread(
-        () -> {
-          while (true) {
-            LockSupport.park();
-            System.out.print("C\n");
-            LockSupport.unpark(printerA);
-          }
-        });
+    printerC =
+        new Thread(
+            () -> {
+              while (true) {
+                LockSupport.park();
+                System.out.print("C\n");
+                LockSupport.unpark(printerA);
+              }
+            });
 
     printerA.start();
     printerB.start();

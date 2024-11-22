@@ -17,9 +17,8 @@ import io.netty.handler.logging.LoggingHandler;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * mvn dependency:build-classpath # copy
- * java -cp ./target/classes:\
- * ${copied_content} com.bronya.netty3.HttpServer
+ * mvn dependency:build-classpath # copy java -cp ./target/classes:\ ${copied_content}
+ * com.bronya.netty3.HttpServer
  */
 @Slf4j
 public class HttpServer {

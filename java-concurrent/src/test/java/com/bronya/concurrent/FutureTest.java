@@ -6,7 +6,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
-
 import org.junit.jupiter.api.Test;
 
 public class FutureTest {
@@ -17,9 +16,10 @@ public class FutureTest {
     try (var threadPool = Executors.newFixedThreadPool(5)) {
       // 创建一个 Callable 任务 task
       // Callable 是一个函数式接口, 实现 call 方法, 创建一个任务 task 对象
-      Callable<String> task = () -> {
-        return "I'm " + Thread.currentThread().getName();
-      };
+      Callable<String> task =
+          () -> {
+            return "I'm " + Thread.currentThread().getName();
+          };
       // Future 对象: 一个异步 asynchronous 任务的执行结果
       var futures = new Future[10];
       for (int i = 0; i < futures.length; i++) {
@@ -45,13 +45,14 @@ public class FutureTest {
       Callable<Integer>[] tasks = new Callable[5];
       for (int i = 0; i < tasks.length; i++) {
         int threadId = i + 1;
-        tasks[i] = () -> {
-          try {
-            TimeUnit.SECONDS.sleep(3);
-          } catch (InterruptedException ignored) {
-          }
-          return (threadId) * 100;
-        };
+        tasks[i] =
+            () -> {
+              try {
+                TimeUnit.SECONDS.sleep(3);
+              } catch (InterruptedException ignored) {
+              }
+              return (threadId) * 100;
+            };
       }
       // 可调用对象 -> 异步任务对象
       // 将 Callable 对象包装为 FutureTask 对象
