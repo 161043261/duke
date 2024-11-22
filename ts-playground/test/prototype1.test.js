@@ -1,4 +1,4 @@
-//! pnpm test proto
+//! pnpm test prototype1
 "use strict";
 // 基于原型链的继承
 import { test } from "vitest";

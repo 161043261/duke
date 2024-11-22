@@ -1,4 +1,4 @@
-//! pnpm test proto2
+//! pnpm test prototype3
 import { test } from "vitest";
 
 // JavaScript 中, 函数也有属性

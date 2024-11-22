@@ -1,4 +1,4 @@
-//! pnpm test create_2dArr
+//! pnpm test create_2darray
 import { test } from "vitest";
 
 // [test1] First arr2d: [ [ 1, 1 ], [ 1, 1 ] ]

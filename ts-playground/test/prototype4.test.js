@@ -1,4 +1,4 @@
-// pnpm test create_ins
+// pnpm test prototype4
 import { test } from "vitest";
 
 test("test1", () => {

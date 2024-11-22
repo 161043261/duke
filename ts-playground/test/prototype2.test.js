@@ -1,4 +1,4 @@
-//! pnpm test proto1
+//! pnpm test prototype2
 "use strict";
 import { test } from "vitest";
 

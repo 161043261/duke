@@ -1,20 +1,20 @@
 // 1. 构造函数: 使用 new 关键字调用的函数
 // 2. 实例化: 使用 new 关键字调用函数
 // 3. 无参构造函数可以省略 ()
-// 4. 构造函数的 return: 无返回值; 返回基本数据类型; 返回对象
+// 4. 构造函数的 return: 无返回值; 返回基本类型; 返回引用类型 (对象)
 
 // 无返回值
 function P1() {
   this.name = "wtf";
 }
 
-// 返回基本数据类型
+// 返回基本类型
 function P2() {
   this.name = "wtf";
   return 1;
 }
 
-// 返回对象
+// 返回引用类型 (对象)
 function P3() {
   this.name = "wtf";
   return {

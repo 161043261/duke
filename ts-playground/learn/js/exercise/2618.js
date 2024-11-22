@@ -45,7 +45,7 @@ var checkIfInstanceOf1 = function (obj, classFunction) {
   ) {
     return false;
   }
-  // Object(obj) 将基本数据类型包装为引用类型
+  // Object(obj) 将基本类型包装为引用类型
   return Object(obj) instanceof classFunction;
 };
 
