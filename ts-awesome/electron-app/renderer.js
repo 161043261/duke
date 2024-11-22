@@ -1,3 +1,4 @@
+// 渲染进程
 // const process = require("node:process");
 
 const info = document.getElementById("info");
