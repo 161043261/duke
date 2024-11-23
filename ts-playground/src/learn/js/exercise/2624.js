@@ -2,7 +2,7 @@
 "use strict";
 Array.prototype.snail = function (rowsCount, colsCount) {
   if (rowsCount * colsCount !== this.length) {
-    return []
+    return [];
   }
   const genFunc = function* (arr) {
     for (const item of arr) {

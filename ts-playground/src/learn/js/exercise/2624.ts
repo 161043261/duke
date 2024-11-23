@@ -7,9 +7,8 @@ Array.prototype.snail = function (
   rowsCount: number,
   colsCount: number,
 ): number[][] {
-  
   if (rowsCount * colsCount != this.length) {
-    return []
+    return [];
   }
 
   const genFunc = function* (arr: number[]) {
