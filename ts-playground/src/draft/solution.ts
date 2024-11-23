@@ -1,58 +1,32 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-function nonSpecialCount_(l: number, r: number): number {
-  const isSpecialCount = function (n: number): boolean {
-    if (n == 1) {
-      return false;
-    }
+function smallestRange(nums: number[][]): number[] {}
 
-    if (Math.floor(Math.sqrt(n)) != Math.sqrt(n)) {
-      return false;
-    }
+class Heap {
+  h: number[] = [];
+  next: number[] = [];
+  nums: number[][] = [];
 
-    for (let i = 2; i < Math.sqrt(n); i++) {
-      if (n % i == 0) {
-        return false;
-      }
-    }
-    return true;
-  };
-
-  let ans = 0;
-  for (let i = l; i <= r; i++) {
-    if (!isSpecialCount(i)) {
-      ans++;
-    }
+  len(): number {
+    return this.h.length;
   }
-  return ans;
+
+  less(i: number, j: number): boolean {
+    return (
+      this.nums[this.h[i]][this.next[this.h[i]]] <
+      this.nums[this.h[j]][this.next[this.h[j]]]
+    );
+  }
+
+  swap(i: number, j: number) {
+    [this.h[i], this.h[j]] = [this.h[j], this.h[i]];
+  }
+
+  push(x: any) {
+    this.h.push(x);
+  }
+
+  pop(): any {
+    this.h.pop()
+  }
 }
-
-function nonSpecialCount(l: number, r: number): number {
-  const n = Math.floor(Math.sqrt(r));
-  const v = new Array<number>(n + 1).fill(0);
-  let res = r - l + 1;
-  for (let i = 2; i <= n; i++) {
-    if (v[i] == 0) {
-      if (i * i >= l && i * i <= r) {
-        res--;
-      }
-      for (let j = i * i; j <= n; j += i) {
-        v[j] = 1;
-      }
-    }
-  }
-  return res;
-}
-
-const countPrimes = function (n: number) {
-  const isPrim = new Array(n).fill(1);
-  let ans = 0;
-  for (let i = 2; i < n; i++) {
-    if (isPrim[i] == 1) {
-      ans++;
-    }
-    for (let j = i * i; j < n; j += i) {
-      isPrim[j] = 0;
-    }
-  }
-  return ans;
-};
