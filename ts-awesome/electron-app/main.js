@@ -2,6 +2,7 @@
 // node 主进程直接访问 HTML 文档对象模型 (DOM) 是不可能的
 // 解决方法: 使用 ipcMain 和 ipcRenderer 的进程间通信 (IPC)
 
+const { nativeTheme } = require("electron");
 const { app, BrowserWindow, ipcMain } = require("electron/main");
 const path = require("node:path");
 
@@ -21,11 +22,24 @@ const createWindow = () => {
   });
 
   win.loadFile("index.html");
-  win.webContents.openDevTools();
+  // win.webContents.openDevTools();
 };
 
+ipcMain.handle("dark-mode:toggle", () => {
+  if (nativeTheme.shouldUseDarkColors) {
+    nativeTheme.themeSource = "light";
+  } else {
+    nativeTheme.themeSource = "dark";
+  }
+  return nativeTheme.shouldUseDarkColors;
+});
+
+ipcMain.handle("dark-mode:system", () => {
+  nativeTheme.themeSource = "system";
+});
+
 app.whenReady().then(() => {
-  ipcMain.handle('pingChannel', () => 'pong')
+  ipcMain.handle("icmpChan", () => "pong");
   createWindow();
 
   app.on("activate", () => {

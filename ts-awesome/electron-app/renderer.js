@@ -17,6 +17,22 @@ Electron (v${window.versions.electron()})`;
 // Electron (v${process.versions.electron})`);
 
 (async () => {
-  const response = await window.versions.ping()
-  console.log(response) // pong
-})()
+  const response = await window.versions.ping();
+  console.log(response); // pong
+})();
+
+document
+  .getElementById("toggle-dark-mode")
+  .addEventListener("click", async () => {
+    const isDarkMode = await window.darkMode.toggle();
+    document.getElementById("theme-source").innerHTML = isDarkMode
+      ? "Dark"
+      : "Light";
+  });
+
+document
+  .getElementById("reset-to-system")
+  .addEventListener("click", async () => {
+    await window.darkMode.system();
+    document.getElementById("theme-source").innerHTML = "System";
+  });
