@@ -1,6 +1,5 @@
-// preload.js 由 node 主进程执行
-// node 主进程直接访问 HTML 文档对象模型 (DOM) 是不可能的
-// 解决方法: 使用 Electron 的 ipcMain 模块和 ipcRenderer 模块进行进程间通信
+// preload.js 预加载脚本由渲染进程执行, 可以访问 node 接口
+// 预加载脚本可以在 BrowserWindow 构造方法的 webPreferences 选项中, 附加到主进程
 
 const { contextBridge, ipcRenderer } = require("electron/renderer");
 
@@ -35,7 +34,7 @@ contextBridge.exposeInMainWorld("versions", {
     return process.versions.electron;
   },
 
-  ping: () => ipcRenderer.invoke('pingChannel')
-  // node 主进程
-  // ipcMain.handle('ping', () => 'pong')
+  ping: () => {
+    return ipcRenderer.invoke('pingChannel')
+  }
 });
