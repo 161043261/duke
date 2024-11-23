@@ -16,7 +16,7 @@ counter();
 // 优点: 封闭数据
 // 缺点: 可能会内存泄露
 
-//! var 变量提升: 允许变量在声明前访问
+//! var 变量提升: 允许变量在初始化前访问
 // let, const 没有变量提升
 console.log(str); // undefined
 var str = "Hello";
