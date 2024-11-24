@@ -19,6 +19,8 @@ console.log(path.dirname(pathname));
 console.log(path.extname(pathname));
 
 console.warn("Test require");
-require("./mod"); //! 多次 require 时, 只会执行一次
+const mod = require("./mod"); //! 多次 require 时, 只会执行一次
 require("./mod");
 require("./mod");
+
+console.log(mod);

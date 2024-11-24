@@ -38,3 +38,5 @@ console.log(module.exports === exports); //! false
 // function (exports, require, module, __filename, __dirname) {/* nativeCode */}
 console.log(arguments.callee.toString());
 console.warn("Cache miss!");
+
+console.log(this);

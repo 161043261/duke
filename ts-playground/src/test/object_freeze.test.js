@@ -24,3 +24,28 @@ test("object_freeze", () => {
   }
   console.log(obj.prop); // 42
 });
+
+test("Finalize", () => {
+  const obj1 = { a: { v: 1 } };
+  Object.freeze(obj1);
+  obj1.a.v = 7;
+  console.log(obj1); // { a: { v: 7 } };
+
+  const finalize = (obj) => {
+    Object.freeze(obj);
+
+    Object.keys(obj).forEach((key) => {
+      if (typeof obj[key] === "object") {
+        finalize(obj[key]);
+      }
+    });
+  };
+
+  const obj2 = { a: { v: 1 } };
+  finalize(obj2);
+  try {
+    obj2.a.v = 7;
+  } catch (e) {
+    console.log(e); // TypeError: Cannot assign to read only property 'v'...
+  }
+});
