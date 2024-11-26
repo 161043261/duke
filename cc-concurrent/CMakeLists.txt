@@ -1,27 +1,22 @@
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.21)
 
 # 指定项目名
 project(cc-concurrent)
 
-set(CMAKE_THREAD_LIBS_INIT "-lpthread")
-set(CMAKE_HAVE_THREADS_LIBRARY 1)
-set(CMAKE_USE_PTHREADS_INIT 1)
-set(THREADS_PREFER_PTHREAD_FLAG ON)
-
 # 指定 c 语言级别
-set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD 17)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
 # 指定 c++ 语言级别
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # 使用 clang
-message("export CC=/usr/bin/clang")
+# set(CMAKE_C_COMPILER gcc)
 set(CMAKE_C_COMPILER clang)
 
 # 使用 clang++
-message("export CXX=/usr/bin/clang++")
+# set(CMAKE_CXX_COMPILER g++)
 set(CMAKE_CXX_COMPILER clang++)
 
 # 使用 ninja
@@ -30,18 +25,20 @@ set(CMAKE_GENERATOR Ninja)
 
 # 设置 c 编译选项
 # set(CMAKE_C_FLAGS "-Wall -O3")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -O3")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -O1")
 
 # 设置 c++ 编译选项
 # set(CMAKE_CXX_FLAGS "-Wall -O3")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O3")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O1")
 
 # 查找 pthread 库
 find_package(Threads REQUIRED)
 
+# 查找 gtest 库
+find_package(GTest REQUIRED)
+
 # 使用 ctest
 include(CTest)
-find_package(GTest REQUIRED)
 enable_testing()
 
 # 使用 clang-format
@@ -57,19 +54,18 @@ else ()
     message(WARNING "clang-format not found")
 endif ()
 
-# add_executable 添加可执行文件
+# 添加可执行文件
 add_executable(cpp_test src/cpp_test.cpp)
 add_executable(thread_test src/thread_test.cpp)
 add_executable(shared_data_test src/shared_data_test.cpp)
 add_executable(sync_test src/sync_test.cpp)
 
-# target_link_libraries 链接 gtest 库; pthread 库
+# 链接 gtest 库, pthread 库
 target_link_libraries(cpp_test GTest::gtest_main)
 target_link_libraries(thread_test Threads::Threads GTest::gtest_main)
 target_link_libraries(shared_data_test Threads::Threads GTest::gtest_main)
 target_link_libraries(sync_test Threads::Threads GTest::gtest_main)
 
-# gtest_discover_test 发现 ctest
 gtest_discover_tests(cpp_test)
 gtest_discover_tests(thread_test)
 gtest_discover_tests(shared_data_test)

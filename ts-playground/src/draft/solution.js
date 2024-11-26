@@ -1,19 +1,26 @@
-function f1() {
-  console.log(f1.arguments); // [Arguments] { '0': 1, '1': 2, '2': 3 }
-  console.log(arguments); // [Arguments] { '0': 1, '1': 2, '2': 3 }
-  console.log(f1.arguments === arguments); // false
-  console.log(f1.caller); // [Function: g]
-}
+let kvs = new Map([
+  [1, "one"],
+  [2, "two"],
+  [3, "three"],
+]);
 
-function f2() {
-  "use strict";
-  console.log(f1.arguments); // null
-  console.log(arguments); // [Arguments] { '0': 1, '1': 2, '2': 3 }
-  console.log(f1.arguments === arguments); // false
-  console.log(f1.caller); // null
-}
+let arr1 = [...kvs];
+console.log(arr1);
 
-(function g() {
-  f1(1, 2, 3);
-  f2(1, 2, 3);
-})();
+let arr2 = [...kvs.entries()];
+console.log(arr2);
+
+let ks = [...kvs.keys()];
+console.log(ks);
+
+let vs = [...kvs.values()];
+console.log(vs);
+
+const genFunc = function* () {
+  yield 1;
+  yield 2;
+  yield 3;
+};
+
+const gen = genFunc();
+console.log([...gen]); // [1, 2, 3]

@@ -1,27 +1,20 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.21)
 
+# 指定项目名
 project(cc-socket)
 
-set(CMAKE_THREAD_LIBS_INIT "-lpthread")
-set(CMAKE_HAVE_THREADS_LIBRARY 1)
-set(CMAKE_USE_PTHREADS_INIT 1)
-set(THREADS_PREFER_PTHREAD_FLAG ON)
-
-set(CMAKE_C_STANDARD 11)
+# 指定 c 语言级别
+set(CMAKE_C_STANDARD 17)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
+# 使用 clang
+# set(CMAKE_C_COMPILER gcc)
+set(CMAKE_C_COMPILER clang)
+
+# 使用 ninja
 set(CMAKE_GENERATOR "Ninja")
 
-# 安装并使用 boost
-#! sudo apt install libboost-all-dev
-# set(Boost_LIB_DIR "/usr/include/x86_64-linux-gnu")
-# set(Boost_INCLUDE_DIR "/usr/include")
-
-# 查找 boost
-# find_package(Boost COMPONENTS system filesystem program_options REQUIRED)
-# 链接 boost
-# target_link_libraries(main ${Boost_INCLUDE_DIR})
-
+# 添加可执行文件
 add_executable(ch01_server "ch01/server.c")
 add_executable(ch01_client "ch01/client.c")
 add_executable(ch01_test_fd "ch01/test_fd.c")
@@ -115,6 +108,7 @@ target_link_libraries(ch24_http_server Threads::Threads)
 
 find_program(CLANG_FORMAT clang-format)
 
+# 使用 clang-format
 #! clang-format --style=google -dump-config > ./.clang-format
 if (CLANG_FORMAT)
     message(${CMAKE_SOURCE_DIR})

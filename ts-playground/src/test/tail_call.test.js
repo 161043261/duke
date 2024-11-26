@@ -86,21 +86,16 @@ test("test4", () => {
   console.log(trampoline(bar(1, 100_000))); // 1
 });
 
-test("test5", () => {
-  function foo(x, y) {
-    if (y > 0) {
-      return foo(x, y - 1);
-    } else {
-      return x;
-    }
-  }
-
+test("Test_TailCallOptimization", () => {
+  // 尾递归优化的实现
   function tco(f) {
     let value;
     let active = false;
     let accumulated = [];
+    console.log(arguments[0] === f, arguments[0]); // true [Function: foo]
 
     return function accumulator() {
+      console.log(arguments[0] === f, arguments); // false [Arguments] { '0': 1, '1': 100 }
       accumulated.push(arguments);
       if (!active) {
         active = true;
@@ -113,6 +108,12 @@ test("test5", () => {
     };
   }
 
-  const foo2co = tco(foo);
-  console.log(foo2co(1, 100_000));
+  const foo2co = tco(function foo(x, y) {
+    if (y > 0) {
+      return foo2co(x + 1, y - 1 /* arguments */);
+    } else {
+      return x;
+    }
+  }); // tco
+  console.log(foo2co(1, 100));
 });
