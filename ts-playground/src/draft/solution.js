@@ -1,26 +1,14 @@
-let kvs = new Map([
-  [1, "one"],
-  [2, "two"],
-  [3, "three"],
-]);
-
-let arr1 = [...kvs];
+let arrlike = { length: 3 };
+const arr1 = Array.from(arrlike, (item) => -1);
 console.log(arr1);
-
-let arr2 = [...kvs.entries()];
+// 等价于
+const arr2 = Array.from(arrlike).map((item) => -1);
 console.log(arr2);
 
-let ks = [...kvs.keys()];
-console.log(ks);
+console.log(Array.from([1, 2, 3], (x) => x * x)); // [1, 4, 9]
+console.log([1, 2, 3].map(x => x * x)); // [1, 4, 9]
 
-let vs = [...kvs.values()];
-console.log(vs);
-
-const genFunc = function* () {
-  yield 1;
-  yield 2;
-  yield 3;
-};
-
-const gen = genFunc();
-console.log([...gen]); // [1, 2, 3]
+function typesOf() {
+  return Array.from(arguments, (value) => typeof value);
+}
+console.log(typesOf(null, [], NaN)) // ['object', 'object', 'number']
