@@ -9,9 +9,12 @@ function networkDelayTime(times: number[][], n: number, k: number): number {
   //    即 if (dis[3] + g[3][y] < dis[y]) { dis[y] = dis[3] + g[3][y] }
   // 4. 取除起点 k, 节点 3 外的 dis[i] 的最小值, 重复 2, 3
   // 5. 确定起点 k 到所有节点的最短路径长度时, 算法结束
-  const g = Array.from({
+  const g = Array.from(
+    {
       length: n,
-    }, () => new Array(n).fill(Infinity));
+    },
+    () => new Array(n).fill(Infinity),
+  );
 
   for (const [x, y, d] of times) {
     g[x - 1][y - 1] = d;
@@ -28,7 +31,7 @@ function networkDelayTime(times: number[][], n: number, k: number): number {
     }
 
     if (x == -1) {
-      return Math.max(...dis)
+      return Math.max(...dis);
     }
 
     if (dis[x] === Infinity) {
@@ -42,5 +45,13 @@ function networkDelayTime(times: number[][], n: number, k: number): number {
 }
 
 console.log(
-networkDelayTime([[2,1,1],[2,3,1],[3,4,1]],  4,  2)
-)
+  networkDelayTime(
+    [
+      [2, 1, 1],
+      [2, 3, 1],
+      [3, 4, 1],
+    ],
+    4,
+    2,
+  ),
+);
