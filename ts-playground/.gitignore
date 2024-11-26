@@ -3,3 +3,4 @@ learn/js/**/*.txt
 build/
 node_modules/
 dist/
+# **/*.exe

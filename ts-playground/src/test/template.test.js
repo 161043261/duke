@@ -9,6 +9,7 @@ test("test1", () => {
 test("test2", () => {
   let a = 5;
   let b = 10;
+
   function tag(strs /* TemplateStringArray */, insert1, insert2) {
     // 2 个插值 => 模板字符串数组长度为 3
     console.log(strs); // [ 'Hello ', ' world ', '' ]
@@ -18,6 +19,7 @@ test("test2", () => {
     console.log(insert2); // 50
     return "Done!";
   }
+
   // 等价于 tag(["Hello ", " world ", ""], 15, 50)
   console.log(tag`Hello ${a + b} world ${a * b}`); // Done!
 });
@@ -25,6 +27,7 @@ test("test2", () => {
 test("test3", () => {
   let total = 30;
   let msg = tag`The total is ${total} (${total * 2} with tax)`;
+
   function tag(strs /* TemplateStringArray */) {
     for (const arg of arguments) {
       // ["The total is ", " (", " with tax)"];
@@ -34,26 +37,31 @@ test("test3", () => {
     }
     // 2 个插值 => 模板字符串数组长度为 3
     console.log(strs === arguments[0]); // true
-    let ret = strs[0];
+    let ret = "";
     for (let i = 1; i < arguments.length; i++) {
+      ret += strs[i - 1];
       ret += arguments[i];
-      ret += strs[i];
     }
+    ret += strs[strs.length - 1];
     return ret + ", handled by tag";
   }
+
   // The total is 30 (60 with tax), handled by tag
   console.log(msg);
 
   // 使用剩余参数 ...inserts
   let msg1 = tag1`The total is ${total} (${total * 3} with tax)`;
+
   function tag1(strs /* TemplateStringArray */, ...inserts) {
-    let ret = strs[0];
+    let ret = "";
     for (let i = 0; i < inserts.length; i++) {
+      ret += strs[i];
       ret += inserts[i];
-      ret += strs[i + 1];
     }
+    ret += strs[strs.length - 1];
     return ret + ", handled by tag1";
   }
+
   // The total is 30 (90 with tax), handled by tag1
   console.log(msg1);
 });
@@ -65,17 +73,19 @@ test("test4", () => {
   let safeHTML = SafeHTML`<p>${sender} sent u a msg</p>`;
 
   function SafeHTML(strs /* TemplateStringArray */, ...inserts) {
-    let ret = strs[0];
+    let ret = "";
     for (let i = 0; i < inserts.length; i++) {
       let insert = String(inserts[i]);
+      ret += strs[i];
       ret += insert
         .replace(/&/g, "&amp;") // & => &amp;
         .replace(/</g, "&lt;") // < => &lt;
         .replace(/>/g, "&gt;"); // > => &gt;
-      ret += strs[i + 1];
     }
+    ret += strs[strs.length - 1];
     return ret;
   }
+
   // <p><script>alert("wtf")</script> sent u a msg</p>
   console.log(rawHTML);
   // <p>&lt;script&gt;alert("wtf")&lt;/script&gt; sent u a msg</p>
@@ -98,5 +108,6 @@ test("test5", () => {
     console.log(templateStringArray.raw); // [ 'first-row\\nsecond-row' ]
     return "Done!";
   }
+
   console.log(tag`first-row\nsecond-row`); // Done!
 });
