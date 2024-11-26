@@ -1,14 +1,24 @@
-let arrlike = { length: 3 };
-const arr1 = Array.from(arrlike, (item) => -1);
-console.log(arr1);
-// 等价于
-const arr2 = Array.from(arrlike).map((item) => -1);
-console.log(arr2);
+({
+  3: 1,
+  length: 5,
+  __proto__: Array(0),
+}).copyWithin(0, 3);
 
-console.log(Array.from([1, 2, 3], (x) => x * x)); // [1, 4, 9]
-console.log([1, 2, 3].map(x => x * x)); // [1, 4, 9]
 
-function typesOf() {
-  return Array.from(arguments, (value) => typeof value);
-}
-console.log(typesOf(null, [], NaN)) // ['object', 'object', 'number']
+const arr1 = [undefined, undefined, undefined, 1, undefined];
+const arr2 = {
+  3: 1,
+  length: 5,
+  __proto__: Array(0),
+};
+
+console.log(arr1 instanceof Array);
+console.log(arr2 instanceof Array);
+
+const arr = [1, 2, 3, 4, 5];
+
+let kvs = arr.groupBy((el, idx, arr) => {
+  return el % 2 === 0 ? "even" : "odd";
+});
+console.log(kvs);
+console.log(kvs.constructor === Map);
