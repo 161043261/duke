@@ -21,8 +21,8 @@ counter();
 console.log(str); // undefined
 var str = "Hello";
 
-//! 具名函数提升: 允许函数在声明前调用
-// 函数表达式 (匿名函数), lambda 表达式 (箭头函数) 没有函数提升
+//! 函数提升: 允许函数在声明前调用
+// 函数表达式, lambda 表达式 (箭头函数) 没有函数提升
 foo();
 
 function foo() {
@@ -78,7 +78,7 @@ req("developer.mozilla.org", "zh-CN", "docs", "Learn");
 
 //!1. 箭头函数不能使用 arguments 动态参数, 可以使用 ...剩余参数
 //!2. 箭头函数 (lambda 表达式) 没有 this, this 被视为变量向外层查找
-//!3. 匿名函数 (函数表达式) 和具名函数有 this, this 指向函数的调用者
+//!3. 普通函数和函数表达式有 this, this 指向函数的调用者
 const fn = () => {
   console.log(this); // {} | Window{}
 };

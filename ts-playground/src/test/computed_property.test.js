@@ -1,7 +1,7 @@
 //! Syntax
 import { test } from "vitest";
 
-test("Syntax", () => {
+test("Test_Syntax", () => {
   const shorthandProperty = "shorthand property";
   const spreadProperty = ["str", 7, { shorthandProperty }];
   const obj = {

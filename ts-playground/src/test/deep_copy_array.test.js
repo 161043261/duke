@@ -1,13 +1,13 @@
 import { test } from "vitest";
 
-test("test1", () => {
+test("Test1", () => {
   const originArr = [1, 2, 3, 4, 5];
   const copiedArr = [...originArr];
   copiedArr[1] = 0;
   console.log(originArr); // 深拷贝
 });
 
-test("test2", () => {
+test("Test2", () => {
   const originArr = [1, 2, 3, 4, 5];
   const copiedArr = JSON.parse(JSON.stringify(originArr));
   copiedArr[1] = 0;
@@ -15,7 +15,7 @@ test("test2", () => {
 });
 
 // 递归实现深拷贝
-test("test3", () => {
+test("Test3", () => {
   /**
    *
    * @param {object} obj

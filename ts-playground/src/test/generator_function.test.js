@@ -42,7 +42,36 @@ test("Test_Generator", () => {
   console.log(generator.next().value); // 2
 });
 
-test("test2", () => {
+// 生成器函数中 return val 或抛出错误 (未捕获) 会结束迭代
+// 生成器对象的 next 方法的返回 { value: val, done: true }
+
+test("Test1", () => {
+  // subGenFunc instanceof GeneratorFunction 生成器函数
+  function* subGenFunc(i) {
+    yield i + 1;
+    yield i + 2;
+  }
+
+  // genFunc instanceof GeneratorFunction 生成器函数
+  function* genFunc(i) {
+    yield i;
+    //! 使用 yield*
+    yield* subGenFunc(i);
+    yield i + 10;
+    return "wtf";
+  }
+
+  const gen = genFunc(0);
+  console.log(gen.next().value); // 0
+  console.log(gen.next().value); // 1
+  console.log(gen.next().value); // 2
+  console.log(gen.next().value); // 10 (Tips: NOT 12)
+  console.log(gen.next().value, gen.next().done); // wtf, true
+  console.log(gen.next().value, gen.next().done); // undefined, true
+  console.log(gen.next().value, gen.next().done); // undefined, true
+});
+
+test("Test2", () => {
   const GeneratorFunction = function* () {}.constructor;
 
   function* genFunc(i) {
@@ -71,36 +100,7 @@ test("test2", () => {
   console.log(gen.next()); // { value: undefined, done: true }
 });
 
-// 生成器函数中 return val 或抛出错误 (未捕获) 会结束迭代
-// 生成器对象的 next 方法的返回 { value: val, done: true }
-
-test("test1", () => {
-  // subGenFunc instanceof GeneratorFunction 生成器函数
-  function* subGenFunc(i) {
-    yield i + 1;
-    yield i + 2;
-  }
-
-  // genFunc instanceof GeneratorFunction 生成器函数
-  function* genFunc(i) {
-    yield i;
-    //! 使用 yield*
-    yield* subGenFunc(i);
-    yield i + 10;
-    return "wtf";
-  }
-
-  const gen = genFunc(0);
-  console.log(gen.next().value); // 0
-  console.log(gen.next().value); // 1
-  console.log(gen.next().value); // 2
-  console.log(gen.next().value); // 10 (Tips: NOT 12)
-  console.log(gen.next().value, gen.next().done); // wtf, true
-  console.log(gen.next().value, gen.next().done); // undefined, true
-  console.log(gen.next().value, gen.next().done); // undefined, true
-});
-
-test("test3", () => {
+test("Test3", () => {
   function* logGenFunc() {
     console.log(0);
     console.log(1, yield);
@@ -117,7 +117,7 @@ test("test3", () => {
 });
 
 //! 生成器作为计算属性
-test("test4", () => {
+test("Test4", () => {
   class Nums {
     *[Symbol.iterator]() {
       yield 1;
@@ -135,7 +135,7 @@ test("test4", () => {
   console.log(Array.from(chars));
 });
 
-test("test5", () => {
+test("Test5", () => {
   function* powers(n) {
     for (let cur = n; ; cur *= n) {
       yield cur;
@@ -153,7 +153,7 @@ test("test5", () => {
 /**
  * @link https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol/iterator
  */
-test("Test_Symbol_Iterator", () => {
+test("Test_SymbolIterator", () => {
   const iterableVar = {};
   iterableVar[Symbol.iterator] = function* () {
     yield 1;

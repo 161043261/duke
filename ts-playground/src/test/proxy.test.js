@@ -17,7 +17,7 @@
 // const po = new Proxy(target, handler)
 import { test } from "vitest";
 
-test("test1", () => {
+test("Test1", () => {
   const handler = {
     //! handler.get() 属性读操作的捕获器
     /**
@@ -55,7 +55,7 @@ test("test1", () => {
 
 // 代理对象 po 的处理器 handler 为空时 (没有捕获器 traps)
 // 代理对象 po 上的所有操作会被转发到被代理的对象 target
-test("test2", () => {
+test("Test2", () => {
   let target = {};
   let po = new Proxy(target, {} /* handler */);
   po.a = 1;
@@ -63,7 +63,7 @@ test("test2", () => {
 });
 
 // 使用代理对象进行字段校验
-test("test3", () => {
+test("Test3", () => {
   let validator /* handler */ = {
     //! handler.set() 属性写操作的捕获器
     set: function (obj, prop, value) {

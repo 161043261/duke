@@ -1,6 +1,6 @@
 import { test } from "vitest";
 
-test("test", () => {
+test("Test1", () => {
   console.log(String.raw`foo\n${1 + 2}bar`);
 
   // `foo\n${1 + 2}bar` 等价于

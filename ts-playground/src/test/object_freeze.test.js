@@ -10,7 +10,7 @@ import { test } from "vitest";
  * Object.freeze() 返回被冻结的传入的对象
  */
 
-test("object_freeze", () => {
+test("Test_ObjectFreeze", () => {
   const obj = {
     prop: 42,
   };
@@ -25,7 +25,7 @@ test("object_freeze", () => {
   console.log(obj.prop); // 42
 });
 
-test("Finalize", () => {
+test("Test_Finalize", () => {
   const obj1 = { a: { v: 1 } };
   Object.freeze(obj1);
   obj1.a.v = 7;

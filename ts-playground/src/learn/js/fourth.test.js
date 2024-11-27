@@ -16,7 +16,7 @@ import { test } from "vitest";
 import _ from "lodash";
 
 //! Object.assign()
-test("DeepClone1", () => {
+test("Test_DeepClone1", () => {
   {
     let dst = { a: 1 };
     let src1 = { b: 2 };
@@ -49,7 +49,7 @@ test("DeepClone1", () => {
 });
 
 //! {...obj}
-test("DeepClone2", () => {
+test("Test_DeepClone2", () => {
   {
     //! passed
     let src = { a: 1, b: 2, c: 3 };
@@ -71,7 +71,7 @@ test("DeepClone2", () => {
 });
 
 //! Array.prototype.concat()
-test("DeepClone3", () => {
+test("Test_DeepClone3", () => {
   {
     //! passed
     let src = [1, 2, 3];
@@ -93,7 +93,7 @@ test("DeepClone3", () => {
 });
 
 //! [...arr]
-test("DeepClone4", () => {
+test("Test_DeepClone4", () => {
   {
     //! passed
     let src = [1, 2, 3];
@@ -115,7 +115,7 @@ test("DeepClone4", () => {
 });
 
 //! lodash.cloneDeep
-test("DeepClone5", () => {
+test("Test_DeepClone5", () => {
   {
     //! passed
     let src = { a: { v1: 1 }, b: { v2: 2 }, c: { v3: 3 } };
@@ -137,7 +137,7 @@ test("DeepClone5", () => {
 });
 
 //! JSON.stringify()
-test("DeepClone6", () => {
+test("Test_DeepClone6", () => {
   {
     //! passed
     let src = { a: { v1: 1 }, b: { v2: 2 }, c: { v3: 3 } };
@@ -173,7 +173,7 @@ function deepClone(dst, src) {
   }
 }
 
-test("DeepClone7", () => {
+test("Test_DeepClone7", () => {
   {
     //! passed
     let src = { a: { v1: 1 }, b: { v2: 2 }, c: { v3: 3 } };

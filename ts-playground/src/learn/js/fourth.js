@@ -1,5 +1,5 @@
 //! 箭头函数 (lambda 表达式) 没有 this, this 被视为变量向外层查找
-//! 匿名函数 (函数表达式) 和具名函数有 this, this 指向函数的调用者
+//! 普通函数和函数表达式有 this, this 指向函数的调用者
 "use strict";
 function greet1() {
   console.log(this);

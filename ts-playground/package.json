@@ -1,13 +1,12 @@
 {
   "name": "ts-playground",
   "version": "1.0.0",
-  "description": "TS Playground",
+  "description": "Playground for HTML, CSS, JS, TS",
   "main": "index.ts",
   "scripts": {
     "test": "vitest",
     "format": "prettier --write ./",
-    "build": "babel src/ -d lib/",
-    "flow": "flow"
+    "build": "babel src/ -d lib/"
   },
   "author": "",
   "license": "ISC",

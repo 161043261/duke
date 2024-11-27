@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import { test } from "vitest";
 
-test("test1", () => {
+test("Test1", () => {
   let code = "console.log('Hello, World!')";
   eval(code); // Hello, World!
 });
 
-test("test2", () => {
+test("Test2", () => {
   let a = 5;
   let b = 10;
 
@@ -24,7 +24,7 @@ test("test2", () => {
   console.log(tag`Hello ${a + b} world ${a * b}`); // Done!
 });
 
-test("test3", () => {
+test("Test3", () => {
   let total = 30;
   let msg = tag`The total is ${total} (${total * 2} with tax)`;
 
@@ -67,7 +67,7 @@ test("test3", () => {
 });
 
 // 标签模板的重要应用: 过滤 HTML 字符串中的恶意代码
-test("test4", () => {
+test("Test4", () => {
   let sender = '<script>alert("wtf")</script>'; // 恶意代码
   let rawHTML = `<p>${sender} sent u a msg</p>`;
   let safeHTML = SafeHTML`<p>${sender} sent u a msg</p>`;
@@ -92,7 +92,7 @@ test("test4", () => {
   console.log(safeHTML);
 });
 
-test("test5", () => {
+test("Test5", () => {
   // 0 个插值 => 模板字符串数组长度为 1
   console.log`123`; // [ '123' ]
 

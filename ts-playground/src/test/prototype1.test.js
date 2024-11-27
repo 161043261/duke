@@ -3,7 +3,7 @@
 // 基于原型链的继承
 import { test } from "vitest";
 
-test("test", () => {
+test("Test1", () => {
   console.log(typeof Object); // function
   console.log(Object.prototype); // [Object: null prototype] {}
 

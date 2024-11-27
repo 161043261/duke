@@ -1,6 +1,6 @@
 import { test } from "vitest";
 
-test("test1", () => {
+test("Test1", () => {
   // 非尾递归
   function fib1(n) {
     if (n <= 1) {
@@ -31,7 +31,7 @@ test("test1", () => {
   console.log(Date.now() - t2); // about 0
 });
 
-test("test2", () => {
+test("Test2", () => {
   function fact2(n, ans) {
     if (n === 1) {
       return ans;
@@ -49,7 +49,7 @@ test("test2", () => {
   console.log(calc(5)); // 120
 });
 
-test("test3", () => {
+test("Test3", () => {
   function foo(x, y) {
     if (y > 0) {
       return foo(x, y - 1);
@@ -64,7 +64,7 @@ test("test3", () => {
   }
 });
 
-test("test4", () => {
+test("Test4", () => {
   function bar(x, y) {
     if (y > 0) {
       // return bar(x, y - 1);

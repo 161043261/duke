@@ -1,6 +1,6 @@
 import { test } from "vitest";
 
-test("test1", () => {
+test("Test1", () => {
   function Timer() {
     this.cnt1 = 0;
     this.cnt2 = 0;

@@ -3,7 +3,7 @@
 
 import { test } from "vitest";
 
-test("test1", () => {
+test("Test1", () => {
   const obj = {
     prop: 81,
   };
@@ -29,7 +29,7 @@ test("test1", () => {
 });
 
 // node
-test("test2", () => {
+test("Test2", () => {
   const obj = {
     prop() {},
     fa: "iPhone",
