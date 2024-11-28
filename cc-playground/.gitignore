@@ -1,6 +1,9 @@
+.cache/
+.idea/
+build/
+CMakeFiles/
+Testing/
 **/*.cmake
 build.ninja
 **/CMakeCache.txt
 **/*.tcl
-build/
-CMakeFiles/

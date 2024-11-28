@@ -1,9 +1,11 @@
 //
 // Created by admin on 2024/11/20.
 //
+
 #include <functional>
 #include <iostream>
 #include <memory>
+
 using namespace std;
 
 auto outer() {

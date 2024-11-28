@@ -1,4 +1,9 @@
 {
-  "presets": ["@babel/preset-env"],
-  "plugins": []
+  "presets": [
+    // "@babel/preset-env",
+    "@babel/preset-flow"
+  ],
+  "plugins": [
+    "babel-plugin-syntax-hermes-parser"
+  ]
 }
