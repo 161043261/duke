@@ -32,7 +32,7 @@ const range = Math.min(A.length, B.length);
 for (let i = 1, j = 1; i <= range; i++) {
   const j_ = j;
   for (; j <= i; j++) {
-    if (dp[i][j] === cur + 1) {
+    if (dp[i][j] == cur + 1) {
       // 找到
       console.log(i - 1, j - 1);
       cur++;

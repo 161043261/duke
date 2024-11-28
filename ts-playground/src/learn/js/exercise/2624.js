@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use strict";
 Array.prototype.snail = function (rowsCount, colsCount) {
-  if (rowsCount * colsCount !== this.length) {
+  if (rowsCount * colsCount != this.length) {
     return [];
   }
   const genFunc = function* (arr) {
@@ -30,5 +29,5 @@ Array.prototype.snail = function (rowsCount, colsCount) {
   }
   return ret;
 };
-const arr = [1, 2, 3, 4];
-console.log(arr.snail(1, 4));
+// const arr = [1, 2, 3, 4];
+// console.log(arr.snail(1, 4));

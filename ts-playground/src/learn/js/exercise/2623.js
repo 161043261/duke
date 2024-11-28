@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use strict";
 function memoize(fn) {
   const cache = new Map();
