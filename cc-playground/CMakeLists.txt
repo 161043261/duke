@@ -54,14 +54,11 @@ add_executable(auto_ptr_test ./src/auto_ptr.test.cpp)
 add_executable(solution ./src/solution.cpp)
 add_executable(closure ./src/closure.cpp)
 add_executable(backtrack ./src/backtrack.cpp)
-add_executable(marscode_test ./src/marscode.test.cpp)
+add_executable(bronya ./src/bronya.cpp)
 
 # 链接 gtest 库
 target_link_libraries(auto_ptr_test GTest::gtest_main)
-target_link_libraries(marscode_test GTest::gtest_main)
-
 gtest_discover_tests(auto_ptr_test)
-gtest_discover_tests(marscode_test)
 
 # -S ./src   指定源代码目录为 ./src 目录
 # -B ./build 指定构建目录为 ./build 目录

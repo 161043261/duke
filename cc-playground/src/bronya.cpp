@@ -4,8 +4,6 @@
 // 2. Replace solutions
 //
 
-#include <gtest/gtest.h>
-
 #include <algorithm>
 #include <iostream>
 #include <map>
@@ -27,11 +25,6 @@ int solution1(std::vector<int> cards) {
     }
   }
   return -1;
-}
-
-TEST(Marscode_Test, Test_Sol1) {
-  std::cout << solution1({1, 1, 2, 2, 3, 3, 4, 5, 5}) << std::endl;
-  std::cout << solution1({0, 1, 0, 1, 2}) << std::endl;
 }
 
 std::string solution3(const std::string &s) {
@@ -70,10 +63,6 @@ std::string solution3(const std::string &s) {
   return ret;
 }
 
-TEST(MarsCode_Test, Test_Sol3) {
-  std::cout << (solution3("9278292.323214864")) << std::endl;
-}
-
 void backtrack(int start, int &acc, const vector<vector<int> > &varrs,
                int &ans) {
   if (start == varrs.size()) {
@@ -93,8 +82,7 @@ void backtrack(int start, int &acc, const vector<vector<int> > &varrs,
 int solution4(std::vector<int> numbers) {
   // Please write your code here
   vector<vector<int> > varrs{};
-  for (auto i = 0; i < numbers.size(); i++) {
-    auto item = numbers[i];
+  for (int item : numbers) {
     auto varr = vector<int>{};
     while (item > 0) {
       varr.emplace(varr.cbegin(), item % 10);
@@ -112,13 +100,6 @@ int solution4(std::vector<int> numbers) {
   backtrack(0, acc, varrs, ans);
   // cout << ans << endl;
   return ans;
-}
-
-TEST(Marscode_Test, Test_Sol4) {
-  // You can add more test cases here
-  std::cout << (solution4({123, 456, 789}) == 14) << std::endl;
-  std::cout << (solution4({123456789}) == 4) << std::endl;
-  std::cout << (solution4({14329, 7568}) == 10) << std::endl;
 }
 
 std::vector<int> solution5(int n, int max, const std::vector<int> &array) {
@@ -172,18 +153,10 @@ std::vector<int> solution5(int n, int max, const std::vector<int> &array) {
   return {0, 0};
 }
 
-TEST(Marscode_Test, Test_Sol5) {
-  // Add your test cases here
-  std::vector<int> result1 = solution5(
-      31, 42, {3,  3, 11, 12, 12, 2, 13, 5,  13, 1,  13, 8, 8, 1, 8, 13,
-               12, 9, 2,  11, 3,  5, 8,  11, 1,  11, 1,  5, 4, 2, 5});
-  std::cout << (result1 == std::vector<int>{1, 13}) << std::endl;
-}
-
 std::string solution7(int n, std::string tmpl,
                       std::vector<std::string> titles) {
   // Please write your code here
-  string str = "";
+  string str;
   for (auto i = 0; i < tmpl.size(); i++) {
     if (tmpl.at(i) == '{') {
       while (tmpl.at(i) != '}') {
@@ -208,33 +181,84 @@ std::string solution7(int n, std::string tmpl,
   return string{ret.begin(), ret.end() - 1};
 }
 
-TEST(Marscode_Test, Test_Sol7) {
-  //  You can add more test cases here
-  std::vector<std::string> testTitles1 = {"adcdcefdfeffe", "adcdcefdfeff",
-                                          "dcdcefdfeffe", "adcdcfe"};
-  std::vector<std::string> testTitles2 = {
-      "CLSomGhcQNvFuzENTAMLCqxBdj", "CLSomNvFuXTASzENTAMLCqxBdj",
-      "CLSomFuXTASzExBdj",          "CLSoQNvFuMLCqxBdj",
-      "SovFuXTASzENTAMLCq",         "mGhcQNvFuXTASzENTAMLCqx"};
-  std::vector<std::string> testTitles3 = {"abcdefg", "abefg", "efg"};
-
-  std::cout << (solution7(4, "ad{xyz}cdc{y}f{x}e", testTitles1) ==
-                "True,False,False,True")
-            << std::endl;
-  std::cout << (solution7(6, "{xxx}h{cQ}N{vF}u{XTA}S{NTA}MLCq{yyy}",
-                          testTitles2) == "False,False,False,False,False,True")
-            << std::endl;
-  std::cout << (solution7(3, "a{bdc}efg", testTitles3) == "True,True,False")
-            << std::endl;
-}
-
 int solution8(vector<int> array) {
   // Edit your code here
-
+  map<int, int> num2cnt{};
+  for (const auto &item : array) {
+    if (num2cnt.find(item) == num2cnt.end()) {
+      num2cnt[item] = 1;
+    } else {
+      num2cnt[item]++;
+    }
+  }
+  for (const auto &item : num2cnt) {
+    auto k = item.first;
+    auto v = item.second;
+    if (v > array.size() / 2.) {
+      return k;
+    }
+  }
   return 0;
 }
 
-TEST(Marscode_Test, Test_Sol8) {
-  // Add your test cases here
-  cout << (solution8({1, 3, 8, 2, 3, 1, 3, 3, 3}) == 3) << endl;
+int solution10(int a, int b) {
+  // write code here
+  return a / b + (a % b == 0 ? 0 : 1);
+}
+
+vector<int> solution13(int n) {
+  vector<int> ans;
+  for (auto i = 0; i < n; i++) {
+    for (auto j = n; j >= i + 1; j--) {
+      ans.push_back(j);
+    }
+  }
+  return ans;
+}
+
+int solution20(int n) {
+  // write code here
+  int ans = 0;
+  while (n > 1) {
+    if (n % 2 == 0) {
+      ans += n / 2;
+      n /= 2;
+    } else {
+      ans += (n - 1) / 2;
+      n = (n - 1) / 2 + 1;
+    }
+  }
+  return ans;
+}
+
+// TODO solution25 DNA 序列
+int solution25(std::string dna1, std::string dna2) {
+  vector<vector<int> > dp(dna1.size() + 1);
+  for (auto i = 0; i <= dna1.size(); i++) {
+    dp[i] = vector<int>(dna2.size() + 1);
+  }
+  for (auto i = 0; i <= dna1.size(); i++) {
+    dp[i][0] = i;
+  }
+  for (auto j = 0; j <= dna2.size(); j++) {
+    dp[0][j] = j;
+  }
+  for (auto i = 1; i <= dna1.size(); i++) {
+    for (auto j = 1; j <= dna2.size(); j++) {
+      if (dna1[i - 1] == dna2[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1];
+      } else {
+        dp[i][j] = min(min(dp[i - 1][j] + 1,   // 删除
+                           dp[i][j - 1] + 1),  // 插入
+                       dp[i - 1][j - 1] + 1);  // 替换
+      }
+    }
+  }
+  return dp[dna1.size()][dna2.size()];
+}
+
+int main() {
+  //  You can add more test cases here
+  std::cout << (solution25("AGCTTAGC", "AGCTAGCT") == 2) << std::endl;
+  std::cout << (solution25("AGCCGAGC", "GCTAGCT") == 4) << std::endl;
 }
