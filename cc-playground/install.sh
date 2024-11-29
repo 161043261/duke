@@ -1,2 +1,17 @@
-sudo apt install clangd
-cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1
+!/usr/bin/bash
+
+cd
+
+git clone git@github.com:google/googletest.git
+
+cd googletest
+
+mkdir build
+
+cd build
+
+cmake ..
+
+ninja
+
+sudo ninja install

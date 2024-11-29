@@ -6,3 +6,5 @@ dist/
 # **/*.exe
 lib/
 out/
+.idea/
+.cache/

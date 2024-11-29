@@ -51,7 +51,7 @@ ifunc tco(const ifunc& f) {
 
 double foo2co(double x, double y) {
   if (y > 0) {
-    return foo2co(x + 1, y - 1); // tail call
+    return foo2co(x + 1, y - 1);  // tail call
   } else {
     return x;
   }
