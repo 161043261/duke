@@ -5,37 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      .outer {
-        width: 900px;
-        height: 900px;
-        background-color: lightpink;
-        margin: 0 auto;
-        /* 父元素开启 flex 布局 */
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-start;
+      :root {
+        --bg-color: #fff;
+        background-color: var(--bg-color);
       }
 
-      .inner {
-        width: 200px;
-        height: 200px;
-        background-color: lightblue;
-        border: 1px solid black;
-        box-sizing: border-box;
+      :root.dark {
+        --bg-color: #000;
       }
 
-      .inner2 {
-        flex-basis: 300px;
+      ::view-transition-new(root),
+      ::view-transition-old(root) {
+        animation: none;
       }
     </style>
   </head>
-
   <body>
-    <div class="outer">
-      <div class="inner">1</div>
-      <div class="inner inner2">2</div>
-      <div class="inner">3</div>
-    </div>
+    <button id="themeBtn">切换主题</button>
+    <script>
+      const themeBtn = document.getElementById("themeBtn");
+      themeBtn.addEventListener("click", (ev) => {
+        const transition = document.startViewTransition(() => {
+          document.documentElement.classList.toggle("dark");
+        });
+
+        transition.ready.then(() => {
+          const { clientX, clientY } = ev;
+          const radius = Math.hypot(
+            Math.max(clientX, innerWidth - clientX),
+            Math.max(clientY, innerHeight - clientY),
+          );
+          document.documentElement.animate(
+            {
+              clipPath: [
+                `circle(0% at ${clientX}px ${clientY}px)`,
+                `circle(${radius}px at ${clientX}px ${clientY}px)`,
+              ],
+            },
+            {
+              duration: 300,
+              pseudoElement: "::view-transition-new(root)",
+            },
+          );
+        });
+      });
+    </script>
   </body>
 </html>
