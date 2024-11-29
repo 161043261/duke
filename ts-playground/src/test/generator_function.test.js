@@ -55,8 +55,8 @@ test("Test1", () => {
   // genFunc instanceof GeneratorFunction 生成器函数
   function* genFunc(i) {
     yield i;
-    //! 使用 yield*
-    yield* subGenFunc(i);
+    //! yield* 委托给另一个 generator 或可遍历对象
+    yield* subGenFunc(i) /* : generator */;
     yield i + 10;
     return "wtf";
   }

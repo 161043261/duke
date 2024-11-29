@@ -1,6 +1,6 @@
 # async/await
 
-前置知识 [Promise](../promise/README.md)
+前置知识 [Promise](./README.md)
 
 async/await 是 ES7 提出的
 
@@ -10,7 +10,9 @@ async/await 是 ES7 提出的
 >
 > 有时, 表面上返回一个非 Promise 对象 obj, 实际上返回 `Promise{ PromiseState: 'fulfilled', PromiseResult: obj }`
 
-[async](./async.js)
+- await 返回一个 fulfilled 的 Promise 对象的 async 函数时, 取出 promise.PromiseReturn
+- await 返回一个 rejected 的 Promise 对象的 async 函数时, 抛出错误
+  [async](./async.js)
 
 ```js
 async function f() {

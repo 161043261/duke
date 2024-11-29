@@ -138,3 +138,11 @@ setTimeout(() => {
   p.then(...) // 指定回调函数 onfulfilled, onrejected
 }, 3000)
 ```
+
+> 如果 onfulfilled, onrejected 回调函数中 throw what
+>
+> 则 then, catch 返回 Promise{ PromiseState: rejected, PromiseReturn: what }
+>
+> 如果 onfulfilled, onrejected 回调函数中 return what (没有 return 等价于 return undefined)
+>
+> 则 then, catch 返回 Promise{ PromiseState: fulfilled, PromiseReturn: what }

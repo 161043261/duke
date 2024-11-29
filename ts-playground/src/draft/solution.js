@@ -1,33 +1,22 @@
-"use strict";
-function countOfPairs(nums) {
-  let ans = 0;
-  const mod = 1_000_000_007;
-  const n = nums.length;
-  const m = Math.max(...nums);
-  const f = Array.from(
-    {
-      length: n,
-    },
-    () => new Array(m + 1).fill(0),
-  );
-  const s = new Array(m + 1).fill(0);
-  for (let j = 0; j <= nums[0]; j++) {
-    f[0][j] = 1;
-  }
-  for (let i = 1; i < n; i++) {
-    s[0] = f[i - 1][0];
-    for (let k = 1; k <= m; k++) {
-      s[k] = s[k - 1] + f[i - 1][k];
-    }
-    for (let j = 0; j <= nums[i]; j++) {
-      const maxK = j + Math.min(nums[i - 1] - nums[i], 0);
-      if (maxK >= 0) {
-        f[i][j] = s[maxK] % mod;
-      }
-    }
-  }
-  for (let i = 0; i <= nums[n - 1]; i++) {
-    ans += f[n - 1][i];
-  }
-  return ans % mod;
-}
+/**
+ * @param {Function} fn
+ * @param {number} t
+ * @return {Function}
+ */
+var timeLimit = function (fn, t) {
+  return async function (...args) {
+    let p1 = new Promise((resolve, reject) => {
+      setTimeout(() => reject("Time Limit Exceeded"), t);
+    });
+    let p2 = fn.call(this, ...args);
+    return Promise.race([p1, p2]);
+  };
+};
+
+// await 返回一个 fulfilled 的 Promise 对象的 async 函数时, 取出 promise.PromiseReturn
+// await 返回一个 rejected 的 Promise 对象的 async 函数时, 抛出错误
+
+// Promise.race()
+// 最先切换 PromiseState 的子 promise 成功时, 返回的 promise 成功 fulfilled
+// 最先切换 PromiseState 的子 promise 失败时, 返回的 promise 失败 rejected
+

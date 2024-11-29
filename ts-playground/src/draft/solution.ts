@@ -31,3 +31,26 @@ function countOfPairs(nums: number[]): number {
   }
   return ans % mod;
 }
+
+function map(arr: number[], fn: (n: number, i: number) => number): number[] {
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] = fn(arr[i], i);
+  }
+  return arr;
+}
+
+function canAliceWin(nums: number[]): boolean {
+  let sa1 = 0, sa2 = 0, sum = 0;
+  for (const num of nums) {
+    if (num >= 0 && num < 10) {
+      sa1 += num;
+    }
+    if (num >= 10 && num < 100) {
+      sa2 += num;
+    }
+    sum += num
+  }
+  const sb1 = sum - sa1
+  const sb2 = sum - sa2;
+  return sa1 > sb1 || sa2 > sb2;
+}
