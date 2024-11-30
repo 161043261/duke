@@ -20,7 +20,7 @@ test("Test2", () => {
     return "Done!";
   }
 
-  // 等价于 tag(["Hello ", " world ", ""], 15, 50)
+  // 等价于 tag1(["Hello ", " world ", ""], 15, 50)
   console.log(tag`Hello ${a + b} world ${a * b}`); // Done!
 });
 
@@ -43,10 +43,10 @@ test("Test3", () => {
       ret += arguments[i];
     }
     ret += strs[strs.length - 1];
-    return ret + ", handled by tag";
+    return ret + ", handled by tag1";
   }
 
-  // The total is 30 (60 with tax), handled by tag
+  // The total is 30 (60 with tax), handled by tag1
   console.log(msg);
 
   // 使用剩余参数 ...inserts
@@ -59,10 +59,10 @@ test("Test3", () => {
       ret += inserts[i];
     }
     ret += strs[strs.length - 1];
-    return ret + ", handled by tag1";
+    return ret + ", handled by tag2";
   }
 
-  // The total is 30 (90 with tax), handled by tag1
+  // The total is 30 (90 with tax), handled by tag2
   console.log(msg1);
 });
 
@@ -86,9 +86,9 @@ test("Test4", () => {
     return ret;
   }
 
-  // <p><script>alert("wtf")</script> sent u a msg</p>
+  // <p><script>alert("wtf")</script> sent u a msg1</p>
   console.log(rawHTML);
-  // <p>&lt;script&gt;alert("wtf")&lt;/script&gt; sent u a msg</p>
+  // <p>&lt;script&gt;alert("wtf")&lt;/script&gt; sent u a msg1</p>
   console.log(safeHTML);
 });
 
