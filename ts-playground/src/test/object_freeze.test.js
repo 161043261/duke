@@ -29,7 +29,7 @@ test("Test_Finalize", () => {
   const obj1 = { a: { v: 1 } };
   Object.freeze(obj1);
   obj1.a.v = 7;
-  console.log(obj1); // { a: { v: 7 } };
+  console.log(obj1); // { obj1: { v: 7 } };
 
   const finalize = (obj) => {
     Object.freeze(obj);

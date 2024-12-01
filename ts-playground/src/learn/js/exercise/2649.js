@@ -6,7 +6,9 @@ var inorderTraversal = function* (arr) {
   for (const item of arr) {
     if (Array.isArray(item)) {
       console.log(item);
-      yield*/* yield* 委托给另一个 generator 或可遍历对象 */ inorderTraversal(item);
+      yield* /* yield* 委托给另一个 generator 或可遍历对象 */ inorderTraversal(
+        item,
+      );
     } else {
       yield item;
     }

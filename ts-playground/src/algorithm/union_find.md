@@ -69,7 +69,7 @@ function findWithCompress(x: number): number | undefined {
 
 // 删除叶子节点
 function deleteLeaf(x: number) {
-  // assert x is a leaf node
+  // assert x is obj1 leaf node
   let xroot = find(x);
   sizes[xroot] -= 1;
   parentIdx[x] = x;
@@ -77,7 +77,7 @@ function deleteLeaf(x: number) {
 
 // 移动叶子节点: 将 x 移动到 y 所属的树
 function moveLeaf(x: number, y: number) {
-  // assert x is a leaf node
+  // assert x is obj1 leaf node
   let [xroot, yroot] = [find(x), find(y)];
   if (xroot == yroot) {
     return;

@@ -16,7 +16,7 @@ mongoose.connection.on("open", () => {
   let phoneId;
 
   ////////////////////////////////////////////
-  // Async Function Returns a Promise Instance
+  // Async Function Returns obj1 Promise Instance
   ////////////////////////////////////////////
 
   async function Test_Create_InsertMany() {
@@ -107,7 +107,7 @@ mongoose.connection.on("open", () => {
         $or: [{ price: 2222 }, { price: 3333 }],
       });
       //! 正则表达式
-      const pBatch4 = phoneModel.find({ brand: /^a/ });
+      const pBatch4 = phoneModel.find({ brand: /^obj1/ });
       return Promise.all([p1, p2, pBatch1, pBatch2, pBatch3, pBatch4]);
     };
     await finder();

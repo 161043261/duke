@@ -1,28 +1,33 @@
-let data = {
-  "user-data": {
-    ["first" + "Name"]: "hang",
-  },
-};
-let firstName = data?.["user-data"]?.firstName || "username";
-console.log(firstName); // hang
+class ArrExt extends Array {
+  static get [Symbol.species]() {
+    return Array;
+  }
+}
 
-data = {
-  meth: {
-    ["print-meth"](...args) {
-      console.log(...args);
-      return "oops";
-    },
-  },
-};
+const a = new ArrExt();
+const b = a.map((x) => x);
 
-// 如果 ? 左侧为 null 或 undefined, 则直接返回 undefined
-firstName = data?.["user-data"]?.firstName || "hello";
-console.log(firstName); // hello
-firstName = data?.["user-data"]?.firstName ?? "world";
-console.log(firstName); // world
+console.log(a instanceof ArrExt); // true
+console.log(a instanceof Array); // true
+console.log(ArrExt[Symbol.hasInstance](a)); // true
+console.log(Array[Symbol.hasInstance](a)); // true
 
-// 如果 ? 左侧方法存在, 则执行
-data?.meth?.["print-meth"]?.("w", "t", "f"); // w t f
-data = {};
-console.log(data?.meth?.["print-meth"]?.("w", "t", "f") || "damn"); // damn
-console.log(data?.meth?.["print-meth"]?.("w", "t", "f") ?? "damn"); // damn
+console.log(b instanceof ArrExt); // false
+console.log(b instanceof Array); // true
+console.log(ArrExt[Symbol.hasInstance](b)); // false
+console.log(Array[Symbol.hasInstance](b)); // true
+
+class P1 extends Promise {}
+
+class P2 extends Promise {
+  static get [Symbol.species]() {
+    return Promise;
+  }
+}
+
+console.log(
+  new P1((resolve, reject) => resolve).then((value) => value) instanceof P1,
+); // true
+console.log(
+  new P2((resolve, reject) => resolve).then((value) => value) instanceof P2,
+); // false

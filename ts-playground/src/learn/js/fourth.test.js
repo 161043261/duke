@@ -32,7 +32,7 @@ test("Test_DeepClone1", () => {
     Object.assign(dst, src);
     src.a = 4;
     src.d = 5;
-    // { a: 1, b: 2, c: 3 }
+    // { obj1: 1, obj2: 2, obj3: 3 }
     console.log(dst);
   }
 
@@ -43,7 +43,7 @@ test("Test_DeepClone1", () => {
     Object.assign(dst, src);
     src.a.v1 = 4;
     src.a.v4 = 5;
-    // { a: { v1: 4, v4: 5 }, b: { v2: 2 }, c: { v3: 3 } }
+    // { obj1: { v1: 4, v4: 5 }, obj2: { v2: 2 }, obj3: { v3: 3 } }
     console.log(dst);
   }
 });
@@ -56,7 +56,7 @@ test("Test_DeepClone2", () => {
     let dst = { ...src };
     src.a = 4;
     src.d = 5;
-    // {a: 1, b: 2, c: 3}
+    // {obj1: 1, obj2: 2, obj3: 3}
     console.log(dst);
   }
   {
@@ -65,7 +65,7 @@ test("Test_DeepClone2", () => {
     let dst = { ...src };
     src.a.v1 = 4;
     src.a.v4 = 5;
-    // { a: { v1: 4, v4: 5 }, b: { v2: 2 }, c: { v3: 3 } }
+    // { obj1: { v1: 4, v4: 5 }, obj2: { v2: 2 }, obj3: { v3: 3 } }
     console.log(dst);
   }
 });
@@ -87,7 +87,7 @@ test("Test_DeepClone3", () => {
     let dst = Array.prototype.concat(src);
     src[0].a = 4;
     src[0].d = 5;
-    // [ { a: 4, d: 5 }, { b: 2 }, { c: 3 } ]
+    // [ { obj1: 4, d: 5 }, { obj2: 2 }, { obj3: 3 } ]
     console.log(dst);
   }
 });
@@ -109,7 +109,7 @@ test("Test_DeepClone4", () => {
     let dst = [...src];
     src[0].a = 4;
     src[0].d = 5;
-    // [ { a: 4, d: 5 }, { b: 2 }, { c: 3 } ]
+    // [ { obj1: 4, d: 5 }, { obj2: 2 }, { obj3: 3 } ]
     console.log(dst);
   }
 });
@@ -122,7 +122,7 @@ test("Test_DeepClone5", () => {
     let dst = _.cloneDeep(src);
     src.a.v1 = 4;
     src.a.v4 = 5;
-    // { a: { v1: 1 }, b: { v2: 2 }, c: { v3: 3 } }
+    // { obj1: { v1: 1 }, obj2: { v2: 2 }, obj3: { v3: 3 } }
     console.log(dst);
   }
   {
@@ -131,7 +131,7 @@ test("Test_DeepClone5", () => {
     let dst = _.cloneDeep(src);
     src[0].a = 4;
     src[0].d = 5;
-    // [ { a: 1 }, { b: 2 }, { c: 3 } ]
+    // [ { obj1: 1 }, { obj2: 2 }, { obj3: 3 } ]
     console.log(dst);
   }
 });
@@ -144,7 +144,7 @@ test("Test_DeepClone6", () => {
     let dst = JSON.parse(JSON.stringify(src));
     src.a.v1 = 4;
     src.a.v4 = 5;
-    // { a: { v1: 1 }, b: { v2: 2 }, c: { v3: 3 } }
+    // { obj1: { v1: 1 }, obj2: { v2: 2 }, obj3: { v3: 3 } }
     console.log(dst);
   }
   {
@@ -153,7 +153,7 @@ test("Test_DeepClone6", () => {
     let dst = JSON.parse(JSON.stringify(src));
     src[0].a = 4;
     src[0].d = 5;
-    // [ { a: 1 }, { b: 2 }, { c: 3 } ]
+    // [ { obj1: 1 }, { obj2: 2 }, { obj3: 3 } ]
     console.log(dst);
   }
 });
@@ -181,7 +181,7 @@ test("Test_DeepClone7", () => {
     deepClone(dst, src);
     src.a.v1 = 4;
     src.a.v4 = 5;
-    // { a: { v1: 1 }, b: { v2: 2 }, c: { v3: 3 } }
+    // { obj1: { v1: 1 }, obj2: { v2: 2 }, obj3: { v3: 3 } }
     console.log(dst);
   }
   {
@@ -191,7 +191,7 @@ test("Test_DeepClone7", () => {
     deepClone(dst, src);
     src[0].a = 4;
     src[0].d = 5;
-    // [ { a: 1 }, { b: 2 }, { c: 3 } ]
+    // [ { obj1: 1 }, { obj2: 2 }, { obj3: 3 } ]
     console.log(dst);
   }
 });

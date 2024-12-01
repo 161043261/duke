@@ -70,7 +70,7 @@ test("Test3", () => {
 test("Test4", () => {
   class Rectangle {
     constructor(height, width) {
-      console.log("Construct rectangle");
+      console.log("Construct rect");
       this.height = height;
       this.width = width;
     }
@@ -93,10 +93,10 @@ test("Test4", () => {
     }
   }
 
-  const square = new Square(2); // Construct rectangle
+  const square = new Square(2); // Construct rect
   square.sideLen = 3; // Set sideLen
   console.log(square.area); // Get area
-  // square ---> Square.prototype ---> Rectangle.prototype ---> Object.prototype ---> null
+  // square ---> Square.prototype ---> Rect.prototype ---> Object.prototype ---> null
 });
 
 test("Test5", () => {

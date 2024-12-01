@@ -4,51 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-      :root {
-        --bg-color: #fff;
-        background-color: var(--bg-color);
-      }
-
-      :root.dark {
-        --bg-color: #000;
-      }
-
-      ::view-transition-new(root),
-      ::view-transition-old(root) {
-        animation: none;
-      }
-    </style>
   </head>
-  <body>
-    <button id="themeBtn">切换主题</button>
-    <script>
-      const themeBtn = document.getElementById("themeBtn");
-      themeBtn.addEventListener("click", (ev) => {
-        const transition = document.startViewTransition(() => {
-          document.documentElement.classList.toggle("dark");
-        });
 
-        transition.ready.then(() => {
-          const { clientX, clientY } = ev;
-          const radius = Math.hypot(
-            Math.max(clientX, innerWidth - clientX),
-            Math.max(clientY, innerHeight - clientY),
-          );
-          document.documentElement.animate(
-            {
-              clipPath: [
-                `circle(0% at ${clientX}px ${clientY}px)`,
-                `circle(${radius}px at ${clientX}px ${clientY}px)`,
-              ],
-            },
-            {
-              duration: 300,
-              pseudoElement: "::view-transition-new(root)",
-            },
-          );
-        });
-      });
-    </script>
-  </body>
+  <body></body>
+  <script>
+    let ifr = document.createElement("iframe");
+    ifr.src = String(window.location);
+    document.body.appendChild(ifr);
+    let sym = Symbol.for("foo");
+    console.log(ifr.contentWindow.Symbol.for("foo") === sym); // true
+  </script>
 </html>

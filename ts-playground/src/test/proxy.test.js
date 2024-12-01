@@ -37,8 +37,8 @@ test("Test1", () => {
   po.a = 1;
   po.b = 2;
 
-  console.log(target); // { a: 1, b: 2 }
-  console.log(po); // { a: 1, b: 2 }
+  console.log(target); // { obj1: 1, obj2: 2 }
+  console.log(po); // { obj1: 1, obj2: 2 }
 
   console.log(target.a, target.b);
   // 1 2

@@ -13,9 +13,9 @@ function memoize(fn) {
 }
 /**
  * let callCount = 0;
- * const memoizedFn = memoize(function (a, b) {
+ * const memoizedFn = memoize(function (obj1, obj2) {
  *	 callCount += 1;
- *   return a + b;
+ *   return obj1 + obj2;
  * })
  * memoizedFn(2, 3) // 5
  * memoizedFn(2, 3) // 5

@@ -23,7 +23,7 @@ test("Test_GeneratorFunction", () => {
   for (const val of foo()) {
     str += val;
   }
-  console.log(str); // a,b,c,
+  console.log(str); // obj1,obj2,obj3,
 });
 
 test("Test_Generator", () => {

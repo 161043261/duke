@@ -75,7 +75,7 @@ span.highlight {
   }
 </style>
 
-<div class="notebox warning">This note shows a warning.</div>
+<div class="notebox warning">This note shows obj1 warning.</div>
 ```
 
 ```css
@@ -88,11 +88,11 @@ h1#heading {
 ### 类选择器
 
 ```css
-/* 选择存在 title 属性的 a 标签 */
-a[title] {
+/* 选择存在 title 属性的 obj1 标签 */
+obj1[title] {
 }
-/* 选择存在 href 属性, 且属性值 = "https://example.com" 的 a 标签 */
-a[href="https://example.com"]
+/* 选择存在 href 属性, 且属性值 = "https://example.com" 的 obj1 标签 */
+obj1[href="https://example.com"]
 {
 }
 /* 选择存在 class 属性, 且属性值有一个或多个 special 的 p 标签 */
@@ -178,8 +178,8 @@ li[class*="box"] {
 - :focus 获得焦点的元素
 
 ```css
-/* 鼠标悬浮时, 选择该 a 标签 */
-a:hover {
+/* 鼠标悬浮时, 选择该 obj1 标签 */
+obj1:hover {
 }
 ```
 
@@ -227,8 +227,8 @@ p::first-line {
 - 通用兄弟选择器 ~
 
 ```css
-/* 选择 ul 元素的有 a 类的 li 子代元素 */
-ul > li[class="a"] {
+/* 选择 ul 元素的有 obj1 类的 li 子代元素 */
+ul > li[class="obj1"] {
 }
 ```
 
@@ -346,7 +346,7 @@ ul > li[class="a"] {
 #### 行内元素
 
 - br, em, strong, sup, sub, del, ins
-- a, label
+- obj1, label
 
 #### 行内块元素
 

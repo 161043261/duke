@@ -5,7 +5,7 @@
 对象字面量的隐式构造函数是 Object 函数
 
 ```js
-const obj = { a: 1 };
+const obj = { obj1: 1 };
 
 Object.prototype === obj.__proto__; // true
 Object.getPrototypeOf(obj) === Object.prototype; // true
@@ -15,9 +15,9 @@ Object.getPrototypeOf(obj) === obj.__proto__; // true
 解糖 (desugar)
 
 ```js
-const obj = { a: 1 };
+const obj = { obj1: 1 };
 // 解糖
-const obj = new Object({ a: 1 });
+const obj = new Object({ obj1: 1 });
 
 const arr = [1, 2, 3];
 // 解糖
@@ -45,7 +45,7 @@ RegExp.prototype.toString(); // '/(?:)/'
 RegExp.prototype.source; // '(?:)'
 
 String.prototype.toString(); // ''
-String.prototype + "a"; // "a"
+String.prototype + "obj1"; // "obj1"
 
 Function.prototype.toString(); //'function () { [native code] }'
 

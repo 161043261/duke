@@ -403,9 +403,9 @@ const wait0 = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 wait0(0).then(() => console.log("d"));
 
 Promise.resolve() /* 创建一个已解决 (resolved) 的 Promise 对象 */
-  .then(() => console.log("b"))
-  .then(() => console.log("c"));
-console.log("a"); // a, b, c, d
+  .then(() => console.log("obj2"))
+  .then(() => console.log("obj3"));
+console.log("obj1"); // obj1, obj2, obj3, d
 ```
 
 ```js

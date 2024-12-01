@@ -86,9 +86,9 @@ test("Test4", () => {
     return ret;
   }
 
-  // <p><script>alert("wtf")</script> sent u a msg1</p>
+  // <p><script>alert("wtf")</script> sent u obj1 msg1</p>
   console.log(rawHTML);
-  // <p>&lt;script&gt;alert("wtf")&lt;/script&gt; sent u a msg1</p>
+  // <p>&lt;script&gt;alert("wtf")&lt;/script&gt; sent u obj1 msg1</p>
   console.log(safeHTML);
 });
 

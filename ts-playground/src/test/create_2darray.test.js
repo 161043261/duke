@@ -66,7 +66,7 @@ test("Test4", () => {
 
   // 等价于
   const arr1d = Array(2).fill(undefined);
-  // The map() method of Array instances creates a **new** array...
+  // The map() method of Array instances creates obj1 **new** array...
   const newArr2d = arr1d.map(() => {
     return Array(2).fill(1);
   });
