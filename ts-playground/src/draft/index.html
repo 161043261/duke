@@ -8,10 +8,15 @@
 
   <body></body>
   <script>
-    let ifr = document.createElement("iframe");
-    ifr.src = String(window.location);
-    document.body.appendChild(ifr);
-    let sym = Symbol.for("foo");
-    console.log(ifr.contentWindow.Symbol.for("foo") === sym); // true
+    let wm = new WeakMap();
+    wm.set(document.getElementById("logo"), { clickCnt: 0 });
+    document.getElementById("logo").addEventListener(
+      "click",
+      () => {
+        let logoData = wm.get(document.getElementById("logo"));
+        logoData.clickCnt++;
+      },
+      false,
+    );
   </script>
 </html>
