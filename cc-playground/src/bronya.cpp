@@ -216,6 +216,26 @@ vector<int> solution13(int n) {
   return ans;
 }
 
+string solution19(int n, int k, string s) {
+  auto arr = vector<char>(s.begin(), s.end());
+  for (int i = 0; i < k; i++) {
+    bool enter = false;
+    for (int j = 0; j < arr.size() - 1; j++) {
+      if (arr[j] == '1' && arr[j + 1] == '0') {
+        enter = true;
+        arr[j] = '0';
+        arr[j + 1] = '1';
+        break;
+      }
+    }
+    if (!enter) {
+      break;
+    }
+  }
+  // return string(arr.begin(), arr.end());
+  return {arr.begin(), arr.end()};
+}
+
 int solution20(int n) {
   // write code here
   int ans = 0;
@@ -258,7 +278,8 @@ int solution25(std::string dna1, std::string dna2) {
 }
 
 int main() {
-  //  You can add more test cases here
-  std::cout << (solution25("AGCTTAGC", "AGCTAGCT") == 2) << std::endl;
-  std::cout << (solution25("AGCCGAGC", "GCTAGCT") == 4) << std::endl;
+  cout << (solution19(5, 2, "01010") == "00101") << endl;
+  cout << (solution19(7, 3, "1101001") == "0110101") << endl;
+  cout << (solution19(4, 1, "1001") == "0101") << endl;
+  return 0;
 }
