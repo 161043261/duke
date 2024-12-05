@@ -37,7 +37,7 @@ test("Test2", () => {
 
   obj.fa = "iPad";
   obj.fm = "Microsoft";
-  delete obj.prop; // obj.pop = function() {}
+  delete obj.prop; // target.pop = function() {}
   const obj_ = Object.seal(obj);
   console.log(obj_ === obj); // true
 
@@ -70,7 +70,7 @@ test("Test2", () => {
   Object.defineProperty(obj, "fa", {
     value: "wtf",
   });
-  console.log("obj:", obj); // obj: { fa: 'wtf', fm: 'Microsoft' }
+  console.log("target:", obj); // target: { fa: 'wtf', fm: 'Microsoft' }
 
   // ES5 中, 如果 Object.seal 方法的参数是基本类型, 则会抛出 TypeError 错误
   // Object.seal(1)

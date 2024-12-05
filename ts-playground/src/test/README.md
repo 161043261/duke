@@ -5,19 +5,19 @@
 对象字面量的隐式构造函数是 Object 函数
 
 ```js
-const obj = { obj1: 1 };
+const target = { obj1: 1 };
 
-Object.prototype === obj.__proto__; // true
-Object.getPrototypeOf(obj) === Object.prototype; // true
-Object.getPrototypeOf(obj) === obj.__proto__; // true
+Object.prototype === target.__proto__; // true
+Object.getPrototypeOf(target) === Object.prototype; // true
+Object.getPrototypeOf(target) === target.__proto__; // true
 ```
 
 解糖 (desugar)
 
 ```js
-const obj = { obj1: 1 };
+const target = { obj1: 1 };
 // 解糖
-const obj = new Object({ obj1: 1 });
+const target = new Object({ obj1: 1 });
 
 const arr = [1, 2, 3];
 // 解糖
@@ -57,8 +57,8 @@ Map.prototype; // Object [Map] {}
 ```js
 function Constructor() {}
 
-const obj = new Constructor();
-// obj ---> Constructor.prototype ---> Object.prototype ---> null
+const target = new Constructor();
+// target ---> Constructor.prototype ---> Object.prototype ---> null
 ```
 
 构建更长的原型链 (等价于 extends)
@@ -70,8 +70,8 @@ function Derived() {}
 
 Object.setPrototypeOf(Derived.prototype, Base.prototype);
 
-const obj = new Derived();
-// obj ---> Derived.prototype ---> Base.prototype ---> Object.prototype ---> null
+const target = new Derived();
+// target ---> Derived.prototype ---> Base.prototype ---> Object.prototype ---> null
 ```
 
 构建更长的原型链 (等价于 extends)
@@ -81,8 +81,8 @@ function Base() {}
 
 function Derived() {}
 
-// Object.create(Base.prototype) 创建一个对象 obj
-// 该对象的原型是 Base.prototype (obj.__proto__ === Base.prototype)
+// Object.create(Base.prototype) 创建一个对象 target
+// 该对象的原型是 Base.prototype (target.__proto__ === Base.prototype)
 Derived.prototype = Object.create(Base.prototype);
 ```
 
@@ -93,8 +93,8 @@ class Base {}
 
 class Derived extends Base {}
 
-const obj = new Derived();
-// obj ---> Derived.prototype ---> Base.prototype ---> Object.prototype ---> null
+const target = new Derived();
+// target ---> Derived.prototype ---> Base.prototype ---> Object.prototype ---> null
 ```
 
 - 函数也有属性

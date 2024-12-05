@@ -78,10 +78,10 @@ class K {
   }
 }
 
-console.log(K.getx(new C())); // obj instanceof K: false
+console.log(K.getx(new C())); // target instanceof K: false
 console.log(K.getx(new K())); // undefined
 console.log(K.getx(new K(5))); // 5
-console.log(K.getx({})); // obj instanceof K: false
+console.log(K.getx({})); // target instanceof K: false
 
 //! 私有字段不是原型继承模型的一部分
 // Object.freeze() 和 Object.seal() 对私有字段没有影响

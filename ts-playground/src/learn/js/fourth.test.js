@@ -4,7 +4,7 @@
 //? 深拷贝
 // 1. 深拷贝单层 (属性值是基本类型) 对象:
 //    - Object.assign();
-//    - {...obj};
+//    - {...target};
 // 2. 深拷贝一维基本类型数组:
 //    - Array.prototype.concat();
 //    - [...arr];
@@ -48,7 +48,7 @@ test("Test_DeepClone1", () => {
   }
 });
 
-//! {...obj}
+//! {...target}
 test("Test_DeepClone2", () => {
   {
     //! passed

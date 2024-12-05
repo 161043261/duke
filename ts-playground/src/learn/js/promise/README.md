@@ -81,13 +81,19 @@ Promise 对象有 3 种 PromiseState
 
 ### Promise 的方法
 
-1. [Promise.resolve()](./api/resolve.js)
-   - 传递一个非 Promise 对象, 返回的 promise 的 PromiseState 为 fulfilled
-   - 传递一个 PromiseState == fulfilled 的 Promise 对象, 返回的 promise 的 PromiseState 为 fulfilled
-   - 传递一个 PromiseState == rejected 的 Promise 对象, 返回的 promise 的 PromiseState 为 rejected
-2. [Promise.reject()](./api/reject.js) 返回的 promise 的 PromiseState 始终为 rejected
-3. [Promise.catch()](./api/catch.js) 指定异步任务失败时, 即 `reject(...); throw new Error(...)` 时的错误处理函数
-4. [Promise.finally()](./api/finally.js) 不管 PromiseState 是 fulfilled 还是 rejected, 最终都会执行
+1. [Promise.resolve(value)](./api/resolve.js)
+   - 无参数, 或传递一个非 Promise 对象, 返回的 promise 的 PromiseState 为 fulfilled, PromiseReturn 为 value
+   - 传递一个 Promise 对象, 返回该 Promise 对象
+     - 传递一个 PromiseState == fulfilled 的 Promise 对象, 返回的 promise 的 PromiseState 为 fulfilled
+     - 传递一个 PromiseState == rejected 的 Promise 对象, 返回的 promise 的 PromiseState 为 rejected
+2. [Promise.reject(reason)](./api/reject.js) 返回的 promise 的 PromiseState 始终为 rejected, PromiseReturn 为 reason
+3. [Promise.catch(onrejected)](./api/catch.js) 指定异步任务失败时, 即 `reject(...); throw new Error(...)` 时的错误处理函数
+4. [Promise.finally(onFinally)](./api/finally.js) 返回的 promise 的 PromiseState 始终为 fulfilled
+
+- Promise.resolve(value) 等价于 new Promise((resolve, reject) => resolve(value))
+- Promise.reject(reason) 等价于 new Promise((resolve, reject) => reject(reason))
+- reject(reason) 等价于 throw reason
+- promise.catch(onrejected) 等价于 promise.then(undefined, onrejected)
 
 `Promise.all(), Promise.any(), Promise.race(), Promise.allSettled`: 将一组子 promise 包装为一个新的 promise (将一组子异步任务包装为一个新的异步任务)
 

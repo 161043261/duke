@@ -13,7 +13,7 @@ Person.prototype.greet = function () {
 };
 
 let p = new Person();
-//! 访问对象 obj 的属性或方法时, 先查找 obj, 再查找原型链
+//! 访问对象 target 的属性或方法时, 先查找 target, 再查找原型链
 p.greet(); //? damn
 
 //! Class.prototype.constructor: 指向类的构造函数
@@ -99,8 +99,8 @@ console.log(
 
 /**************************************************/
 
-//! 访问对象 obj 的属性或方法时, 先查找 obj, 再查找原型链
-//! 原型链: obj -> obj.__proto__ -> obj.__proto__.proto__
+//! 访问对象 target 的属性或方法时, 先查找 target, 再查找原型链
+//! 原型链: target -> target.__proto__ -> target.__proto__.proto__
 
 console.log("Object.prototype:", Object.prototype); //? [Object: null prototype] {}
 console.log("Object.prototype.__proto__:", Object.prototype.__proto__); //? null

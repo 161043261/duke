@@ -8,7 +8,7 @@ async/await 是 ES7 提出的
 >
 > await 只能用在 async 函数体中
 >
-> 有时, 表面上返回一个非 Promise 对象 obj, 实际上返回 `Promise{ PromiseState: 'fulfilled', PromiseResult: obj }`
+> 有时, 表面上返回一个非 Promise 对象 target, 实际上返回 `Promise{ PromiseState: 'fulfilled', PromiseResult: target }`
 
 - await 返回一个 fulfilled 的 Promise 对象的 async 函数时, 取出 promise.PromiseReturn
 - await 返回一个 rejected 的 Promise 对象的 async 函数时, 抛出错误

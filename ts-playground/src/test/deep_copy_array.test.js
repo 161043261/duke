@@ -26,10 +26,10 @@ test("Test3", () => {
     for (let key in obj) {
       if (
         Object.prototype.hasOwnProperty.call(obj, key)
-        // obj.hasOwnProperty(key)
+        // target.hasOwnProperty(key)
       ) {
         // 不是从原型链上继承的属性
-        if (Array.isArray(obj[key] /* obj.key */)) {
+        if (Array.isArray(obj[key] /* target.key */)) {
           newObj[key] = deepCopyArr(obj[key]);
         } else if (typeof obj[key] === "object" && obj[key] !== null) {
           newObj[key] = deepCopyObj(obj[key]);

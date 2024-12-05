@@ -27,7 +27,7 @@ test("Test_Syntax", () => {
     ...spreadProperty,
   };
 
-  // console.log(obj);
+  // console.log(target);
 
   console.log(obj.prop_); // str
   obj.prop = "wtf"; // setter

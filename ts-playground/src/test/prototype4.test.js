@@ -4,7 +4,7 @@ import { test } from "vitest";
 test("Test1", () => {
   const obj = { a: 1 };
   console.log(obj.__proto__ === Object.prototype); // true
-  // obj ---> Object.prototype ---> null
+  // target ---> Object.prototype ---> null
 
   const arr = ["bh3", "ys", "hsr"];
   console.log(arr.__proto__ === Array.prototype); // true
@@ -25,7 +25,7 @@ test("Test1", () => {
 
   const extendsObj = { b: 2, __proto__: obj };
   console.log(extendsObj.__proto__ === obj); // true
-  // extendsObj ---> obj ---> Object.prototype ---> null
+  // extendsObj ---> target ---> Object.prototype ---> null
 });
 
 test("Test2", () => {

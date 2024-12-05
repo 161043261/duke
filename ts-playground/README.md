@@ -1,4 +1,4 @@
-# JavaScript/TypeScript Playground
+# JS/TS Playground
 
 ```js
 function okCallback(result) {
@@ -304,8 +304,8 @@ Promise.all([func1(), func2(), func3()]).then(
 // 最后组合为单个返回值
 const slice = [1, 2, 3, 4];
 const init = 0;
-const sum = slice.reduce((acc, curr) => acc + curr, init /* acc 的初始值 */);
-console.log("sum:", sum);
+const add = slice.reduce((acc, curr) => acc + curr, init /* acc 的初始值 */);
+console.log("add:", add);
 ```
 
 ```js

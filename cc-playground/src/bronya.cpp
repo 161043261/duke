@@ -1,11 +1,13 @@
 //
-// Created by admin on 2024/11/29.
-// 1. Replace headers
-// 2. Replace solutions
+// tips
+// 1. replace headers
+// 2. replace solutions
+// 3. use clangd instead of msvc
 //
 
 #include <algorithm>
-#include <iostream>
+#include <cstdint>
+#include <functional>
 #include <map>
 #include <regex>
 #include <string>
@@ -13,9 +15,9 @@
 
 using namespace std;
 
-int solution1(std::vector<int> cards) {
-  // Edit your code here
-  auto ntimes = std::vector<int>(1001, 0);
+//! No.1
+int solution1(vector<int> cards) {
+  auto ntimes = vector<int>(1001, 0);
   for (const auto &card : cards) {
     ntimes[card]++;
   }
@@ -27,8 +29,36 @@ int solution1(std::vector<int> cards) {
   return -1;
 }
 
-std::string solution3(const std::string &s) {
-  // write code here
+//! No.2
+int solution2(int n, int k, vector<int> data) {
+  vector<vector<int>> dp(n);
+  for (int i = 0; i < n; i++) {
+    dp[i] = vector<int>(k, INT32_MAX);
+  }
+  for (int j = 0; j < k; j++) {
+    dp[0][j] = (j + 1) * data[0];
+  }
+  for (int i = 1; i < n; i++) {
+    for (int j = 0; j < k; j++) {
+      if (j < k - 1) {
+        dp[i][j] = dp[i - 1][j + 1];
+      }
+      for (int l = j; l >= 0; l--) {
+        dp[i][j] = min(dp[i][j], dp[i - 1][l] + data[i] * (j - l + 1));
+      }
+    }
+  }
+  // for (int i = 0; i < n; i++) {
+  //   for (int j = 0; j < k; j++) {
+  //     cout << dp[i][j] << " ";
+  //   }
+  //   cout << endl;
+  // }
+  return dp[n - 1][0];
+}
+
+//! No.3
+string solution3(const string &s) {
   vector<char> chs{s.begin(), s.end()};
   auto head = 0, tail = -1, cnt = 0, p = static_cast<int>(chs.size() - 1);
   while (chs[head] == '0') {
@@ -63,25 +93,9 @@ std::string solution3(const std::string &s) {
   return ret;
 }
 
-void backtrack(int start, int &acc, const vector<vector<int> > &varrs,
-               int &ans) {
-  if (start == varrs.size()) {
-    if (acc % 2 == 0) {
-      ans++;
-    }
-    return;
-  }
-
-  for (auto i = 0; i < varrs[start].size(); i++) {
-    acc += varrs[start][i];
-    backtrack(start + 1, acc, varrs, ans);
-    acc -= varrs[start][i];
-  }
-}
-
-int solution4(std::vector<int> numbers) {
-  // Please write your code here
-  vector<vector<int> > varrs{};
+//! No.4
+int solution4(vector<int> numbers) {
+  vector<vector<int>> varrs{};
   for (int item : numbers) {
     auto varr = vector<int>{};
     while (item > 0) {
@@ -97,13 +111,29 @@ int solution4(std::vector<int> numbers) {
   //   cout << endl;
   // }
   int acc = 0, ans = 0;
-  backtrack(0, acc, varrs, ans);
+
+  function<void(int)> backtrack;
+  backtrack = [&](int start) {
+    if (start == varrs.size()) {
+      if (acc % 2 == 0) {
+        ans++;
+      }
+      return;
+    }
+
+    for (auto i = 0; i < varrs[start].size(); i++) {
+      acc += varrs[start][i];
+      backtrack(start + 1);
+      acc -= varrs[start][i];
+    }
+  };
+  backtrack(0);
   // cout << ans << endl;
   return ans;
 }
 
-std::vector<int> solution5(int n, int max, const std::vector<int> &array) {
-  // Edit your code here
+//! No.5
+vector<int> solution5(int n, int max, const vector<int> &array) {
   auto val2cnt = map<int, int>{};
   for (const auto &val : array) {
     if (val2cnt.find(val == 1 ? 14 : val) == val2cnt.end()) {
@@ -113,7 +143,7 @@ std::vector<int> solution5(int n, int max, const std::vector<int> &array) {
     }
   }
   // for (const auto &kv: val2cnt) {
-  //   std::cout << kv.first << " " << kv.second << std::endl;
+  //   cout << kv.first << " " << kv.second << endl;
   // }
   vector<int> mt3{};
   vector<int> mt2{};
@@ -130,13 +160,13 @@ std::vector<int> solution5(int n, int max, const std::vector<int> &array) {
   // ranges::sort(mt3, [](int a, int b) -> int { return b - a; });
   sort(mt3.begin(), mt3.end(), [](int a, int b) -> int { return b - a; });
 
-  // for_each(mt3.begin(), mt3.end(), [&](int i) { std::cout << i << " "; });
+  // for_each(mt3.begin(), mt3.end(), [&](int i) { cout << i << " "; });
   // cout << endl;
 
   // ranges::sort(mt2, [](int a, int b) -> int { return b - a; });
   sort(mt2.begin(), mt2.end(), [](int a, int b) -> int { return b - a; });
 
-  // for_each(mt2.begin(), mt2.end(), [&](int i) { std::cout << i << " "; });
+  // for_each(mt2.begin(), mt2.end(), [&](int i) { cout << i << " "; });
   // cout << endl;
   for (const auto &item3 : mt3) {
     for (const auto &item2 : mt2) {
@@ -153,9 +183,8 @@ std::vector<int> solution5(int n, int max, const std::vector<int> &array) {
   return {0, 0};
 }
 
-std::string solution7(int n, std::string tmpl,
-                      std::vector<std::string> titles) {
-  // Please write your code here
+//! No.6
+string solution7(int n, string tmpl, vector<string> titles) {
   string str;
   for (auto i = 0; i < tmpl.size(); i++) {
     if (tmpl.at(i) == '{') {
@@ -181,8 +210,8 @@ std::string solution7(int n, std::string tmpl,
   return string{ret.begin(), ret.end() - 1};
 }
 
+//! No.7
 int solution8(vector<int> array) {
-  // Edit your code here
   map<int, int> num2cnt{};
   for (const auto &item : array) {
     if (num2cnt.find(item) == num2cnt.end()) {
@@ -201,11 +230,45 @@ int solution8(vector<int> array) {
   return 0;
 }
 
-int solution10(int a, int b) {
-  // write code here
-  return a / b + (a % b == 0 ? 0 : 1);
+//! No.8
+int solution9(int n, int m, string s, string c) {
+  map<char, int> cnt{};
+  // vector<char> items{s.begin(), s.end()};
+  for (const auto &item : s) {
+    if (cnt.find(item) != cnt.end()) {
+      cnt[item]++;
+    } else {
+      cnt[item] = 1;
+    }
+  }
+  // for_each(cnt.begin(), cnt.end(),
+  //          [](auto kv) { cout << kv.first << " " << kv.second << endl; });
+
+  int ans = 0;
+  for (const auto &item : c) {
+    if (cnt.find(item) != cnt.end() && cnt[item] > 0) {
+      cnt[item]--;
+      ans++;
+    }
+  }
+  return ans;
 }
 
+//! No.9
+int solution10(int a, int b) { return a / b + (a % b == 0 ? 0 : 1); }
+
+//! No.10
+int solution11(std::vector<int> values) {
+  int ans = 0;
+  for (auto i = 0; i < values.size() - 1; i++) {
+    for (auto j = i + 1; j < values.size(); j++) {
+      ans = max(ans, values[i] + values[j] + i - j);
+    }
+  }
+  return ans;
+}
+
+//! No.11
 vector<int> solution13(int n) {
   vector<int> ans;
   for (auto i = 0; i < n; i++) {
@@ -216,6 +279,16 @@ vector<int> solution13(int n) {
   return ans;
 }
 
+//! No.12
+int solution14(int n, int k) {
+  int ans = 0;
+  for (int i = 1; i <= n; i++) {
+    ans += (i * k);
+  }
+  return ans;
+}
+
+//! No.13
 string solution19(int n, int k, string s) {
   auto arr = vector<char>(s.begin(), s.end());
   for (int i = 0; i < k; i++) {
@@ -236,8 +309,8 @@ string solution19(int n, int k, string s) {
   return {arr.begin(), arr.end()};
 }
 
+//! No.14
 int solution20(int n) {
-  // write code here
   int ans = 0;
   while (n > 1) {
     if (n % 2 == 0) {
@@ -251,9 +324,9 @@ int solution20(int n) {
   return ans;
 }
 
-// TODO solution25 DNA 序列
-int solution25(std::string dna1, std::string dna2) {
-  vector<vector<int> > dp(dna1.size() + 1);
+//! No.15
+int solution25(string dna1, string dna2) {
+  vector<vector<int>> dp(dna1.size() + 1);
   for (auto i = 0; i <= dna1.size(); i++) {
     dp[i] = vector<int>(dna2.size() + 1);
   }
@@ -275,11 +348,4 @@ int solution25(std::string dna1, std::string dna2) {
     }
   }
   return dp[dna1.size()][dna2.size()];
-}
-
-int main() {
-  cout << (solution19(5, 2, "01010") == "00101") << endl;
-  cout << (solution19(7, 3, "1101001") == "0110101") << endl;
-  cout << (solution19(4, 1, "1001") == "0101") << endl;
-  return 0;
 }
