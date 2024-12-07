@@ -10,7 +10,7 @@ new Promise(executor);
 Promise 的优点
 
 1. 传统的: 必须在启动异步任务前, 指定回调函数
-2. Promise: 启动异步任务 ==> 返回 Promise 对象 ==> Promise 对象绑定回调函数 (onfulfilled, onrejected)
+2. Promise: 启动异步任务 => 返回 Promise 对象 => Promise 对象绑定回调函数 (onfulfilled, onrejected)
 3. 避免回调地狱, 支持链式调用
 
 ### Promise 对象的两个属性
@@ -25,12 +25,12 @@ Promise 的优点
 
 **resolve 函数** (异步任务成功)
 
-1. 修改 Promise 对象的 PromiseState: `pending ==> fulfilled`
+1. 修改 Promise 对象的 PromiseState: `pending => fulfilled`
 2. 设置 Promise 对象的 PromiseResult = resolve 函数的实参值
 
 **reject 函数** (异步任务失败)
 
-1. 修改 Promise 对象的PromiseState: `pending ==> rejected`
+1. 修改 Promise 对象的PromiseState: `pending => rejected`
 2. 设置 Promise 对象的PromiseResult = reject 函数的实参值
 
 - [demo1](./demo1.js) 使用 Promise 读取文件
