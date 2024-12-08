@@ -1,18 +1,13 @@
-async function fm() {
-  try {
-    await Promise.reject('inner');
-  } catch (e) {
-    console.error(e);
-  }
+async function foo() {
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve, 3000);
+  });
 }
 
-fm()
-  .then(value => console.log(value))
-
-async function fn() {
-  await Promise.reject('outer');
+async function bar() {
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve, 3000);
+  });
 }
 
-fn()
-  .then(value => console.log(value))
-  .catch(reason => console.log(reason)) //
+const begin = new Date().getTime();
