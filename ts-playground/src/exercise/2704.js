@@ -6,16 +6,17 @@ var expect = function (val) {
   return {
     toBe: function (cp) {
       if (val === cp) {
-        return true
-      } throw new Error("Not Equal")
+        return true;
+      }
+      throw new Error("Not Equal");
     },
     notToBe(cp) {
       if (val !== cp) {
-        return true
+        return true;
       }
-      throw new Error("Equal")
-    }
-  }
+      throw new Error("Equal");
+    },
+  };
 };
 
 /**
