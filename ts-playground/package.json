@@ -1,5 +1,5 @@
 {
-  "name": "playground",
+  "name": "ts-playground",
   "version": "1.0.0",
   "description": "Playground for HTML, CSS, JS, TS",
   "main": "index.js",
@@ -15,7 +15,7 @@
     "datastructures-js": "^13.0.0",
     "lodash": "^4.17.21",
     "mongoose": "^8.8.2",
-    "playground": "file:",
+    "ts-playground": "file:",
     "prettier": "^3.3.3",
     "xmlhttprequest": "^1.8.0"
   },
