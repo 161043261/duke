@@ -9,31 +9,18 @@
 - Git
 - [Docker](./docker/)
 
-## 前端
+## Java
 
-- html, html5
-- css, css3
-- javascript, es6
-  - promise, async/await
-- typescript
-- node
-- mongodb
-- npm, pnpm
-- lodash, axios
-- vue2
-- vue3
-- element plus
-- echarts
-- 网络
-- 微前端
-- 前端性能优化
+- Java 基础 [java-playground](./java-playground/)
+- Java 并发 [java-concurrent](./java-concurrent/)
+- Java 网络 IO [java-socket](./java-socket/)
+- 项目集合 [java-awesome](./java-awesome/)
 
 ## JS/TS
 
 - JS/TS 基础 [ts-playground](./ts-playground/)
-- Vue2 [js-vue](./js-vue/)
-- Vue3 [ts-vue](./ts-vue/) [ts-vue-api](./ts-vue-api/)
 - 项目集合 [ts-awesome](./ts-awesome/)
+- Vue
 
 ## Go
 
