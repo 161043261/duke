@@ -1,55 +1,58 @@
-[buildPlans.Js]
-family = "JS"
-spacing = "normal"
+[buildPlans.Harmony]
+family = "Harmony"
+spacing = "term"
 serifs = "sans"
 noCvSs = true
 exportGlyphNames = false
 
-  [buildPlans.Js.variants]
-  inherits = "ss06"
+  [buildPlans.Harmony.variants]
+  inherits = "ss06" # Liberation Mono
 
-    [buildPlans.Js.variants.design]
-    two = "straight-neck-serifless"
-    six = "straight-bar"
-    nine = "straight-bar"
-    capital-g = "toothed-serifless-hookless"
-    capital-q = "crossing"
+    [buildPlans.Harmony.variants.design]
+    two = "straight-neck-serifless" # 2
+    six = "straight-bar" # 6
+    seven = "straight-serifless" # 7
+    nine = "straight-bar" # 9
+    capital-g = "toothed-serifless-hookless" # G
+    capital-j = "serifless" # J
+    capital-q = "crossing" # Q
+    i = "serifed-flat-tailed" # i
+    j = "serifless" # j
     tittle = "round"
     diacritic-dot = "round"
     punctuation-dot = "round"
-    ampersand = "closed"
-    at = "compact"
-    lig-ltgteq = "slanted"
+    at = "compact" # @
+    lig-ltgteq = "slanted" # <=
 
-  [buildPlans.Js.ligations]
+  [buildPlans.Harmony.ligations]
   inherits = "javascript"
 
-[buildPlans.Js.weights.Light]
+[buildPlans.Harmony.weights.Light]
 shape = 300
 menu = 300
 css = 300
 
-[buildPlans.Js.weights.Regular]
+[buildPlans.Harmony.weights.Regular]
 shape = 400
 menu = 400
 css = 400
 
-[buildPlans.Js.weights.Medium]
+[buildPlans.Harmony.weights.Medium]
 shape = 500
 menu = 500
 css = 500
 
-[buildPlans.Js.weights.SemiBold]
+[buildPlans.Harmony.weights.SemiBold]
 shape = 600
 menu = 600
 css = 600
 
-[buildPlans.Js.weights.Bold]
+[buildPlans.Harmony.weights.Bold]
 shape = 700
 menu = 700
 css = 700
 
-[buildPlans.Js.widths.Normal]
+[buildPlans.Harmony.widths.Normal]
 shape = 500
 menu = 5
 css = "normal"
