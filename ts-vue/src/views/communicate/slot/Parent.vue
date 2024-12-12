@@ -8,7 +8,7 @@ let games = reactive([
   { id: '3', name: 'Honkai: Star Rail' }
 ])
 
-let imageUrl = ref('/image.png')
+let imageUrl = ref('/avatar.jpg')
 let videoUrl = ref('/video.mp4')
 </script>
 
@@ -32,7 +32,7 @@ let videoUrl = ref('/video.mp4')
 
       <Child title="image">
         <!-- slot 'default' -->
-        <img alt="/image.png" v-bind:src="imageUrl" />
+        <img alt="/avatar.jpg" v-bind:src="imageUrl" />
       </Child>
 
       <Child title="video">

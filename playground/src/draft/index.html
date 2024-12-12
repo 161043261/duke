@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        font-family:
+          Harmony,
+          "Iosevka SS06",
+          emoji;
+      }
+    </style>
+  </head>
+
+  <body></body>
+  <script>
+    const domProxy = new Proxy(
+      {},
+      {
+        get(target, propKey, receiver) {
+          return function (attrs = {}, ...children) {
+            const el = document.createElement(propKey);
+            for (let prop of Object.keys(attrs)) {
+              el.setAttribute(prop, attrs[prop]);
+            }
+            for (let child of children) {
+              if (typeof child === "string") {
+                child = document.createTextNode(child);
+              }
+              el.appendChild(child);
+            }
+            return el;
+          };
+        },
+      },
+    );
+
+    const el = domProxy.div(
+      {},
+      "Genshin Impact ",
+      domProxy.a({ href: "https://wiki.hoyolab.com/pc/genshin/" }, "Wiki"),
+      ", Inazuma City:",
+      domProxy.ul(
+        {},
+        domProxy.li({}, "Raiden Shogun"),
+        domProxy.li({}, "Kamisato Ayaka"),
+        domProxy.li({}, "Sangonomiya Kokomi"),
+        domProxy.li({}, "Kaedehara Kazuha"),
+        domProxy.li({}, "Yoimiya"),
+        domProxy.li({}, "Yae Miko"),
+      ),
+    );
+    document.body.appendChild(el);
+  </script>
+</html>

@@ -5,7 +5,7 @@ import Child from './Child.vue'
 <template>
   <div class="parent">
     <p><em>***** teleport *****</em></p>
-    <img alt="20060102150405.png" src="/20060102150405.png" />
+    <img alt="avatar.jpg" src="/avatar.jpg" />
     <hr />
     <Child />
   </div>
