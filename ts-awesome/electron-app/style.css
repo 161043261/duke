@@ -15,3 +15,7 @@
     color: black;
   }
 }
+
+* {
+  font-family: JS, "Iosevka SS06", "Sarasa Mono SC", emoji;
+}
