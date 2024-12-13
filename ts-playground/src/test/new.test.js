@@ -1,18 +1,22 @@
 import { test } from "vitest";
 
-test("Test1", () => {
-  function User(name) {
-    // this = {}; // 隐式创建
-    console.log(this);
-    this.name = name;
-    // return this; // 隐式返回
-  }
-  let user = new User("wtf");
-  console.log(user); // User { name: 'wtf' }
-  User("wtf");
-}, {
-  skip: true
-});
+test(
+  "Test1",
+  () => {
+    function User(name) {
+      // this = {}; // 隐式创建
+      console.log(this);
+      this.name = name;
+      // return this; // 隐式返回
+    }
+    let user = new User("wtf");
+    console.log(user); // User { name: 'wtf' }
+    User("wtf");
+  },
+  {
+    skip: true,
+  },
+);
 
 // 可以使用 new.target 检查函数是否被 new 调用
 test("Test2", () => {
