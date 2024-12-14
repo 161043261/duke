@@ -20,15 +20,15 @@ importers:
       pinia:
         specifier: ^2.1.7
         version: 2.1.7(typescript@5.4.5)(vue@3.4.33(typescript@5.4.5))
-      ts-vue:
-        specifier: 'file:'
-        version: file:(typescript@5.4.5)
       tslib:
         specifier: ^2.6.3
         version: 2.6.3
       vue:
         specifier: ^3.4.29
         version: 3.4.33(typescript@5.4.5)
+      vue-demo2:
+        specifier: 'file:'
+        version: file:(typescript@5.4.5)
       vue-router:
         specifier: ^4.4.0
         version: 4.4.0(vue@3.4.33(typescript@5.4.5))
@@ -1128,9 +1128,6 @@ packages:
     peerDependencies:
       typescript: '>=4.2.0'
 
-  'ts-vue@file:':
-    resolution: {directory: '', type: directory}
-
   tslib@2.6.3:
     resolution: {integrity: sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==}
 
@@ -1202,6 +1199,9 @@ packages:
     peerDependenciesMeta:
       '@vue/composition-api':
         optional: true
+
+  'vue-demo2@file:':
+    resolution: {directory: '', type: directory}
 
   vue-eslint-parser@9.4.3:
     resolution: {integrity: sha512-2rYRLWlIpaiN8xbPiDyXZXRgLGOtWxERV7ND5fFAv5qo1D2N9Fu9MNajBNc6o13lZ+24DAWCkQCvj4klgmcITg==}
@@ -2224,20 +2224,6 @@ snapshots:
     dependencies:
       typescript: 5.4.5
 
-  ts-vue@file:(typescript@5.4.5):
-    dependencies:
-      axios: 1.7.2
-      mitt: 3.0.1
-      nanoid: 5.0.7
-      pinia: 2.1.7(typescript@5.4.5)(vue@3.4.33(typescript@5.4.5))
-      tslib: 2.6.3
-      vue: 3.4.33(typescript@5.4.5)
-      vue-router: 4.4.0(vue@3.4.33(typescript@5.4.5))
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - debug
-      - typescript
-
   tslib@2.6.3: {}
 
   type-check@0.4.0:
@@ -2276,6 +2262,20 @@ snapshots:
   vue-demi@0.14.9(vue@3.4.33(typescript@5.4.5)):
     dependencies:
       vue: 3.4.33(typescript@5.4.5)
+
+  vue-demo2@file:(typescript@5.4.5):
+    dependencies:
+      axios: 1.7.2
+      mitt: 3.0.1
+      nanoid: 5.0.7
+      pinia: 2.1.7(typescript@5.4.5)(vue@3.4.33(typescript@5.4.5))
+      tslib: 2.6.3
+      vue: 3.4.33(typescript@5.4.5)
+      vue-router: 4.4.0(vue@3.4.33(typescript@5.4.5))
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - debug
+      - typescript
 
   vue-eslint-parser@9.4.3(eslint@8.57.0):
     dependencies:
