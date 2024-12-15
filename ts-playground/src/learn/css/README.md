@@ -303,7 +303,7 @@ ul > li[class="obj1"] {
   - repeat 重复, 默认
   - repeat-x 只在水平方向重复
   - repeat-y 只在垂直方向重复
-- background-position 背景位置
+- background-position 背景图片 (的左上角距离原点) 的位置
 - background 复合属性
 
 鼠标
@@ -654,7 +654,7 @@ padding: 10px 20px 30px 40px; /* 上 10px, 右 20px, 下 30px, 左 40px */
 
 [normalize.css](https://github.com/necolas/normalize.css/blob/master/normalize.css)
 
-## CSS3
+# CSS3
 
 1. 动态伪类选择器 (:hover, :link, :visited, :active, :focus)
 2. 视觉效果: 圆角, 阴影, 渐变
@@ -716,7 +716,7 @@ box-sizing 设置盒子模型的类型
 ### box-shadow 盒子阴影
 
 ```css
-.box {
+.selector {
   /* 两个值: 水平位置 垂直位置 (参考左上角) */
   box-shadow: 10px 10px;
   /* 三个值: 水平位置 垂直位置 阴影颜色 */
@@ -732,7 +732,7 @@ box-sizing 设置盒子模型的类型
 }
 
 /* 例 */
-.box1 {
+.box {
   width: 400px;
   height: 400px;
   background-color: lightblue;
@@ -746,7 +746,7 @@ box-sizing 设置盒子模型的类型
   transition: 0.3s ease-out all;
 }
 
-.box1:hover {
+.box:hover {
   /* 四个值: 水平位置 垂直位置 模糊值 阴影颜色 */
   box-shadow: 0 0 10px black;
   top: -1px;
@@ -769,20 +769,23 @@ box-sizing 设置盒子模型的类型
 
 opacity 属性值是 0 到 1 的小数, 0 表示完全透明, 1 表示完全不透明
 
+- opacity 是元素属性, 设置元素的不透明度
+- rgba 仅设置颜色的不透明度
+
 ### 新的背景属性
 
 **background-origin: 设置背景图像的原点**
 
-1. padding-box: 从 padding 区域开始显示背景图像 (默认)
-2. border-box: 从 border 区域开始显示背景图像
-3. content-box: 从 content 区域开始显示背景图像
+1. padding-box: 从 padding 左上角开始显示背景图像 (默认)
+2. border-box: 从 border 左上角开始显示背景图像
+3. content-box: 从 content 左上角 开始显示背景图像
 
-**background-clip: 设置背景图像裁剪的区域**
+**background-clip: 设置背景图像的裁剪方式**
 
-1. border-box: 从 border 区域裁剪背景图像, border, padding, content 都有背景图像
-2. padding-box: 从 padding 区域裁剪背景图像, padding, content 都有背景图像
+1. border-box: 从 border 区域裁剪背景图像, border 以外没有背景图像
+2. padding-box: 从 padding 区域裁剪背景图像, padding, 以外没有背景图像
 3. content-box: 从 content 区域裁剪背景图像, 只有 content 有背景图像
-4. text: 只有文本有背景图像, 需要 `-webkit-` 前缀
+4. text: 只有文本有背景图像
 
 **background-size: 设置背景图像的尺寸**
 
@@ -805,7 +808,9 @@ opacity 属性值是 0 到 1 的小数, 0 表示完全透明, 1 表示完全不�
 
 ```css
 .selector {
-  background: color url repeat position / size origin clip;
+  /* 背景颜色 url 是否重复 位置 / 尺寸 原点 裁剪方式 */
+  background: lightblue url("../assets/bg.jpg") no-repeat 10px 10px / 500px
+    500px border-box content-box;
 }
 ```
 
@@ -815,11 +820,11 @@ opacity 属性值是 0 到 1 的小数, 0 表示完全透明, 1 表示完全不�
 .selector {
   /* 添加多个背景图像 */
   background:
-    /* 左上 */
-    url(../assets/bg.png) no-repeat,
-    /* 右上 */ url(../assets/bg.png) no-repeat right top,
-    /* 左下 */ url(../assets/bg.png) no-repeat left bottom,
-    /* 右下 */ url(../assets/bg.png) no-repeat right bottom;
+    /* 左上 left top */
+    url("../assets/bg.png") no-repeat,
+    /* 右上 */ url("../assets/bg.png") no-repeat right top,
+    /* 左下 */ url("../assets/bg.png") no-repeat left bottom,
+    /* 右下 */ url("../assets/bg.png") no-repeat right bottom;
 }
 ```
 
