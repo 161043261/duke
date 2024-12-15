@@ -673,6 +673,7 @@ padding: 10px 20px 30px 40px; /* 上 10px, 右 20px, 下 30px, 左 40px */
 ### 长度单位
 
 - rem 相对根元素 (html 标签) font-size 的倍数
+- 视口: 即浏览器窗口
 - vw 占视口宽度的百分比, 10vw 占视口宽度的 10%
 - vh 占视口高度的百分比, 10vh 占视口高度的 10%
 - vmax: vmax = Math.max(vw, vh)
@@ -682,26 +683,76 @@ padding: 10px 20px 30px 40px; /* 上 10px, 右 20px, 下 30px, 左 40px */
 
 box-sizing 设置盒子模型的类型
 
-- content-box: width 和 height 设置盒子内容区的大小
+- content-box: width 和 height 设置盒子内容区的大小, 盒子总宽度 = 内容区宽度 + 边框宽度 border _ 2 + 外边距宽度 margin _ 2
 - border-box: width 和 height 设置盒子总大小 (怪异盒模型)
 
 ```css
 .selector {
-  /* 怪异盒模型 */
+  /* 怪异盒模型, 内容区可能会缩小 */
   box-sizing: border-box;
+  /* 默认 */
+  /* box-sizing: content-box; */
 }
 ```
 
 ### resize 用户是否可以调整盒子大小
 
+```css
+.box {
+  resize: horizontal;
+  background-color: orange;
+  /* 必须配合 overflow */
+  overflow: hidden;
+}
+```
+
 | 值         | 说明                          |
 | ---------- | ----------------------------- |
 | none       | 用户不可以调整元素大小 (默认) |
 | both       | 用户可以调整元素的宽和高      |
-| horizontal | 用户可以调整元素的宽度        |
-| vertical   | 用户可以调整元素的高度        |
+| horizontal | 用户可以调整元素的水平宽度    |
+| vertical   | 用户可以调整元素的垂直高度    |
 
 ### box-shadow 盒子阴影
+
+```css
+.box {
+  /* 两个值: 水平位置 垂直位置 (参考左上角) */
+  box-shadow: 10px 10px;
+  /* 三个值: 水平位置 垂直位置 阴影颜色 */
+  box-shadow: 10px 10px blue;
+  /* 三个值: 水平位置 垂直位置 模糊值 */
+  box-shadow: 10px 10px 10px;
+  /* 四个值: 水平位置 垂直位置 模糊值 阴影颜色 */
+  box-shadow: 10px 10px 10px blue;
+  /* 五个值: 水平位置 垂直位置 模糊值 外延值 阴影颜色 */
+  box-shadow: 10px 10px 10px 10px blue;
+  /* 六个值: 水平位置 垂直位置 模糊值 外延值 阴影颜色 内阴影 */
+  box-shadow: 10px 10px 10px 10px blue inset;
+}
+
+/* 例 */
+.box1 {
+  width: 400px;
+  height: 400px;
+  background-color: lightblue;
+  position: relative;
+  /* 顶部, 相对原位置的顶部 0px */
+  top: 0;
+  /* 左侧, 相对原位置的左侧 0px */
+  left: 0;
+  /* 过渡 */
+  /* transition: 0.3s linear all; */
+  transition: 0.3s ease-out all;
+}
+
+.box1:hover {
+  /* 四个值: 水平位置 垂直位置 模糊值 阴影颜色 */
+  box-shadow: 0 0 10px black;
+  top: -1px;
+  left: 0;
+}
+```
 
 | 值       | 说明                             |
 | -------- | -------------------------------- |
@@ -713,23 +764,6 @@ box-sizing 设置盒子模型的类型
 | inset    | 可选, 外部阴影 -> 内部阴影       |
 
 默认: `box-shadow: none` 无阴影
-
-```css
-.selector {
-  /* 水平位置 垂直位置 */
-  box-shadow: 10px 10px;
-  /* 水平位置 垂直位置 颜色 */
-  box-shadow: 10px 10px red;
-  /* 水平位置 垂直位置 模糊值 */
-  box-shadow: 10px 10px 10px;
-  /* 水平位置 垂直位置 模糊值 颜色 */
-  box-shadow: 10px 10px 10px red;
-  /* 水平位置 垂直位置 模糊值 外延值 颜色 */
-  box-shadow: 10px 10px 10px 10px red;
-  /* 水平位置 垂直位置 模糊值 外延值 颜色 内部阴影 */
-  box-shadow: 10px 10px 10px 10px red inset;
-}
-```
 
 ### opacity 不透明度
 
@@ -811,7 +845,7 @@ opacity 属性值是 0 到 1 的小数, 0 表示完全透明, 1 表示完全不�
 | h-shadow | 必填, 水平阴影的位置, 可以为负值 |
 | v-shadow | 必填, 垂直阴影的位置, 可以为负值 |
 | blur     | 可选, 阴影的模糊值               |
-| color    | 可选, 阴影的颜色                 |
+| color    | 可选, 阴影颜色                   |
 
 **white-space: 设置文本换行方式**
 
