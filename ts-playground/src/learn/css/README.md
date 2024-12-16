@@ -661,7 +661,7 @@ padding: 10px 20px 30px 40px; /* 上 10px, 右 20px, 下 30px, 左 40px */
 3. 背景效果: 新的背景属性, 多个背景图像
 4. 布局方案: 弹性盒子
 5. Web 字体
-6. 颜色表示: RGBA, HSL, HSLA; opcaity 不透明度
+6. 颜色表示: RGBA, HSL, HSLA; opacity 不透明度
 7. 2D 和 3D 变换: 平移, 缩放, 旋转等
 8. 动画...
 
@@ -701,7 +701,7 @@ box-sizing 设置盒子模型的类型
 .box {
   resize: horizontal;
   background-color: orange;
-  /* 必须配合 overflow */
+  /* 必须配合 overflow: hidden */
   overflow: hidden;
 }
 ```
@@ -783,7 +783,7 @@ opacity 属性值是 0 到 1 的小数, 0 表示完全透明, 1 表示完全不�
 **background-clip: 设置背景图像的裁剪方式**
 
 1. border-box: 从 border 区域裁剪背景图像, border 以外没有背景图像
-2. padding-box: 从 padding 区域裁剪背景图像, padding, 以外没有背景图像
+2. padding-box: 从 padding 区域裁剪背景图像, padding 以外没有背景图像
 3. content-box: 从 content 区域裁剪背景图像, 只有 content 有背景图像
 4. text: 只有文本有背景图像
 
@@ -839,11 +839,34 @@ opacity 属性值是 0 到 1 的小数, 0 表示完全透明, 1 表示完全不�
 - 一个值是圆的半径, 两个值是椭圆的 x 半径, y 半径
 - border-top-left-radius, border-top-right-radius, border-bottom-left-radius, border-bottom-right-radius
 
-复合属性: `border-raidus: 左上角x 右上角x 右下角x 左下角x / 左上角y 右上角y 右下角y 左下角y`
+复合属性: `border-radius: 左上x 右上x 右下x 左下x / 左上y 右上y 右下y 左下y`
+
+**outline 边框的外轮廓**
+
+外轮廓不参与盒子大小的计算
+
+```css
+.selector {
+  outline-width: 20px;
+  outline-color: lightblue;
+  outline-style: solid;
+  outline: 20px solid lightblue;
+  outline-offset: 30px;
+}
+```
 
 ### 新的文本属性
 
 **text-shadow: 设置文本阴影**
+
+```css
+.selector {
+  /* 白色文字 */
+  color: white;
+  /* 黑色阴影 */
+  text-shadow: 0 0 10px black;
+}
+```
 
 | 值       | 说明                             |
 | -------- | -------------------------------- |
@@ -854,19 +877,29 @@ opacity 属性值是 0 到 1 的小数, 0 表示完全透明, 1 表示完全不�
 
 **white-space: 设置文本换行方式**
 
-| 值                  | 说明                                                                  |
-| ------------------- | --------------------------------------------------------------------- |
-| normal              | 文本超出边界时自动换行, 文本中的的换行符,被浏览器识别为一个空格, 默认 |
-| pre                 | 原样输出, 等价于 pre 标签                                             |
-| nowrap              | 强制不换行                                                            |
-| pre-wrap , pre-line |                                                                       |
+| 值       | 说明                                                                     |
+| -------- | ------------------------------------------------------------------------ |
+| normal   | 自动换行, 删除行的首尾空格, 合并行内的多个空格, 换行符被识别为空格, 默认 |
+| pre-line | 自动换行, 删除行的首尾空格, 合并行内的多个空格, 识别换行符               |
+| pre      | 原样输出, 等价于 pre 标签                                                |
+| pre-wrap | pre 的基础上: 原样输出, 自动换行                                         |
+| nowrap   | 强制不换行                                                               |
 
 **text-overflow: 设置文本溢出时的显示模式**
 
-| 值       | 说明                                 |
-| -------- | ------------------------------------ |
-| clip     | 内联内容溢出时, 裁剪溢出部分         |
-| ellipsis | 内联内容溢出时, 将溢出部分替换为 ... |
+```css
+.selector {
+  /* 必须配合 overflow: hidden */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+```
+
+| 值       | 说明                                                |
+| -------- | --------------------------------------------------- |
+| clip     | 内联内容溢出时, 裁剪溢出部分                        |
+| ellipsis | 内联内容溢出时, 省略溢出部分 (将溢出部分替换为 ...) |
 
 **复合属性 text-decoration**
 
@@ -879,11 +912,18 @@ text-decoration-line 文本装饰线的位置
 - overline 上划线
 - line-through 删除线
 
-text-decoration-style 文本装饰线的风格: solid, double, dotted, dashed, wavy
+text-decoration-style: solid, double, dotted, dashed, wavy
 
-text-decoration-color 文本装饰线的颜色
+text-decoration-color
 
 **文本描边**
+
+```css
+.selector {
+  -webkit-text-stroke: 1px red;
+  color: transparent;
+}
+```
 
 - `-webkit-text-stroke-width` 设置文本描边的宽度
 - `-webkit-text-stroke-color` 设置文本描边的颜色
@@ -891,19 +931,29 @@ text-decoration-color 文本装饰线的颜色
 
 ### 渐变
 
+渐变本质是背景图片
+
 **线性渐变**
+
+渐变本质是背景图片
 
 ```css
 .selector {
-  /* 多个颜色间的渐变, 默认从上到下渐变 */
-  background-image: linear-gradient(red, yellow, green);
+  /* 默认从上到下线性渐变 */
+  background-image: linear-gradient(pink, yellow, blue);
+
   /* 使用关键字设置线性渐变的方向 */
-  background-image: linear-gradient(to top, red, yellow, green);
-  background-image: linear-gradient(to right top, red, yellow, green);
-  /* 使用角度设置线性渐变的方向 */
-  background-image: linear-gradient(30deg, red, yellow, green);
-  /* 设置开始渐变的位置 */
-  background-image: linear-gradient(red 50px, yellow 100px, green 150px);
+  background-image: linear-gradient(to right, pink, yellow, blue);
+
+  /* 使用角度值设置线性渐变的方向 */
+  background-image: linear-gradient(30deg, pink, yellow, blue);
+
+  /* 设置发生渐变的位置 */
+  /* 0..50 纯红
+    50..100 红变黄
+    100..150 黄变蓝
+    150...200 纯蓝 */
+  background-image: linear-gradient(pink 50px, yellow 100px, blue 150px);
 }
 ```
 
@@ -911,36 +961,75 @@ text-decoration-color 文本装饰线的颜色
 
 ```css
 .selector {
-  /* 多个颜色间的渐变, 默认从渐变圆的圆心发散 */
-  background-image: radial-gradient(red, yellow, green);
+  /* 默认从渐变圆的圆心开始径向渐变 */
+  background-image: radial-gradient(pink, yellow, green);
+
   /* 使用关键字设置渐变圆的圆心的位置 */
-  background-image: radial-gradient(at right top, red, yellow, green);
+  background-image: radial-gradient(at left top, pink, yellow, green);
+
   /* 使用像素值设置渐变圆的圆心的位置 */
-  background-image: radial-gradient(at right top, red, yellow, green);
+  background-image: radial-gradient(at 100px 50px, pink, yellow, green);
+
   /* 设置渐变圆为正圆 */
-  background-image: radial-gradient(circle, red, yellow, green);
+  background-image: radial-gradient(circle, pink, yellow, green);
+
   /* 设置渐变圆的半径 */
-  background-image: radial-gradient(100px, red, yellow, green);
-  background-image: radial-gradient(50px 100px, red, yellow, green);
-  /* 设置开始渐变的位置 */
-  background-image: radial-gradient(red 50px, yellow 100px, green 150px);
+  /* 圆的半径 100px */
+  background-image: radial-gradient(100px, pink, yellow, green);
+
+  /* 椭圆的 x 半径 100px, y 半径 50px */
+  background-image: radial-gradient(100px 50px, pink, yellow, green);
+
+  /* 设置发生渐变的位置 */
+  background-image: radial-gradient(pink 50px, yellow 100px, green 150px);
+
+  /* 复合写法 */
+  background-image: radial-gradient(
+    100px 50px at 150px 150px,
+    pink 50px,
+    yellow 100px,
+    green 150px
+  );
 }
 ```
 
 **重复渐变**
+
+在没有发生渐变的区域, 重复渐变
+
+```css
+.selector {
+  /* repeating-linear-gradient: 在没有发生渐变的区域, 重复线性渐变 */
+  background-image: repeating-linear-gradient(
+    pink 50px,
+    yellow 100px,
+    blue 150px
+  );
+
+  /* repeating-linear-gradient: 在没有发生渐变的区域, 重复径向渐变 */
+  background-image: repeating-radial-gradient(
+    pink 50px,
+    yellow 100px,
+    green 150px
+  );
+}
+```
 
 repeating-linear-gradient 重复线性渐变, 相关参数同 linear-gradient
 repeating-radial-gradient 重复径向渐变, 相关参数同 radial-gradient
 
 ### Web 字体
 
-通过 `@font-face` 指定字体的地址, 浏览器自动下载该字体
+使用 `@font-face` 指定字体的地址, 浏览器自动下载该字体
 
 ```css
 @font-face {
-  font-family: Harmony, "LXGW WenKai Mono", emoji;
+  font-family: "思源黑体";
   /* font-display: swap; */
-  src: url("../assets/HYWenHei-45W.ttf") format("truetype");
+  font-display: wrap;
+  src:
+    url("../assets/webfont.woff") format("woff"),
+    url("../assets/webfont.woff2") format("woff2");
 }
 ```
 
