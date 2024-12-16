@@ -13,6 +13,10 @@
       format("svg");
 }
 
+* {
+  font-family: Harmony, "LXGW WenKai Mono" !important;
+}
+
 .logo {
   font-family: "iconfont logo";
   font-size: 160px;

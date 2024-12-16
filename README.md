@@ -35,3 +35,12 @@
 - C/C++ 基础 [cc-playground](./cc-playground/)
 - C/C++ 并发 [cc-concurrent](./cc-concurrent/)
 - C/C++ 网络 IO [cc-socket](./cc-socket/)
+
+- **feat**: feature 引入新功能
+- **fix**: 错误修正
+- **style**: 更新代码样式, 例如使用 clang-format 或 prettier
+- **refactor**: 重构代码
+- **test**: 测试代码
+- **docs**: 更新文档, 例如 README.md
+- **perf**: performance 性能优化
+- **chore**: 定期代码维护

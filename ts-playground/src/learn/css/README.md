@@ -1045,10 +1045,10 @@ repeating-radial-gradient 重复径向渐变, 相关参数同 radial-gradient
 
 ```text
 原点 (0, 0)
-*--------> x
+* -------- x
 |
 |
-v y
+y
 ```
 
 #### 2D 平移
