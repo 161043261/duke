@@ -10,13 +10,24 @@
         /* font-display: swap; */
         font-display: wrap;
         src:
-          url("../assets/webfont.woff") format("woff"),
-          url("../assets/webfont.woff2") format("woff2");
+          url("./webfont.woff") format("woff"),
+          url("./webfont.woff2") format("woff2");
       }
 
       .t1 {
         font-family: "思源黑体", "LXGW WenKai Mono";
         white-space: pre-line;
+      }
+    </style>
+    <script src="./iconfont.js"></script>
+
+    <style>
+      .icon {
+        width: 1em;
+        height: 1em;
+        vertical-align: -0.15em;
+        fill: currentColor;
+        overflow: hidden;
       }
     </style>
   </head>
@@ -26,5 +37,9 @@
       天地玄黄 宇宙洪荒 日月盈昃 辰宿列张 寒来暑往 秋收冬藏 闰馀成岁 律吕调阳
       云腾致雨 露结为霜 金生丽水 玉出昆冈 剑号巨阙 珠称夜光 果珍李柰 菜重芥姜
     </h1>
+
+    <svg class="icon" aria-hidden="true">
+      <use xlink:href="#icon-hehua"></use>
+    </svg>
   </body>
 </html>
