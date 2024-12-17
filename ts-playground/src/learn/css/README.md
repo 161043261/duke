@@ -1134,7 +1134,7 @@ transform: 转换属性, 设置元素的位置
 
 **多重变换**
 
-例: 平移, 旋转
+建议最后旋转
 
 ```css
 .selector {
@@ -1151,20 +1151,63 @@ transform: 转换属性, 设置元素的位置
 
 ```css
 .selector {
-  /* 百分比值, 参考本元素 (默认 50% 50%) */
-  transform-origin: 50% 50%;
   /* 变换原点是本元素的左上角 */
   transform-origin: left top;
   /* 变换原点距离本元素的左上角 50px, 50px */
   transform-origin: 50px 50px;
+  /* 百分比值, 参考本元素 (默认 50% 50%) */
+  transform-origin: 50% 50%;
   /* 第二个值默认 50% */
   transform-origin: 0;
 }
 ```
 
-### 3D 变换
-
 ### 过渡
+
+过渡: 使得元素从一种样式, 平滑的过渡到另一种样式
+
+> 为元素自身设置 transition, 而不是 :hover
+
+- transition-duration 指定过渡效果的持续时间 `transition-duration: 2s;`
+- transition-property 指定设置过渡效果的属性
+
+属性值是数值的属性, 可以设置过渡效果
+
+```css
+.selector {
+  /* 不设置任何过渡效果, 默认 */
+  transition-property: none;
+  /* 为所有可以设置过渡效果的属性, 设置过渡效果 */
+  transition-property: all;
+  /* 为宽高设置过渡效果 */
+  transition-property: width, height;
+}
+```
+
+transition-delay: 过渡效果的延迟
+
+transition-timing-function
+
+- ease: 平滑过渡, 慢 => 快 => 慢 (默认)
+- linear: 线性过渡, 匀速
+- ease-in: 先慢后快
+- ease-out: 先快后慢
+- ease-in-out: 慢 => 快 => 慢
+- step-start: 开始时瞬间过渡
+- step-end: 结束时瞬间过渡
+- steps(n), step(n, start), step(n, end): 分步过渡
+- cubic-bezier(): 贝塞尔曲线
+
+transition 复合写法
+
+```css
+.selector {
+  /* 先写 transition-duration, 后写 transition-delay */
+  /* transition-property, transition-timing-function 没有顺序要求 */
+  transition: 3s all linear;
+  transition: 3s all 0.5s linear;
+}
+```
 
 ### 动画
 

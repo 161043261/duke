@@ -18,8 +18,8 @@ function solution(n, T, H, t, h, a) {
         {
           length: T + 1,
         },
-        () => new Array(n + 1).fill(0)
-      )
+        () => new Array(n + 1).fill(0),
+      ),
   );
 
   for (let rh = H; rh >= 0; rh--) {
@@ -28,7 +28,7 @@ function solution(n, T, H, t, h, a) {
         if (rh >= h[i] && rt >= t[i]) {
           dp[rh - h[i]][rt - t[i]][i] = Math.max(
             dp[rh - h[i]][rt - t[i]][i - 1],
-            dp[rh][rt][i - 1] + a[i]
+            dp[rh][rt][i - 1] + a[i],
           );
         } else {
           dp[rh][rt][i] = dp[rh][rt][i - 1];
