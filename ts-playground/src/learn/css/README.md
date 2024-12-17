@@ -1069,8 +1069,8 @@ transform: 转换属性, 设置元素的位置
 
 1. 相对定位的百分比值, 参考父元素; 平移的百分比值, 参考本元素
 2. 平移对比定位, 浏览器处理的效率更高
-3. transform 可以链式编写, 例如 `transform: translateX(30px) translateY(40px);`
-4. 行内元素不能平移, 可以定位
+3. transform 可以链式编写, 例如 `transform: translateX(30px) translateY(40px);` 等价于 `translate: translate(30px, 40px);`
+4. 行内元素可以定位; **行内元素不能使用 transform** (解决: `display: inline-block`)
 5. 平移配合定位, 可以实现元素水平垂直居中
 
 **元素水平垂直居中**
@@ -1100,20 +1100,46 @@ transform: 转换属性, 设置元素的位置
 
 通过缩放, 可以实现小于 12px 的文本
 
+```html
+<style>
+  span {
+    /* 行内元素不能位移 */
+    display: inline-block;
+    font-size: 20px;
+    transform: scale(0.5);
+  }
+</style>
+<span>安装 rust</span>
+```
+
 #### 2D 旋转
 
 transform: 转换属性, 设置元素的位置
 
-| 值     | 说明                                 |
-| ------ | ------------------------------------ |
-| rotate | 设置旋转角度, 正值顺时针, 负值逆时针 |
+| 值      | 说明                                 |
+| ------- | ------------------------------------ |
+| rotate  | 设置旋转角度, 正值顺时针, 负值逆时针 |
+| rotateZ | 2d 旋转                              |
 
-多重变换
+#### 扭曲
+
+```css
+.selector {
+  transform: skewX(30deg);
+  transform: skewY(30deg);
+  transform: skewX(30deg) skewY(30deg);
+  transform: skew(30deg, 30deg);
+}
+```
+
+**多重变换**
 
 例: 平移, 旋转
 
 ```css
-transform: translate(-50%, -50%) rotate(45deg);
+.selector {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
 ```
 
 #### 变换原点
