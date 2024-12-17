@@ -1,49 +1,28 @@
 /**
  *
  * @param {number} n
- * @param {number} T
- * @param {number} H
- * @param {number[]} t
- * @param {number[]} h
- * @param {number[]} a
- * @returns
+ * @param {number} x
+ * @param {number[]} arr
+ * @returns {number}
  */
-function solution(n, T, H, t, h, a) {
-  let dp = Array.from(
-    {
-      length: H + 1,
-    },
-    () =>
-      Array.from(
-        {
-          length: T + 1,
-        },
-        () => new Array(n + 1).fill(0),
-      ),
-  );
-
-  for (let rh = H; rh >= 0; rh--) {
-    for (let rt = T; rt >= 0; rt--) {
-      for (let i = 1; i <= n; i++) {
-        if (rh >= h[i] && rt >= t[i]) {
-          dp[rh - h[i]][rt - t[i]][i] = Math.max(
-            dp[rh - h[i]][rt - t[i]][i - 1],
-            dp[rh][rt][i - 1] + a[i],
-          );
-        } else {
-          dp[rh][rt][i] = dp[rh][rt][i - 1];
-        }
-      }
+function solution(n, x, arr) {
+  let ans = -Infinity;
+  for (let i = 0; i < arr.length; i++) {
+    let tmp = Array.from(arr);
+    tmp[i] = x;
+    let dp = new Array(arr.length + 1).fill(0);
+    for (let i = 1; i <= arr.length; i++) {
+      dp[i] = Math.max(dp[i - 1] + tmp[i - 1], tmp[i - 1]);
     }
+    ans = Math.max(ans, ...dp.slice(1))
   }
-  console.log(dp);
-  return dp[0][0][n];
+  return ans;
 }
 
 function main() {
-  console.log(solution(2, 2, 2, [1, 3], [3, 1], [3, 4]) === 0);
-  console.log(solution(3, 5, 5, [2, 1, 3], [1, 3, 2], [10, 7, 8]) === 18);
-  console.log(solution(1, 3, 3, [4], [4], [5]) === 0);
+  console.log(solution(5, 10, [5, -1, -5, -3, 2]) === 15);
+  console.log(solution(2, -3, [-5, -2]) === -2);
+  console.log(solution(6, 10, [4, -2, -11, -1, 4, -1]) === 15);
 }
 
 main();

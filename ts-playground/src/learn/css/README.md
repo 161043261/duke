@@ -437,7 +437,7 @@ padding: 10px 20px 30px 40px; /* 上 10px, 右 20px, 下 30px, 左 40px */
 
 #### margin 塌陷问题
 
-第一个子元素的上外边距 margin-top 转移给父元素, 最后一个子元素的下外边距 margin-bottom 转移给父元素
+第一个子元素的上外边距 margin-top, 最后一个子元素的下外边距 margin-bottom 会转移给父元素 (被父元素剥夺)
 
 解决 margin 塌陷问题
 
@@ -1445,11 +1445,11 @@ orientation
 
 #### BFC
 
-BFC, Block Formatting Context 块级格式上下文
+BFC, Block Formatting Context 块级格式上下文, 可以理解为元素的特殊功能, 该特殊功能默认关闭, 满足某些条件时, 该特殊功能被激活
 
-1. 元素开启 BFC 后, 该元素的子元素不会有 margin 塌陷问题
+1. 元素开启 BFC 后, 该元素的子元素不会有 margin 塌陷问题 (第一个子元素的上外边距 margin-top, 最后一个子元素的下外边距 margin-bottom 会转移给父元素 (被父元素剥夺))
 2. 元素开启 BFC 后, 该元素不会被其他浮动元素覆盖
-3. 元素开启 BFC 后, 即使该元素的子元素浮动, 该元素高度也不会塌陷
+3. 元素开启 BFC 后, 即使该元素的子元素浮动, 该元素的高度也不会塌陷
 
 开启了 BFC 的元素
 
@@ -1458,9 +1458,9 @@ BFC, Block Formatting Context 块级格式上下文
 - 绝对定位, 固定定位的元素
 - 行内块元素
 - 表格单元格: table, thead, tbody, tfoot, th, td, tr, caption
-- overflow 属性值不等于 visible 的元素
-  父元素设置 `overflow: hidden` 可以解决父元素高度塌陷问题
+- overflow 属性值不等于 visible 的元素 (hidden, scroll, auto)
+  例: 父元素设置 `overflow: hidden` 可以解决父元素高度塌陷问题
 - 伸缩项目
-- 多列容器
+- 多列容器 (column_count 属性)
 - 设置 `column-span: all` 的元素
 - 设置 `display: flow-root` 的元素
