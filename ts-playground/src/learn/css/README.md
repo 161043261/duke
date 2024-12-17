@@ -1162,7 +1162,7 @@ transform: 转换属性, 设置元素的位置
 }
 ```
 
-### 过渡
+### 过渡 transition
 
 过渡: 使得元素从一种样式, 平滑的过渡到另一种样式
 
@@ -1184,32 +1184,77 @@ transform: 转换属性, 设置元素的位置
 }
 ```
 
-transition-delay: 过渡效果的延迟
+- transition-delay: 过渡效果的延迟时间
+- transition-timing-function: 过渡计时函数
+  - ease: 平滑过渡, 慢 => 快 => 慢 (默认)
+  - linear: 线性过渡, 匀速
+  - ease-in: 先慢后快
+  - ease-out: 先快后慢
+  - ease-in-out: 慢 => 快 => 慢
+  - step-start: 开始时瞬间过渡
+  - step-end: 结束时瞬间过渡
+  - steps(n), step(n, start), step(n, end): 分步过渡
+  - cubic-bezier(): 贝塞尔曲线
 
-transition-timing-function
+**符合属性 transition**: 先写 transition-duration, 后写 transition-delay, 其他没有顺序要求 \*/
 
-- ease: 平滑过渡, 慢 => 快 => 慢 (默认)
-- linear: 线性过渡, 匀速
-- ease-in: 先慢后快
-- ease-out: 先快后慢
-- ease-in-out: 慢 => 快 => 慢
-- step-start: 开始时瞬间过渡
-- step-end: 结束时瞬间过渡
-- steps(n), step(n, start), step(n, end): 分步过渡
-- cubic-bezier(): 贝塞尔曲线
+### 动画 animation
 
-transition 复合写法
+- @keyframes animationName {} 定义动画
+- animation-name 使用指定的动画
+- animation-duration 设置动画的持续时间
+- animation-delay 设置动画的延迟时间
+- animation-timing-function 动画计时函数, 与过渡计时函数相同
+- animation-iteration-count 设置动画播放的次数, 默认 1
+- animation-direction 设置动画播放的方向, 默认 normal
+  - normal: 正放
+  - reverse: 倒放
+  - alternate: 正放, 倒放, 正放 ...
+  - alternate-reverse: 倒放, 正放, 倒放 ...
+- animation-fill-mode: backwards 动画未播放时, 画面停在第一帧
+- animation-fill-mode: forwards 动画未播放时, 画面停在最后一帧
+- animation-play-state 设置动画的播放状态
+  - paused 暂停
+  - running 播放中
 
-```css
-.selector {
-  /* 先写 transition-duration, 后写 transition-delay */
-  /* transition-property, transition-timing-function 没有顺序要求 */
-  transition: 3s all linear;
-  transition: 3s all 0.5s linear;
-}
+```html
+<style>
+  /* 定义动画 @keyframes animationName {} */
+  @keyframes scroll {
+    /* 第一帧, 等价于 0% {} */
+    from {
+    }
+
+    /* 最后一帧, 等价于 100% */
+    to {
+      transform: translateX(900px) rotate(360deg);
+      background-color: lightpink;
+      border-radius: 50%;
+    }
+  }
+
+  .inner {
+    width: 100px;
+    height: 100px;
+    background-color: lightblue;
+    animation-name: scroll;
+    animation-duration: 3s;
+    animation-delay: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-fill-mode: backwards;
+    animation-play-state: running;
+  }
+</style>
 ```
 
-### 动画
+**复合属性 animation**: 先写 animation-duration, 后写 animation-delay, 其他没有顺序要求
+
+> 过渡和动画的区别
+
+1. 过渡需要触发条件, 动画不需要触发条件
+2. 动画可以使用关键帧精细设置
 
 ## 伸缩盒模型 (弹性盒子)
 
