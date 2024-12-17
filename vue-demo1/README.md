@@ -1,3 +1,25 @@
-![child_comp](./assets/child_comp.jpg)
+# ts-vue-api
 
-![parent_comp](./assets/parent_comp.jpg)
+```ts
+require('@rushstack/eslint-patch/modern-module-resolution')
+
+module.exports = {
+  root: true,
+  extends: [
+    'plugin:vue/vue3-essential',
+    'eslint:recommended',
+    '@vue/eslint-config-typescript',
+    '@vue/eslint-config-prettier/skip-formatting'
+  ],
+  parserOptions: {
+    ecmaVersion: 'latest'
+  },
+  rules: {
+    'vue/multi-word-component-names': 'off'
+  }
+}
+```
+
+```bash
+pnpm install mockjs
+```
