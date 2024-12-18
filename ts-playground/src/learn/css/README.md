@@ -1422,26 +1422,58 @@ flex: flex-grow, flex-shrink, flex-basis
 
 ### 响应式布局
 
-| 值               | 说明                          |
-| ---------------- | ----------------------------- |
-| all              | 检测所有设备                  |
-| screen           | 检测设备屏幕                  |
-| print            | 检测打印机                    |
-| width            | 检测视口宽度                  |
-| max-width        | 检测视口最大宽度              |
-| min-width        | 检测视口最小宽度              |
-| height           | 检测视口高度                  |
-| max-height       | 检测视口最大高度              |
-| min-height       | 检测视口最小高度              |
-| device-width     | 检测设备屏幕的宽度            |
-| max-device-width | 检测设备屏幕的最大宽度        |
-| min-device-width | 检测设备屏幕的最小宽度        |
-| orientation      | 检测视口的旋转方向 (是否横屏) |
+| 值               | 说明                      |
+| ---------------- | ------------------------- |
+| all              | 所有                      |
+| screen           | 设备屏幕                  |
+| print            | 打印机/打印预览           |
+| width            | 视口宽度                  |
+| max-width        | 视口最大宽度              |
+| min-width        | 视口最小宽度              |
+| height           | 视口高度                  |
+| max-height       | 视口最大高度              |
+| min-height       | 视口最小高度              |
+| device-width     | 设备屏幕的宽度            |
+| max-device-width | 设备屏幕的最大宽度        |
+| min-device-width | 设备屏幕的最小宽度        |
+| orientation      | 视口的旋转方向 (是否横屏) |
 
 orientation
 
 1. portrait: 纵向视口, 即高度 >= 宽度
 2. landscape: 横向视口, 即宽度 >= 高度
+
+### 响应式布局
+
+常见阈值
+
+- 超小屏幕 768px 中等屏幕 992px 大屏幕 1200px 超大屏幕
+
+```css
+/* 超小屏幕 */
+@media screen and (max-width: 768px) {
+}
+/* 中等屏幕 */
+@media screen and (min-width: 768px) and (max-width: 992px) {
+}
+/* 大屏幕 */
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+}
+/* 超大屏幕 */
+@media screen and (min-width: 1200px) {
+}
+```
+
+```html
+<!-- 超小屏幕 -->
+<link rel="stylesheet" media="screen and (max-width: 768px)" href="#" />
+<!-- 中等屏幕 -->
+<link rel="stylesheet" media="screen and (min-width: 768px) and (max-width: 992px)" href="#" />
+<!-- 大屏幕 -->
+<link rel="stylesheet" media="screen and (min-width: 992px) and (max-width: 1200px)" href="#" />
+<!-- 超大屏幕 -->
+<link rel="stylesheet" media="screen and (min-width: 1200px)" href="#" />
+```
 
 #### BFC
 

@@ -14,7 +14,7 @@ function solution(n, x, arr) {
     for (let i = 1; i <= arr.length; i++) {
       dp[i] = Math.max(dp[i - 1] + tmp[i - 1], tmp[i - 1]);
     }
-    ans = Math.max(ans, ...dp.slice(1))
+    ans = Math.max(ans, ...dp.slice(1));
   }
   return ans;
 }
