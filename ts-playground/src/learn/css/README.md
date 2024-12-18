@@ -1468,9 +1468,17 @@ orientation
 <!-- 超小屏幕 -->
 <link rel="stylesheet" media="screen and (max-width: 768px)" href="#" />
 <!-- 中等屏幕 -->
-<link rel="stylesheet" media="screen and (min-width: 768px) and (max-width: 992px)" href="#" />
+<link
+  rel="stylesheet"
+  media="screen and (min-width: 768px) and (max-width: 992px)"
+  href="#"
+/>
 <!-- 大屏幕 -->
-<link rel="stylesheet" media="screen and (min-width: 992px) and (max-width: 1200px)" href="#" />
+<link
+  rel="stylesheet"
+  media="screen and (min-width: 992px) and (max-width: 1200px)"
+  href="#"
+/>
 <!-- 超大屏幕 -->
 <link rel="stylesheet" media="screen and (min-width: 1200px)" href="#" />
 ```
