@@ -39,5 +39,5 @@ document
 
 document.getElementById("drag").ondragstart = (event) => {
   event.preventDefault();
-  window.electron.startDrag("drag-and-drop.md");
+  window.dragAndDrop.startDrag("../README.txt");
 };

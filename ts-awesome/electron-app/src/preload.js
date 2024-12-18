@@ -2,6 +2,7 @@
 // 预加载脚本可以在 BrowserWindow 构造方法的 webPreferences 选项中, 附加到主进程
 
 const { contextBridge, ipcRenderer } = require("electron/renderer");
+const path = require("node:path");
 
 contextBridge.exposeInMainWorld("versions", {
   /**
@@ -45,7 +46,7 @@ contextBridge.exposeInMainWorld("darkMode", {
 });
 
 // 原生文件拖&放 (drag&drop)
-contextBridge.exposeInIsolatedWorld("electron", {
+contextBridge.exposeInIsolatedWorld("dragAndDrop", {
   startDrag: (fileName) => {
     ipcRenderer.send("ondragstart", path.join(process.cwd(), fileName));
   },
