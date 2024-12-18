@@ -8,11 +8,6 @@ const path = require("node:path");
 const fs = require("node:fs");
 const https = require("node:https");
 
-//// const __dirname = import.meta.dirname;
-// import { dirname } from "node:path";
-// import { fileURLToPath } from "node:url";
-// const __dirname = dirname(fileURLToPath(import.meta.url));
-
 // 每个 Electron 应用会为每个打开的 BrowserWindow 生成一个单独的渲染器进程
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -23,14 +18,14 @@ const createWindow = () => {
     },
   });
 
-  win.loadFile("index.html");
+  win.loadFile("./index.html");
   // win.webContents.openDevTools();
 };
 
 const iconName = path.join(__dirname, "dragAndDrop.png");
 const iconWriteStream = fs.createWriteStream(iconName);
-fs.writeFileSync(path.join(__dirname, "../README.txt"), "# An electron app");
-https.get("https://img.icons8.com/ios/452/drag-and-drop.png", (response) => {
+fs.writeFileSync(path.join(__dirname, "./drag-and-drop.md"), "# Drag & Drop");
+https.get("https://img.icons8.com/ios/100/drag-and-drop.png", (response) => {
   response.pipe(iconWriteStream);
 });
 
@@ -60,7 +55,6 @@ app.whenReady().then(() => {
 
 //! event.sender.startDrag
 ipcMain.on("ondragstart", (event, filePath) => {
-  console.log();
   event.sender.startDrag({
     file: path.join(__dirname, filePath),
     icon: iconName,

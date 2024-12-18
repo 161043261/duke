@@ -2,19 +2,10 @@
 // 渲染进程直接访问 node 接口是不可能的
 // 解决方法: 使用 ipcMain 和 ipcRenderer 的进程间通信 (IPC)
 
-// const process = require("node:process");
-
 const info = document.getElementById("info");
-
-// console.log(window.versions);
-
-info.innerText = `Chrome (v${window.versions.chrome()}),
-Node.js (v${window.versions.node()}),
-Electron (v${window.versions.electron()})`;
-
-// console.log(`Chrome (v${process.versions.chrome}),
-// Node.js (v${process.versions.node}),
-// Electron (v${process.versions.electron})`);
+info.innerText = `Chrome 版本: v${window.versions.chrome()}
+Node.js 版本: v${window.versions.node()}
+Electron 版本: v${window.versions.electron()}`;
 
 (async () => {
   const response = await window.versions.ping();
@@ -39,5 +30,5 @@ document
 
 document.getElementById("drag").ondragstart = (event) => {
   event.preventDefault();
-  window.dragAndDrop.startDrag("../README.txt");
+  window.dragAndDrop.startDrag("./drag-and-drop.md");
 };
