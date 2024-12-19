@@ -5,11 +5,8 @@ import { get } from 'node:https'
 
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
-import { join, dirname } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { join } from 'node:path'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -80,13 +77,6 @@ app.on('window-all-closed', () => {
 
 // In this file you can include the rest of your app"s specific main process
 // code. You can also put them in separate files and require them here.
-const iconName = join(__dirname, 'dragAndDrop.png')
-const iconWriteStream = createWriteStream(iconName)
-writeFileSync(join(__dirname, './drag-and-drop.md'), '# Drag & Drop')
-get('https://img.icons8.com/ios/100/drag-and-drop.png', (response) => {
-  response.pipe(iconWriteStream)
-})
-
 ipcMain.handle('dark-mode:toggle', () => {
   if (nativeTheme.shouldUseDarkColors) {
     nativeTheme.themeSource = 'light'
@@ -108,13 +98,5 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) {
       createWindow()
     }
-  })
-})
-
-//! event.sender.startDrag
-ipcMain.on('ondragstart', (event, filePath) => {
-  event.sender.startDrag({
-    file: join(__dirname, filePath),
-    icon: iconName
   })
 })

@@ -3,12 +3,14 @@ import path from 'node:path'
 import fs from 'node:fs'
 
 class ConfigService {
-  // app.getPath('userData')
+  // userDataPath 用户数据
   private _userDataPath: string
-  // `${app.getPath('userData')}/volume`
+  // volumnDir 数据卷目录
   private _volumeDir: string
-  // `${app.getPath('userData')}/volume/settings.json`
-  private _appSettingsPath: string
+  // settingsPath 配置文件
+  private _settingsPath: string
+  // version 版本
+  private _version: string | undefined
 
   constructor() {
     this._userDataPath = app.getPath('userData')
@@ -17,7 +19,7 @@ class ConfigService {
     if (!fs.existsSync(this._volumeDir)) {
       fs.mkdirSync(this._volumeDir)
     }
-    this._appSettingsPath = path.join(this._volumeDir, 'settings.json')
+    this._settingsPath = path.join(this._volumeDir, 'settings.json')
   }
 
   get userDataPath() {
@@ -28,13 +30,16 @@ class ConfigService {
     return this._volumeDir
   }
 
-  get appSettingsPath() {
-    return this._appSettingsPath
+  get settingsPath() {
+    return this._settingsPath
   }
 
-  //! public async getAppVersion();
-  get appVersion() {
-    return app.getVersion()
+  //! public async getVersion();
+  get version() {
+    if (this._version !== undefined) {
+      return this._version
+    }
+    return (this._version = app.getVersion())
   }
 }
 

@@ -49,10 +49,3 @@ contextBridge.exposeInMainWorld('darkMode', {
     return ipcRenderer.invoke('dark-mode:system')
   }
 })
-
-// 原生文件拖&放 (drag&drop)
-contextBridge.exposeInMainWorld('dragAndDrop', {
-  startDrag: (fileName: string) => {
-    ipcRenderer.send('ondragstart', fileName /* path.join(process.cwd(), fileName) */)
-  }
-})
