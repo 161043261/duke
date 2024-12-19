@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Electron</title>
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:"
+    />
+    <link rel="stylesheet" type="text/css" href="./style/style.css" />
+    <title>你好, 这里是 Electron 渲染器</title>
+    <script async type="module" crossorigin src="./assets/index-BlGYX-oW.js"></script>
+  </head>
+
+  <body>
+    <h1>你好, 这里是 Electron 渲染器</h1>
+    <p id="info"></p>
+    <button id="toggle-dark-mode" type="button">浅色/深色</button>
+    <button id="reset-to-system" type="button">跟随系统</button>
+    <div
+      style="border: 2px solid black; border-radius: 3px; padding: 5px; display: inline-block"
+      draggable="true"
+      id="drag"
+    >
+      拖拽文件以下载
+    </div>
+  </body>
+</html>
