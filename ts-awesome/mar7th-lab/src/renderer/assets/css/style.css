@@ -2,17 +2,6 @@
   color-scheme: light dark;
 }
 
-@font-face {
-  font-family: 'Fira Next';
-  font-display: swap;
-  font-weight: 400;
-  font-stretch: normal;
-  font-style: normal;
-  src:
-    url('../font/FiraNext-Regular.woff2') format('woff2'),
-    url('../font/FiraNext-Regular.ttf') format('truetype');
-}
-
 /* 媒体查询 */
 @media (prefers-color-scheme: dark) {
   body {
@@ -29,6 +18,5 @@
 }
 
 * {
-  font-family: 'Fira Next', 'Cascadia Code', 'Menlo', 'LXGW WenKai', 'Microsoft YaHei',
-    'PingFang SC', emoji;
+  font-family: "LXGW WenKai", "Microsoft YaHei", "PingFang SC", emoji;
 }

@@ -1,23 +1,24 @@
-import configService from './config_service';
-import fs from 'node:fs';
+import configService from "./config_service";
+import fs from "node:fs";
 
 class SettingsService {
-  private appSettings: AppSettings;
-  private appSettingsPath: string;
-  private defaultSettings: AppSettings = {
-    debug: false,
+  appSettings: AppSettings;
+  appSettingsPath: string;
+  defaultSettings: AppSettings = {
+    debug: true,
     closeDirectly: true,
     themeColor: [49, 120, 198],
-    lastGachaUid: '',
+    lastGachaUid: "",
     sidebarCollapsed: false,
     checkUpdateOnLaunch: true
   };
+
   constructor() {
     this.appSettingsPath = configService.getAppSettingsPath();
     if (!fs.existsSync(this.appSettingsPath)) {
       this.appSettings = this.defaultSettings;
     } else {
-      this.appSettings = JSON.parse(fs.readFileSync(this.appSettingsPath, 'utf-8'));
+      this.appSettings = JSON.parse(fs.readFileSync(this.appSettingsPath, "utf-8"));
     }
     Object.keys(this.defaultSettings).forEach((k) => {
       if (this.appSettings[k] === undefined) {
@@ -26,8 +27,9 @@ class SettingsService {
     });
     this.saveAppSettings();
   }
-  private saveAppSettings() {
-    fs.writeFileSync(this.appSettingsPath, JSON.stringify(this.appSettings, null, 2), 'utf-8');
+
+  saveAppSettings() {
+    fs.writeFileSync(this.appSettingsPath, JSON.stringify(this.appSettings, null, 2), "utf-8");
   }
 
   public getAppSettingsSync() {

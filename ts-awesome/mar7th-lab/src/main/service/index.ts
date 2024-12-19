@@ -1,3 +1,5 @@
-export { default as config } from './config_service';
-export { default as gacha } from './gacha_service';
-export { default as settings } from './settings_service';
+import config from "./config_service";
+import gacha from "./gacha_service";
+import settings from "./settings_service";
+
+export default { config, gacha, settings };
