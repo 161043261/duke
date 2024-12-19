@@ -4,17 +4,16 @@ import path from 'node:path';
 import configService from './config_service';
 import settingsService from './settings_service';
 
-function loadJson(fileName: string) {
-  // todo 确定 json 文件路径
-  console.log(__dirname);
-  return JSON.parse(
-    fs.readFileSync(path.join(__dirname, `../../resources/json/${fileName}.json`), 'utf-8')
-  );
-}
+// userDataDir 用户数据目录
+// ├── volumeDir 数据卷目录
+// │   ├── gachaDir 跃迁目录
+// │   │   ├── uids.json
+// │   │   ├── 000000000.json
+// │   │   └── 137780448.json
+// └── appSettingsPath 配置文件
 
 class GachaService {
   private volumeDir: string;
-  //
   private gachaDir: string;
   private gachaUidsPath: string;
   //! gachaUids: uid2username
@@ -43,6 +42,14 @@ class GachaService {
     this.gachaUids = JSON.parse(fs.readFileSync(this.gachaUidsPath, 'utf-8'));
   }
 
+  private loadJson(fileName: string) {
+    // todo 确定 json 文件路径
+    console.log(__dirname);
+    return JSON.parse(
+      fs.readFileSync(path.join(__dirname, `../../resources/json/${fileName}.json`), 'utf-8')
+    );
+  }
+
   private saveGachaUids() {
     this.gachaUids = Object.keys(this.gachaUids)
       .sort()
@@ -57,14 +64,14 @@ class GachaService {
     return { msg: 'OK', data: this.gachaUids };
   }
 
-  public async getGachaData(uid: string, updateLastUid = false) {
+  public async getGachaData(uid: string, updateLastGachaUid = false) {
     if (!/^\d{9}$/.test(uid)) {
       return { msg: 'Invalid UID' };
     }
     if (this.gachaUids[uid] === undefined) {
       return { msg: 'UID not found' };
     }
-    if (updateLastUid) {
+    if (updateLastGachaUid) {
       // todo 完成 settingsService
       settingsService.setAppSettings('LastGachaUid', uid);
     }
@@ -121,15 +128,15 @@ class GachaService {
           uid: `${uid}`,
           lang: 'zh-cn',
           region_time_zone: 8,
-          export_app: 'Mar7thLab',
+          export_app: 'mar7th-lab',
           export_app_version: app.getVersion(),
           export_timestamp: Math.floor(new Date().getTime() / 1000)
         },
         list: []
       };
-      const avatarConfig = loadJson('AvatarConfig');
-      const equipmentConfig = loadJson('EquipmentConfig');
-      const textMapCHS = loadJson('TextMapCHS');
+      const avatarConfig = this.loadJson('AvatarConfig');
+      const equipmentConfig = this.loadJson('EquipmentConfig');
+      const textMapCHS = this.loadJson('TextMapCHS');
       Object.values(
         JSON.parse(fs.readFileSync(path.join(this.gachaDir, `./${uid}.json`), 'utf-8'))
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -152,19 +159,19 @@ class GachaService {
       try {
         await dialog
           .showSaveDialog(BrowserWindow.getAllWindows()[0], {
-            title: '导出抽卡记录',
+            title: '导出跃迁记录',
             buttonLabel: '导出',
             defaultPath: path.join(
               app.getPath('desktop'),
-              `gacha_export_v${app.getVersion()}_${this.gachaUids[uid]}_${uid}.SRGF.json`
+              `Mar7thLab_GachaExport_v${app.getVersion()}_${this.gachaUids[uid]}_${uid}.SRGF.json`
             ),
             filters: [{ name: 'SRGF json', extensions: ['json'] }]
           })
-          .then((result) => {
-            if (result.canceled) {
+          .then((value) => {
+            if (value.canceled) {
               msg = 'Canceled';
             } else {
-              fs.writeFileSync(result.filePath, JSON.stringify(exportData, null, 2), 'utf-8');
+              fs.writeFileSync(value.filePath, JSON.stringify(exportData, null, 2), 'utf-8');
             }
           })
           .catch((reason) => {
@@ -179,16 +186,16 @@ class GachaService {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const exportData: { info: any; hkrpg: any[] } = {
         info: {
-          export_app: 'Mar7thLab',
+          export_app: 'mar7th-lab',
           export_app_version: app.getVersion(),
           export_timestamp: Math.floor(new Date().getTime() / 1000),
           version: 'v4.0'
         },
         hkrpg: []
       };
-      const avatarConfig = loadJson('AvatarConfig');
-      const equipmentConfig = loadJson('EquipmentConfig');
-      const textMapCHS = loadJson('TextMapCHS');
+      const avatarConfig = this.loadJson('AvatarConfig');
+      const equipmentConfig = this.loadJson('EquipmentConfig');
+      const textMapCHS = this.loadJson('TextMapCHS');
       const uidArr = Array.isArray(uid) && uid.length > 0 ? [uid] : Object.keys(this.gachaUids);
       uidArr.forEach((uid) => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -221,7 +228,7 @@ class GachaService {
       try {
         await dialog
           .showSaveDialog(BrowserWindow.getAllWindows()[0], {
-            title: '导出抽卡记录',
+            title: '导出跃迁记录',
             buttonLabel: '导出',
             defaultPath: path.join(
               app.getPath('desktop'),
@@ -260,7 +267,7 @@ class GachaService {
         try {
           await dialog
             .showOpenDialog(BrowserWindow.getAllWindows()[0], {
-              title: '导入抽卡记录',
+              title: '导入跃迁记录',
               buttonLabel: '导入',
               defaultPath: app.getPath('desktop'),
               filters: [{ name: 'SRGF json', extensions: ['json'] }]
@@ -294,7 +301,7 @@ class GachaService {
         try {
           await dialog
             .showOpenDialog(BrowserWindow.getAllWindows()[0], {
-              title: '导入抽卡记录',
+              title: '导入跃迁记录',
               buttonLabel: '导入',
               defaultPath: app.getPath('desktop'),
               filters: [{ name: 'UIGF json', extensions: ['json'] }]

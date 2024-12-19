@@ -8,7 +8,6 @@ class SettingsService {
     debug: false,
     closeDirectly: true,
     themeColor: [49, 120, 198],
-    lastAchievementUid: '',
     lastGachaUid: '',
     sidebarCollapsed: false,
     checkUpdateOnLaunch: true

@@ -3,8 +3,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 // userDataDir 用户数据目录
-// ├── volumnDir 数据卷目录
-// └── appSettingsPath app 配置文件
+// ├── volumeDir 数据卷目录
+// │   ├── gachaDir 跃迁目录
+// │   │   ├── uids.json
+// │   │   ├── 000000000.json
+// │   │   └── 137780448.json
+// └── appSettingsPath 配置文件
 
 class ConfigService {
   private userDataDir: string;

@@ -49,7 +49,7 @@ test.skip(
       `./webCaches/${maxVersion}/Cache/Cache_Data/data_2`
     );
     // todo 获取 url
-    /////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////
     const urlLines = fs.readFileSync(urlWebCachesPath, 'utf-8').split('1/0/');
     urlLines.forEach((line) => {
       if (line.match(/^http.*(?:hkrpg|api).*mihoyo\.com.*?gacha.*\?/i)) {
@@ -57,7 +57,7 @@ test.skip(
         url = line.match(/^.*?\x00/)![0].slice(0, -1);
       }
     });
-    /////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////
     if (url === '') {
       console.log('URL not found');
       return;
@@ -135,7 +135,7 @@ test('Test_exportGachaData_SRGF', () => {
       uid: uid,
       lang: 'zh-cn',
       region_time_zone: 8,
-      export_app: 'Mar7thLab',
+      export_app: 'mar7th-lab',
       export_app_version: '1.0.0',
       export_timestamp: Math.floor(new Date().getTime() / 1000)
     },
@@ -174,7 +174,7 @@ test('Test_exportGachaData_uigf', () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const exportData: { info: any; hkrpg: any[] } = {
     info: {
-      export_app: 'Mar7thLab',
+      export_app: 'mar7th-lab',
       export_app_version: '1.0.0',
       export_timestamp: Math.floor(new Date().getTime() / 1000),
       version: 'v4.0'

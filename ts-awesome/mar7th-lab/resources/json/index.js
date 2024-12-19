@@ -2,7 +2,12 @@ const fs = require('fs').promises;
 const path = require('path');
 
 async function loadJson(fileName) {
-  return JSON.parse(await fs.readFile(path.join(__dirname, `./${fileName}.json`), 'utf-8'));
+  return JSON.parse(
+    await fs.readFile(
+      path.join(__dirname, `./${fileName}.json`).then((value) => value.toString()),
+      'utf-8'
+    )
+  );
 }
 
 async function createAvatarConfig() {
