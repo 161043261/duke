@@ -3,8 +3,11 @@ import path from 'node:path'
 import fs from 'node:fs'
 
 class ConfigService {
+  // app.getPath('userData')
   private _userDataPath: string
+  // `${app.getPath('userData')}/volume`
   private _volumeDir: string
+  // `${app.getPath('userData')}/volume/settings.json`
   private _appSettingsPath: string
 
   constructor() {
@@ -29,7 +32,8 @@ class ConfigService {
     return this._appSettingsPath
   }
 
-  public async getAppVersion() {
+  //! public async getAppVersion();
+  get appVersion() {
     return app.getVersion()
   }
 }
