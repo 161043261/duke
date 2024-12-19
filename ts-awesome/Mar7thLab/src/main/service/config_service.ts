@@ -35,7 +35,7 @@ class ConfigService {
   }
 
   public async getAppVersion() {
-    return app.getVersion();
+    return app.getVersion()
   }
 }
 

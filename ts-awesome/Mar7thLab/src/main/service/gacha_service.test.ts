@@ -11,64 +11,73 @@ function loadJson(fileName: string) {
   )
 }
 
-test('Test_getGachaURL', () => {
-  let url = ''
-  const playerLogPath = `${os.homedir()}/AppData/LocalLow/miHoYo/崩坏：星穹铁道/Player.log`
-  const starRailDataDir = fs
-    .readFileSync(playerLogPath, 'utf-8')
-    .match(/Loading player data from (.*)data\.unity3d/)![1]
-  console.log(starRailDataDir)
-  const webCachesDir = path.join(starRailDataDir, './webCaches/')
-  let maxVersion = '0.0.0.0'
-  fs.readdirSync(webCachesDir).forEach((fileName) => {
-    if (
-      fs.statSync(path.join(webCachesDir, fileName)).isDirectory() &&
-      /\d+\.\d+\.\d+\.\d/.test(fileName)
-    ) {
-      const maxNums = maxVersion.split('.')
-      const curNums = fileName.split('.')
-      for (let i = 0; i < 4; ++i) {
-        if (Number.parseInt(curNums[i]) > Number.parseInt(maxNums[i])) {
-          maxVersion = fileName
-          break
-        }
-        if (Number.parseInt(curNums[i]) < Number.parseInt(maxNums[i])) {
-          break
+test(
+  'Test_getGachaURL',
+  async () => {
+    let url = ''
+    const playerLogPath = `${os.homedir()}/AppData/LocalLow/miHoYo/崩坏：星穹铁道/Player.log`
+    const starRailDataDir = fs
+      .readFileSync(playerLogPath, 'utf-8')
+      .match(/Loading player data from (.*)data\.unity3d/)![1]
+    console.log(starRailDataDir)
+    const webCachesDir = path.join(starRailDataDir, './webCaches/')
+    let maxVersion = '0.0.0.0'
+    fs.readdirSync(webCachesDir).forEach((fileName) => {
+      if (
+        fs.statSync(path.join(webCachesDir, fileName)).isDirectory() &&
+        /\d+\.\d+\.\d+\.\d/.test(fileName)
+      ) {
+        const maxNums = maxVersion.split('.')
+        const curNums = fileName.split('.')
+        for (let i = 0; i < 4; ++i) {
+          if (Number.parseInt(curNums[i]) > Number.parseInt(maxNums[i])) {
+            maxVersion = fileName
+            break
+          }
+          if (Number.parseInt(curNums[i]) < Number.parseInt(maxNums[i])) {
+            break
+          }
         }
       }
+    })
+    if (maxVersion === '0.0.0.0') {
+      console.log('URL not found')
+      return
     }
-  })
-  if (maxVersion === '0.0.0.0') {
-    console.log('URL not found')
-    return
-  }
-  const urlWebCachesPath = path.join(
-    starRailDataDir,
-    `./webCaches/${maxVersion}/Cache/Cache_Data/data_2`
-  )
-  // todo 获取 url
-  /////////////////////////////////////////////////////////////////////////
-  const urlLines = fs.readFileSync(urlWebCachesPath, 'utf-8').split('1/0/')
-  urlLines.forEach((line) => {
-    if (line.match(/^http.*(?:hkrpg|api).*mihoyo\.com.*?gacha.*\?/i)) {
-      // eslint-disable-next-line no-control-regex
-      url = line.match(/^.*?\x00/)![0].slice(0, -1)
+    const urlWebCachesPath = path.join(
+      starRailDataDir,
+      `./webCaches/${maxVersion}/Cache/Cache_Data/data_2`
+    )
+    // todo 获取 url
+    /////////////////////////////////////////////////////////////////////////
+    const urlLines = fs.readFileSync(urlWebCachesPath, 'utf-8').split('1/0/')
+    urlLines.forEach((line) => {
+      if (line.match(/^http.*(?:hkrpg|api).*mihoyo\.com.*?gacha.*\?/i)) {
+        // eslint-disable-next-line no-control-regex
+        url = line.match(/^.*?\x00/)![0].slice(0, -1)
+      }
+    })
+    /////////////////////////////////////////////////////////////////////////
+    if (url === '') {
+      console.log('URL not found')
+      return
     }
-  })
-  /////////////////////////////////////////////////////////////////////////
-  if (url === '') {
-    console.log('URL not found')
-    return
-  }
-  const searchKeys = ['authkey_ver', 'authkey', 'game_biz', 'lang']
-  const urlObj = new URL(url)
-  const params = urlObj.searchParams
-  const filteredParams = new URLSearchParams(
-    Array.from(params.entries()).filter(([k]) => searchKeys.includes(k))
-  )
-  urlObj.search = filteredParams.toString()
-  console.log(urlObj.href)
-})
+    const searchKeys = ['authkey_ver', 'authkey', 'game_biz', 'lang']
+    const urlObj = new URL(url)
+    const params = urlObj.searchParams
+    const filteredParams = new URLSearchParams(
+      Array.from(params.entries()).filter(([k]) => searchKeys.includes(k))
+    )
+    urlObj.search = filteredParams.toString()
+    console.log(urlObj.href)
+    // await fetch(urlObj)
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log(data)
+    //   })
+  },
+  { timeout: 3000 }
+)
 
 test('Test_importGachaData_SRGF', () => {
   const data = loadJson('GachaImport_v1.0.0_Trailblazer_137780448.SRGF')
