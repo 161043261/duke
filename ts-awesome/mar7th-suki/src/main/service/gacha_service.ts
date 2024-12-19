@@ -1,13 +1,13 @@
-import path from 'node:path'
-import fs from 'node:fs'
-import configService from './config_service'
 import { app, BrowserWindow, dialog } from 'electron'
-
+import fs from 'node:fs'
+import path from 'node:path'
+import configService from './config_service'
+import settingsService from './settings_service'
 function loadJson(fileName: string) {
   // todo 确定 json 文件路径
   console.log(__dirname)
   return JSON.parse(
-    fs.readFileSync(path.join(__dirname, `../../resources/json/${fileName}.json`), 'utf8')
+    fs.readFileSync(path.join(__dirname, `../../resources/json/${fileName}.json`), 'utf-8')
   )
 }
 
@@ -16,12 +16,12 @@ class GachaService {
   //
   private gachaDir: string
   private gachaUidsPath: string
-  //! todo 确定 gachaUids 类型
+  //! gachaUids: uid2username
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private gachaUids: Record<string, any>
+  private gachaUids: Record<string, string>
 
   constructor() {
-    this.volumeDir = configService.volumeDir
+    this.volumeDir = configService.getVolumeDir()
     this.gachaDir = path.join(this.volumeDir, './gacha/')
     if (!fs.existsSync(this.gachaDir)) {
       fs.mkdirSync(this.gachaDir)
@@ -65,7 +65,7 @@ class GachaService {
     }
     if (updateLastUid) {
       // todo 完成 settingsService
-      // settingsService.updateSettings('LastGachaUid', uid);
+      settingsService.setAppSettings('LastGachaUid', uid)
     }
     return {
       msg: 'OK',
@@ -120,7 +120,7 @@ class GachaService {
           uid: `${uid}`,
           lang: 'zh-cn',
           region_time_zone: 8,
-          export_app: 'electron-app',
+          export_app: 'mar7th-suki',
           export_app_version: app.getVersion(),
           export_timestamp: Math.floor(new Date().getTime() / 1000)
         },
@@ -178,7 +178,7 @@ class GachaService {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const exportData: { info: any; hkrpg: any[] } = {
         info: {
-          export_app: 'electron-app',
+          export_app: 'mar7th-suki',
           export_app_version: app.getVersion(),
           export_timestamp: Math.floor(new Date().getTime() / 1000),
           version: 'v4.0'
@@ -328,10 +328,10 @@ class GachaService {
             if (uidLangTzList['timezone'] === undefined) {
               throw new Error('Invalid UIGF')
             }
-            const item_keys = ['gacha_id', 'gacha_type', 'item_id', 'time', 'id']
+            const itemKeys = ['gacha_id', 'gacha_type', 'item_id', 'time', 'id']
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             uidLangTzList['list'].forEach((item: any) => {
-              item_keys.forEach((key) => {
+              itemKeys.forEach((key) => {
                 if (item[key] === undefined) {
                   throw new Error('Invalid UIGF')
                 }
@@ -356,20 +356,20 @@ class GachaService {
         return { msg: 'OK', data: { uid: uid } }
       }
     }
-    const uid = `${data['info']['uid']}`
+    const uid = data['info']['uid']
     if (!/^\d{9}$/.test(uid)) {
       return { msg: 'Invalid UID' }
     }
     if (this.gachaUids[uid] === undefined) {
       fs.writeFileSync(
         path.join(this.gachaDir, `./${uid}.json`),
-        JSON.stringify({}, null, 4),
+        JSON.stringify({}, null, 2),
         'utf-8'
       )
       this.gachaUids[uid] = 'Trailblazer'
       fs.writeFileSync(
         path.join(this.gachaDir, './uids.json'),
-        JSON.stringify(this.gachaUids, null, 4),
+        JSON.stringify(this.gachaUids, null, 2),
         'utf-8'
       )
     }
@@ -377,27 +377,30 @@ class GachaService {
     if (data['info']['region_time_zone'] != 8) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       data['list'].forEach((item: any) => {
-        const tmp = new Date(item['time'])
-        tmp.setHours(tmp.getHours() - data['info']['region_time_zone'] + 8)
+        const itemDate = new Date(item['time'])
+        itemDate.setHours(itemDate.getHours() - data['info']['region_time_zone'] + 8)
         item['time'] =
-          `${tmp.getFullYear()}-` +
-          `0${tmp.getMonth() + 1}-`.slice(-3) +
-          `0${tmp.getDate()} `.slice(-3) +
-          `0${tmp.getHours()}:`.slice(-3) +
-          `0${tmp.getMinutes()}:`.slice(-3) +
-          `0${tmp.getSeconds()}`.slice(-2)
+          `${itemDate.getFullYear()}-` +
+          `0${itemDate.getMonth() + 1}-`.slice(-3) +
+          `0${itemDate.getDate()} `.slice(-3) +
+          `0${itemDate.getHours()}:`.slice(-3) +
+          `0${itemDate.getMinutes()}:`.slice(-3) +
+          `0${itemDate.getSeconds()}`.slice(-2)
       })
     }
     let list = JSON.parse(fs.readFileSync(path.join(this.gachaDir, `./${uid}.json`), 'utf-8'))
     let isInvalid = false
-    const item_keys = ['gacha_id', 'gacha_type', 'item_id', 'time', 'id']
+    const itemKeys = ['gacha_id', 'gacha_type', 'item_id', 'time', 'id']
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     data['list'].forEach((item: any) => {
       if (list[item['id']] === undefined) {
         const tmp = {}
-        item_keys.forEach((key) => {
-          if (item[key] === undefined) isInvalid = true
-          else tmp[key] = item[key]
+        itemKeys.forEach((key) => {
+          if (item[key] === undefined) {
+            isInvalid = true
+          } else {
+            tmp[key] = item[key]
+          }
         })
         list[item['id']] = tmp
       }
@@ -408,11 +411,11 @@ class GachaService {
     list = Object.fromEntries(Object.entries(list).sort())
     fs.writeFileSync(
       path.join(this.gachaDir, `./${uid}.json`),
-      JSON.stringify(list, null, 4),
+      JSON.stringify(list, null, 2),
       'utf-8'
     )
     // todo 完成 settingsService
-    // settingService.updateSettings('LastGachaUid', uid)
+    settingsService.setAppSettings('LastGachaUid', uid)
     return { msg: 'OK', data: { uid: uid } }
   }
 
@@ -424,7 +427,7 @@ class GachaService {
       const starRailDataDir = fs
         .readFileSync(playerLogPath, 'utf-8')
         .match(/Loading player data from (.*)data\.unity3d/)![1]
-      console.log(starRailDataDir)
+      // console.log(starRailDataDir)
       const webCachesDir = path.join(starRailDataDir, './webCaches/')
       let maxVersion = '0.0.0.0'
       fs.readdirSync(webCachesDir).forEach((fileName) => {
@@ -432,13 +435,14 @@ class GachaService {
           fs.statSync(path.join(webCachesDir, fileName)).isDirectory() &&
           /\d+\.\d+\.\d+\.\d/.test(fileName)
         ) {
-          const max = maxVersion.split('.')
-          const now = fileName.split('.')
+          const maxNums = maxVersion.split('.')
+          const curNums = fileName.split('.')
           for (let i = 0; i < 4; ++i) {
-            if (Number.parseInt(now[i]) > Number.parseInt(max[i])) {
+            if (Number.parseInt(curNums[i]) > Number.parseInt(maxNums[i])) {
               maxVersion = fileName
               break
-            } else if (parseInt(now[i]) < parseInt(max[i])) {
+            }
+            if (Number.parseInt(curNums[i]) < Number.parseInt(maxNums[i])) {
               break
             }
           }
@@ -451,6 +455,8 @@ class GachaService {
         starRailDataDir,
         `./webCaches/${maxVersion}/Cache/Cache_Data/data_2`
       )
+      // todo 获取 url
+      /////////////////////////////////////////////////////////////////////////
       const urlLines = fs.readFileSync(urlWebCachePath, 'utf-8').split('1/0/')
       urlLines.forEach((line) => {
         if (line.match(/^http.*(?:hkrpg|api).*mihoyo\.com.*?gacha.*\?/i)) {
@@ -458,6 +464,7 @@ class GachaService {
           url = line.match(/^.*?\x00/)![0].slice(0, -1)
         }
       })
+      /////////////////////////////////////////////////////////////////////////
       if (url === '') {
         return { msg: 'URL not found' }
       }

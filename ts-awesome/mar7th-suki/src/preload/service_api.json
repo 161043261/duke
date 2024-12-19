@@ -1,6 +1,6 @@
 {
-  "config": ["getVersion"],
-  "setting": ["getSettings", "setSettings"],
+  "config": ["getAppVersion"],
+  "setting": ["getAppSettings", "setAppSettings"],
   "achievement": [
     "getAchievementUids",
     "getAchievementData",
