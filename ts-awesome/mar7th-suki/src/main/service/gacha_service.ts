@@ -454,13 +454,13 @@ class GachaService {
       if (maxVersion === '0.0.0.0') {
         return { msg: 'URL not found' }
       }
-      const urlWebCachePath = path.join(
+      const urlWebCachesPath = path.join(
         starRailDataDir,
         `./webCaches/${maxVersion}/Cache/Cache_Data/data_2`
       )
       // todo 获取 url
       /////////////////////////////////////////////////////////////////////////
-      const urlLines = fs.readFileSync(urlWebCachePath, 'utf-8').split('1/0/')
+      const urlLines = fs.readFileSync(urlWebCachesPath, 'utf-8').split('1/0/')
       urlLines.forEach((line) => {
         if (line.match(/^http.*(?:hkrpg|api).*mihoyo\.com.*?gacha.*\?/i)) {
           // eslint-disable-next-line no-control-regex

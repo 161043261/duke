@@ -18,11 +18,11 @@ test('Test_getGachaURL', () => {
     .readFileSync(playerLogPath, 'utf-8')
     .match(/Loading player data from (.*)data\.unity3d/)![1]
   console.log(starRailDataDir)
-  const webCacheDir = path.join(starRailDataDir, './webCaches/')
+  const webCachesDir = path.join(starRailDataDir, './webCaches/')
   let maxVersion = '0.0.0.0'
-  fs.readdirSync(webCacheDir).forEach((fileName) => {
+  fs.readdirSync(webCachesDir).forEach((fileName) => {
     if (
-      fs.statSync(path.join(webCacheDir, fileName)).isDirectory() &&
+      fs.statSync(path.join(webCachesDir, fileName)).isDirectory() &&
       /\d+\.\d+\.\d+\.\d/.test(fileName)
     ) {
       const maxNums = maxVersion.split('.')
@@ -42,13 +42,13 @@ test('Test_getGachaURL', () => {
     console.log('URL not found')
     return
   }
-  const urlWebCachePath = path.join(
+  const urlWebCachesPath = path.join(
     starRailDataDir,
     `./webCaches/${maxVersion}/Cache/Cache_Data/data_2`
   )
   // todo 获取 url
   /////////////////////////////////////////////////////////////////////////
-  const urlLines = fs.readFileSync(urlWebCachePath, 'utf-8').split('1/0/')
+  const urlLines = fs.readFileSync(urlWebCachesPath, 'utf-8').split('1/0/')
   urlLines.forEach((line) => {
     if (line.match(/^http.*(?:hkrpg|api).*mihoyo\.com.*?gacha.*\?/i)) {
       // eslint-disable-next-line no-control-regex
@@ -77,7 +77,6 @@ test('Test_importGachaData_SRGF', () => {
     console.log('Invalid UID')
     return
   }
-  fs.writeFileSync(`./resources/json/${uid}.json`, JSON.stringify({}, null, 2), 'utf-8')
   // 存储北京时间
   if (data['info']['region_time_zone'] != 8) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

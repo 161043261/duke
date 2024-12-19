@@ -2,25 +2,24 @@ import { app } from 'electron'
 import fs from 'node:fs'
 import path from 'node:path'
 
+// userDataDir 用户数据目录
+// ├── volumnDir 数据卷目录
+// └── appSettingsPath app 配置文件
+
 class ConfigService {
-  // userDataDir 用户数据
   private userDataDir: string
-  // volumnDir 数据卷目录
   private volumeDir: string
-  // appSettingsPath app 配置文件
   private appSettingsPath: string
-  // appVersion app 版本
-  private appVersion: string
 
   constructor() {
     this.userDataDir = app.getPath('userData')
-    this.appVersion = app.getVersion()
+    // todo 确定 userDataDir 目录地址
     console.log(this.userDataDir)
     this.volumeDir = path.join(this.userDataDir, './volume/')
     if (!fs.existsSync(this.volumeDir)) {
       fs.mkdirSync(this.volumeDir)
     }
-    this.appSettingsPath = path.join(this.volumeDir, 'settings.json')
+    this.appSettingsPath = path.join(this.volumeDir, './settings.json')
   }
 
   public getUserDataDir() {
@@ -36,7 +35,7 @@ class ConfigService {
   }
 
   public async getAppVersion() {
-    return this.appVersion
+    return app.getVersion();
   }
 }
 
