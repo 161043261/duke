@@ -338,6 +338,9 @@ class GachaService {
               })
             })
           })
+          /////////////////////////////
+          //! uigf_v4.0 => srgf_v1.0
+          /////////////////////////////
           for (const uidLangTzList of data['hkrpg']) {
             const srgfData = {
               info: {

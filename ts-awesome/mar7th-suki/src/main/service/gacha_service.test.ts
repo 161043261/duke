@@ -70,14 +70,14 @@ test('Test_getGachaURL', () => {
   console.log(urlObj.href)
 })
 
-test('Test_importGachaData', () => {
+test('Test_importGachaData_srgf', () => {
   const data = loadJson('gacha_export.srgf')
   const uid = data['info']['uid']
   if (!/^\d{9}$/.test(uid)) {
     console.log('Invalid UID')
     return
   }
-  fs.writeFileSync(`./${uid}.json`, JSON.stringify({}, null, 2), 'utf-8')
+  fs.writeFileSync(`./resources/json/${uid}.json`, JSON.stringify({}, null, 2), 'utf-8')
   // 存储北京时间
   if (data['info']['region_time_zone'] != 8) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -93,7 +93,7 @@ test('Test_importGachaData', () => {
         `0${itemDate.getSeconds()}`.slice(-2)
     })
   }
-  let list = JSON.parse(fs.readFileSync(`./${uid}.json`, 'utf-8'))
+  let list = JSON.parse(fs.readFileSync(`./resources/json/${uid}.json`, 'utf-8'))
   let isInvalid = false
   const itemKeys = ['gacha_id', 'gacha_type', 'item_id', 'time', 'id']
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -115,5 +115,9 @@ test('Test_importGachaData', () => {
     return
   }
   list = Object.fromEntries(Object.entries(list).sort())
-  fs.writeFileSync(`./${uid}.json`, JSON.stringify(list, null, 2), 'utf-8')
+  fs.writeFileSync(`./resources/json/${uid}.json`, JSON.stringify(list, null, 2), 'utf-8')
 })
+
+test('Test_exportGachaData_srgf', () => {})
+
+test('Test_exportGachaData_uigf', () => {})
