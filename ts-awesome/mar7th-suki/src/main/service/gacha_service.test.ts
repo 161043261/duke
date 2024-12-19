@@ -70,8 +70,8 @@ test('Test_getGachaURL', () => {
   console.log(urlObj.href)
 })
 
-test('Test_importGachaData_srgf', () => {
-  const data = loadJson('gacha_export.srgf')
+test('Test_importGachaData_SRGF', () => {
+  const data = loadJson('GachaImport_v1.0.0_Trailblazer_137780448.SRGF')
   const uid = data['info']['uid']
   if (!/^\d{9}$/.test(uid)) {
     console.log('Invalid UID')
@@ -118,6 +118,94 @@ test('Test_importGachaData_srgf', () => {
   fs.writeFileSync(`./resources/json/${uid}.json`, JSON.stringify(list, null, 2), 'utf-8')
 })
 
-test('Test_exportGachaData_srgf', () => {})
+test('Test_exportGachaData_SRGF', () => {
+  const uid = '137780448'
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const exportData: { info: any; list: any[] } = {
+    info: {
+      srgf_version: 'v1.0',
+      uid: uid,
+      lang: 'zh-cn',
+      region_time_zone: 8,
+      export_app: 'mar7th-suki',
+      export_app_version: '1.0.0',
+      export_timestamp: Math.floor(new Date().getTime() / 1000)
+    },
+    list: []
+  }
+  const avatarConfig = loadJson('AvatarConfig')
+  const equipmentConfig = loadJson('EquipmentConfig')
+  const textMapCHS = loadJson('TextMapCHS')
+  Object.values(
+    JSON.parse(fs.readFileSync(`./resources/json/${uid}.json`, 'utf-8'))
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ).forEach((item: any) => {
+    // todo 注释下一行
+    console.log(item)
+    item['count'] = '1'
+    if (item['item_id'].length === 4) {
+      item['item_type'] = '角色'
+      item['name'] = textMapCHS[avatarConfig[item['item_id']]['AvatarName']['Hash']]
+      item['rank_type'] = avatarConfig[item['item_id']]['Rarity'].at(-1)
+    } else {
+      item['item_type'] = '光锥'
+      item['name'] = textMapCHS[equipmentConfig[item['item_id']]['EquipmentName']['Hash']]
+      item['rank_type'] = equipmentConfig[item['item_id']]['Rarity'].at(-1)
+    }
+    exportData['list'].push(item)
+  })
+  fs.writeFileSync(
+    `./resources/json/GachaExport_v1.0.0_Trailblazer_${uid}.SRGF.json`,
+    JSON.stringify(exportData, null, 2),
+    'utf-8'
+  )
+})
 
-test('Test_exportGachaData_uigf', () => {})
+test('Test_exportGachaData_uigf', () => {
+  const uid = '137780448'
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const exportData: { info: any; hkrpg: any[] } = {
+    info: {
+      export_app: 'mar7th-suki',
+      export_app_version: '1.0.0',
+      export_timestamp: Math.floor(new Date().getTime() / 1000),
+      version: 'v4.0'
+    },
+    hkrpg: []
+  }
+  const avatarConfig = loadJson('AvatarConfig')
+  const equipmentConfig = loadJson('EquipmentConfig')
+  const textMapCHS = loadJson('TextMapCHS')
+  const uidArr = Array.isArray(uid) && uid.length > 0 ? [uid] : Object.keys({ [uid]: uid })
+  uidArr.forEach((uid) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const uidLangTzList: { uid: string; lang: string; timezone: number; list: any } = {
+      uid: `${uid}`,
+      lang: 'zh-cn',
+      timezone: 8,
+      list: []
+    }
+    Object.values(
+      JSON.parse(fs.readFileSync(`./resources/json/${uid}.json`, 'utf-8'))
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ).forEach((item: any) => {
+      item['count'] = '1'
+      if (item['item_id'].length === 4) {
+        item['item_type'] = '角色'
+        item['name'] = textMapCHS[avatarConfig[item['item_id']]['AvatarName']['Hash']]
+        item['rank_type'] = avatarConfig[item['item_id']]['Rarity'].at(-1)
+      } else {
+        item['item_type'] = '光锥'
+        item['name'] = textMapCHS[equipmentConfig[item['item_id']]['EquipmentName']['Hash']]
+        item['rank_type'] = equipmentConfig[item['item_id']]['Rarity'].at(-1)
+      }
+      uidLangTzList.list.push(item)
+    })
+    exportData.hkrpg.push(uidLangTzList)
+  })
+  fs.writeFileSync(
+    `./resources/json/GachaExport_v1.0.0_Trailblazer_${uid}.UIGF.json`,
+    JSON.stringify(exportData, null, 2),
+    'utf-8'
+  )
+})

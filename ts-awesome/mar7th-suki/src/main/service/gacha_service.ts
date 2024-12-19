@@ -188,8 +188,8 @@ class GachaService {
       const avatarConfig = loadJson('AvatarConfig')
       const equipmentConfig = loadJson('EquipmentConfig')
       const textMapCHS = loadJson('TextMapCHS')
-      const uids = Array.isArray(uid) && uid.length > 0 ? [uid] : Object.keys(this.gachaUids)
-      uids.forEach((uid) => {
+      const uidArr = Array.isArray(uid) && uid.length > 0 ? [uid] : Object.keys(this.gachaUids)
+      uidArr.forEach((uid) => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const uidLangTzList: { uid: string; lang: string; timezone: number; list: any } = {
           uid: `${uid}`,

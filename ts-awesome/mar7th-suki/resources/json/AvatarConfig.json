@@ -1,5 +1,5 @@
-[
-  {
+{
+  "1001": {
     "AvatarID": 1001,
     "AvatarName": {
       "Hash": -531793651
@@ -74,7 +74,7 @@
     "AssistBgOffset": [108, -300, 1],
     "AvatarSelfShowOffset": [0, -100, 5]
   },
-  {
+  "1002": {
     "AvatarID": 1002,
     "AvatarName": {
       "Hash": -935078178
@@ -149,7 +149,7 @@
     "AssistBgOffset": [-140, -260, 1],
     "AvatarSelfShowOffset": [-55, -45, 5]
   },
-  {
+  "1003": {
     "AvatarID": 1003,
     "AvatarName": {
       "Hash": 631005763
@@ -224,7 +224,7 @@
     "AssistBgOffset": [108, 12, 1],
     "AvatarSelfShowOffset": [-16, 26, 5]
   },
-  {
+  "1004": {
     "AvatarID": 1004,
     "AvatarName": {
       "Hash": 227721236
@@ -299,7 +299,7 @@
     "AssistBgOffset": [-106, -408, 1],
     "AvatarSelfShowOffset": [27, -110, 4.5]
   },
-  {
+  "1005": {
     "AvatarID": 1005,
     "AvatarName": {
       "Hash": 1793805177
@@ -374,7 +374,7 @@
     "AssistBgOffset": [130, -54, 1],
     "AvatarSelfShowOffset": []
   },
-  {
+  "1006": {
     "AvatarID": 1006,
     "AvatarName": {
       "Hash": 1390520650
@@ -449,7 +449,7 @@
     "AssistBgOffset": [0, 0, 1],
     "AvatarSelfShowOffset": []
   },
-  {
+  "1008": {
     "AvatarID": 1008,
     "AvatarName": {
       "Hash": 1840859344
@@ -524,7 +524,7 @@
     "AssistBgOffset": [8, -210, 1],
     "AvatarSelfShowOffset": [-100, -47, 5]
   },
-  {
+  "1009": {
     "AvatarID": 1009,
     "AvatarName": {
       "Hash": -888024011
@@ -599,7 +599,7 @@
     "AssistBgOffset": [98, -358, 1],
     "AvatarSelfShowOffset": [-15, -70, 5]
   },
-  {
+  "1013": {
     "AvatarID": 1013,
     "AvatarName": {
       "Hash": 631005764
@@ -674,7 +674,7 @@
     "AssistBgOffset": [-42, -148, 1],
     "AvatarSelfShowOffset": [-7, -82, 3]
   },
-  {
+  "1101": {
     "AvatarID": 1101,
     "AvatarName": {
       "Hash": -2077674616
@@ -749,7 +749,7 @@
     "AssistBgOffset": [32, -184, 1],
     "AvatarSelfShowOffset": [7, -55.5, 5]
   },
-  {
+  "1102": {
     "AvatarID": 1102,
     "AvatarName": {
       "Hash": 651208739
@@ -824,7 +824,7 @@
     "AssistBgOffset": [128, 200, 1.2],
     "AvatarSelfShowOffset": [65, 111, 5]
   },
-  {
+  "1103": {
     "AvatarID": 1103,
     "AvatarName": {
       "Hash": -914875202
@@ -899,7 +899,7 @@
     "AssistBgOffset": [-60, -48, 1],
     "AvatarSelfShowOffset": [-34, -36, 5]
   },
-  {
+  "1104": {
     "AvatarID": 1104,
     "AvatarName": {
       "Hash": 1814008153
@@ -974,7 +974,7 @@
     "AssistBgOffset": [0, 0, 1],
     "AvatarSelfShowOffset": [-78, -7, 5]
   },
-  {
+  "1105": {
     "AvatarID": 1105,
     "AvatarName": {
       "Hash": 247924212
@@ -1049,7 +1049,7 @@
     "AssistBgOffset": [-10, -424, 1],
     "AvatarSelfShowOffset": [-4, -120, 4]
   },
-  {
+  "1106": {
     "AvatarID": 1106,
     "AvatarName": {
       "Hash": -1318159729
@@ -1124,7 +1124,7 @@
     "AssistBgOffset": [-455, -39, 1],
     "AvatarSelfShowOffset": [53, -50, 5]
   },
-  {
+  "1107": {
     "AvatarID": 1107,
     "AvatarName": {
       "Hash": 1410723626
@@ -1199,7 +1199,7 @@
     "AssistBgOffset": [216, -292, 1],
     "AvatarSelfShowOffset": [92, -108, 5]
   },
-  {
+  "1108": {
     "AvatarID": 1108,
     "AvatarName": {
       "Hash": -867821035
@@ -1274,7 +1274,7 @@
     "AssistBgOffset": [308, -260, 1],
     "AvatarSelfShowOffset": [4, -90, 4]
   },
-  {
+  "1109": {
     "AvatarID": 1109,
     "AvatarName": {
       "Hash": 1861062320
@@ -1349,7 +1349,7 @@
     "AssistBgOffset": [-28, -8, 1],
     "AvatarSelfShowOffset": [-5, 15, 4]
   },
-  {
+  "1110": {
     "AvatarID": 1110,
     "AvatarName": {
       "Hash": -511590674
@@ -1424,7 +1424,7 @@
     "AssistBgOffset": [],
     "AvatarSelfShowOffset": [23.5, -58, 4]
   },
-  {
+  "1111": {
     "AvatarID": 1111,
     "AvatarName": {
       "Hash": -2077674615
@@ -1499,7 +1499,7 @@
     "AssistBgOffset": [2, -200, 1],
     "AvatarSelfShowOffset": [1.6, -115, 4]
   },
-  {
+  "1112": {
     "AvatarID": 1112,
     "AvatarName": {
       "Hash": 651208740
@@ -1574,7 +1574,7 @@
     "AssistBgOffset": [],
     "AvatarSelfShowOffset": []
   },
-  {
+  "1201": {
     "AvatarID": 1201,
     "AvatarName": {
       "Hash": -814118653
@@ -1649,7 +1649,7 @@
     "AssistBgOffset": [-34, -270, 1],
     "AvatarSelfShowOffset": []
   },
-  {
+  "1202": {
     "AvatarID": 1202,
     "AvatarName": {
       "Hash": 751965288
@@ -1724,7 +1724,7 @@
     "AssistBgOffset": [-34, -86, 1],
     "AvatarSelfShowOffset": [1.5, -60, 4]
   },
-  {
+  "1203": {
     "AvatarID": 1203,
     "AvatarName": {
       "Hash": -1976918067
@@ -1799,7 +1799,7 @@
     "AssistBgOffset": [-10, -426, 1.1],
     "AvatarSelfShowOffset": []
   },
-  {
+  "1204": {
     "AvatarID": 1204,
     "AvatarName": {
       "Hash": -54603766
@@ -1874,7 +1874,7 @@
     "AssistBgOffset": [-8, -200, 1],
     "AvatarSelfShowOffset": [1.5, -60, 5]
   },
-  {
+  "1205": {
     "AvatarID": 1205,
     "AvatarName": {
       "Hash": 1511480175
@@ -1949,7 +1949,7 @@
     "AssistBgOffset": [-124, -224, 1],
     "AvatarSelfShowOffset": []
   },
-  {
+  "1206": {
     "AvatarID": 1206,
     "AvatarName": {
       "Hash": -1217403180
@@ -2024,7 +2024,7 @@
     "AssistBgOffset": [],
     "AvatarSelfShowOffset": []
   },
-  {
+  "1207": {
     "AvatarID": 1207,
     "AvatarName": {
       "Hash": 348680761
@@ -2099,7 +2099,7 @@
     "AssistBgOffset": [-142, -244, 1],
     "AvatarSelfShowOffset": [-14.6, -100, 4.5]
   },
-  {
+  "1208": {
     "AvatarID": 1208,
     "AvatarName": {
       "Hash": 1558534342
@@ -2174,7 +2174,7 @@
     "AssistBgOffset": [],
     "AvatarSelfShowOffset": [-44, -11, 2.5]
   },
-  {
+  "1209": {
     "AvatarID": 1209,
     "AvatarName": {
       "Hash": -1170349013
@@ -2249,7 +2249,7 @@
     "AssistBgOffset": [],
     "AvatarSelfShowOffset": []
   },
-  {
+  "1210": {
     "AvatarID": 1210,
     "AvatarName": {
       "Hash": 1914764703
@@ -2324,7 +2324,7 @@
     "AssistBgOffset": [-50, 330, 1],
     "AvatarSelfShowOffset": [-15.5, -64, 5]
   },
-  {
+  "1211": {
     "AvatarID": 1211,
     "AvatarName": {
       "Hash": -814118652
@@ -2399,7 +2399,7 @@
     "AssistBgOffset": [-50, 330, 1],
     "AvatarSelfShowOffset": [-10, -77, 5]
   },
-  {
+  "1212": {
     "AvatarID": 1212,
     "AvatarName": {
       "Hash": 751965289
@@ -2474,7 +2474,7 @@
     "AssistBgOffset": [-98, -60, 1],
     "AvatarSelfShowOffset": [-28, 4, 5]
   },
-  {
+  "1213": {
     "AvatarID": 1213,
     "AvatarName": {
       "Hash": -1976918066
@@ -2549,7 +2549,7 @@
     "AssistBgOffset": [-152, -44, 1],
     "AvatarSelfShowOffset": [-60, 4, 5]
   },
-  {
+  "1214": {
     "AvatarID": 1214,
     "AvatarName": {
       "Hash": -54603765
@@ -2624,7 +2624,7 @@
     "AssistBgOffset": [],
     "AvatarSelfShowOffset": []
   },
-  {
+  "1215": {
     "AvatarID": 1215,
     "AvatarName": {
       "Hash": 1511480176
@@ -2699,7 +2699,7 @@
     "AssistBgOffset": [],
     "AvatarSelfShowOffset": []
   },
-  {
+  "1217": {
     "AvatarID": 1217,
     "AvatarName": {
       "Hash": 348680762
@@ -2774,7 +2774,7 @@
     "AssistBgOffset": [],
     "AvatarSelfShowOffset": []
   },
-  {
+  "1218": {
     "AvatarID": 1218,
     "AvatarName": {
       "Hash": 1558534343
@@ -2849,7 +2849,7 @@
     "AssistBgOffset": [],
     "AvatarSelfShowOffset": []
   },
-  {
+  "1220": {
     "AvatarID": 1220,
     "AvatarName": {
       "Hash": 1914764700
@@ -2924,7 +2924,7 @@
     "AssistBgOffset": [-142, -244, 1],
     "AvatarSelfShowOffset": [-14.6, -100, 4.5]
   },
-  {
+  "1221": {
     "AvatarID": 1221,
     "AvatarName": {
       "Hash": -814118655
@@ -2999,7 +2999,7 @@
     "AssistBgOffset": [],
     "AvatarSelfShowOffset": []
   },
-  {
+  "1222": {
     "AvatarID": 1222,
     "AvatarName": {
       "Hash": 751965286
@@ -3074,7 +3074,7 @@
     "AssistBgOffset": [],
     "AvatarSelfShowOffset": []
   },
-  {
+  "1223": {
     "AvatarID": 1223,
     "AvatarName": {
       "Hash": -1976918069
@@ -3149,7 +3149,7 @@
     "AssistBgOffset": [],
     "AvatarSelfShowOffset": []
   },
-  {
+  "1224": {
     "AvatarID": 1224,
     "AvatarName": {
       "Hash": -54603768
@@ -3224,7 +3224,82 @@
     "AssistBgOffset": [108, -300, 1],
     "AvatarSelfShowOffset": [0, -100, 5]
   },
-  {
+  "1225": {
+    "AvatarID": 1225,
+    "AvatarName": {
+      "Hash": 1511480173
+    },
+    "AvatarFullName": {
+      "Hash": 271014362
+    },
+    "AdventurePlayerID": 1225,
+    "AvatarVOTag": "fugue",
+    "Rarity": "CombatPowerAvatarRarityType5",
+    "AvatarInitialSkinName": {
+      "Hash": 371857150
+    },
+    "AvatarInitialSkinDesc": {
+      "Hash": 371857150
+    },
+    "JsonPath": "Config/ConfigCharacter/Avatar/Avatar_Fugue_00_Config.json",
+    "DamageType": "Fire",
+    "SPNeed": {
+      "Value": 130
+    },
+    "ExpGroup": 1,
+    "MaxPromotion": 6,
+    "MaxRank": 6,
+    "RankIDList": [122501, 122502, 122503, 122504, 122505, 122506],
+    "RewardList": [
+      {
+        "ItemID": 11225,
+        "ItemNum": 1
+      },
+      {
+        "ItemID": 252,
+        "ItemNum": 40
+      }
+    ],
+    "RewardListMax": [
+      {
+        "ItemID": 252,
+        "ItemNum": 100
+      }
+    ],
+    "SkillList": [122501, 122502, 122503, 122504, 122506, 122507, 122508],
+    "AvatarBaseType": "Warlock",
+    "DefaultAvatarModelPath": "Characters/CharacterPrefabs/Avatar/Fugue_00/Avatar_Fugue_00.prefab",
+    "DefaultAvatarHeadIconPath": "SpriteOutput/AvatarIcon/Avatar/1225.png",
+    "AvatarSideIconPath": "SpriteOutput/AvatarRoundIcon/Avatar/1225.png",
+    "AvatarMiniIconPath": "SpriteOutput/AvatarMiniIcon/1225.png",
+    "AvatarGachaResultImgPath": "SpriteOutput/AvatarDrawCardResult/1225.png",
+    "ActionAvatarHeadIconPath": "SpriteOutput/AvatarIconTeam/1225B.png",
+    "UltraSkillCutInPrefabPath": "UI/Battle/UltraSkillCutIn/Avatar/UltraSkillCutIn_1225.prefab",
+    "UIAvatarModelPath": "Characters/CharacterPrefabs/Manikin/Avatar/Fugue_00/Manikin_Avatar_Maid_Fugue_00.prefab",
+    "ManikinJsonPath": "Config/ConfigCharacter/Manikin/Avatar/Manikin_Avatar_Fugue_00_Config.json",
+    "AvatarDesc": {
+      "Hash": 371857150
+    },
+    "AIPath": "Config/ConfigAI/Avatar_ComplexSkilll_AutoFight_AI.json",
+    "SkilltreePrefabPath": "UI/Avatar/Widget/WarlockSkillTreeGroup.prefab",
+    "DamageTypeResistance": [],
+    "Release": true,
+    "SideAvatarHeadIconPath": "SpriteOutput/AvatarIconTeam/1225.png",
+    "WaitingAvatarHeadIconPath": "SpriteOutput/AvatarIconTeam/1225.png",
+    "AvatarCutinImgPath": "SpriteOutput/AvatarCutinFigures/1225.png",
+    "AvatarCutinBgImgPath": "SpriteOutput/AvatarCutinBg/1225.png",
+    "AvatarCutinFrontImgPath": "SpriteOutput/AvatarDrawCard/1225.png",
+    "AvatarCutinIntroText": {
+      "Hash": 371857150
+    },
+    "AvatarDropOffset": [115, 97, 0.64, 115, 97, 0.64, 115, 97, 0.64],
+    "AvatarTrialOffset": [],
+    "PlayerCardOffset": [],
+    "AssistOffset": [54, -164, 1.2],
+    "AssistBgOffset": [-34, -86, 1],
+    "AvatarSelfShowOffset": [1.5, -60, 4]
+  },
+  "1301": {
     "AvatarID": 1301,
     "AvatarName": {
       "Hash": 1934967678
@@ -3299,7 +3374,7 @@
     "AssistBgOffset": [],
     "AvatarSelfShowOffset": []
   },
-  {
+  "1302": {
     "AvatarID": 1302,
     "AvatarName": {
       "Hash": -1956715091
@@ -3374,7 +3449,7 @@
     "AssistBgOffset": [],
     "AvatarSelfShowOffset": []
   },
-  {
+  "1303": {
     "AvatarID": 1303,
     "AvatarName": {
       "Hash": 772168264
@@ -3449,7 +3524,7 @@
     "AssistBgOffset": [],
     "AvatarSelfShowOffset": []
   },
-  {
+  "1304": {
     "AvatarID": 1304,
     "AvatarName": {
       "Hash": 1531683151
@@ -3524,7 +3599,7 @@
     "AssistBgOffset": [],
     "AvatarSelfShowOffset": []
   },
-  {
+  "1305": {
     "AvatarID": 1305,
     "AvatarName": {
       "Hash": -34400790
@@ -3599,7 +3674,7 @@
     "AssistBgOffset": [-106, -408, 1],
     "AvatarSelfShowOffset": [27, -110, 4.5]
   },
-  {
+  "1306": {
     "AvatarID": 1306,
     "AvatarName": {
       "Hash": 368883737
@@ -3674,7 +3749,7 @@
     "AssistBgOffset": [],
     "AvatarSelfShowOffset": []
   },
-  {
+  "1307": {
     "AvatarID": 1307,
     "AvatarName": {
       "Hash": -1197200204
@@ -3749,7 +3824,7 @@
     "AssistBgOffset": [],
     "AvatarSelfShowOffset": []
   },
-  {
+  "1308": {
     "AvatarID": 1308,
     "AvatarName": {
       "Hash": -1150146037
@@ -3824,7 +3899,7 @@
     "AssistBgOffset": [],
     "AvatarSelfShowOffset": []
   },
-  {
+  "1309": {
     "AvatarID": 1309,
     "AvatarName": {
       "Hash": 1578737318
@@ -3899,7 +3974,7 @@
     "AssistBgOffset": [108, -300, 1],
     "AvatarSelfShowOffset": [0, -100, 5]
   },
-  {
+  "1310": {
     "AvatarID": 1310,
     "AvatarName": {
       "Hash": -793915676
@@ -3974,7 +4049,7 @@
     "AssistBgOffset": [],
     "AvatarSelfShowOffset": []
   },
-  {
+  "1312": {
     "AvatarID": 1312,
     "AvatarName": {
       "Hash": -1956715090
@@ -4049,7 +4124,82 @@
     "AssistBgOffset": [],
     "AvatarSelfShowOffset": []
   },
-  {
+  "1313": {
+    "AvatarID": 1313,
+    "AvatarName": {
+      "Hash": 772168265
+    },
+    "AvatarFullName": {
+      "Hash": 1073167130
+    },
+    "AdventurePlayerID": 1313,
+    "AvatarVOTag": "sunday",
+    "Rarity": "CombatPowerAvatarRarityType5",
+    "AvatarInitialSkinName": {
+      "Hash": 371857150
+    },
+    "AvatarInitialSkinDesc": {
+      "Hash": 371857150
+    },
+    "JsonPath": "Config/ConfigCharacter/Avatar/Avatar_Sunday_10_Config.json",
+    "DamageType": "Imaginary",
+    "SPNeed": {
+      "Value": 130
+    },
+    "ExpGroup": 1,
+    "MaxPromotion": 6,
+    "MaxRank": 6,
+    "RankIDList": [131301, 131302, 131303, 131304, 131305, 131306],
+    "RewardList": [
+      {
+        "ItemID": 11313,
+        "ItemNum": 1
+      },
+      {
+        "ItemID": 252,
+        "ItemNum": 40
+      }
+    ],
+    "RewardListMax": [
+      {
+        "ItemID": 252,
+        "ItemNum": 100
+      }
+    ],
+    "SkillList": [131301, 131302, 131303, 131304, 131306, 131307],
+    "AvatarBaseType": "Shaman",
+    "DefaultAvatarModelPath": "Characters/CharacterPrefabs/Avatar/Sunday_10/Avatar_Sunday_10.prefab",
+    "DefaultAvatarHeadIconPath": "SpriteOutput/AvatarIcon/Avatar/1313.png",
+    "AvatarSideIconPath": "SpriteOutput/AvatarRoundIcon/Avatar/1313.png",
+    "AvatarMiniIconPath": "SpriteOutput/AvatarMiniIcon/1313.png",
+    "AvatarGachaResultImgPath": "SpriteOutput/AvatarDrawCardResult/1313.png",
+    "ActionAvatarHeadIconPath": "SpriteOutput/AvatarIconTeam/1313B.png",
+    "UltraSkillCutInPrefabPath": "UI/Battle/UltraSkillCutIn/Avatar/UltraSkillCutIn_1313.prefab",
+    "UIAvatarModelPath": "Characters/CharacterPrefabs/Manikin/Avatar/Sunday_10/Manikin_Avatar_Lad_Sunday_10.prefab",
+    "ManikinJsonPath": "Config/ConfigCharacter/Manikin/Avatar/Manikin_Avatar_Sunday_10_Config.json",
+    "AvatarDesc": {
+      "Hash": 371857150
+    },
+    "AIPath": "Config/ConfigAI/Avatar_ComplexSkilll_AutoFight_AI.json",
+    "SkilltreePrefabPath": "UI/Avatar/Widget/ShamanSkillTreeGroup.prefab",
+    "DamageTypeResistance": [],
+    "Release": true,
+    "SideAvatarHeadIconPath": "SpriteOutput/AvatarIconTeam/1313.png",
+    "WaitingAvatarHeadIconPath": "SpriteOutput/AvatarIconTeam/1313.png",
+    "AvatarCutinImgPath": "SpriteOutput/AvatarCutinFigures/1313.png",
+    "AvatarCutinBgImgPath": "SpriteOutput/AvatarCutinBg/1313.png",
+    "AvatarCutinFrontImgPath": "SpriteOutput/AvatarDrawCard/1313.png",
+    "AvatarCutinIntroText": {
+      "Hash": 1175625444
+    },
+    "AvatarDropOffset": [5, -95, 0.64, 5, -95, 0.64, 5, -95, 0.64],
+    "AvatarTrialOffset": [],
+    "PlayerCardOffset": [-21, -48, 1],
+    "AssistOffset": [10, -42, 1.3],
+    "AssistBgOffset": [-140, -260, 1],
+    "AvatarSelfShowOffset": [-55, -45, 5]
+  },
+  "1314": {
     "AvatarID": 1314,
     "AvatarName": {
       "Hash": 1531683152
@@ -4124,7 +4274,7 @@
     "AssistBgOffset": [],
     "AvatarSelfShowOffset": []
   },
-  {
+  "1315": {
     "AvatarID": 1315,
     "AvatarName": {
       "Hash": -34400789
@@ -4199,7 +4349,82 @@
     "AssistBgOffset": [308, -260, 1],
     "AvatarSelfShowOffset": [4, -90, 4]
   },
-  {
+  "1317": {
+    "AvatarID": 1317,
+    "AvatarName": {
+      "Hash": -1197200203
+    },
+    "AvatarFullName": {
+      "Hash": -2088320918
+    },
+    "AdventurePlayerID": 1317,
+    "AvatarVOTag": "rappa",
+    "Rarity": "CombatPowerAvatarRarityType5",
+    "AvatarInitialSkinName": {
+      "Hash": 371857150
+    },
+    "AvatarInitialSkinDesc": {
+      "Hash": 371857150
+    },
+    "JsonPath": "Config/ConfigCharacter/Avatar/Avatar_Rappa_00_Config.json",
+    "DamageType": "Imaginary",
+    "SPNeed": {
+      "Value": 140
+    },
+    "ExpGroup": 1,
+    "MaxPromotion": 6,
+    "MaxRank": 6,
+    "RankIDList": [131701, 131702, 131703, 131704, 131705, 131706],
+    "RewardList": [
+      {
+        "ItemID": 11317,
+        "ItemNum": 1
+      },
+      {
+        "ItemID": 252,
+        "ItemNum": 40
+      }
+    ],
+    "RewardListMax": [
+      {
+        "ItemID": 252,
+        "ItemNum": 100
+      }
+    ],
+    "SkillList": [131701, 131702, 131703, 131704, 131706, 131707, 131708, 131710, 131712, 131718],
+    "AvatarBaseType": "Mage",
+    "DefaultAvatarModelPath": "Characters/CharacterPrefabs/Avatar/Rappa_00/Avatar_Rappa_00.prefab",
+    "DefaultAvatarHeadIconPath": "SpriteOutput/AvatarIcon/Avatar/1317.png",
+    "AvatarSideIconPath": "SpriteOutput/AvatarRoundIcon/Avatar/1317.png",
+    "AvatarMiniIconPath": "SpriteOutput/AvatarMiniIcon/1317.png",
+    "AvatarGachaResultImgPath": "SpriteOutput/AvatarDrawCardResult/1317.png",
+    "ActionAvatarHeadIconPath": "SpriteOutput/AvatarIconTeam/1317B.png",
+    "UltraSkillCutInPrefabPath": "UI/Battle/UltraSkillCutIn/Avatar/UltraSkillCutIn_1317.prefab",
+    "UIAvatarModelPath": "Characters/CharacterPrefabs/Manikin/Avatar/Rappa_00/Manikin_Avatar_Maid_Rappa_00.prefab",
+    "ManikinJsonPath": "Config/ConfigCharacter/Manikin/Avatar/Manikin_Avatar_Rappa_00_Config.json",
+    "AvatarDesc": {
+      "Hash": 371857150
+    },
+    "AIPath": "Config/ConfigAI/Avatar_ComplexSkilll_AutoFight_AI.json",
+    "SkilltreePrefabPath": "UI/Avatar/Widget/MageSkillTreeGroup.prefab",
+    "DamageTypeResistance": [],
+    "Release": true,
+    "SideAvatarHeadIconPath": "SpriteOutput/AvatarIconTeam/1317.png",
+    "WaitingAvatarHeadIconPath": "SpriteOutput/AvatarIconTeam/1317.png",
+    "AvatarCutinImgPath": "SpriteOutput/AvatarCutinFigures/1317.png",
+    "AvatarCutinBgImgPath": "SpriteOutput/AvatarCutinBg/1317.png",
+    "AvatarCutinFrontImgPath": "SpriteOutput/AvatarDrawCard/1317.png",
+    "AvatarCutinIntroText": {
+      "Hash": 1175625448
+    },
+    "AvatarDropOffset": [13, 111, 0.63, 13, 111, 0.63, 13, 111, 0.63],
+    "AvatarTrialOffset": [],
+    "PlayerCardOffset": [98, -157, 0.8],
+    "AssistOffset": [70, -102, 1.1],
+    "AssistBgOffset": [308, -260, 1],
+    "AvatarSelfShowOffset": [4, -90, 4]
+  },
+  "8001": {
     "AvatarID": 8001,
     "AvatarName": {
       "Hash": -531793818
@@ -4274,7 +4499,7 @@
     "AssistBgOffset": [],
     "AvatarSelfShowOffset": []
   },
-  {
+  "8002": {
     "AvatarID": 8002,
     "AvatarName": {
       "Hash": -935078345
@@ -4349,7 +4574,7 @@
     "AssistBgOffset": [],
     "AvatarSelfShowOffset": []
   },
-  {
+  "8003": {
     "AvatarID": 8003,
     "AvatarName": {
       "Hash": 631005596
@@ -4424,7 +4649,7 @@
     "AssistBgOffset": [],
     "AvatarSelfShowOffset": []
   },
-  {
+  "8004": {
     "AvatarID": 8004,
     "AvatarName": {
       "Hash": 227721069
@@ -4499,7 +4724,7 @@
     "AssistBgOffset": [],
     "AvatarSelfShowOffset": []
   },
-  {
+  "8005": {
     "AvatarID": 8005,
     "AvatarName": {
       "Hash": 1793805010
@@ -4574,7 +4799,7 @@
     "AssistBgOffset": [],
     "AvatarSelfShowOffset": []
   },
-  {
+  "8006": {
     "AvatarID": 8006,
     "AvatarName": {
       "Hash": 1390520483
@@ -4649,4 +4874,4 @@
     "AssistBgOffset": [],
     "AvatarSelfShowOffset": []
   }
-]
+}

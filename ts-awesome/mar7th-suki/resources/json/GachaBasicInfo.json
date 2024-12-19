@@ -1,5 +1,5 @@
-[
-  {
+{
+  "1001": {
     "GachaID": 1001,
     "GachaType": "Normal",
     "SortID": 10,
@@ -18,7 +18,7 @@
       "Hash": 684974156
     }
   },
-  {
+  "4001": {
     "GachaID": 4001,
     "GachaType": "Newbie",
     "SortID": 1,
@@ -37,7 +37,7 @@
       "Hash": 1027493017
     }
   },
-  {
+  "2001": {
     "GachaID": 2001,
     "GachaType": "AvatarUp",
     "SortID": 2,
@@ -56,7 +56,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3001": {
     "GachaID": 3001,
     "GachaType": "WeaponUp",
     "SortID": 4,
@@ -75,7 +75,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2002": {
     "GachaID": 2002,
     "GachaType": "AvatarUp",
     "SortID": 3,
@@ -94,7 +94,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3002": {
     "GachaID": 3002,
     "GachaType": "WeaponUp",
     "SortID": 5,
@@ -113,7 +113,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2003": {
     "GachaID": 2003,
     "GachaType": "AvatarUp",
     "SortID": 2,
@@ -132,7 +132,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3003": {
     "GachaID": 3003,
     "GachaType": "WeaponUp",
     "SortID": 4,
@@ -151,7 +151,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2004": {
     "GachaID": 2004,
     "GachaType": "AvatarUp",
     "SortID": 3,
@@ -170,7 +170,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3004": {
     "GachaID": 3004,
     "GachaType": "WeaponUp",
     "SortID": 5,
@@ -189,7 +189,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2005": {
     "GachaID": 2005,
     "GachaType": "AvatarUp",
     "SortID": 2,
@@ -208,7 +208,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3005": {
     "GachaID": 3005,
     "GachaType": "WeaponUp",
     "SortID": 4,
@@ -227,7 +227,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2006": {
     "GachaID": 2006,
     "GachaType": "AvatarUp",
     "SortID": 3,
@@ -246,7 +246,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3006": {
     "GachaID": 3006,
     "GachaType": "WeaponUp",
     "SortID": 5,
@@ -265,7 +265,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2007": {
     "GachaID": 2007,
     "GachaType": "AvatarUp",
     "SortID": 2,
@@ -284,7 +284,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3007": {
     "GachaID": 3007,
     "GachaType": "WeaponUp",
     "SortID": 4,
@@ -303,7 +303,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2008": {
     "GachaID": 2008,
     "GachaType": "AvatarUp",
     "SortID": 3,
@@ -322,7 +322,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3008": {
     "GachaID": 3008,
     "GachaType": "WeaponUp",
     "SortID": 5,
@@ -341,7 +341,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2009": {
     "GachaID": 2009,
     "GachaType": "AvatarUp",
     "SortID": 3,
@@ -360,7 +360,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3009": {
     "GachaID": 3009,
     "GachaType": "WeaponUp",
     "SortID": 5,
@@ -379,7 +379,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2010": {
     "GachaID": 2010,
     "GachaType": "AvatarUp",
     "SortID": 3,
@@ -398,7 +398,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3010": {
     "GachaID": 3010,
     "GachaType": "WeaponUp",
     "SortID": 5,
@@ -417,7 +417,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2011": {
     "GachaID": 2011,
     "GachaType": "AvatarUp",
     "SortID": 2,
@@ -436,7 +436,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3011": {
     "GachaID": 3011,
     "GachaType": "WeaponUp",
     "SortID": 5,
@@ -455,7 +455,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2012": {
     "GachaID": 2012,
     "GachaType": "AvatarUp",
     "SortID": 3,
@@ -474,7 +474,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3012": {
     "GachaID": 3012,
     "GachaType": "WeaponUp",
     "SortID": 6,
@@ -493,7 +493,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2013": {
     "GachaID": 2013,
     "GachaType": "AvatarUp",
     "SortID": 4,
@@ -512,7 +512,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3013": {
     "GachaID": 3013,
     "GachaType": "WeaponUp",
     "SortID": 7,
@@ -531,7 +531,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2014": {
     "GachaID": 2014,
     "GachaType": "AvatarUp",
     "SortID": 2,
@@ -550,7 +550,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3014": {
     "GachaID": 3014,
     "GachaType": "WeaponUp",
     "SortID": 5,
@@ -569,7 +569,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2015": {
     "GachaID": 2015,
     "GachaType": "AvatarUp",
     "SortID": 3,
@@ -588,7 +588,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3015": {
     "GachaID": 3015,
     "GachaType": "WeaponUp",
     "SortID": 6,
@@ -607,7 +607,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2016": {
     "GachaID": 2016,
     "GachaType": "AvatarUp",
     "SortID": 4,
@@ -626,7 +626,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3016": {
     "GachaID": 3016,
     "GachaType": "WeaponUp",
     "SortID": 7,
@@ -645,7 +645,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2017": {
     "GachaID": 2017,
     "GachaType": "AvatarUp",
     "SortID": 2,
@@ -664,7 +664,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3017": {
     "GachaID": 3017,
     "GachaType": "WeaponUp",
     "SortID": 6,
@@ -683,7 +683,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2018": {
     "GachaID": 2018,
     "GachaType": "AvatarUp",
     "SortID": 3,
@@ -702,7 +702,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3018": {
     "GachaID": 3018,
     "GachaType": "WeaponUp",
     "SortID": 7,
@@ -721,7 +721,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2019": {
     "GachaID": 2019,
     "GachaType": "AvatarUp",
     "SortID": 4,
@@ -740,7 +740,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3019": {
     "GachaID": 3019,
     "GachaType": "WeaponUp",
     "SortID": 8,
@@ -759,7 +759,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2020": {
     "GachaID": 2020,
     "GachaType": "AvatarUp",
     "SortID": 5,
@@ -778,7 +778,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3020": {
     "GachaID": 3020,
     "GachaType": "WeaponUp",
     "SortID": 9,
@@ -797,7 +797,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2021": {
     "GachaID": 2021,
     "GachaType": "AvatarUp",
     "SortID": 2,
@@ -816,7 +816,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3021": {
     "GachaID": 3021,
     "GachaType": "WeaponUp",
     "SortID": 6,
@@ -835,7 +835,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2022": {
     "GachaID": 2022,
     "GachaType": "AvatarUp",
     "SortID": 3,
@@ -854,7 +854,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3022": {
     "GachaID": 3022,
     "GachaType": "WeaponUp",
     "SortID": 7,
@@ -873,7 +873,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2023": {
     "GachaID": 2023,
     "GachaType": "AvatarUp",
     "SortID": 4,
@@ -892,7 +892,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3023": {
     "GachaID": 3023,
     "GachaType": "WeaponUp",
     "SortID": 8,
@@ -911,7 +911,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2024": {
     "GachaID": 2024,
     "GachaType": "AvatarUp",
     "SortID": 5,
@@ -930,7 +930,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3024": {
     "GachaID": 3024,
     "GachaType": "WeaponUp",
     "SortID": 9,
@@ -949,7 +949,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2025": {
     "GachaID": 2025,
     "GachaType": "AvatarUp",
     "SortID": 2,
@@ -968,7 +968,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3025": {
     "GachaID": 3025,
     "GachaType": "WeaponUp",
     "SortID": 6,
@@ -987,7 +987,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2026": {
     "GachaID": 2026,
     "GachaType": "AvatarUp",
     "SortID": 3,
@@ -1006,7 +1006,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3026": {
     "GachaID": 3026,
     "GachaType": "WeaponUp",
     "SortID": 7,
@@ -1025,7 +1025,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2027": {
     "GachaID": 2027,
     "GachaType": "AvatarUp",
     "SortID": 4,
@@ -1044,7 +1044,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3027": {
     "GachaID": 3027,
     "GachaType": "WeaponUp",
     "SortID": 8,
@@ -1063,7 +1063,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2028": {
     "GachaID": 2028,
     "GachaType": "AvatarUp",
     "SortID": 5,
@@ -1082,7 +1082,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3028": {
     "GachaID": 3028,
     "GachaType": "WeaponUp",
     "SortID": 9,
@@ -1101,7 +1101,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2029": {
     "GachaID": 2029,
     "GachaType": "AvatarUp",
     "SortID": 2,
@@ -1120,7 +1120,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3029": {
     "GachaID": 3029,
     "GachaType": "WeaponUp",
     "SortID": 6,
@@ -1139,7 +1139,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2030": {
     "GachaID": 2030,
     "GachaType": "AvatarUp",
     "SortID": 3,
@@ -1158,7 +1158,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3030": {
     "GachaID": 3030,
     "GachaType": "WeaponUp",
     "SortID": 7,
@@ -1177,7 +1177,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2031": {
     "GachaID": 2031,
     "GachaType": "AvatarUp",
     "SortID": 4,
@@ -1196,7 +1196,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3031": {
     "GachaID": 3031,
     "GachaType": "WeaponUp",
     "SortID": 8,
@@ -1215,7 +1215,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2032": {
     "GachaID": 2032,
     "GachaType": "AvatarUp",
     "SortID": 5,
@@ -1234,7 +1234,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3032": {
     "GachaID": 3032,
     "GachaType": "WeaponUp",
     "SortID": 9,
@@ -1253,7 +1253,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2033": {
     "GachaID": 2033,
     "GachaType": "AvatarUp",
     "SortID": 2,
@@ -1272,7 +1272,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3033": {
     "GachaID": 3033,
     "GachaType": "WeaponUp",
     "SortID": 6,
@@ -1291,7 +1291,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2034": {
     "GachaID": 2034,
     "GachaType": "AvatarUp",
     "SortID": 3,
@@ -1310,7 +1310,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3034": {
     "GachaID": 3034,
     "GachaType": "WeaponUp",
     "SortID": 7,
@@ -1329,7 +1329,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2035": {
     "GachaID": 2035,
     "GachaType": "AvatarUp",
     "SortID": 4,
@@ -1348,7 +1348,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3035": {
     "GachaID": 3035,
     "GachaType": "WeaponUp",
     "SortID": 8,
@@ -1367,7 +1367,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2036": {
     "GachaID": 2036,
     "GachaType": "AvatarUp",
     "SortID": 5,
@@ -1386,7 +1386,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3036": {
     "GachaID": 3036,
     "GachaType": "WeaponUp",
     "SortID": 9,
@@ -1405,7 +1405,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2037": {
     "GachaID": 2037,
     "GachaType": "AvatarUp",
     "SortID": 2,
@@ -1424,7 +1424,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3037": {
     "GachaID": 3037,
     "GachaType": "WeaponUp",
     "SortID": 6,
@@ -1443,7 +1443,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2038": {
     "GachaID": 2038,
     "GachaType": "AvatarUp",
     "SortID": 3,
@@ -1462,7 +1462,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3038": {
     "GachaID": 3038,
     "GachaType": "WeaponUp",
     "SortID": 7,
@@ -1481,7 +1481,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2039": {
     "GachaID": 2039,
     "GachaType": "AvatarUp",
     "SortID": 4,
@@ -1500,7 +1500,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3039": {
     "GachaID": 3039,
     "GachaType": "WeaponUp",
     "SortID": 8,
@@ -1519,7 +1519,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2040": {
     "GachaID": 2040,
     "GachaType": "AvatarUp",
     "SortID": 5,
@@ -1538,7 +1538,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3040": {
     "GachaID": 3040,
     "GachaType": "WeaponUp",
     "SortID": 9,
@@ -1557,7 +1557,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2041": {
     "GachaID": 2041,
     "GachaType": "AvatarUp",
     "SortID": 2,
@@ -1576,7 +1576,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3041": {
     "GachaID": 3041,
     "GachaType": "WeaponUp",
     "SortID": 8,
@@ -1595,7 +1595,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2042": {
     "GachaID": 2042,
     "GachaType": "AvatarUp",
     "SortID": 3,
@@ -1614,7 +1614,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3042": {
     "GachaID": 3042,
     "GachaType": "WeaponUp",
     "SortID": 9,
@@ -1633,7 +1633,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2043": {
     "GachaID": 2043,
     "GachaType": "AvatarUp",
     "SortID": 4,
@@ -1652,7 +1652,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3043": {
     "GachaID": 3043,
     "GachaType": "WeaponUp",
     "SortID": 10,
@@ -1671,7 +1671,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2044": {
     "GachaID": 2044,
     "GachaType": "AvatarUp",
     "SortID": 5,
@@ -1690,7 +1690,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3044": {
     "GachaID": 3044,
     "GachaType": "WeaponUp",
     "SortID": 11,
@@ -1709,7 +1709,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2045": {
     "GachaID": 2045,
     "GachaType": "AvatarUp",
     "SortID": 6,
@@ -1728,7 +1728,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3045": {
     "GachaID": 3045,
     "GachaType": "WeaponUp",
     "SortID": 8,
@@ -1747,7 +1747,7 @@
       "Hash": -641761534
     }
   },
-  {
+  "2046": {
     "GachaID": 2046,
     "GachaType": "AvatarUp",
     "SortID": 7,
@@ -1766,7 +1766,7 @@
       "Hash": 910428004
     }
   },
-  {
+  "3046": {
     "GachaID": 3046,
     "GachaType": "WeaponUp",
     "SortID": 9,
@@ -1784,5 +1784,309 @@
     "TypeTitle": {
       "Hash": -641761534
     }
+  },
+  "2047": {
+    "GachaID": 2047,
+    "GachaType": "AvatarUp",
+    "SortID": 2,
+    "StartTime": "",
+    "EndTime": "",
+    "PrefabPath": "UI/Drawcard/GachaPanelTemplate/AvatarGacha_Rappa.prefab",
+    "PoolName": {
+      "Hash": 1233565705
+    },
+    "PoolDesc": {
+      "Hash": -2126297669
+    },
+    "PoolLabelIcon": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_Rappa_00.png",
+    "PoolLabelIconSelected": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_Rappa_00_Selected.png",
+    "TypeTitle": {
+      "Hash": 910428004
+    }
+  },
+  "3047": {
+    "GachaID": 3047,
+    "GachaType": "WeaponUp",
+    "SortID": 6,
+    "StartTime": "",
+    "EndTime": "",
+    "PrefabPath": "UI/Drawcard/GachaPanelTemplate/LightConeGacha_23033.prefab",
+    "PoolName": {
+      "Hash": 474050853
+    },
+    "PoolDesc": {
+      "Hash": -1037410444
+    },
+    "PoolLabelIcon": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_LightCone_23033.png",
+    "PoolLabelIconSelected": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_LightCone_23033_Selected.png",
+    "TypeTitle": {
+      "Hash": -641761534
+    }
+  },
+  "2048": {
+    "GachaID": 2048,
+    "GachaType": "AvatarUp",
+    "SortID": 3,
+    "StartTime": "",
+    "EndTime": "",
+    "PrefabPath": "UI/Drawcard/GachaPanelTemplate/AvatarGacha_DanHengIL.prefab",
+    "PoolName": {
+      "Hash": -1898602173
+    },
+    "PoolDesc": {
+      "Hash": -2126297669
+    },
+    "PoolLabelIcon": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_DanHengIL_00.png",
+    "PoolLabelIconSelected": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_DanHengIL_00_Selected.png",
+    "TypeTitle": {
+      "Hash": 910428004
+    }
+  },
+  "3048": {
+    "GachaID": 3048,
+    "GachaType": "WeaponUp",
+    "SortID": 7,
+    "StartTime": "",
+    "EndTime": "",
+    "PrefabPath": "UI/Drawcard/GachaPanelTemplate/LightConeGacha_23015.prefab",
+    "PoolName": {
+      "Hash": -1092033088
+    },
+    "PoolDesc": {
+      "Hash": -1037410444
+    },
+    "PoolLabelIcon": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_LightCone_23015.png",
+    "PoolLabelIconSelected": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_LightCone_23015_Selected.png",
+    "TypeTitle": {
+      "Hash": -641761534
+    }
+  },
+  "2049": {
+    "GachaID": 2049,
+    "GachaType": "AvatarUp",
+    "SortID": 4,
+    "StartTime": "",
+    "EndTime": "",
+    "PrefabPath": "UI/Drawcard/GachaPanelTemplate/AvatarGacha_Acheron.prefab",
+    "PoolName": {
+      "Hash": -1898602174
+    },
+    "PoolDesc": {
+      "Hash": -2126297669
+    },
+    "PoolLabelIcon": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_Acheron_00.png",
+    "PoolLabelIconSelected": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_Acheron_00_Selected.png",
+    "TypeTitle": {
+      "Hash": 910428004
+    }
+  },
+  "3049": {
+    "GachaID": 3049,
+    "GachaType": "WeaponUp",
+    "SortID": 8,
+    "StartTime": "",
+    "EndTime": "",
+    "PrefabPath": "UI/Drawcard/GachaPanelTemplate/LightConeGacha_23024.prefab",
+    "PoolName": {
+      "Hash": -1092033088
+    },
+    "PoolDesc": {
+      "Hash": -1037410444
+    },
+    "PoolLabelIcon": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_LightCone_23024.png",
+    "PoolLabelIconSelected": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_LightCone_23024_Selected.png",
+    "TypeTitle": {
+      "Hash": -641761534
+    }
+  },
+  "2050": {
+    "GachaID": 2050,
+    "GachaType": "AvatarUp",
+    "SortID": 5,
+    "StartTime": "",
+    "EndTime": "",
+    "PrefabPath": "UI/Drawcard/GachaPanelTemplate/AvatarGacha_Aventurine.prefab",
+    "PoolName": {
+      "Hash": -688748590
+    },
+    "PoolDesc": {
+      "Hash": -2126297669
+    },
+    "PoolLabelIcon": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_Aventurine_00.png",
+    "PoolLabelIconSelected": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_Aventurine_00_Selected.png",
+    "TypeTitle": {
+      "Hash": 910428004
+    }
+  },
+  "3050": {
+    "GachaID": 3050,
+    "GachaType": "WeaponUp",
+    "SortID": 9,
+    "StartTime": "",
+    "EndTime": "",
+    "PrefabPath": "UI/Drawcard/GachaPanelTemplate/LightConeGacha_23023.prefab",
+    "PoolName": {
+      "Hash": -1092033088
+    },
+    "PoolDesc": {
+      "Hash": -1037410444
+    },
+    "PoolLabelIcon": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_LightCone_23023.png",
+    "PoolLabelIconSelected": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_LightCone_23023_Selected.png",
+    "TypeTitle": {
+      "Hash": -641761534
+    }
+  },
+  "2051": {
+    "GachaID": 2051,
+    "GachaType": "AvatarUp",
+    "SortID": 2,
+    "StartTime": "",
+    "EndTime": "",
+    "PrefabPath": "UI/Drawcard/GachaPanelTemplate/AvatarGacha_1313.prefab",
+    "PoolName": {
+      "Hash": 2040134758
+    },
+    "PoolDesc": {
+      "Hash": -2126297669
+    },
+    "PoolLabelIcon": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_1313.png",
+    "PoolLabelIconSelected": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_1313_Selected.png",
+    "TypeTitle": {
+      "Hash": 910428004
+    }
+  },
+  "3051": {
+    "GachaID": 3051,
+    "GachaType": "WeaponUp",
+    "SortID": 6,
+    "StartTime": "",
+    "EndTime": "",
+    "PrefabPath": "UI/Drawcard/GachaPanelTemplate/LightConeGacha_23034.prefab",
+    "PoolName": {
+      "Hash": 474050853
+    },
+    "PoolDesc": {
+      "Hash": -1037410444
+    },
+    "PoolLabelIcon": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_LightCone_23034.png",
+    "PoolLabelIconSelected": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_LightCone_23034_Selected.png",
+    "TypeTitle": {
+      "Hash": -641761534
+    }
+  },
+  "2052": {
+    "GachaID": 2052,
+    "GachaType": "AvatarUp",
+    "SortID": 3,
+    "StartTime": "",
+    "EndTime": "",
+    "PrefabPath": "UI/Drawcard/GachaPanelTemplate/AvatarGacha_JingYuan.prefab",
+    "PoolName": {
+      "Hash": 474050822
+    },
+    "PoolDesc": {
+      "Hash": -2126297669
+    },
+    "PoolLabelIcon": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_JingYuan_00.png",
+    "PoolLabelIconSelected": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_JingYuan_00_Selected.png",
+    "TypeTitle": {
+      "Hash": 910428004
+    }
+  },
+  "3052": {
+    "GachaID": 3052,
+    "GachaType": "WeaponUp",
+    "SortID": 7,
+    "StartTime": "",
+    "EndTime": "",
+    "PrefabPath": "UI/Drawcard/GachaPanelTemplate/LightConeGacha_23010.prefab",
+    "PoolName": {
+      "Hash": -1092033088
+    },
+    "PoolDesc": {
+      "Hash": -1037410444
+    },
+    "PoolLabelIcon": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_LightCone_23010.png",
+    "PoolLabelIconSelected": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_LightCone_23010_Selected.png",
+    "TypeTitle": {
+      "Hash": -641761534
+    }
+  },
+  "2053": {
+    "GachaID": 2053,
+    "GachaType": "AvatarUp",
+    "SortID": 4,
+    "StartTime": "",
+    "EndTime": "",
+    "PrefabPath": "UI/Drawcard/GachaPanelTemplate/AvatarGacha_Fugue.prefab",
+    "PoolName": {
+      "Hash": -1092033124
+    },
+    "PoolDesc": {
+      "Hash": -2126297669
+    },
+    "PoolLabelIcon": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_Fugue_00.png",
+    "PoolLabelIconSelected": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_Fugue_00_Selected.png",
+    "TypeTitle": {
+      "Hash": 910428004
+    }
+  },
+  "3053": {
+    "GachaID": 3053,
+    "GachaType": "WeaponUp",
+    "SortID": 8,
+    "StartTime": "",
+    "EndTime": "",
+    "PrefabPath": "UI/Drawcard/GachaPanelTemplate/LightConeGacha_23035.prefab",
+    "PoolName": {
+      "Hash": 474050853
+    },
+    "PoolDesc": {
+      "Hash": -1037410444
+    },
+    "PoolLabelIcon": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_LightCone_23035.png",
+    "PoolLabelIconSelected": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_LightCone_23035_Selected.png",
+    "TypeTitle": {
+      "Hash": -641761534
+    }
+  },
+  "2054": {
+    "GachaID": 2054,
+    "GachaType": "AvatarUp",
+    "SortID": 5,
+    "StartTime": "",
+    "EndTime": "",
+    "PrefabPath": "UI/Drawcard/GachaPanelTemplate/AvatarGacha_Firefly.prefab",
+    "PoolName": {
+      "Hash": -1092033118
+    },
+    "PoolDesc": {
+      "Hash": -2126297669
+    },
+    "PoolLabelIcon": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_Firefly_00.png",
+    "PoolLabelIconSelected": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_Firefly_00_Selected.png",
+    "TypeTitle": {
+      "Hash": 910428004
+    }
+  },
+  "3054": {
+    "GachaID": 3054,
+    "GachaType": "WeaponUp",
+    "SortID": 9,
+    "StartTime": "",
+    "EndTime": "",
+    "PrefabPath": "UI/Drawcard/GachaPanelTemplate/LightConeGacha_23025.prefab",
+    "PoolName": {
+      "Hash": -1092033088
+    },
+    "PoolDesc": {
+      "Hash": -1037410444
+    },
+    "PoolLabelIcon": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_LightCone_23025.png",
+    "PoolLabelIconSelected": "SpriteOutput/DrawCardPic/GachaTabIcon/TabIcon_LightCone_23025_Selected.png",
+    "TypeTitle": {
+      "Hash": -641761534
+    }
   }
-]
+}
