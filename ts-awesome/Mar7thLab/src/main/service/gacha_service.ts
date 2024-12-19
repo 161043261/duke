@@ -120,7 +120,7 @@ class GachaService {
           uid: `${uid}`,
           lang: 'zh-cn',
           region_time_zone: 8,
-          export_app: 'mar7th-suki',
+          export_app: 'Mar7thLab',
           export_app_version: app.getVersion(),
           export_timestamp: Math.floor(new Date().getTime() / 1000)
         },
@@ -178,7 +178,7 @@ class GachaService {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const exportData: { info: any; hkrpg: any[] } = {
         info: {
-          export_app: 'mar7th-suki',
+          export_app: 'Mar7thLab',
           export_app_version: app.getVersion(),
           export_timestamp: Math.floor(new Date().getTime() / 1000),
           version: 'v4.0'

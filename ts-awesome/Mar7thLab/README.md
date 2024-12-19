@@ -1,4 +1,4 @@
-# mar7th-suki
+# Mar7thLab
 
 ```shell
 cp -r /path/to/StarRailData/ExcelOutput ./resources

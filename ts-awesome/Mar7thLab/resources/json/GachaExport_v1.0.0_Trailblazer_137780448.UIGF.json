@@ -1,8 +1,8 @@
 {
   "info": {
-    "export_app": "mar7th-suki",
+    "export_app": "Mar7thLab",
     "export_app_version": "1.0.0",
-    "export_timestamp": 1734595690,
+    "export_timestamp": 1734605526,
     "version": "v4.0"
   },
   "hkrpg": [
@@ -7811,12 +7811,6 @@
           "rank_type": "3"
         }
       ]
-    },
-    {
-      "uid": "000000000",
-      "lang": "zh-cn",
-      "timezone": 8,
-      "list": []
     }
   ]
 }

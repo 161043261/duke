@@ -126,7 +126,7 @@ test('Test_exportGachaData_SRGF', () => {
       uid: uid,
       lang: 'zh-cn',
       region_time_zone: 8,
-      export_app: 'mar7th-suki',
+      export_app: 'Mar7thLab',
       export_app_version: '1.0.0',
       export_timestamp: Math.floor(new Date().getTime() / 1000)
     },
@@ -165,7 +165,7 @@ test('Test_exportGachaData_uigf', () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const exportData: { info: any; hkrpg: any[] } = {
     info: {
-      export_app: 'mar7th-suki',
+      export_app: 'Mar7thLab',
       export_app_version: '1.0.0',
       export_timestamp: Math.floor(new Date().getTime() / 1000),
       version: 'v4.0'
