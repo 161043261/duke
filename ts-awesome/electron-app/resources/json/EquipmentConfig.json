@@ -19,26 +19,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/20000.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/20000.png",
-    "ItemRightPanelOffset": [
-      0,
-      -64,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -71,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      12,
-      -6,
-      0.6
-    ],
-    "GachaResultOffset": [
-      14,
-      -9,
-      0.545
-    ]
+    "ItemRightPanelOffset": [0, -64, 0.7],
+    "AvatarDetailOffset": [0, -71, 1.15],
+    "BattleDialogOffset": [12, -6, 0.6],
+    "GachaResultOffset": [14, -9, 0.545]
   },
   {
     "EquipmentID": 20001,
@@ -60,26 +44,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/20001.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/20001.png",
-    "ItemRightPanelOffset": [
-      0,
-      -52,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -92,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      55,
-      16,
-      0.6
-    ],
-    "GachaResultOffset": [
-      5,
-      0,
-      0.545
-    ]
+    "ItemRightPanelOffset": [0, -52, 0.7],
+    "AvatarDetailOffset": [0, -92, 1.15],
+    "BattleDialogOffset": [55, 16, 0.6],
+    "GachaResultOffset": [5, 0, 0.545]
   },
   {
     "EquipmentID": 20002,
@@ -101,26 +69,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/20002.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/20002.png",
-    "ItemRightPanelOffset": [
-      0,
-      -101,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -78,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      0.6
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      0.545
-    ]
+    "ItemRightPanelOffset": [0, -101, 0.7],
+    "AvatarDetailOffset": [0, -78, 1.15],
+    "BattleDialogOffset": [0, 0, 0.6],
+    "GachaResultOffset": [0, 0, 0.545]
   },
   {
     "EquipmentID": 20003,
@@ -142,26 +94,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/20003.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/20003.png",
-    "ItemRightPanelOffset": [
-      0,
-      -14,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      20,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      0.6
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      0.545
-    ]
+    "ItemRightPanelOffset": [0, -14, 0.7],
+    "AvatarDetailOffset": [0, 20, 1.15],
+    "BattleDialogOffset": [0, 0, 0.6],
+    "GachaResultOffset": [0, 0, 0.545]
   },
   {
     "EquipmentID": 20004,
@@ -183,26 +119,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/20004.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/20004.png",
-    "ItemRightPanelOffset": [
-      0,
-      -114,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -163,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      20,
-      0,
-      0.6
-    ],
-    "GachaResultOffset": [
-      0,
-      -3,
-      0.545
-    ]
+    "ItemRightPanelOffset": [0, -114, 0.7],
+    "AvatarDetailOffset": [0, -163, 1.15],
+    "BattleDialogOffset": [20, 0, 0.6],
+    "GachaResultOffset": [0, -3, 0.545]
   },
   {
     "EquipmentID": 20005,
@@ -224,26 +144,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/20005.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/20005.png",
-    "ItemRightPanelOffset": [
-      0,
-      -114,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -130,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      0.6
-    ],
-    "GachaResultOffset": [
-      -4,
-      -3,
-      0.545
-    ]
+    "ItemRightPanelOffset": [0, -114, 0.7],
+    "AvatarDetailOffset": [0, -130, 1.15],
+    "BattleDialogOffset": [0, 0, 0.6],
+    "GachaResultOffset": [-4, -3, 0.545]
   },
   {
     "EquipmentID": 20006,
@@ -265,26 +169,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/20006.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/20006.png",
-    "ItemRightPanelOffset": [
-      0,
-      -162,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -186,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      0.6
-    ],
-    "GachaResultOffset": [
-      -1,
-      -17,
-      0.545
-    ]
+    "ItemRightPanelOffset": [0, -162, 0.7],
+    "AvatarDetailOffset": [0, -186, 1.15],
+    "BattleDialogOffset": [0, 0, 0.6],
+    "GachaResultOffset": [-1, -17, 0.545]
   },
   {
     "EquipmentID": 20007,
@@ -306,26 +194,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/20007.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/20007.png",
-    "ItemRightPanelOffset": [
-      0,
-      141,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      190,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      0.6
-    ],
-    "GachaResultOffset": [
-      -8,
-      16,
-      0.545
-    ]
+    "ItemRightPanelOffset": [0, 141, 0.7],
+    "AvatarDetailOffset": [0, 190, 1.15],
+    "BattleDialogOffset": [0, 0, 0.6],
+    "GachaResultOffset": [-8, 16, 0.545]
   },
   {
     "EquipmentID": 20008,
@@ -347,26 +219,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/20008.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/20008.png",
-    "ItemRightPanelOffset": [
-      0,
-      -37,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -4,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      0.6
-    ],
-    "GachaResultOffset": [
-      -4,
-      10,
-      0.545
-    ]
+    "ItemRightPanelOffset": [0, -37, 0.7],
+    "AvatarDetailOffset": [0, -4, 1.15],
+    "BattleDialogOffset": [0, 0, 0.6],
+    "GachaResultOffset": [-4, 10, 0.545]
   },
   {
     "EquipmentID": 20009,
@@ -388,26 +244,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/20009.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/20009.png",
-    "ItemRightPanelOffset": [
-      0,
-      -62,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -90,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      22,
-      24,
-      0.75
-    ],
-    "GachaResultOffset": [
-      -11,
-      5,
-      0.545
-    ]
+    "ItemRightPanelOffset": [0, -62, 0.7],
+    "AvatarDetailOffset": [0, -90, 1.15],
+    "BattleDialogOffset": [22, 24, 0.75],
+    "GachaResultOffset": [-11, 5, 0.545]
   },
   {
     "EquipmentID": 20010,
@@ -429,26 +269,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/20010.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/20010.png",
-    "ItemRightPanelOffset": [
-      0,
-      110,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      90,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      -28,
-      14,
-      0.75
-    ],
-    "GachaResultOffset": [
-      -17,
-      -9,
-      0.545
-    ]
+    "ItemRightPanelOffset": [0, 110, 0.7],
+    "AvatarDetailOffset": [0, 90, 1.15],
+    "BattleDialogOffset": [-28, 14, 0.75],
+    "GachaResultOffset": [-17, -9, 0.545]
   },
   {
     "EquipmentID": 20011,
@@ -470,26 +294,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/20011.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/20011.png",
-    "ItemRightPanelOffset": [
-      0,
-      82,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      105,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      32,
-      -25,
-      0.75
-    ],
-    "GachaResultOffset": [
-      12,
-      -7,
-      0.545
-    ]
+    "ItemRightPanelOffset": [0, 82, 0.7],
+    "AvatarDetailOffset": [0, 105, 1.15],
+    "BattleDialogOffset": [32, -25, 0.75],
+    "GachaResultOffset": [12, -7, 0.545]
   },
   {
     "EquipmentID": 20012,
@@ -511,26 +319,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/20012.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/20012.png",
-    "ItemRightPanelOffset": [
-      0,
-      28,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      0,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      -1,
-      -56,
-      0.75
-    ],
-    "GachaResultOffset": [
-      -1,
-      -6,
-      0.545
-    ]
+    "ItemRightPanelOffset": [0, 28, 0.7],
+    "AvatarDetailOffset": [0, 0, 1.15],
+    "BattleDialogOffset": [-1, -56, 0.75],
+    "GachaResultOffset": [-1, -6, 0.545]
   },
   {
     "EquipmentID": 20013,
@@ -552,26 +344,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/20013.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/20013.png",
-    "ItemRightPanelOffset": [
-      0,
-      143,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      150,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      91,
-      -62,
-      0.75
-    ],
-    "GachaResultOffset": [
-      -1,
-      -6,
-      0.545
-    ]
+    "ItemRightPanelOffset": [0, 143, 0.7],
+    "AvatarDetailOffset": [0, 150, 1.15],
+    "BattleDialogOffset": [91, -62, 0.75],
+    "GachaResultOffset": [-1, -6, 0.545]
   },
   {
     "EquipmentID": 20014,
@@ -593,26 +369,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/20014.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/20014.png",
-    "ItemRightPanelOffset": [
-      0,
-      -51,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -51,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -51, 0.7],
+    "AvatarDetailOffset": [0, -51, 1.15],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 20015,
@@ -634,26 +394,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/20015.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/20015.png",
-    "ItemRightPanelOffset": [
-      0,
-      -24,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -20,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -24, 0.7],
+    "AvatarDetailOffset": [0, -20, 1.15],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 20016,
@@ -675,26 +419,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/20016.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/20016.png",
-    "ItemRightPanelOffset": [
-      0,
-      114,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      114,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, 114, 0.7],
+    "AvatarDetailOffset": [0, 114, 1.15],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 20017,
@@ -716,26 +444,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/20017.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/20017.png",
-    "ItemRightPanelOffset": [
-      0,
-      85,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      85,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, 85, 0.7],
+    "AvatarDetailOffset": [0, 85, 1.15],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 20018,
@@ -757,26 +469,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/20018.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/20018.png",
-    "ItemRightPanelOffset": [
-      0,
-      -82,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -90,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -82, 0.7],
+    "AvatarDetailOffset": [0, -90, 1.15],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 20019,
@@ -798,26 +494,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/20019.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/20019.png",
-    "ItemRightPanelOffset": [
-      0,
-      15,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      20,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, 15, 0.7],
+    "AvatarDetailOffset": [0, 20, 1.15],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 20020,
@@ -839,26 +519,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/20020.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/20020.png",
-    "ItemRightPanelOffset": [
-      0,
-      30,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      30,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, 30, 0.7],
+    "AvatarDetailOffset": [0, 30, 1.15],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21000,
@@ -880,26 +544,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21000.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21000.png",
-    "ItemRightPanelOffset": [
-      0,
-      -138,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -128,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      0.55
-    ],
-    "GachaResultOffset": [
-      8,
-      -11,
-      0.5123
-    ]
+    "ItemRightPanelOffset": [0, -138, 0.7],
+    "AvatarDetailOffset": [0, -128, 1.15],
+    "BattleDialogOffset": [0, 0, 0.55],
+    "GachaResultOffset": [8, -11, 0.5123]
   },
   {
     "EquipmentID": 21001,
@@ -921,26 +569,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21001.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21001.png",
-    "ItemRightPanelOffset": [
-      0,
-      -15,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      10,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      0.55
-    ],
-    "GachaResultOffset": [
-      0,
-      12,
-      0.545
-    ]
+    "ItemRightPanelOffset": [0, -15, 0.7],
+    "AvatarDetailOffset": [0, 10, 1.15],
+    "BattleDialogOffset": [0, 0, 0.55],
+    "GachaResultOffset": [0, 12, 0.545]
   },
   {
     "EquipmentID": 21002,
@@ -962,26 +594,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21002.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21002.png",
-    "ItemRightPanelOffset": [
-      0,
-      -148,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -150,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      0.55
-    ],
-    "GachaResultOffset": [
-      -6,
-      -43,
-      0.6867
-    ]
+    "ItemRightPanelOffset": [0, -148, 0.7],
+    "AvatarDetailOffset": [0, -150, 1.15],
+    "BattleDialogOffset": [0, 0, 0.55],
+    "GachaResultOffset": [-6, -43, 0.6867]
   },
   {
     "EquipmentID": 21003,
@@ -1003,26 +619,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21003.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21003.png",
-    "ItemRightPanelOffset": [
-      0,
-      -99,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -90,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      0.55
-    ],
-    "GachaResultOffset": [
-      -8,
-      -6,
-      0.4905
-    ]
+    "ItemRightPanelOffset": [0, -99, 0.7],
+    "AvatarDetailOffset": [0, -90, 1.15],
+    "BattleDialogOffset": [0, 0, 0.55],
+    "GachaResultOffset": [-8, -6, 0.4905]
   },
   {
     "EquipmentID": 21004,
@@ -1044,26 +644,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21004.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21004.png",
-    "ItemRightPanelOffset": [
-      0,
-      -45,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -12,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      0.55
-    ],
-    "GachaResultOffset": [
-      0,
-      -6,
-      0.4905
-    ]
+    "ItemRightPanelOffset": [0, -45, 0.7],
+    "AvatarDetailOffset": [0, -12, 1.15],
+    "BattleDialogOffset": [0, 0, 0.55],
+    "GachaResultOffset": [0, -6, 0.4905]
   },
   {
     "EquipmentID": 21005,
@@ -1085,26 +669,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21005.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21005.png",
-    "ItemRightPanelOffset": [
-      0,
-      -42,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -30,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      0.55
-    ],
-    "GachaResultOffset": [
-      1,
-      7,
-      0.763
-    ]
+    "ItemRightPanelOffset": [0, -42, 0.7],
+    "AvatarDetailOffset": [0, -30, 1.15],
+    "BattleDialogOffset": [0, 0, 0.55],
+    "GachaResultOffset": [1, 7, 0.763]
   },
   {
     "EquipmentID": 21006,
@@ -1126,26 +694,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21006.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21006.png",
-    "ItemRightPanelOffset": [
-      0,
-      -120,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -130,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      0.55
-    ],
-    "GachaResultOffset": [
-      0,
-      -10,
-      0.5123
-    ]
+    "ItemRightPanelOffset": [0, -120, 0.7],
+    "AvatarDetailOffset": [0, -130, 1.15],
+    "BattleDialogOffset": [0, 0, 0.55],
+    "GachaResultOffset": [0, -10, 0.5123]
   },
   {
     "EquipmentID": 21008,
@@ -1167,26 +719,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21008.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21008.png",
-    "ItemRightPanelOffset": [
-      0,
-      -130,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -132,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      0.55
-    ],
-    "GachaResultOffset": [
-      7,
-      -19,
-      0.5777
-    ]
+    "ItemRightPanelOffset": [0, -130, 0.7],
+    "AvatarDetailOffset": [0, -132, 1.15],
+    "BattleDialogOffset": [0, 0, 0.55],
+    "GachaResultOffset": [7, -19, 0.5777]
   },
   {
     "EquipmentID": 21009,
@@ -1208,26 +744,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21009.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21009.png",
-    "ItemRightPanelOffset": [
-      0,
-      -130,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -139,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      -12,
-      -40,
-      0.75
-    ],
-    "GachaResultOffset": [
-      -6,
-      -19,
-      0.545
-    ]
+    "ItemRightPanelOffset": [0, -130, 0.7],
+    "AvatarDetailOffset": [0, -139, 1.15],
+    "BattleDialogOffset": [-12, -40, 0.75],
+    "GachaResultOffset": [-6, -19, 0.545]
   },
   {
     "EquipmentID": 21010,
@@ -1249,26 +769,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21010.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21010.png",
-    "ItemRightPanelOffset": [
-      0,
-      -137,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -139,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      32,
-      -63,
-      0.75
-    ],
-    "GachaResultOffset": [
-      -9,
-      -24,
-      0.5777
-    ]
+    "ItemRightPanelOffset": [0, -137, 0.7],
+    "AvatarDetailOffset": [0, -139, 1.15],
+    "BattleDialogOffset": [32, -63, 0.75],
+    "GachaResultOffset": [-9, -24, 0.5777]
   },
   {
     "EquipmentID": 21011,
@@ -1290,26 +794,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21011.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21011.png",
-    "ItemRightPanelOffset": [
-      0,
-      -155,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -146,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      -14,
-      -40,
-      0.75
-    ],
-    "GachaResultOffset": [
-      0,
-      -35,
-      0.6758
-    ]
+    "ItemRightPanelOffset": [0, -155, 0.7],
+    "AvatarDetailOffset": [0, -146, 1.15],
+    "BattleDialogOffset": [-14, -40, 0.75],
+    "GachaResultOffset": [0, -35, 0.6758]
   },
   {
     "EquipmentID": 21012,
@@ -1331,26 +819,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21012.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21012.png",
-    "ItemRightPanelOffset": [
-      0,
-      -120,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -132,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      0.55
-    ],
-    "GachaResultOffset": [
-      -3,
-      -38,
-      0.654
-    ]
+    "ItemRightPanelOffset": [0, -120, 0.7],
+    "AvatarDetailOffset": [0, -132, 1.15],
+    "BattleDialogOffset": [0, 0, 0.55],
+    "GachaResultOffset": [-3, -38, 0.654]
   },
   {
     "EquipmentID": 21013,
@@ -1372,26 +844,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21013.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21013.png",
-    "ItemRightPanelOffset": [
-      0,
-      -77,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -92,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      41,
-      0,
-      0.55
-    ],
-    "GachaResultOffset": [
-      44,
-      -38,
-      0.872
-    ]
+    "ItemRightPanelOffset": [0, -77, 0.7],
+    "AvatarDetailOffset": [0, -92, 1.15],
+    "BattleDialogOffset": [41, 0, 0.55],
+    "GachaResultOffset": [44, -38, 0.872]
   },
   {
     "EquipmentID": 21014,
@@ -1413,26 +869,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21014.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21014.png",
-    "ItemRightPanelOffset": [
-      -60,
-      -175,
-      0.9
-    ],
-    "AvatarDetailOffset": [
-      -69,
-      -188,
-      1.5
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [-60, -175, 0.9],
+    "AvatarDetailOffset": [-69, -188, 1.5],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21015,
@@ -1454,26 +894,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21015.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21015.png",
-    "ItemRightPanelOffset": [
-      -11,
-      -179,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      -22,
-      -163,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [-11, -179, 0.7],
+    "AvatarDetailOffset": [-22, -163, 1.15],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21016,
@@ -1495,26 +919,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21016.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21016.png",
-    "ItemRightPanelOffset": [
-      0,
-      -139,
-      0.85
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -129,
-      1.2
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -139, 0.85],
+    "AvatarDetailOffset": [0, -129, 1.2],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21017,
@@ -1536,26 +944,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21017.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21017.png",
-    "ItemRightPanelOffset": [
-      0,
-      -151,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -151,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -151, 0.7],
+    "AvatarDetailOffset": [0, -151, 1.15],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21018,
@@ -1577,26 +969,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21018.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21018.png",
-    "ItemRightPanelOffset": [
-      0,
-      -84,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -75,
-      1
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -84, 0.7],
+    "AvatarDetailOffset": [0, -75, 1],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21019,
@@ -1618,26 +994,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21019.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21019.png",
-    "ItemRightPanelOffset": [
-      0,
-      -10,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -10,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -10, 0.7],
+    "AvatarDetailOffset": [0, -10, 1.15],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21020,
@@ -1659,26 +1019,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21020.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21020.png",
-    "ItemRightPanelOffset": [
-      85,
-      -100,
-      1
-    ],
-    "AvatarDetailOffset": [
-      79,
-      -94,
-      1.5
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [85, -100, 1],
+    "AvatarDetailOffset": [79, -94, 1.5],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21021,
@@ -1700,26 +1044,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21021.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21021.png",
-    "ItemRightPanelOffset": [
-      0,
-      -82,
-      0.66
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -78,
-      1.01
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -82, 0.66],
+    "AvatarDetailOffset": [0, -78, 1.01],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21022,
@@ -1741,26 +1069,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21022.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21022.png",
-    "ItemRightPanelOffset": [
-      0,
-      1.5,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      3,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, 1.5, 0.7],
+    "AvatarDetailOffset": [0, 3, 1.15],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21023,
@@ -1782,26 +1094,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21023.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21023.png",
-    "ItemRightPanelOffset": [
-      0,
-      -38,
-      0.66
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -34,
-      1.01
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -38, 0.66],
+    "AvatarDetailOffset": [0, -34, 1.01],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21024,
@@ -1823,26 +1119,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21024.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21024.png",
-    "ItemRightPanelOffset": [
-      40,
-      -192,
-      0.9
-    ],
-    "AvatarDetailOffset": [
-      27,
-      -204,
-      1.5
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [40, -192, 0.9],
+    "AvatarDetailOffset": [27, -204, 1.5],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21026,
@@ -1864,26 +1144,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21026.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21026.png",
-    "ItemRightPanelOffset": [
-      0,
-      -122,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -142,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -122, 0.7],
+    "AvatarDetailOffset": [0, -142, 1.15],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21027,
@@ -1905,26 +1169,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21027.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21027.png",
-    "ItemRightPanelOffset": [
-      0,
-      -78,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -78,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -78, 0.7],
+    "AvatarDetailOffset": [0, -78, 1.15],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21028,
@@ -1946,26 +1194,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21028.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21028.png",
-    "ItemRightPanelOffset": [
-      0,
-      -58,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -64,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -58, 0.7],
+    "AvatarDetailOffset": [0, -64, 1.15],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21029,
@@ -1987,26 +1219,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21029.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21029.png",
-    "ItemRightPanelOffset": [
-      0,
-      -100,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -100,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -100, 0.7],
+    "AvatarDetailOffset": [0, -100, 1.15],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21030,
@@ -2028,26 +1244,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21030.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21030.png",
-    "ItemRightPanelOffset": [
-      0,
-      -8,
-      0.67
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -18,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -8, 0.67],
+    "AvatarDetailOffset": [0, -18, 1.15],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21031,
@@ -2069,26 +1269,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21031.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21031.png",
-    "ItemRightPanelOffset": [
-      -10,
-      -92,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -89,
-      1.01
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [-10, -92, 0.7],
+    "AvatarDetailOffset": [0, -89, 1.01],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21032,
@@ -2110,26 +1294,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21032.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21032.png",
-    "ItemRightPanelOffset": [
-      0,
-      -58,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -58,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -58, 0.7],
+    "AvatarDetailOffset": [0, -58, 1.15],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21033,
@@ -2151,26 +1319,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21033.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21033.png",
-    "ItemRightPanelOffset": [
-      0,
-      -133,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -124,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -133, 0.7],
+    "AvatarDetailOffset": [0, -124, 1.15],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21034,
@@ -2192,26 +1344,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21034.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21034.png",
-    "ItemRightPanelOffset": [
-      0,
-      -77,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -77,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -77, 0.7],
+    "AvatarDetailOffset": [0, -77, 1.15],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 22000,
@@ -2230,31 +1366,13 @@
     "SkillID": 22000,
     "ExpProvide": 12000,
     "CoinCost": 6000,
-    "RankUpCostList": [
-      121000
-    ],
+    "RankUpCostList": [121000],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/22000.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/22000.png",
-    "ItemRightPanelOffset": [
-      -11,
-      -30,
-      0.8
-    ],
-    "AvatarDetailOffset": [
-      -18,
-      -20,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [-11, -30, 0.8],
+    "AvatarDetailOffset": [-18, -20, 1.15],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 23000,
@@ -2276,26 +1394,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23000.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23000.png",
-    "ItemRightPanelOffset": [
-      0,
-      -143,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -158,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      0.75
-    ],
-    "GachaResultOffset": [
-      -3,
-      -96,
-      1.09
-    ]
+    "ItemRightPanelOffset": [0, -143, 0.7],
+    "AvatarDetailOffset": [0, -158, 1.15],
+    "BattleDialogOffset": [0, 0, 0.75],
+    "GachaResultOffset": [-3, -96, 1.09]
   },
   {
     "EquipmentID": 23001,
@@ -2317,26 +1419,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23001.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23001.png",
-    "ItemRightPanelOffset": [
-      0,
-      -118,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -133,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      44,
-      -0,
-      0.6
-    ],
-    "GachaResultOffset": [
-      49,
-      -68,
-      0.981
-    ]
+    "ItemRightPanelOffset": [0, -118, 0.7],
+    "AvatarDetailOffset": [0, -133, 1.15],
+    "BattleDialogOffset": [44, -0, 0.6],
+    "GachaResultOffset": [49, -68, 0.981]
   },
   {
     "EquipmentID": 23002,
@@ -2358,26 +1444,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23002.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23002.png",
-    "ItemRightPanelOffset": [
-      0,
-      -122,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -126,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      -12,
-      -40,
-      0.75
-    ],
-    "GachaResultOffset": [
-      4,
-      -43,
-      0.7085
-    ]
+    "ItemRightPanelOffset": [0, -122, 0.7],
+    "AvatarDetailOffset": [0, -126, 1.15],
+    "BattleDialogOffset": [-12, -40, 0.75],
+    "GachaResultOffset": [4, -43, 0.7085]
   },
   {
     "EquipmentID": 23003,
@@ -2399,26 +1469,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23003.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23003.png",
-    "ItemRightPanelOffset": [
-      0,
-      -58,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -50,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      15,
-      -24,
-      0.75
-    ],
-    "GachaResultOffset": [
-      7,
-      6,
-      0.763
-    ]
+    "ItemRightPanelOffset": [0, -58, 0.7],
+    "AvatarDetailOffset": [0, -50, 1.15],
+    "BattleDialogOffset": [15, -24, 0.75],
+    "GachaResultOffset": [7, 6, 0.763]
   },
   {
     "EquipmentID": 23004,
@@ -2440,26 +1494,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23004.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23004.png",
-    "ItemRightPanelOffset": [
-      0,
-      -137,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -168,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      -22,
-      0,
-      0.6
-    ],
-    "GachaResultOffset": [
-      -18,
-      -45,
-      0.6758
-    ]
+    "ItemRightPanelOffset": [0, -137, 0.7],
+    "AvatarDetailOffset": [0, -168, 1.15],
+    "BattleDialogOffset": [-22, 0, 0.6],
+    "GachaResultOffset": [-18, -45, 0.6758]
   },
   {
     "EquipmentID": 23005,
@@ -2481,26 +1519,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23005.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23005.png",
-    "ItemRightPanelOffset": [
-      0,
-      -140,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -145,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      -22,
-      0,
-      0.6
-    ],
-    "GachaResultOffset": [
-      -36,
-      -51,
-      0.7412
-    ]
+    "ItemRightPanelOffset": [0, -140, 0.7],
+    "AvatarDetailOffset": [0, -145, 1.15],
+    "BattleDialogOffset": [-22, 0, 0.6],
+    "GachaResultOffset": [-36, -51, 0.7412]
   },
   {
     "EquipmentID": 23006,
@@ -2522,26 +1544,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23006.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23006.png",
-    "ItemRightPanelOffset": [
-      0,
-      -100,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -76,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      0.55
-    ],
-    "GachaResultOffset": [
-      0,
-      -5,
-      0.5777
-    ]
+    "ItemRightPanelOffset": [0, -100, 0.7],
+    "AvatarDetailOffset": [0, -76, 1.15],
+    "BattleDialogOffset": [0, 0, 0.55],
+    "GachaResultOffset": [0, -5, 0.5777]
   },
   {
     "EquipmentID": 23007,
@@ -2563,26 +1569,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23007.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23007.png",
-    "ItemRightPanelOffset": [
-      0,
-      -60,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -68,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      -68,
-      1.15
-    ],
-    "GachaResultOffset": [
-      -20,
-      1,
-      0.4905
-    ]
+    "ItemRightPanelOffset": [0, -60, 0.7],
+    "AvatarDetailOffset": [0, -68, 1.15],
+    "BattleDialogOffset": [0, -68, 1.15],
+    "GachaResultOffset": [-20, 1, 0.4905]
   },
   {
     "EquipmentID": 23008,
@@ -2604,26 +1594,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23008.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23008.png",
-    "ItemRightPanelOffset": [
-      0,
-      -126,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -120,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      33,
-      0,
-      0.55
-    ],
-    "GachaResultOffset": [
-      35,
-      -25,
-      0.5668
-    ]
+    "ItemRightPanelOffset": [0, -126, 0.7],
+    "AvatarDetailOffset": [0, -120, 1.15],
+    "BattleDialogOffset": [33, 0, 0.55],
+    "GachaResultOffset": [35, -25, 0.5668]
   },
   {
     "EquipmentID": 23009,
@@ -2645,26 +1619,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23009.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23009.png",
-    "ItemRightPanelOffset": [
-      0,
-      -172,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -175,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      32,
-      -63,
-      0.75
-    ],
-    "GachaResultOffset": [
-      -80,
-      -84,
-      0.872
-    ]
+    "ItemRightPanelOffset": [0, -172, 0.7],
+    "AvatarDetailOffset": [0, -175, 1.15],
+    "BattleDialogOffset": [32, -63, 0.75],
+    "GachaResultOffset": [-80, -84, 0.872]
   },
   {
     "EquipmentID": 23010,
@@ -2686,26 +1644,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23010.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23010.png",
-    "ItemRightPanelOffset": [
-      0,
-      -106,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -126,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      33,
-      0,
-      0.55
-    ],
-    "GachaResultOffset": [
-      -23,
-      -25,
-      0.5995
-    ]
+    "ItemRightPanelOffset": [0, -106, 0.7],
+    "AvatarDetailOffset": [0, -126, 1.15],
+    "BattleDialogOffset": [33, 0, 0.55],
+    "GachaResultOffset": [-23, -25, 0.5995]
   },
   {
     "EquipmentID": 23011,
@@ -2727,26 +1669,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23011.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23011.png",
-    "ItemRightPanelOffset": [
-      0,
-      -106,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -106,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -106, 0.7],
+    "AvatarDetailOffset": [0, -106, 1.15],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 23012,
@@ -2768,26 +1694,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23012.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23012.png",
-    "ItemRightPanelOffset": [
-      0,
-      15,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      15,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, 15, 0.7],
+    "AvatarDetailOffset": [0, 15, 1.15],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 23013,
@@ -2809,26 +1719,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23013.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23013.png",
-    "ItemRightPanelOffset": [
-      0,
-      -115,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -115,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -115, 0.7],
+    "AvatarDetailOffset": [0, -115, 1.15],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 23014,
@@ -2850,26 +1744,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23014.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23014.png",
-    "ItemRightPanelOffset": [
-      -38,
-      -284,
-      1.2
-    ],
-    "AvatarDetailOffset": [
-      -37,
-      -260,
-      1.8
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [-38, -284, 1.2],
+    "AvatarDetailOffset": [-37, -260, 1.8],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 23015,
@@ -2891,26 +1769,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23015.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23015.png",
-    "ItemRightPanelOffset": [
-      0,
-      -80,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -75,
-      1
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -80, 0.7],
+    "AvatarDetailOffset": [0, -75, 1],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 23016,
@@ -2932,26 +1794,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23016.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23016.png",
-    "ItemRightPanelOffset": [
-      15,
-      -235,
-      1.05
-    ],
-    "AvatarDetailOffset": [
-      14,
-      -210,
-      1.6
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [15, -235, 1.05],
+    "AvatarDetailOffset": [14, -210, 1.6],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 24000,
@@ -2970,31 +1816,13 @@
     "SkillID": 24000,
     "ExpProvide": 60000,
     "CoinCost": 30000,
-    "RankUpCostList": [
-      271
-    ],
+    "RankUpCostList": [271],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/24000.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/24000.png",
-    "ItemRightPanelOffset": [
-      0,
-      -107,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -122,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -107, 0.7],
+    "AvatarDetailOffset": [0, -122, 1.15],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 24001,
@@ -3013,31 +1841,13 @@
     "SkillID": 24001,
     "ExpProvide": 60000,
     "CoinCost": 30000,
-    "RankUpCostList": [
-      271
-    ],
+    "RankUpCostList": [271],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/24001.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/24001.png",
-    "ItemRightPanelOffset": [
-      0,
-      -13,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      20,
-      -9,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -13, 0.7],
+    "AvatarDetailOffset": [20, -9, 1.15],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 24002,
@@ -3056,31 +1866,13 @@
     "SkillID": 24002,
     "ExpProvide": 60000,
     "CoinCost": 30000,
-    "RankUpCostList": [
-      271
-    ],
+    "RankUpCostList": [271],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/24002.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/24002.png",
-    "ItemRightPanelOffset": [
-      0,
-      -51,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -55,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -51, 0.7],
+    "AvatarDetailOffset": [0, -55, 1.15],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21025,
@@ -3102,26 +1894,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21025.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21025.png",
-    "ItemRightPanelOffset": [
-      10,
-      -153,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      46,
-      -200,
-      1.41
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [10, -153, 0.7],
+    "AvatarDetailOffset": [46, -200, 1.41],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 23017,
@@ -3143,26 +1919,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23017.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23017.png",
-    "ItemRightPanelOffset": [
-      -10,
-      -90,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      -12,
-      -88,
-      1.1
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [-10, -90, 0.7],
+    "AvatarDetailOffset": [-12, -88, 1.1],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 23018,
@@ -3184,26 +1944,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23018.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23018.png",
-    "ItemRightPanelOffset": [
-      -15,
-      -140,
-      0.75
-    ],
-    "AvatarDetailOffset": [
-      -1,
-      -111,
-      1.03
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [-15, -140, 0.75],
+    "AvatarDetailOffset": [-1, -111, 1.03],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 23019,
@@ -3225,26 +1969,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23019.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23019.png",
-    "ItemRightPanelOffset": [
-      0,
-      5,
-      0.71
-    ],
-    "AvatarDetailOffset": [
-      0,
-      18,
-      1.01
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, 5, 0.71],
+    "AvatarDetailOffset": [0, 18, 1.01],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 23021,
@@ -3266,26 +1994,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23021.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23021.png",
-    "ItemRightPanelOffset": [
-      8,
-      -173,
-      0.82
-    ],
-    "AvatarDetailOffset": [
-      16,
-      -162,
-      1.35
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [8, -173, 0.82],
+    "AvatarDetailOffset": [16, -162, 1.35],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 23023,
@@ -3307,26 +2019,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23023.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23023.png",
-    "ItemRightPanelOffset": [
-      6,
-      -138,
-      0.71
-    ],
-    "AvatarDetailOffset": [
-      4,
-      -130,
-      1.1
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [6, -138, 0.71],
+    "AvatarDetailOffset": [4, -130, 1.1],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 23020,
@@ -3348,26 +2044,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23020.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23020.png",
-    "ItemRightPanelOffset": [
-      0,
-      -70,
-      0.67
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -62,
-      1.02
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -70, 0.67],
+    "AvatarDetailOffset": [0, -62, 1.02],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 24003,
@@ -3386,31 +2066,13 @@
     "SkillID": 24003,
     "ExpProvide": 60000,
     "CoinCost": 30000,
-    "RankUpCostList": [
-      271
-    ],
+    "RankUpCostList": [271],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/24003.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/24003.png",
-    "ItemRightPanelOffset": [
-      0,
-      -50,
-      0.68
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -47,
-      1
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -50, 0.68],
+    "AvatarDetailOffset": [0, -47, 1],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21035,
@@ -3432,26 +2094,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21035.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21035.png",
-    "ItemRightPanelOffset": [
-      4,
-      -4,
-      0.68
-    ],
-    "AvatarDetailOffset": [
-      0,
-      11,
-      1.05
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [4, -4, 0.68],
+    "AvatarDetailOffset": [0, 11, 1.05],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21036,
@@ -3473,26 +2119,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21036.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21036.png",
-    "ItemRightPanelOffset": [
-      0,
-      60,
-      0.67
-    ],
-    "AvatarDetailOffset": [
-      0,
-      63,
-      1.02
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, 60, 0.67],
+    "AvatarDetailOffset": [0, 63, 1.02],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21037,
@@ -3514,26 +2144,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21037.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21037.png",
-    "ItemRightPanelOffset": [
-      28,
-      -95,
-      0.78
-    ],
-    "AvatarDetailOffset": [
-      29,
-      -80,
-      1.2
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [28, -95, 0.78],
+    "AvatarDetailOffset": [29, -80, 1.2],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21038,
@@ -3555,26 +2169,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21038.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21038.png",
-    "ItemRightPanelOffset": [
-      -55,
-      -213,
-      0.95
-    ],
-    "AvatarDetailOffset": [
-      -45,
-      -177,
-      1.3
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [-55, -213, 0.95],
+    "AvatarDetailOffset": [-45, -177, 1.3],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21039,
@@ -3596,26 +2194,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21039.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21039.png",
-    "ItemRightPanelOffset": [
-      -86,
-      -108,
-      1
-    ],
-    "AvatarDetailOffset": [
-      -90,
-      -94,
-      1.6
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [-86, -108, 1],
+    "AvatarDetailOffset": [-90, -94, 1.6],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21040,
@@ -3637,26 +2219,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21040.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21040.png",
-    "ItemRightPanelOffset": [
-      0,
-      -94,
-      0.69
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -85,
-      1.06
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -94, 0.69],
+    "AvatarDetailOffset": [0, -85, 1.06],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21041,
@@ -3678,26 +2244,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21041.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21041.png",
-    "ItemRightPanelOffset": [
-      0,
-      80,
-      0.72
-    ],
-    "AvatarDetailOffset": [
-      0,
-      83,
-      1.1
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, 80, 0.72],
+    "AvatarDetailOffset": [0, 83, 1.1],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 23022,
@@ -3719,26 +2269,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23022.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23022.png",
-    "ItemRightPanelOffset": [
-      8,
-      -132,
-      0.86
-    ],
-    "AvatarDetailOffset": [
-      12,
-      -128,
-      1.4
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [8, -132, 0.86],
+    "AvatarDetailOffset": [12, -128, 1.4],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21007,
@@ -3760,26 +2294,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21007.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21007.png",
-    "ItemRightPanelOffset": [
-      0,
-      -70,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -62,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      32,
-      -63,
-      0.75
-    ],
-    "GachaResultOffset": [
-      -32,
-      -10,
-      0.5123
-    ]
+    "ItemRightPanelOffset": [0, -70, 0.7],
+    "AvatarDetailOffset": [0, -62, 1.15],
+    "BattleDialogOffset": [32, -63, 0.75],
+    "GachaResultOffset": [-32, -10, 0.5123]
   },
   {
     "EquipmentID": 24004,
@@ -3798,31 +2316,13 @@
     "SkillID": 24004,
     "ExpProvide": 60000,
     "CoinCost": 30000,
-    "RankUpCostList": [
-      271
-    ],
+    "RankUpCostList": [271],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/24004.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/24004.png",
-    "ItemRightPanelOffset": [
-      0,
-      -20,
-      0.66
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -2.5,
-      1.01
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -20, 0.66],
+    "AvatarDetailOffset": [0, -2.5, 1.01],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 22001,
@@ -3841,31 +2341,13 @@
     "SkillID": 22001,
     "ExpProvide": 12000,
     "CoinCost": 6000,
-    "RankUpCostList": [
-      121001
-    ],
+    "RankUpCostList": [121001],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/22001.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/22001.png",
-    "ItemRightPanelOffset": [
-      0,
-      -62,
-      0.75
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -47,
-      1.1
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -62, 0.75],
+    "AvatarDetailOffset": [0, -47, 1.1],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 23024,
@@ -3887,26 +2369,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23024.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23024.png",
-    "ItemRightPanelOffset": [
-      6,
-      221,
-      1.05
-    ],
-    "AvatarDetailOffset": [
-      8,
-      273,
-      1.9
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [6, 221, 1.05],
+    "AvatarDetailOffset": [8, 273, 1.9],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 23025,
@@ -3928,26 +2394,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23025.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23025.png",
-    "ItemRightPanelOffset": [
-      9,
-      -135,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      3,
-      -118,
-      1.05
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [9, -135, 0.7],
+    "AvatarDetailOffset": [3, -118, 1.05],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21042,
@@ -3969,26 +2419,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21042.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21042.png",
-    "ItemRightPanelOffset": [
-      0,
-      -70,
-      0.68
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -54,
-      1.02
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -70, 0.68],
+    "AvatarDetailOffset": [0, -54, 1.02],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21043,
@@ -4010,26 +2444,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21043.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21043.png",
-    "ItemRightPanelOffset": [
-      46,
-      -44,
-      0.85
-    ],
-    "AvatarDetailOffset": [
-      45,
-      -30,
-      1.3
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [46, -44, 0.85],
+    "AvatarDetailOffset": [45, -30, 1.3],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 23027,
@@ -4051,26 +2469,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23027.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23027.png",
-    "ItemRightPanelOffset": [
-      20,
-      -158,
-      0.82
-    ],
-    "AvatarDetailOffset": [
-      15,
-      -145,
-      1.25
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [20, -158, 0.82],
+    "AvatarDetailOffset": [15, -145, 1.25],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 23028,
@@ -4092,26 +2494,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23028.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23028.png",
-    "ItemRightPanelOffset": [
-      4,
-      -160,
-      0.76
-    ],
-    "AvatarDetailOffset": [
-      4,
-      -147,
-      1.17
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [4, -160, 0.76],
+    "AvatarDetailOffset": [4, -147, 1.17],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21044,
@@ -4133,26 +2519,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21044.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21044.png",
-    "ItemRightPanelOffset": [
-      -51,
-      -244,
-      1.12
-    ],
-    "AvatarDetailOffset": [
-      -45,
-      -200,
-      1.6
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [-51, -244, 1.12],
+    "AvatarDetailOffset": [-45, -200, 1.6],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21045,
@@ -4174,26 +2544,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21045.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21045.png",
-    "ItemRightPanelOffset": [
-      -84,
-      -193,
-      1
-    ],
-    "AvatarDetailOffset": [
-      -66,
-      -164,
-      1.44
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [-84, -193, 1],
+    "AvatarDetailOffset": [-66, -164, 1.44],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21046,
@@ -4215,26 +2569,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21046.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21046.png",
-    "ItemRightPanelOffset": [
-      8,
-      -134,
-      0.74
-    ],
-    "AvatarDetailOffset": [
-      8,
-      -126,
-      1.15
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [8, -134, 0.74],
+    "AvatarDetailOffset": [8, -126, 1.15],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 21047,
@@ -4256,26 +2594,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/21047.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/21047.png",
-    "ItemRightPanelOffset": [
-      -34,
-      -161,
-      0.9
-    ],
-    "AvatarDetailOffset": [
-      -28,
-      -147,
-      1.4
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [-34, -161, 0.9],
+    "AvatarDetailOffset": [-28, -147, 1.4],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 22002,
@@ -4294,31 +2616,13 @@
     "SkillID": 22002,
     "ExpProvide": 12000,
     "CoinCost": 6000,
-    "RankUpCostList": [
-      121002
-    ],
+    "RankUpCostList": [121002],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/22002.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/22002.png",
-    "ItemRightPanelOffset": [
-      -14,
-      -217,
-      1.25
-    ],
-    "AvatarDetailOffset": [
-      -15,
-      -184,
-      1.8
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [-14, -217, 1.25],
+    "AvatarDetailOffset": [-15, -184, 1.8],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 23026,
@@ -4340,26 +2644,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23026.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23026.png",
-    "ItemRightPanelOffset": [
-      0,
-      -96,
-      0.7
-    ],
-    "AvatarDetailOffset": [
-      0,
-      -78,
-      1
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [0, -96, 0.7],
+    "AvatarDetailOffset": [0, -78, 1],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 23030,
@@ -4381,26 +2669,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23030.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23030.png",
-    "ItemRightPanelOffset": [
-      -57,
-      -165,
-      1.2
-    ],
-    "AvatarDetailOffset": [
-      -62,
-      -149,
-      1.9
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [-57, -165, 1.2],
+    "AvatarDetailOffset": [-62, -149, 1.9],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 23029,
@@ -4422,26 +2694,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23029.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23029.png",
-    "ItemRightPanelOffset": [
-      -10,
-      -230,
-      1.1
-    ],
-    "AvatarDetailOffset": [
-      -16,
-      -218,
-      1.7
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [-10, -230, 1.1],
+    "AvatarDetailOffset": [-16, -218, 1.7],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 23031,
@@ -4463,26 +2719,10 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23031.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23031.png",
-    "ItemRightPanelOffset": [
-      82,
-      -216,
-      1.1
-    ],
-    "AvatarDetailOffset": [
-      74,
-      -186,
-      1.65
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [82, -216, 1.1],
+    "AvatarDetailOffset": [74, -186, 1.65],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   },
   {
     "EquipmentID": 23032,
@@ -4504,25 +2744,9 @@
     "RankUpCostList": [],
     "ThumbnailPath": "SpriteOutput/LightConeMediumIcon/23032.png",
     "ImagePath": "SpriteOutput/LightConeMaxFigures/23032.png",
-    "ItemRightPanelOffset": [
-      -34,
-      -132,
-      0.8
-    ],
-    "AvatarDetailOffset": [
-      -33,
-      -121,
-      1.23
-    ],
-    "BattleDialogOffset": [
-      0,
-      0,
-      1
-    ],
-    "GachaResultOffset": [
-      0,
-      0,
-      1
-    ]
+    "ItemRightPanelOffset": [-34, -132, 0.8],
+    "AvatarDetailOffset": [-33, -121, 1.23],
+    "BattleDialogOffset": [0, 0, 1],
+    "GachaResultOffset": [0, 0, 1]
   }
 ]
