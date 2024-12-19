@@ -6,11 +6,11 @@ import os from 'node:os'
 test('Test_getGachaURL', () => {
   let url = ''
   const playerLogPath = `${os.homedir()}/AppData/LocalLow/miHoYo/崩坏：星穹铁道/Player.log`
-  const gameDataPath = fs
+  const starRailDataDir = fs
     .readFileSync(playerLogPath, 'utf-8')
     .match(/Loading player data from (.*)data\.unity3d/)![1]
-  console.log(gameDataPath)
-  const webCachePath = path.join(gameDataPath, './webCaches/')
+  console.log(starRailDataDir)
+  const webCachePath = path.join(starRailDataDir, './webCaches/')
   let maxVersion = '0.0.0.0'
   fs.readdirSync(webCachePath).forEach((fileName) => {
     if (
@@ -33,7 +33,7 @@ test('Test_getGachaURL', () => {
     console.log('URL not found')
   }
   const urlWebCachePath = path.join(
-    gameDataPath,
+    starRailDataDir,
     `./webCaches/${maxVersion}/Cache/Cache_Data/data_2`
   )
   const urlLines = fs.readFileSync(urlWebCachePath, 'utf-8').split('1/0/')

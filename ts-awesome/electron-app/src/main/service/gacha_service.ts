@@ -52,13 +52,11 @@ class GachaService {
     fs.writeFileSync(this.gachaUidsPath, JSON.stringify(this.gachaUids, null, 2), 'utf-8')
   }
 
-  //! async
-  public getGachaUids() {
+  public async getGachaUids() {
     return { msg: 'OK', data: this.gachaUids }
   }
 
-  //! async
-  public getGachaData(uid: string, updateLastUid = false) {
+  public async getGachaData(uid: string, updateLastUid = false) {
     if (!/^\d{9}$/.test(uid)) {
       return { msg: 'Invalid UID' }
     }
@@ -66,7 +64,8 @@ class GachaService {
       return { msg: 'UID not found' }
     }
     if (updateLastUid) {
-      // settingsService.setAppSettings('LastGachaUid', uid);
+      // todo 完成 settingsService
+      // settingsService.updateSettings('LastGachaUid', uid);
     }
     return {
       msg: 'OK',
@@ -74,8 +73,7 @@ class GachaService {
     }
   }
 
-  //! async
-  public addGachaData(uid: string, username: string) {
+  public async addGachaData(uid: string, username: string) {
     if (!/^\d{9}$/.test(uid)) {
       return { msg: 'Invalid UID' }
     }
@@ -91,8 +89,7 @@ class GachaService {
     return { msg: 'OK' }
   }
 
-  //! async
-  public removeGachaData(uid: string) {
+  public async removeGachaData(uid: string) {
     if (!/^\d{9}$/.test(uid)) {
       return { msg: 'Invalid UID' }
     }
@@ -414,7 +411,8 @@ class GachaService {
       JSON.stringify(list, null, 4),
       'utf-8'
     )
-    // settingService.setAppSettings('LastGachaUid', uid)
+    // todo 完成 settingsService
+    // settingService.updateSettings('LastGachaUid', uid)
     return { msg: 'OK', data: { uid: uid } }
   }
 
@@ -423,21 +421,21 @@ class GachaService {
     if (server === 'cn') {
       // const playerLogPath = path.join(this.volumeDir, '../../../LocalLow/miHoYo/崩坏：星穹铁道/Player.log')
       const playerLogPath = `${app.getPath('home')}/AppData/LocalLow/miHoYo/崩坏：星穹铁道/Player.log`
-      const gameDataPath = fs
+      const starRailDataDir = fs
         .readFileSync(playerLogPath, 'utf-8')
         .match(/Loading player data from (.*)data\.unity3d/)![1]
-      console.log(gameDataPath)
-      const webCachePath = path.join(gameDataPath, './webCaches/')
+      console.log(starRailDataDir)
+      const webCachesDir = path.join(starRailDataDir, './webCaches/')
       let maxVersion = '0.0.0.0'
-      fs.readdirSync(webCachePath).forEach((fileName) => {
+      fs.readdirSync(webCachesDir).forEach((fileName) => {
         if (
-          fs.statSync(path.join(webCachePath, fileName)).isDirectory() &&
+          fs.statSync(path.join(webCachesDir, fileName)).isDirectory() &&
           /\d+\.\d+\.\d+\.\d/.test(fileName)
         ) {
           const max = maxVersion.split('.')
           const now = fileName.split('.')
           for (let i = 0; i < 4; ++i) {
-            if (parseInt(now[i]) > parseInt(max[i])) {
+            if (Number.parseInt(now[i]) > Number.parseInt(max[i])) {
               maxVersion = fileName
               break
             } else if (parseInt(now[i]) < parseInt(max[i])) {
@@ -450,7 +448,7 @@ class GachaService {
         return { msg: 'URL not found' }
       }
       const urlWebCachePath = path.join(
-        gameDataPath,
+        starRailDataDir,
         `./webCaches/${maxVersion}/Cache/Cache_Data/data_2`
       )
       const urlLines = fs.readFileSync(urlWebCachePath, 'utf-8').split('1/0/')

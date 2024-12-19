@@ -1,29 +1,30 @@
 import { app } from 'electron'
-import path from 'node:path'
 import fs from 'node:fs'
+import path from 'node:path'
 
 class ConfigService {
-  // userDataPath 用户数据
-  private _userDataPath: string
+  // userDataDir 用户数据
+  private _userDataDir: string
   // volumnDir 数据卷目录
   private _volumeDir: string
   // settingsPath 配置文件
   private _settingsPath: string
   // version 版本
-  private _version: string | undefined
+  private version: string
 
   constructor() {
-    this._userDataPath = app.getPath('userData')
-    console.log(this._userDataPath)
-    this._volumeDir = path.join(this._userDataPath, './volume/')
+    this._userDataDir = app.getPath('userData')
+    this.version = app.getVersion()
+    console.log(this._userDataDir)
+    this._volumeDir = path.join(this._userDataDir, './volume/')
     if (!fs.existsSync(this._volumeDir)) {
       fs.mkdirSync(this._volumeDir)
     }
     this._settingsPath = path.join(this._volumeDir, 'settings.json')
   }
 
-  get userDataPath() {
-    return this._userDataPath
+  get userDataDir() {
+    return this._userDataDir
   }
 
   get volumeDir() {
@@ -34,12 +35,8 @@ class ConfigService {
     return this._settingsPath
   }
 
-  //! public async getVersion();
-  get version() {
-    if (this._version !== undefined) {
-      return this._version
-    }
-    return (this._version = app.getVersion())
+  public async getVersion() {
+    return this.version
   }
 }
 

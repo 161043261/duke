@@ -1,7 +1,5 @@
 import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { nativeTheme } from 'electron'
-import { createWriteStream, writeFileSync } from 'node:fs'
-import { get } from 'node:https'
 
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'

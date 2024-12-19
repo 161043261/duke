@@ -1,0 +1,24 @@
+{
+  "config": ["getVersion"],
+  "setting": ["getSettings", "setSettings"],
+  "achievement": [
+    "getAchievementUids",
+    "getAchievementData",
+    "newAchievementData",
+    "delAchievementData",
+    "exportAchievementData",
+    "importAchievementData",
+    "setAchievementStatus",
+    "refreshAchievementFromMYS",
+    "cancelRefreshAchievementFromMYS"
+  ],
+  "gacha": [
+    "getGachaUids",
+    "getGachaData",
+    "addGachaData",
+    "removeGachaData",
+    "exportGachaData",
+    "importGachaData",
+    "getGachaURL"
+  ]
+}

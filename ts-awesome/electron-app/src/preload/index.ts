@@ -3,17 +3,27 @@
 
 import { contextBridge, ipcRenderer } from 'electron/renderer'
 import { electronAPI } from '@electron-toolkit/preload'
+import jsonObj from './service_api.json'
 
-// Custom APIs for renderer
-const api = {}
+function makeServiceApi(): unknown {
+  const serviceApi = {}
+  Object.entries(jsonObj).forEach(([serviceName, fnNames]) => {
+    serviceApi[serviceName] = {}
+    fnNames.forEach((fnName) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      serviceApi[serviceName][fnName] = (...args: any[]) =>
+        ipcRenderer.invoke(`${serviceName}.${fnName}`, ...args)
+    })
+  })
+  serviceApi['sendMainWindowMsg'] = (msg: string) => ipcRenderer.send('sendMainWindowMsg', msg)
+  serviceApi['loadJson'] = (fileName: string) => ipcRenderer.invoke('loadJson', fileName)
+  return serviceApi
+}
 
-// Use `contextBridge` APIs to expose Electron APIs to
-// renderer only if context isolation is enabled, otherwise
-// just add to the DOM global.
 if (process.contextIsolated) {
   try {
     contextBridge.exposeInMainWorld('electron', electronAPI)
-    contextBridge.exposeInMainWorld('api', api)
+    contextBridge.exposeInMainWorld('service', makeServiceApi())
   } catch (error) {
     console.error(error)
   }
@@ -21,31 +31,5 @@ if (process.contextIsolated) {
   // @ts-ignore (define in dts)
   window.electron = electronAPI
   // @ts-ignore (define in dts)
-  window.api = api
+  window.service = makeServiceApi()
 }
-
-contextBridge.exposeInMainWorld('versions', {
-  node: () => {
-    return process.versions.node
-  },
-  chrome: () => {
-    return process.versions.chrome
-  },
-  electron: () => {
-    return process.versions.electron
-  },
-  ping: () => {
-    return ipcRenderer.invoke('icmpChan')
-  }
-})
-
-// 深色模式
-contextBridge.exposeInMainWorld('darkMode', {
-  toggle: () => {
-    return ipcRenderer.invoke('dark-mode:toggle')
-  },
-
-  system: () => {
-    return ipcRenderer.invoke('dark-mode:system')
-  }
-})
